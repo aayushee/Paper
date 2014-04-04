@@ -1,0 +1,16 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Related Work}{2}{chapter.2}
+\contentsline {chapter}{\numberline {3}Data Preprocessing}{3}{chapter.3}
+\contentsline {section}{\numberline {3.1}Data}{3}{section.3.1}
+\contentsline {section}{\numberline {3.2}Spelling Correction}{4}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Related Work}{4}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Spelling Correction Algorithm}{5}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Spelling Correction Algorithm Evaluation}{5}{subsection.3.2.3}
+\contentsline {subsubsection}{Accuracy}{5}{section*.7}
+\contentsline {subsubsection}{Time taken for Spelling Correction}{10}{section*.12}
+\contentsline {subsubsection}{Person Names Detection Rate}{10}{section*.13}
+\contentsline {subsection}{\numberline {3.2.4}Spelling Correction Algorithm Evaluation Results}{10}{subsection.3.2.4}
+\contentsline {chapter}{\numberline {4}Named Entity Recognition}{12}{chapter.4}
+\contentsline {chapter}{\numberline {5}Topic Detection}{13}{chapter.5}
+\contentsline {chapter}{\numberline {6}Influential People Detection}{14}{chapter.6}
+\contentsline {chapter}{\numberline {7}Results and Conclusion}{15}{chapter.7}
