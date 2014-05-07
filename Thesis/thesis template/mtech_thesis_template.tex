@@ -71,10 +71,18 @@ This is to certify that the thesis titled \textbf{``Title Title Title Title Titl
 \begin{abstract}
 
 
-Historical archives of newspapers provide a wealth of information which can be used for a variety of purposes. They can be of special interest to genealogists and other library patrons for efficiently searching articles relating to people that are of interest to them across the various newspaper topics in a chronological fashion. We present a novel problem of finding influential people from a people gazetteer where the people gazetteer consists of a chain of articles related to each person entity over a historical timeline.
-We use Edit distance algorithm for spelling correction of the noisy historical OCR data which is used for construction of the people gazetteer along with a novel N-gram evaluation algorithm for measuring the performance of spelling correction.
-We propose the solution framework by linking each person entity with a course of events, i.e., a chain of articles that he/she is related to and rank them as influential based on ranking of their chains of articles across different newspaper topics. 
-We use Named Entity Recognition for detecting the person entities in OCR archives, create chains of articles for each person by relating articles using similarity measures and LDA topic detection model and finally ranking them as influential across different topics.  
+Historical archives of newspapers provide a wealth of information which can be used for a variety of purposes. They are of interest to genealogists, historians and scholars for efficiently searching articles pertaining to people in a chronological fashion. 
+A people gazetteer can be defined as a list of chain of articles related to a person entity occurring in a news article over a historical timeline.
+
+In this thesis we present the process of construction of a people
+gazetteer from noisy OCR text and the novel problem of finding
+influential people from it. To build the people gazetteer we first
+spell correct the noisy text using an edit distance algorithm. A novel
+N-gram evaluation algorithm is used for measuring its performance.
+We construct the people gazetteer by collecting occurrences of person entities using Named Entity Recognition and linking them with a chain of articles that he/she is related to.
+The chain of articles for each person entity is created by finding similarity among news articles based on LDA topic detection model.
+We then define an Influential Person Index based on each person entity's chains of articles and rank them as influential across various newspaper topics based on this index.  
+Our corpus is a sample of 14020 newspaper articles obtained from Chronicling America project undertaken by the Library of Congress.
 
 \end{abstract}
 
@@ -331,8 +339,14 @@ These statistics indicate that spelling correction using an extended dictionary 
  
 A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. Similar approach can be applied for Word Break and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
  
-\chapter{Named Entity Recognition}\label{chapter:named entity recognition}
-\chapter{Topic Detection}\label{chapter:topic detection} 
+\chapter{PEOPLE GAZETTEER}\label{chapter:people gazetteer}
+
+This chapter describes the process of construction of people gazetter by extracting person names from the news articles dataset (NER) followed by formation of chains of articles for each person entity over different article topics using LDA topic detection.
+
+Dataset statistics
+
+Output of people gazetteer
+
 \chapter{Influential People Detection}\label{chapter:influential people detection}
 \chapter{Results and Conclusion}\label{chapter:results and conclusion}
 %\newpage

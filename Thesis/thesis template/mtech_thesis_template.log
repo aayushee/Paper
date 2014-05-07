@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.12.19)  15 MAR 2014 11:07
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.12.19)  7 MAY 2014 12:56
 entering extended mode
-**C:/Users/himanshu/Desktop/thesistemplate/mtech_thesis_template.tex
-(C:/Users/himanshu/Desktop/thesistemplate/mtech_thesis_template.tex
+**C:/Users/himanshu/workspace/Thesis/thesis*template/mtech_thesis_template.tex
+("C:/Users/himanshu/workspace/Thesis/thesis template/mtech_thesis_template.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -361,8 +361,8 @@ Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 \Gin@req@height=\dimen131
 \Gin@req@width=\dimen132
 )
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.aux
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_cover.aux))
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.aux"
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_cover.aux"))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
@@ -434,14 +434,13 @@ LaTeX Info: Redefining \ref on input line 47.
 LaTeX Info: Redefining \pageref on input line 47.
 LaTeX Info: Redefining \nameref on input line 47.
 
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.out)
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.out)
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.out"
+) ("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.ou
+t")
 \@outlinefile=\write3
-
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_cover.tex
+ ("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_cover.tex"
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 53.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
@@ -455,39 +454,42 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.79 \end{abstract}
+l.87 \end{abstract}
                     [1]
-Overfull \hbox (7.68845pt too wide) in paragraph at lines 93--94
+Overfull \hbox (7.68845pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/10.95 XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXX
 XX
  []
 
 
-Overfull \hbox (7.68845pt too wide) in paragraph at lines 93--94
+Overfull \hbox (7.68845pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/10.95 XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXX
 XX
  []
 
 
-Overfull \hbox (7.68845pt too wide) in paragraph at lines 93--94
+Overfull \hbox (7.68845pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/10.95 XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXX
 XX
  []
 
-[1] (C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.toc)
+[1]
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.toc"
+)
 \tf@toc=\write4
+ [2
 
-[2
-
-] (C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.lof)
+]
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.lof"
+)
 \tf@lof=\write5
+ [3
 
-[3
-
-] (C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.lot)
+]
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.lot"
+)
 \tf@lot=\write6
-
-[4
+ [4
 
 ] [5]
 Chapter 1.
@@ -495,7 +497,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.126 \chapter
+l.134 \chapter
               {Related Work} [1
 
 ]
@@ -504,25 +506,25 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.127 \chapter
+l.135 \chapter
               {Data Preprocessing}\label{chapter:data preprocessing} [2
 
 ]
 Chapter 3.
-<images/originalimage.png, id=129, 313.17pt x 189.70876pt>
+<images/originalimage.png, id=124, 313.17pt x 189.70876pt>
 File: images/originalimage.png Graphic file (type png)
 
 <use images/originalimage.png>
-Package pdftex.def Info: images/originalimage.png used on input line 137.
+Package pdftex.def Info: images/originalimage.png used on input line 145.
 (pdftex.def)             Requested size: 234.8769pt x 142.2812pt.
 
-<images/ocr.png, id=131, 306.39468pt x 175.40532pt>
+<images/ocr.png, id=126, 306.39468pt x 175.40532pt>
 File: images/ocr.png Graphic file (type png)
  <use images/ocr.png>
-Package pdftex.def Info: images/ocr.png used on input line 138.
+Package pdftex.def Info: images/ocr.png used on input line 146.
 (pdftex.def)             Requested size: 245.11607pt x 140.32443pt.
 
-Overfull \hbox (27.18224pt too wide) in paragraph at lines 137--139
+Overfull \hbox (27.18224pt too wide) in paragraph at lines 145--147
 [][] [] 
  []
 
@@ -530,53 +532,55 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.144  \item[$\bullet$Non-real word errors]
+l.152  \item[$\bullet$Non-real word errors]
                                             include words that have been mis...
 [3
 
- <C:/Users/himanshu/Desktop/thesistemplate/images/originalimage.png> <C:/Users/
-himanshu/Desktop/thesistemplate/images/ocr.png>] [4] [5] [6]
-Overfull \hbox (17.0pt too wide) detected at line 273
+ <C:/Users/himanshu/workspace/Thesis/thesis template/images/originalimage.png> 
+<C:/Users/himanshu/workspace/Thesis/thesis template/images/ocr.png>] [4]
+[5] [6]
+Overfull \hbox (17.0pt too wide) detected at line 281
 [][] 
  []
 
-<images/img3.png, id=162, 528.47438pt x 386.94562pt>
+<images/img3.png, id=157, 528.47438pt x 386.94562pt>
 File: images/img3.png Graphic file (type png)
  <use images/img3.png>
-Package pdftex.def Info: images/img3.png used on input line 279.
+Package pdftex.def Info: images/img3.png used on input line 287.
 (pdftex.def)             Requested size: 211.386pt x 154.7755pt.
 
-<images/originalimg3.png, id=163, 310.15875pt x 202.50656pt>
+<images/originalimg3.png, id=158, 310.15875pt x 202.50656pt>
 File: images/originalimg3.png Graphic file (type png)
 
 <use images/originalimg3.png>
-Package pdftex.def Info: images/originalimg3.png used on input line 280.
+Package pdftex.def Info: images/originalimg3.png used on input line 288.
 (pdftex.def)             Requested size: 232.61848pt x 151.87953pt.
 
-<images/ocr3.png, id=164, 312.41719pt x 202.50656pt>
+<images/ocr3.png, id=159, 312.41719pt x 202.50656pt>
 File: images/ocr3.png Graphic file (type png)
  <use images/ocr3.png>
-Package pdftex.def Info: images/ocr3.png used on input line 285.
+Package pdftex.def Info: images/ocr3.png used on input line 293.
 (pdftex.def)             Requested size: 234.3123pt x 151.87953pt.
 
-<images/corrected3.png, id=165, 312.41719pt x 204.01219pt>
+<images/corrected3.png, id=160, 312.41719pt x 204.01219pt>
 File: images/corrected3.png Graphic file (type png)
 
 <use images/corrected3.png>
-Package pdftex.def Info: images/corrected3.png used on input line 286.
+Package pdftex.def Info: images/corrected3.png used on input line 294.
 (pdftex.def)             Requested size: 234.3123pt x 153.00876pt.
 
-Overfull \hbox (15.81386pt too wide) in paragraph at lines 285--287
+Overfull \hbox (15.81386pt too wide) in paragraph at lines 293--295
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8 <C:/Users/himanshu/Desktop/thesistemplate/images/img3.png> <C:/Users/him
-anshu/Desktop/thesistemplate/images/originalimg3.png>] [9 <C:/Users/himanshu/De
-sktop/thesistemplate/images/ocr3.png> <C:/Users/himanshu/Desktop/thesistemplate
-/images/corrected3.png>] [10] [11]
+[7] [8 <C:/Users/himanshu/workspace/Thesis/thesis template/images/img3.png> <C:
+/Users/himanshu/workspace/Thesis/thesis template/images/originalimg3.png>]
+[9 <C:/Users/himanshu/workspace/Thesis/thesis template/images/ocr3.png> <C:/Use
+rs/himanshu/workspace/Thesis/thesis template/images/corrected3.png>] [10]
+[11]
 Chapter 4.
 [12
 
@@ -586,37 +590,34 @@ Chapter 5.
 
 ]
 Chapter 6.
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.bbl"
 [14
 
-]
-Chapter 7.
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.bbl [15
-
-])
-[16
+]) [15
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 349.
- [17
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 363.
+ [16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 349.
- (C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_template.aux
-(C:\Users\himanshu\Desktop\thesistemplate\mtech_thesis_cover.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 349.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 349.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 363.
+
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_template.aux"
+("C:\Users\himanshu\workspace\Thesis\thesis template\mtech_thesis_cover.aux"))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 363.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 363.
 Package rerunfilecheck Info: File `mtech_thesis_template.out' has not changed.
-(rerunfilecheck)             Checksum: 63BA776EFEEDAE889620C44E2FD5662E;849.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 349.
+(rerunfilecheck)             Checksum: 10E0B6807F7F48EAAFFE79DBA9C10093;789.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 363.
  ) 
 Here is how much of TeX's memory you used:
- 8663 strings out of 494045
- 128172 string characters out of 3148377
+ 8659 strings out of 494045
+ 128362 string characters out of 3148377
  231630 words of memory out of 3000000
- 11781 multiletter control sequences out of 15000+200000
+ 11779 multiletter control sequences out of 15000+200000
  12568 words of font info for 45 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,15n,43p,1247b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,15n,43p,1257b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
@@ -628,9 +629,9 @@ cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on mtech_thesis_template.pdf (26 pages, 481877 bytes).
+Output written on mtech_thesis_template.pdf (25 pages, 481347 bytes).
 PDF statistics:
- 288 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 278 PDF objects out of 1000 (max. 8388607)
+ 60 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
