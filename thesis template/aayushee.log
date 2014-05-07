@@ -1,0 +1,47 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdftex 2013.12.19)  19 DEC 2013 15:57
+entering extended mode
+**C:/Users/himanshu/Desktop/paper/aayushee.bib
+(C:/Users/himanshu/Desktop/paper/aayushee.bib
+Overfull \hbox (0.17665pt too wide) in paragraph at lines 29--36
+[]\tenrm @INPROCEEDINGSBobkowska2010, au-thor=Bobkowska, A. and Kowal-ska, M., 
+book-ti-tle=Information|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm I
+.\tenrm N
+.\tenrm P
+.etc.
+
+
+Overfull \hbox (8.77364pt too wide) in paragraph at lines 29--36
+\tenrm and soft-ware en-gi-neers when trans-form-ing le-gal reg-u-la-tions to l
+aw-related re-quire-ments, year=2010, pages=105-|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm a
+.\tenrm n
+.\tenrm d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm s
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.71  issue_
+            date = {March 2010},
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.71  issue_
+            date = {March 2010},
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
