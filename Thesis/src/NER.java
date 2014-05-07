@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -94,7 +97,7 @@ public static void main (String args[]) throws Exception{
 	fr.close();
 	fw.close();
 	*/
-	File folder1=new File ("C:/Users/himanshu/Documents/final");
+	/*File folder1=new File ("C:/Users/himanshu/Documents/final");
 
 	File[] listOfFiles1=folder1.listFiles();
 	//FileReader fr = new FileReader("C:/Users/himanshu/Documents/final/72265 .txt"); 
@@ -123,7 +126,7 @@ public static void main (String args[]) throws Exception{
 	br.close();
 
 	}
-	fw.close();
+	fw.close();*/
 	/*FileReader fr = new FileReader("C:/Users/himanshu/Documents/final/72265 .txt"); 
 	BufferedReader br = new BufferedReader(fr); 
 	FileWriter fw = new FileWriter("linedoc72265.txt"); 
@@ -137,7 +140,40 @@ public static void main (String args[]) throws Exception{
 	line = lline.replace("\n", "").replace("\r", "");
 
 */
-
-
+	Map<String,List<String>> RevertMap=new HashMap<String,List<String>>();
+	FileReader fr = new FileReader("PersonTopic.csv"); 
+	BufferedReader br = new BufferedReader(fr); 
+	String line;
+	while((line = br.readLine()) != null)
+	{
+		String split[]=line.split(",");
+		//System.out.println(split[0]+" "+split[1]);
+		
+		if(RevertMap.containsKey(split[1]))
+		 {
+		 
+			List<String> val2 =RevertMap.get(split[1]);
+			 if(!val2.contains(split[0]))
+			 val2.add(split[0]);
+			 	RevertMap.put(split[1],val2);
+		 }
+		 else
+		 {
+			 List<String> val2=new ArrayList<String>();
+			 	val2.add(split[0]);	
+			 	//String split[]=entity.split(" ");
+				//if(split.length>1)
+		 RevertMap.put(split[1],val2);
+		 //System.out.println("Key= "+values.size()+"People list: "+ val2);
+		 }
+		
+			
+	}
+	//System.out.println(RevertMap);
+	  for (Map.Entry<String, List<String>> entry : RevertMap.entrySet()) {	  
+    	  List <String> persons=entry.getValue();
+	  System.out.println("No. of topics: "+entry.getKey()+"  Number of people: " +persons.size());
+	  
+	  }
 
 }}
