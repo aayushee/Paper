@@ -70,19 +70,26 @@ This is to certify that the thesis titled \textbf{``Title Title Title Title Titl
 
 \begin{abstract}
 
+ Historical newspaper archives provide a wealth of information. They
+are of particular interest to genealogists, historians and scholars
+for People Search.
 
-Historical archives of newspapers provide a wealth of information which can be used for a variety of purposes. They are of interest to genealogists, historians and scholars for efficiently searching articles pertaining to people in a chronological fashion. 
-A people gazetteer can be defined as a list of chain of articles related to a person entity occurring in a news article over a historical timeline.
+ In this thesis, we design a People Gazetteer from
+the noisy OCR text of historical newspapers and identify “influential”
+people from it. A People Gazetteer is a dictionary of personal names;
+each entry of the gazetteer is  a tuple containing a person name and a
+list of articles in which his name occurs.
 
-In this thesis we present the process of construction of a people
-gazetteer from noisy OCR text and the novel problem of finding
-influential people from it. To build the people gazetteer we first
-spell correct the noisy text using an edit distance algorithm. A novel
-N-gram evaluation algorithm is used for measuring its performance.
-We construct the people gazetteer by collecting occurrences of person entities using Named Entity Recognition and linking them with a chain of articles that he/she is related to.
-The chain of articles for each person entity is created by finding similarity among news articles based on LDA topic detection model.
-We then define an Influential Person Index based on each person entity's chains of articles and rank them as influential across various newspaper topics based on this index.  
-Our corpus is a sample of 14020 newspaper articles obtained from Chronicling America project undertaken by the Library of Congress.
+To build the People Gazetteer, we first spell correct the noisy text
+using an edit distance based algorithm. A novel N-gram based
+evaluation algorithm is designed for measuring the performance of the
+spell corrector. Next, a Named Entity Recognizer is run on the text of
+each article to identify person entities and an LDA-based topic
+detector to assign categories to articles. To identify influential
+people in each category of the People Gazetteer, we define the notion
+of an Influential Person Index (IPI) and rank based on it. Our corpus
+is a sample of 14020 newspaper articles (roughly two months’ data)
+obtained from “The Sun” newspaper in the Chronicling America project.
 
 \end{abstract}
 
