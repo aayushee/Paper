@@ -6,10 +6,10 @@
 \contentsline {subsection}{\numberline {3.2.1}Related Work}{5}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Spelling Correction Algorithm}{5}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Spelling Correction Algorithm Evaluation}{6}{subsection.3.2.3}
-\contentsline {subsubsection}{Accuracy}{6}{section*.7}
-\contentsline {subsubsection}{Time taken for Spelling Correction}{10}{section*.12}
-\contentsline {subsubsection}{Person Names Detection Rate}{10}{section*.13}
-\contentsline {subsection}{\numberline {3.2.4}Spelling Correction Algorithm Evaluation Results}{10}{subsection.3.2.4}
-\contentsline {chapter}{\numberline {4}PEOPLE GAZETTEER}{12}{chapter.4}
-\contentsline {chapter}{\numberline {5}Influential People Detection}{13}{chapter.5}
-\contentsline {chapter}{\numberline {6}Results and Conclusion}{14}{chapter.6}
+\contentsline {subsubsection}{Accuracy}{6}{section*.6}
+\contentsline {subsubsection}{Time taken for Spelling Correction}{10}{section*.7}
+\contentsline {subsubsection}{Person Names Detection Rate}{10}{section*.8}
+\contentsline {subsection}{\numberline {3.2.4}Spelling Correction Algorithm Evaluation Results}{11}{subsection.3.2.4}
+\contentsline {chapter}{\numberline {4}PEOPLE GAZETTEER}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Influential People Detection}{14}{chapter.5}
+\contentsline {chapter}{\numberline {6}Results and Conclusion}{15}{chapter.6}
