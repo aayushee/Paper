@@ -135,11 +135,36 @@ Motivation?
 
 What is a Gazetteer?
 
+problem description
+solution framework and components
+
 Gate Gazetteer
 The goal of this research is to enable users to find influential people in a gazetteer of historical newspaper archives. The main users  include genealogists and other library patrons so that  they can efficiently search for articles relating to people that are of interest to them across several newspaper categories on a timeline.
 
+ searching and exploring documents 
+based on the themes??people that run through them, look at how themes changed over time 
+or how people with similar or different themes are connected to each other
+rather than searching for documents, we first identify the list of influentil people and then examine the documents related tot hose people across different topics.
 
 \chapter{Related Work}
+
+different types of gazetteer?
+existing gazetteers
+find influential ppl in this technique
+influential ppl detection in historical archives
+
+generic gazetteer
+gazetteers GATE 
+historical place names 
+nearest relevant work 
+
+finding influential ppl also doesnt exist 
+we discuss more related work regarding influential people in chapter 6
+
+
+
+
+
 
 \chapter{Data Description}
 \label{chapter:data description}
@@ -395,7 +420,7 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 
 \clearpage
 
-% NOT SURE WE NEED ANOTHER IMAGE HERE ...--THIS IMAGE ACTUALLY SHOWS ORIGINAL SCANNED NEWS PAPER ARTICLE IMAGE FROM CHRONICLING AMERICA ALONG WITH THE SAME ARTICLE'S ORIGINAL TEXT. THE NEWSPAPER IMAGE CAN BE REMOVED IF IT SEEMS CONFUSING.
+
 \begin{figure} [!htb]
 \includegraphics[scale=0.4]{img3}
 \includegraphics[scale=0.75]{originalimg3}
@@ -463,7 +488,7 @@ The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is co
 
 The spelling corrector takes 9 seconds on an average to correct the newspaper OCR articles. It takes a total of 36 hours to run on 14020 articles.
 
-%DOUBT: Does this line need to be removed? It was commented by you.
+%No need to talk about parallelization here.
 %Though the algorithm does not require parallelizing here but it can be parallelized by getting candidate lists for insertion, deletion, substitution and transposition of a word through parallel threads and combining them together for correction of a word.
  
 %% Aayushee correct this section using the acronyms defined above--DONE
@@ -477,14 +502,58 @@ But the spelling correction is useful in terms of Person Names Detection Rate \t
 
 These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
  
-\textbf{Future Work: }A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
+\textbf{Discussion: }
+
+
+A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
+Choice of a dictionary this remains to be verified
+compare with context dependent
+possibilities of person names
+Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
 
  
 
 \input{pplGazette} 
 
 \chapter{Influential People Detection}\label{chapter:influential people detection}
-\chapter{Results and Conclusion}\label{chapter:results and conclusion}
+
+influential ppl done in social media 
+learning through cascades
+connecting the dots paper
+
+
+
+
+gossip based algo
+l
+http://www.cs.cornell.edu/home/kleinber/
+
+http://cs.stanford.edu/people/jure/
+
+
+
+
+dont necessarily use cascades
+will that work in this setting?
+do cascades also work in my environment
+
+
+define parameters
+procedure for finding Influence score for each article
+ranking
+how document parameters affect chains
+how lda affects chains
+take each person from the three categories
+case studies
+statistics
+influential person detection based on topics also
+change of topic detection parametersJ      
+       
+The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
+documents: two words are similar to the extent that they appear in the same topics, and two documents are similar to 
+the extent that the same topics appear in those documents. 
+                                                           
+
 %\newpage
 %\bibliographystyle{these}
 \bibliographystyle{acm}

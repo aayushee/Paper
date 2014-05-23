@@ -1,8 +1,116 @@
 \chapter{PEOPLE GAZETTEER}
 \label{chapter:people gazetteer}
 
-This chapter describes the process of construction of people gazetter by extracting person names from the news articles dataset (NER) followed by formation of chains of articles for each person entity over different article topics using LDA topic detection.
+ %Define ppl gazetteer in chapter 1 and why is it required.
+People Gazetteer as defined in Chapter 1 consists of tuples of person names along with list of documents in which they occur and their corresponding topics. This chapter describes the 2-step process of construction of the People Gazetteer by
+a) Extraction of person names from the news articles dataset using Named Entity Recognition in  Section~\ref{ner} and
+b) Assignment of topics to news articles using LDA topic detection in  Section~\ref{topic detection}.
+Combined results of the people gazetteer are presented in Section ~\ref{gaz:result}.
 
-Dataset statistics
+\section{PNER}
+\label{ner}
 
-Output of people gazetteer
+
+\subsection{Definition}
+NER (Named Entity Recognition) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc. 
+Person Named Entity Recognition (PNER) can be defined as the process of NER that marks up only person names that occur in the text.
+
+PNER is required in this research so as to extract all person name entities occurring in the complete dataset and identify influential person entities among them through development of the People Gazetteer. 
+PNER aids in the development of People Gazetteer by first extracting all person names occurring in the dataset followed by reverse linking of a person with the articles in which he/she occurs.
+
+\subsection{Tool Used}
+
+The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is used for PNER in this research. It can perform NER for 3 classes: Person, Organization and Location and is based on linear chain CRF (Conditional Random Field) sequence models. It is trained across several corpora and is fairly robust across multiple domains and even better when compared to some other open source NER systems as illustrated in \cite{rodriquez2012comparison}. According to their results, Stanford NER gave overall the best performance across 2 OCR datasets, and was most effective for PNER when compared with 3 other open source NER systems.
+
+
+\subsection{PNER Results}
+
+\begin{figure}[h]
+\includegraphics{NER1}
+%\caption{NER on a news article}
+\includegraphics{NER2}
+\caption{NER on a sample news article (left) and Table showing output of PNER on 14020 articles (right)}
+\end{figure} 
+%\begin{figure}[h]
+
+%\end{figure} 
+NER on a sample news article from the dataset can be seen in Figure 5.1.
+ Stanford NER recognizes a person's full name as separate names by default which is rectified by combining these multi-term entities into single person entities. Person names tagged with ``PERSON" category are stored while running NER on the dataset.
+Whenever a person name occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document lists.
+The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 38426 person entities. The output obtained can be seen in Figure 5.2 which shows the number of person entities with the corresponding number of documents in which they occur.  
+
+We divide the people entities extracted into following categories so that separate analysis can be done for each category:
+\begin{description}
+ \item[$\bullet$Marginally Influential]: This category includes all person entities with occurrence in 4 or below news articles.
+\item[$\bullet$Medium Influential]: This category includes all person entities with occurrence between 5 and 15 news articles. 
+\item[$\bullet$Highly Influential] : This category includes all person entities with occurrence in more than 15 news articles.
+\end{description}
+
+
+
+\section{Topic Detection}
+\label{topic detection}
+
+ Topic models are algorithms for discovering the main topics that occur across a large and otherwise 
+unstructured collection of documents and can organize the collection according to the discovered topics.
+Here, a topic refers to a set of words which describe what any document is about.
+ A topic model examines the set of documents and discovers based on the statistics of the words in each, what the topics might be and what each document's balance of topics is.
+Documents are considered as a mixture of topics and each topic a probability distribution over words.
+ Topic detection is the process of identifying topics in a document collection using a topic model. A simple example of topic model illustrated by \cite{blei2012probabilistic} can be seen in Figure 5.2.
+Topic detection is essential to this research in order to determine the topics of individual news articles that a person entity occurs in so that the person entity can be linked to the documents in which he/she occurs along with their respective topics.
+
+%DOUBT--Whether to mention if: The discovered topics for articles are further used to detect influential persons across multiple articles topics.
+
+
+\subsection{Topic Detection Model Used}
+
+
+\begin{figure}[h]
+\includegraphics{topicmodel}
+\caption{Simple topic modelling approach for a single article\cite{blei2012probabilistic}.}
+\end{figure} 
+
+A simple parallel threaded LDA model described in \cite{newman2007distributed}  is used for topic detection in this research.
+LDA (Latent Dirichlet Allocation) is a generative probabilistic model in which each document is modeled as a finite mixture over an underlying set of topics and each topic, in turn, is modeled as an infinite mixture over an underlying set of topic probabilities\cite{blei2003latent}. In other words, documents exhibit multiple topics and each topic is a distribution over a fixed vocabulary. 
+%The model was developed as an improved version of Probabilistic Latent Semantic Indexing.
+Given an input corpus of `D' documents with `K' topics, the LDA learning process consists of calculating `${\Phi}$', 
+maximum-likelihood estimate of model parameters. Given this model, we can infer
+topic distributions for arbitrary documents.  
+However, this simple LDA approach can take several days to run over a large corpora which is why PLDA suits to large datasets such as ours.
+
+
+The PLDA model uses distributed computation where total dataset is distributed equally among multiple processors. Initialization involves data and parameters distribution to each processor and random assignment of topics so that each processor has its own copy of data, word topic and topic counts. The topic model inferencing then uses simultaneous local Gibbs sampling approach on each processor for a pre-decided number of iterations to reassign topic probabilities, word topic and topic counts. Global update is performed after each pass by using a reduce-scatter operation to get a single set of counts and obtain final topic assignments.
+The PLDA model requires user set parameters before inferencing like Number of topics, Number of words in a topic and Dirichlet parameters. 
+
+
+\subsection{Results}
+
+Parallel LDA model implemented in the Mallet\cite{McCallumMALLET} toolkit is used for topic detection over the complete dataset of 14020 news articles. 
+Topic Modeling is done for 50 iterations and two parallel samplers, which each look at one half the corpus and combine
+statistics after every iteration. It takes 2 hours to run PLDA on the complete dataset.
+ For each news article, a set of topics with their probability distribution score for the article is obtained out of which the topic with highest topic probability score is associated with the article.  
+We obtain different results from topic detection with following parameters setting:
+\begin{enumerate}
+ \item Number of topics(k)=10, Number of words in a topic=10, Alpha=1/k, Beta=0.01
+ \item Number of topics(k)=100,Number of words in a topic=10,Alpha=1/k, Beta=0.01
+\end{enumerate}
+The set of 10 topics obtained through topic detection on the dataset are illustrated in Figure 5.3. The most common topic among the news articles highlighted is highlighted as Topic 0 with the words: ``club, line,street,game,total,won,team,time,half, race".
+
+\begin{figure}[h]
+\includegraphics{TOPICWORDS}
+\caption{Top 10 words obtained for each topic with its ID through topic detection on dataset. Highlighted Topic 0 is the maximum occurring topic}
+\end{figure} 
+
+
+The different settings of LDA parameters are experimented further in Chapter ~\ref{influential people detection} in order to understand their effect on influential people detection.
+\section{People Gazetteer Output }
+\label{gaz:result}
+
+Combining the results from both PNER and Topic detection, the people gazetteer is obtained consisting of a list of articles for each person entity with their corresponding article topics.
+A snapshot of the people gazetteer can be seen in Figure 5.4 where each person entity is followed by a list consisting of a text Document ID and its corresponding Topic ID. 
+\begin{figure}[!h]
+\includegraphics{gazetteer}
+\caption{Snapshot of People Gazetteer with Person names, Document list and their corresponding Topic ID}
+\end{figure} 
+
+

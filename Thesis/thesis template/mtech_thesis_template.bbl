@@ -10,6 +10,16 @@
   data set.
 \newblock {\em arXiv preprint arXiv:1204.0188\/} (2012).
 
+\bibitem{blei2012probabilistic}
+{\sc Blei, D.~M.}
+\newblock Probabilistic topic models.
+\newblock {\em Communications of the ACM 55}, 4 (2012), 77--84.
+
+\bibitem{blei2003latent}
+{\sc Blei, D.~M., Ng, A.~Y., and Jordan, M.~I.}
+\newblock Latent dirichlet allocation.
+\newblock {\em the Journal of machine Learning research 3\/} (2003), 993--1022.
+
 \bibitem{brill2000improved}
 {\sc Brill, E., and Moore, R.~C.}
 \newblock An improved error model for noisy channel spelling correction.
@@ -62,6 +72,16 @@
 \newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions on
   15}, 9 (1993), 926--932.
 
+\bibitem{McCallumMALLET}
+{\sc McCallum, A.~K.}
+\newblock Mallet: A machine learning for language toolkit.
+\newblock http://mallet.cs.umass.edu, 2002.
+
+\bibitem{newman2007distributed}
+{\sc Newman, D., Asuncion, A.~U., Smyth, P., and Welling, M.}
+\newblock Distributed inference for latent dirichlet allocation.
+\newblock In {\em NIPS\/} (2007), vol.~20, pp.~1081--1088.
+
 \bibitem{reynaert2008all}
 {\sc Reynaert, M.}
 \newblock All, and only, the errors: more complete and consistent spelling and
@@ -79,6 +99,11 @@
 \newblock In {\em Proceedings of the International Joint Conference on
   Artificial Intelligence (IJCAI-2007) Workshop on Analytics for Noisy
   Unstructured Text Data\/} (2007).
+
+\bibitem{rodriquez2012comparison}
+{\sc Rodriquez, K.~J., Bryant, M., Blanke, T., and Luszczynska, M.}
+\newblock Comparison of named entity recognition tools for raw ocr text.
+\newblock In {\em Proceedings of KONVENS\/} (2012), pp.~410--414.
 
 \bibitem{schulz2002fast}
 {\sc Schulz, K.~U., and Mihov, S.}
