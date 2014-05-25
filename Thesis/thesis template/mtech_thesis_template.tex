@@ -62,9 +62,9 @@ Keywords: Gazetteer, Text Mining, Information Retrieval, OCR, Spelling Correctio
 \section*{Certificate}\label{section:certificate}
 \end{center}
 %\vspace{3in}
-This is to certify that the thesis titled \textbf{``Title Title Title Title Title Title Title Title Title Title Title Title"} submitted by \textbf{Student Name} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her / him under my / our guidance and supervision in the Security and Privacy group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
+This is to certify that the thesis titled \textbf{``Finding Influential People from Historical new repository"} submitted by \textbf{Aayushee Gupta} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her / him under my / our guidance and supervision in the Data Engineering group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
 
-\textbf{Professor Advisor Name}\\
+\textbf{Ms. Haimonti Dutta}\\
 \textbf{Indraprastha Institute of Information Technology, New Delhi}
 %\doublespacing
 
@@ -86,7 +86,7 @@ evaluation algorithm is designed for measuring the performance of the
 spell corrector. Next, a Named Entity Recognizer is run on the text of
 each article to identify person entities and an LDA-based topic
 detector to assign categories to articles. To identify influential
-people in each category of the People Gazetteer, we define the notion
+people from People Gazetteer across each category, we define the notion
 of an Influential Person Index (IPI) and rank based on it. Our corpus
 is a sample of 14020 newspaper articles (roughly two months’ data)
 obtained from “The Sun” newspaper in the Chronicling America project.
@@ -128,23 +128,7 @@ XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXX
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \onehalfspacing
-
-Aim?
-
-Motivation? 
-
-What is a Gazetteer?
-
-problem description
-solution framework and components
-
-Gate Gazetteer
-The goal of this research is to enable users to find influential people in a gazetteer of historical newspaper archives. The main users  include genealogists and other library patrons so that  they can efficiently search for articles relating to people that are of interest to them across several newspaper categories on a timeline.
-
- searching and exploring documents 
-based on the themes??people that run through them, look at how themes changed over time 
-or how people with similar or different themes are connected to each other
-rather than searching for documents, we first identify the list of influentil people and then examine the documents related tot hose people across different topics.
+\input{introduction} 
 
 \chapter{Related Work}
 
@@ -225,7 +209,7 @@ An individual OCR text article has at least one or more of the following types o
 \end{description} 
 
 \section{Data Statistics}
-The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
+The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chrocling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
 is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
 
 

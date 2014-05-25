@@ -55,6 +55,19 @@
   Linguistics-Volume 1\/} (1998), Association for Computational Linguistics,
   pp.~360--364.
 
+\bibitem{kempe2003maximizing}
+{\sc Kempe, D., Kleinberg, J., and Tardos, {\'E}.}
+\newblock Maximizing the spread of influence through a social network.
+\newblock In {\em Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining\/} (2003), ACM, pp.~137--146.
+
+\bibitem{khurdiya2011multi}
+{\sc Khurdiya, A., Dey, L., Raj, N., and Haque, S.~M.}
+\newblock Multi-perspective linking of news articles within a repository.
+\newblock In {\em Proceedings of the Twenty-Second international joint
+  conference on Artificial Intelligence-Volume Volume Three\/} (2011), AAAI
+  Press, pp.~2281--2286.
+
 \bibitem{kukich1992techniques}
 {\sc Kukich, K.}
 \newblock Techniques for automatically correcting words in text.
@@ -76,6 +89,15 @@
 {\sc McCallum, A.~K.}
 \newblock Mallet: A machine learning for language toolkit.
 \newblock http://mallet.cs.umass.edu, 2002.
+
+\bibitem{mckeown2002tracking}
+{\sc McKeown, K.~R., Barzilay, R., Evans, D., Hatzivassiloglou, V., Klavans,
+  J.~L., Nenkova, A., Sable, C., Schiffman, B., and Sigelman, S.}
+\newblock Tracking and summarizing news on a daily basis with columbia's
+  newsblaster.
+\newblock In {\em Proceedings of the second international conference on Human
+  Language Technology Research\/} (2002), Morgan Kaufmann Publishers Inc.,
+  pp.~280--285.
 
 \bibitem{newman2007distributed}
 {\sc Newman, D., Asuncion, A.~U., Smyth, P., and Welling, M.}
@@ -111,6 +133,12 @@
 \newblock {\em International Journal on Document Analysis and Recognition 5}, 1
   (2002), 67--85.
 
+\bibitem{shahaf2010connecting}
+{\sc Shahaf, D., and Guestrin, C.}
+\newblock Connecting the dots between news articles.
+\newblock In {\em Proceedings of the 16th ACM SIGKDD international conference
+  on Knowledge discovery and data mining\/} (2010), ACM, pp.~623--632.
+
 \bibitem{strohmaier2003lexical}
 {\sc Strohmaier, C.~M., Ringlstetter, C., Schulz, K.~U., and Mihov, S.}
 \newblock Lexical postcorrection of ocr-results: The web as a dynamic secondary
@@ -141,5 +169,10 @@
 {\sc Wagner, R.~A., and Fischer, M.~J.}
 \newblock The string-to-string correction problem.
 \newblock {\em Journal of the ACM (JACM) 21}, 1 (1974), 168--173.
+
+\bibitem{watts2007influentials}
+{\sc Watts, D.~J., and Dodds, P.~S.}
+\newblock Influentials, networks, and public opinion formation.
+\newblock {\em Journal of consumer research 34}, 4 (2007), 441--458.
 
 \end{thebibliography}

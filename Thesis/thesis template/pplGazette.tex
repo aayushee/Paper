@@ -5,7 +5,7 @@
 People Gazetteer as defined in Chapter 1 consists of tuples of person names along with list of documents in which they occur and their corresponding topics. This chapter describes the 2-step process of construction of the People Gazetteer by
 a) Extraction of person names from the news articles dataset using Named Entity Recognition in  Section~\ref{ner} and
 b) Assignment of topics to news articles using LDA topic detection in  Section~\ref{topic detection}.
-Combined results of the people gazetteer are presented in Section ~\ref{gaz:result}.
+Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result}.
 
 \section{PNER}
 \label{ner}
@@ -102,15 +102,16 @@ The set of 10 topics obtained through topic detection on the dataset are illustr
 \end{figure} 
 
 
-The different settings of LDA parameters are experimented further in Chapter ~\ref{influential people detection} in order to understand their effect on influential people detection.
+The different settings of LDA parameters are experimented further in Chapter ~\ref{chapter:influential people detection} in order to understand their effect on influential people detection.
 \section{People Gazetteer Output }
 \label{gaz:result}
 
-Combining the results from both PNER and Topic detection, the people gazetteer is obtained consisting of a list of articles for each person entity with their corresponding article topics.
+The list of articles obtained for each person entity after application of PNER and highest scoring topic assigned to each article during Topic Detection are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles where each article is further associated with its corresponding highest scoring topic.
+
 A snapshot of the people gazetteer can be seen in Figure 5.4 where each person entity is followed by a list consisting of a text Document ID and its corresponding Topic ID. 
 \begin{figure}[!h]
 \includegraphics{gazetteer}
 \caption{Snapshot of People Gazetteer with Person names, Document list and their corresponding Topic ID}
 \end{figure} 
 
-
+%DOUBT: Do the results of people gazetteer need to be presented separately according to each people category: marginal, medium n highly influential?
