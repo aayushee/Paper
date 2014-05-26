@@ -27,6 +27,13 @@
   Computational Linguistics\/} (2000), Association for Computational
   Linguistics, pp.~286--293.
 
+\bibitem{carlson2009learning}
+{\sc Carlson, A., Gaffney, S., and Vasile, F.}
+\newblock Learning a named entity tagger from gazetteers with the partial
+  perceptron.
+\newblock In {\em AAAI Spring Symposium: Learning by Reading and Learning to
+  Read\/} (2009), pp.~7--13.
+
 \bibitem{chattopadhyaya2013fast}
 {\sc Chattopadhyaya, I., Sirchabesan, K., and Seal, K.}
 \newblock A fast generative spell corrector based on edit distance.
@@ -78,6 +85,12 @@
 \newblock Binary codes capable of correcting deletions, insertions and
   reversals.
 \newblock In {\em Soviet Physics Doklady\/} (1966), vol.~10, p.~707.
+
+\bibitem{lloyd2005lydia}
+{\sc Lloyd, L., Kechagias, D., and Skiena, S.}
+\newblock Lydia: A system for large-scale news analysis.
+\newblock In {\em String Processing and Information Retrieval\/} (2005),
+  Springer, pp.~161--166.
 
 \bibitem{marzal1993computation}
 {\sc Marzal, A., and Vidal, E.}
@@ -174,5 +187,12 @@
 {\sc Watts, D.~J., and Dodds, P.~S.}
 \newblock Influentials, networks, and public opinion formation.
 \newblock {\em Journal of consumer research 34}, 4 (2007), 441--458.
+
+\bibitem{zhang2009novel}
+{\sc Zhang, Z., and Iria, J.}
+\newblock A novel approach to automatic gazetteer generation using wikipedia.
+\newblock In {\em Proceedings of the 2009 Workshop on The People's Web Meets
+  NLP: Collaboratively Constructed Semantic Resources\/} (2009), Association
+  for Computational Linguistics, pp.~1--9.
 
 \end{thebibliography}

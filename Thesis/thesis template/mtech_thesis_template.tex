@@ -132,18 +132,17 @@ XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXX
 
 \chapter{Related Work}
 
-different types of gazetteer?
-existing gazetteers
-find influential ppl in this technique
-influential ppl detection in historical archives
 
-generic gazetteer
-gazetteers GATE 
-historical place names 
-nearest relevant work 
+Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organisations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource used to ﬁnd occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurence and their respective topic.
 
-finding influential ppl also doesnt exist 
-we discuss more related work regarding influential people in chapter 6
+Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
+\cite{zhang2009novel} discuss automatic generation of gazeteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archaeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
+There is also no relevant work that builds or uses historical person names gazetteer list for data mining that we know of.
+
+\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and coreference names for the entity.
+But they do not focus on finding influential entities in which respect our research is different from their work.
+
+We discuss more related work regarding data preprocessing using Spelling correction algorithms in Section ~\ref{spell:rw} and finding influential people in Section ~\ref{influential:rw}.
 
 
 
@@ -486,20 +485,29 @@ But the spelling correction is useful in terms of Person Names Detection Rate \t
 
 These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
  
+
 \textbf{Discussion: }
 
-
+\begin{description}
+\item[$\bullet$]\noindent
 A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
-Choice of a dictionary this remains to be verified
-compare with context dependent
-possibilities of person names
-Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
+\item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
+\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a historical dictionary can perform speling correction better and improve the accuracy.
+\item[$\bullet$] \noindent Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
+\end{description}
+
+
 
  
 
 \input{pplGazette} 
 
 \chapter{Influential People Detection}\label{chapter:influential people detection}
+
+
+
+\section{Related Work}
+\label{influential:rw}
 
 influential ppl done in social media 
 learning through cascades
@@ -521,18 +529,33 @@ dont necessarily use cascades
 will that work in this setting?
 do cascades also work in my environment
 
+\section{Measuring Influence}
+\label{influential:measure}
+2 subheading: measure influence of individual article
+measure influence of individual entity
 
 define parameters
 procedure for finding Influence score for each article
+
+\section{Ranking}
+\label{influential:ranking}
+
+\section{Results}
+
+statistics table regarding each category of person entities
 ranking
 how document parameters affect chains
 how lda affects chains
 take each person from the three categories
-case studies
-statistics
+visualization using google visualization toolkit?
+\subsection{Case Studies}
+
 influential person detection based on topics also
-change of topic detection parametersJ      
+change of topic detection parameters
        
+\section{Conclusion}
+discussion on results 
+
 The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
 documents: two words are similar to the extent that they appear in the same topics, and two documents are similar to 
 the extent that the same topics appear in those documents. 
