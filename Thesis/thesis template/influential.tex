@@ -1,0 +1,111 @@
+\chapter{Influential People Detection}\label{chapter:influential people detection}
+
+This chapter describes the process of detection of influential people from the people gazetteer developed in Chapter~\ref{chapter:people gazetteer} and its results with some case studies. Section~\ref{influential:rw} discusses some related work in the field of influential people detection, Section~\ref{influential:measure} the measures used to define an influential person in the newspaper environment followed by their ranking to obtain top influential persons across each person category in  Section~\ref{influential:ranking} with results in Section~\ref{influential:results} and conclusion in Section~\ref{influential:conclusion}.
+
+ 
+\section{Related Work}
+\label{influential:rw}
+
+Influential people detection has been mostly done in the field of social networks, marketing and diffusion research.
+
+influential ppl done in social media 
+learning through cascades
+connecting the dots paper
+gossip based algo
+
+http://www.cs.cornell.edu/home/kleinber/
+
+http://cs.stanford.edu/people/jure/
+
+dont necessarily use cascades
+will that work in this setting?
+do cascades also work in my environment
+
+\section{Measuring Influence}
+\label{influential:measure}
+
+
+
+\subsection{Document Index (DI) Calculation}
+
+ Figure 6.1 describes a schematic procedure of detection of influential detection. To measure influence in the newspaper environment and to compare and rank people as influential, we define an Influential Person Index associated with each person entity in the people gazetteer. To calculate IPI for each person entity, we first define the Document Index (DI) for each document in the person entity's associated list of documents from the people gazetteer. The DI is calculated using the parameters mentioned in Section~\ref{}
+For each document DI in a person entity's list, the document with highest DI is considered as the person entity's IPI. 
+
+Following parameters are used to calculate the Document Index for each document that occurs in a person entity's document list:
+
+\begin{description}
+\item[$\bullet$Normalized Document Length (NDL)]
+Document length is defined as the number of tokens contained in a news article. It is further normalized by dividing it with the average news article length of 14020 articles in the dataset.
+
+$Normalized Document Length (NDL)=\dfrac{\text{Document Length}} {\text{Average Document Length}}$
+
+
+%\item[$\bullet$Inverse Document Frequency(IDF)]
+%IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
+
+\item[$\bullet$Normalized Term Frequency(NTF)]
+TF accounts for the number of occurrences of a person entity's name in the complete dataset. The NTF for each news article is calculated as the TF of person entity in that article divided by the total TF over the dataset.
+
+$Normalized Term Frequency (NTF)=\dfrac{\text{TF of person entity in current article}} {\text{Total TF of person entity}}$
+
+
+\item[$\bullet$Number of similar articles(NSIM)]
+This parameter is used to calculate the DI by finding similarity with other articles with the same topic in the document list of the person entity for which IPI is to be calculated. The similarity metric used is Cosine Similarity which can be defined as the measure of similarity between two vectors d1 and d2 that measures cosine of the angle between them.
+
+
+\end{description}
+
+//define cosine similarity formula here:
+Similarity between d1 and d2=cos($\theta$)= $\dfrac{\text{Dot Product of d1 and d2}} {\text{ Length of d1* Length of d2}}$
+
+//OR DEFINE SIMILARITY IN TERMS OF NUMBER OF ARTICLE WITH SAME TOPICS
+
+The formula for calculation of DI using above parameters is :
+			$DI	=	NDL 	*	  NSIM		+	NTF$
+
+
+\section{Ranking}
+\label{influential:ranking}
+
+For ranking, IPI for each person entity across the person cateogories are sorted in decreasing order with respect to each topic category.
+  
+
+
+\section{Results}
+\label{influential:results}
+statistics table regarding each category of person entities
+
+Top 3  Influential People in each category of Person entities:
+//using old formula:
+\begin{table}
+\begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{PERSON NAME}    & \textbf{NUMBER OF ARTICLES OF OCCURRENCE} & \textbf{IPI}   \\ \hline
+    Alexander III  & 29                               & 510   \\ \hline
+    Wilson Barrett & 19                               & 418.7 \\ \hline
+    William II     & 20                               & 351.4 \\ \hline  
+  \end{tabular}
+  \end{center}
+    \caption {Table illustrating top 3 influential in the Highly Influential People category}
+\end{table}
+
+
+
+ranking
+how document parameters affect chains
+how lda affects chains
+take each person from the three categories
+visualization using google visualization toolkit?
+\subsection{Case Studies}
+
+influential person detection based on topics also
+change of topic detection parameters
+       
+\section{Conclusion}
+\label{influential:conclusion}
+
+The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
+documents: two words are similar to the extent that they appear in the same topics, and two documents are similar to 
+the extent that the same topics appear in those documents. 
+                                                           

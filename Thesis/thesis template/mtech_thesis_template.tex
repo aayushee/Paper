@@ -7,6 +7,8 @@
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
+ \usepackage{booktabs}
+
 
 
 %\usepackage{noReferences}
@@ -133,14 +135,20 @@ XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXX
 \chapter{Related Work}
 
 
+\section{Learning from newspapers}
+Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work – the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization [Crane and Jones 2006]. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project ([Smith 2002a], [Smith 2002b], [Smith and Crane 2001]), a general system to extract dates and names from text was developed. At the Hull Digital Library10, information capture and semantic indexing of the newspaper archive is done using document analysis and classification [Esposito et al. 1997]. In Collection OCR, Sankar et. al. [Sankar K. et al. 2010] use an approximate fast nearest neighbor algorithm based on hierarchical K-Means (HKM) to clean OCR text. 
+\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and coreference names for the entity.
+But they do not focus on finding influential entities in which respect our research is different from their work.
+
+
+\section{Developing Gazetteers}
 Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organisations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource used to ﬁnd occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurence and their respective topic.
 
 Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
 \cite{zhang2009novel} discuss automatic generation of gazeteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archaeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
 There is also no relevant work that builds or uses historical person names gazetteer list for data mining that we know of.
 
-\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and coreference names for the entity.
-But they do not focus on finding influential entities in which respect our research is different from their work.
+
 
 We discuss more related work regarding data preprocessing using Spelling correction algorithms in Section ~\ref{spell:rw} and finding influential people in Section ~\ref{influential:rw}.
 
@@ -310,6 +318,7 @@ $Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after 
 The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a digrammatic representation in Figure 4.1.
 
 \begin{figure} [!htb]
+\centering
 \includegraphics[scale=0.8]{ngram}
 \caption{Schematic diagram for alignment of spell corrected article text with original article text for a word $W_{k}$}
 \end{figure}
@@ -405,12 +414,15 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 
 
 \begin{figure} [!htb]
+\begin{center}
 \includegraphics[scale=0.4]{img3}
 \includegraphics[scale=0.75]{originalimg3}
 \caption{Scanned image of a newspape article (left) along with its original text (right)}
+\end{center}
 \end{figure}
- 
-\begin{figure}[h]
+
+
+\begin{figure} [!htb]
 \includegraphics[scale=0.75]{ocr3}
 \includegraphics[scale=0.75]{corrected3}
 \caption{OCR raw text (left) and Spell corrected text (right) of the article}
@@ -502,64 +514,7 @@ A better result can be obtained by correcting the New Line errors in the article
 
 \input{pplGazette} 
 
-\chapter{Influential People Detection}\label{chapter:influential people detection}
-
-
-
-\section{Related Work}
-\label{influential:rw}
-
-influential ppl done in social media 
-learning through cascades
-connecting the dots paper
-
-
-
-
-gossip based algo
-l
-http://www.cs.cornell.edu/home/kleinber/
-
-http://cs.stanford.edu/people/jure/
-
-
-
-
-dont necessarily use cascades
-will that work in this setting?
-do cascades also work in my environment
-
-\section{Measuring Influence}
-\label{influential:measure}
-2 subheading: measure influence of individual article
-measure influence of individual entity
-
-define parameters
-procedure for finding Influence score for each article
-
-\section{Ranking}
-\label{influential:ranking}
-
-\section{Results}
-
-statistics table regarding each category of person entities
-ranking
-how document parameters affect chains
-how lda affects chains
-take each person from the three categories
-visualization using google visualization toolkit?
-\subsection{Case Studies}
-
-influential person detection based on topics also
-change of topic detection parameters
-       
-\section{Conclusion}
-discussion on results 
-
-The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
-documents: two words are similar to the extent that they appear in the same topics, and two documents are similar to 
-the extent that the same topics appear in those documents. 
-                                                           
+\input{influential}
 
 %\newpage
 %\bibliographystyle{these}
