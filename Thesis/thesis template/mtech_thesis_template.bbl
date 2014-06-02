@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{agarwal2008identifying}
+{\sc Agarwal, N., Liu, H., Tang, L., and Yu, P.~S.}
+\newblock Identifying the influential bloggers in a community.
+\newblock In {\em Proceedings of the 2008 international conference on web
+  search and data mining\/} (2008), ACM, pp.~207--218.
+
 \bibitem{agarwal2013utilizing}
 {\sc Agarwal, S.}
 \newblock Utilizing big data in identification and correction of ocr errors.
@@ -40,12 +46,26 @@
 \newblock In {\em Advances in Information Retrieval}. Springer, 2013,
   pp.~404--410.
 
+\bibitem{cheng2014can}
+{\sc Cheng, J., Adamic, L., Dow, P.~A., Kleinberg, J.~M., and Leskovec, J.}
+\newblock Can cascades be predicted?
+\newblock In {\em Proceedings of the 23rd international conference on World
+  wide web\/} (2014), International World Wide Web Conferences Steering
+  Committee, pp.~925--936.
+
 \bibitem{christen2006comparison}
 {\sc Christen, P.}
 \newblock A comparison of personal name matching: Techniques and practical
   issues.
 \newblock In {\em Data Mining Workshops, 2006. ICDM Workshops 2006. Sixth IEEE
   International Conference on\/} (2006), IEEE, pp.~290--294.
+
+\bibitem{crane2006challenge}
+{\sc Crane, G., and Jones, A.}
+\newblock The challenge of virginia banks: an evaluation of named entity
+  analysis in a 19th-century newspaper collection.
+\newblock In {\em Proceedings of the 6th ACM/IEEE-CS joint conference on
+  Digital libraries\/} (2006), ACM, pp.~31--40.
 
 \bibitem{dutta2011learning}
 {\sc Dutta, H., Passonneau, R.~J., Lee, A., Radeva, A., Xie, B., Waltz, D.~L.,
@@ -80,6 +100,12 @@
 \newblock Techniques for automatically correcting words in text.
 \newblock {\em ACM Computing Surveys (CSUR) 24}, 4 (1992), 377--439.
 
+\bibitem{lerman2010using}
+{\sc Lerman, K., and Hogg, T.}
+\newblock Using a model of social dynamics to predict popularity of news.
+\newblock In {\em Proceedings of the 19th international conference on World
+  wide web\/} (2010), ACM, pp.~621--630.
+
 \bibitem{levenshtein1966binary}
 {\sc Levenshtein, V.~I.}
 \newblock Binary codes capable of correcting deletions, insertions and
@@ -112,10 +138,18 @@
   Language Technology Research\/} (2002), Morgan Kaufmann Publishers Inc.,
   pp.~280--285.
 
-\bibitem{newman2007distributed}
-{\sc Newman, D., Asuncion, A.~U., Smyth, P., and Welling, M.}
-\newblock Distributed inference for latent dirichlet allocation.
-\newblock In {\em NIPS\/} (2007), vol.~20, pp.~1081--1088.
+\bibitem{newman2009distributed}
+{\sc Newman, D., Asuncion, A., Smyth, P., and Welling, M.}
+\newblock Distributed algorithms for topic models.
+\newblock {\em The Journal of Machine Learning Research 10\/} (2009),
+  1801--1828.
+
+\bibitem{newman2006analyzing}
+{\sc Newman, D., Chemudugunta, C., Smyth, P., and Steyvers, M.}
+\newblock Analyzing entities and topics in news articles using statistical
+  topic models.
+\newblock In {\em Intelligence and Security Informatics}. Springer, 2006,
+  pp.~93--104.
 
 \bibitem{reynaert2008all}
 {\sc Reynaert, M.}
@@ -151,6 +185,26 @@
 \newblock Connecting the dots between news articles.
 \newblock In {\em Proceedings of the 16th ACM SIGKDD international conference
   on Knowledge discovery and data mining\/} (2010), ACM, pp.~623--632.
+
+\bibitem{smith2002detectinga}
+{\sc Smith, D.~A.}
+\newblock Detecting and browsing events in unstructured text.
+\newblock In {\em Proceedings of the 25th annual international ACM SIGIR
+  conference on Research and development in information retrieval\/} (2002),
+  ACM, pp.~73--80.
+
+\bibitem{smith2002detectingb}
+{\sc Smith, D.~A.}
+\newblock Detecting events with date and place information in unstructured
+  text.
+\newblock In {\em Proceedings of the 2nd ACM/IEEE-CS joint conference on
+  Digital libraries\/} (2002), ACM, pp.~191--196.
+
+\bibitem{smith2001disambiguating}
+{\sc Smith, D.~A., and Crane, G.}
+\newblock Disambiguating geographic names in a historical digital library.
+\newblock In {\em Research and Advanced Technology for Digital Libraries}.
+  Springer, 2001, pp.~127--136.
 
 \bibitem{strohmaier2003lexical}
 {\sc Strohmaier, C.~M., Ringlstetter, C., Schulz, K.~U., and Mihov, S.}

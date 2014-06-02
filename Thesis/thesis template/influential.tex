@@ -1,111 +1,213 @@
 \chapter{Influential People Detection}\label{chapter:influential people detection}
 
-This chapter describes the process of detection of influential people from the people gazetteer developed in Chapter~\ref{chapter:people gazetteer} and its results with some case studies. Section~\ref{influential:rw} discusses some related work in the field of influential people detection, Section~\ref{influential:measure} the measures used to define an influential person in the newspaper environment followed by their ranking to obtain top influential persons across each person category in  Section~\ref{influential:ranking} with results in Section~\ref{influential:results} and conclusion in Section~\ref{influential:conclusion}.
+This chapter describes the process of detection of influential people from the people gazetteer developed in Chapter~\ref{chapter:people gazetteer} and its results with some case studies. Section~\ref{influential:rw} discusses some related work in the field of influential people detection, Section~\ref{influential:measure} the measures used to define an influential person in the newspaper environment followed by their ranking to obtain top influential persons across each person category with results in Section~\ref{influential:results} and conclusion in Section~\ref{influential:conclusion}.
 
  
 \section{Related Work}
 \label{influential:rw}
 
 Influential people detection has been mostly done in the field of social networks, marketing and diffusion research.
+\cite{kempe2003maximizing} work on choosing the most influential set of nodes  in a social network in order to maximize user influence in the network. They consider spread of influence from an influential node cascading through the network and influencing other neighborhood nodes but we do not consider the case of a network of connected person entities here where influence score of a person entity is influenced by that of its neighboring nodes. We consider each person entity connected with a number of articles instead and measure the influence of those articles to measure the person entity's influence score .
 
-influential ppl done in social media 
-learning through cascades
-connecting the dots paper
-gossip based algo
+The most relevant work regarding detection of influential people is described in \cite{agarwal2008identifying} where influential bloggers are identified on a blog site. Influence of each blogger is quantified by taking maximum of the influence scores of each blog posted by a blogger. The influence score of each blog is calculated using parameters of importance in a blogsite like number of posts that refer to the blog, number of comments on the blog, number of other posts that the blog refers to and length of the blog. Influential blogger categories are also created based on their temporal patterns of blog posting. 
 
-http://www.cs.cornell.edu/home/kleinber/
+\cite{lerman2010using} define popularity of a news story in terms of number of reader votes received by it and predict popularity of a news story over time based on voting history and the probability that a user seeing a story at specific position in a list will vote on it. 
 
-http://cs.stanford.edu/people/jure/
 
-dont necessarily use cascades
-will that work in this setting?
-do cascades also work in my environment
+\cite{watts2007influentials}
+In the above mentioned works, although the problem description matches with our research problem but the parameters defined to measure influence or popularity cannot be used in the newspaper environment. 
+
 
 \section{Measuring Influence}
 \label{influential:measure}
 
+\begin{algorithm}[!htb]
+\caption{Procedure to calculate IPI and rank person entities based on it}
+\begin{algorithmic}
+\Function {CalculateIPI}{}
+  
 
+
+ \KwIn{PersonCategories, PeopleGazetter(Persons,(DocList,TopicList))}
+   $NTF \leftarrow $0,  $NDL \leftarrow $0, $NSIM \leftarrow $0, $DI\leftarrow $0, $UniqT\leftarrow $0, $IPI\leftarrow $0\;  
+ \For{(int Category :  PersonCategories)}
+  {
+    \For{(String PersonName : Persons)}
+     {
+	   \For{(String doc  : DocList)}
+	{	
+		$NTF=1+\log GetPersonTF(doc)$;
+		$NDL=GetDocLength(doc)/GetAvgDocLength()$;
+		$ NSIM=GetTopicSimilarArticles(doc,DocList)$;
+		$DI=NDL*(NSIM+NTF)$;
+		$DIScoreList.add(DI)$;
+ 	 }
+		$Sort(DIScoreList)$;
+
+		$UniqT=GetUniqueTopics(Person)$;
+
+		$IPI=Max(DIScoreList)+UniqT$;
+
+		$IPIScores.put(PersonName,IPI)$;
+       }
+	$Sort(IPIScores)$;
+
+	$PrintPersonNameandMaxIPI(IPIScores)$;
+}
+	 
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+ Figure 6.1 describes the procedure of detection of influential people detection. To measure influence in the newspaper environment and to compare and rank people as influential, we define an Influential Person Index associated (IPI )with each person entity in the people gazetteer. To calculate IPI for each person entity, we first define the Document Index (DI) to measure how each document in the person entity's associated list of documents affects the person's influence score.
+Following subsections describe the calculation of DI and IPI of a person entity.
 
 \subsection{Document Index (DI) Calculation}
 
- Figure 6.1 describes a schematic procedure of detection of influential detection. To measure influence in the newspaper environment and to compare and rank people as influential, we define an Influential Person Index associated with each person entity in the people gazetteer. To calculate IPI for each person entity, we first define the Document Index (DI) for each document in the person entity's associated list of documents from the people gazetteer. The DI is calculated using the parameters mentioned in Section~\ref{}
-For each document DI in a person entity's list, the document with highest DI is considered as the person entity's IPI. 
-
-Following parameters are used to calculate the Document Index for each document that occurs in a person entity's document list:
+DI refers to the Document Index for each document in a person's document list in the people gazetteer. Following parameters are considered for the calculation of this index:
 
 \begin{description}
 \item[$\bullet$Normalized Document Length (NDL)]
-Document length is defined as the number of tokens contained in a news article. It is further normalized by dividing it with the average news article length of 14020 articles in the dataset.
+Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the average news article length of 14020 articles in the dataset to get Normalized Document Length as follows: 
 
 $Normalized Document Length (NDL)=\dfrac{\text{Document Length}} {\text{Average Document Length}}$
 
 
-%\item[$\bullet$Inverse Document Frequency(IDF)]
-%IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
+%\item[$\bullet$IDF]
+%IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurrence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
 
 \item[$\bullet$Normalized Term Frequency(NTF)]
-TF accounts for the number of occurrences of a person entity's name in the complete dataset. The NTF for each news article is calculated as the TF of person entity in that article divided by the total TF over the dataset.
+Term Frequency (TF) accounts for the number of occurrences of a person entity's name in the complete dataset. The TF of the person for which IPI is to be calculated affects the document's influence score as a high number of occurrences of the person entity in the document make it more influential with respect to that person entity. TF is further normalized and calculated as follows:
 
-$Normalized Term Frequency (NTF)=\dfrac{\text{TF of person entity in current article}} {\text{Total TF of person entity}}$
+$Normalized Term Frequency (NTF)=	1	+\log	$(TF of person entity in current article)
 
 
 \item[$\bullet$Number of similar articles(NSIM)]
-This parameter is used to calculate the DI by finding similarity with other articles with the same topic in the document list of the person entity for which IPI is to be calculated. The similarity metric used is Cosine Similarity which can be defined as the measure of similarity between two vectors d1 and d2 that measures cosine of the angle between them.
+This parameter is used in calculation of the DI by finding topic similarity with other articles  in the document list of the person entity for which IPI is to be calculated. 
+The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
+documents. Two documents are considered similar to the extent that the same topics appear in those documents. So, for a document $d$ whose DI is to be calculated, we consider 
 
+NSIM= Number of articles with the same topic as that of $d$ in the person's list for whom IPI is to be calculated.
+
+This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents also of the same type in the person's list. 
+%The similarity metric used is Cosine Similarity which can be defined as the measure of similarity between two vectors d1 and d2 that measures cosine of the angle between them.
+%define cosine similarity formula here:
+%Similarity between d1 and d2=cos($\theta$)= $\dfrac{\text{Dot Product of d1 and d2}} {\text{ Length of d1* Length of d2}}$
+%OR DEFINE SIMILARITY IN TERMS OF NUMBER OF ARTICLE WITH SAME TOPICS
 
 \end{description}
 
-//define cosine similarity formula here:
-Similarity between d1 and d2=cos($\theta$)= $\dfrac{\text{Dot Product of d1 and d2}} {\text{ Length of d1* Length of d2}}$
 
-//OR DEFINE SIMILARITY IN TERMS OF NUMBER OF ARTICLE WITH SAME TOPICS
-
-The formula for calculation of DI using above parameters is :
-			$DI	=	NDL 	*	  NSIM		+	NTF$
+DI for each document can be defined using the above parameters with the following formula :
 
 
-\section{Ranking}
-\label{influential:ranking}
+			$DI = NDL *	(  NSIM + NTF )$
 
-For ranking, IPI for each person entity across the person cateogories are sorted in decreasing order with respect to each topic category.
+
+\subsection{Calculation of Influential Person Index(IPI)}
+
+Once DI is calculated for each document in a person's list, an index is calculated for the person entity in order to measure its influence in the news dataset and calculate its influential score. The ``Influential Person Index" is defined for this purpose and is calculated as follows:
+		
+
+$IPI= max DI(d_1, d_2, ...,d_n)+ UniqT$
+
+where , $max DI(d_1, d_2, ...,d_n)$ takes the maximum Document Index $d_i$ from a document in the person entity's list of  $n$ articles 
+and $UniqT$ is the number of unique article topics in which person entity occurs. This parameter is used to account for the fact that a single person entity can be talked about multiple news topics in its document list and to include their effect on its influence score.
+
+Ranking is done across each person category of the people gazetteer to obtain top most influential persons. For this, IPI for each person entity across the person categories are sorted in decreasing order to obtain the top most person entities as most influential.
   
 
 
 \section{Results}
 \label{influential:results}
-statistics table regarding each category of person entities
 
-Top 3  Influential People in each category of Person entities:
-//using old formula:
+The statistics obtained regarding each person category of people gazetteer are shown in Table~\ref{table:stats}. 
+It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons. Document Length directly affects the IPI according to the metric designed implying a high IPI for high document length. But this is not always the case as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each person category as well as its Term Frequency share also play an important part in measuring influence.
+
+
 \begin{table}
 \begin{center}
-    \begin{tabular}{|l|l|l|}
+    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{3.5cm}|p{2cm}|p{2cm}|p{1.5cm}|}
     \hline
-    \textbf{PERSON NAME}    & \textbf{NUMBER OF ARTICLES OF OCCURRENCE} & \textbf{IPI}   \\ \hline
-    Alexander III  & 29                               & 510   \\ \hline
-    Wilson Barrett & 19                               & 418.7 \\ \hline
-    William II     & 20                               & 351.4 \\ \hline  
+    \textbf{Influential Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}  &  \textbf{Most Common Topic Words} &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	&	\textbf{Average IPI}\\  \hline
+Marginal & 38066 & 1.04 & man ho men night back wa room left house told bad door found turned place ran lie front morning & 2119.6 & 1.07 &	4.71	\\ \hline
+Medium & 344 & 5.75 & mr court police judge justice case yesterday street district witness jury charge asked attorney trial arrested lawyer told office & 1976.3 & 6.68 & 24.1	 \\ \hline
+High & 16 & 22.8 & piano st rooms car york daily chicago city sunday upright parlor furnished broadway hotel av west train brooklyn monthly & 2971.5 & 29.87	&	101.68	 \\	\hline 
   \end{tabular}
   \end{center}
-    \caption {Table illustrating top 3 influential in the Highly Influential People category}
+    \caption {Table illustrating average statistics for each Person Category of People Gazetteer }
+\label{table:stats}
+\end{table}
+
+
+Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
+To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done for the top 10 influential persons in each person category.
+ Among the top 10 influential persons obtained in each of the highly, medium and marginally influential person categories from the results,  7, 6 and 4 respectively were found to be influential and popular in the 19th century across topic categories like theatre,politics,shipping,etc. when searched on the Web. Most of the false positives although influential in other respects but are not  influential person entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
+16 person entities out of the total 30 topmost influential persons in all person categories were found to have an existing page in Wikipedia although it disambiguation is difficult because of incomplete names of the entities like ``William II", ``John II",etc.
+   
+It was also observed that many of the topmost influential persons from our results didn't make it to the Wikipedia list of significant people in the 19th century\footnote{http://en.wikipedia.org/wiki/19th\_century\#Significant\_people} since the list doesn't consist of influential people found in an American newspaper environment only. Several person entities ranked lower in our results can still be found in this Wikipedia list and others relating to 19th century famous American people.
+
+ A detailed report of the influential persons with their IPI for each person category can be seen in the Appendix (Table ~\ref{table:app1} ~\ref{table:app2} ~\ref{table:app3}).
+
+
+The Top 3  Influential People detected in each category of person entities is illustrated in Table~\ref{table:pcat1}
+It has been found that the boundaries of person categories need not be strict as set up earlier. This can be demonstrated by the fact that a medium influential person ``James McClutcheon" occurring in only 15 news articles has a higher IPI compared to that of the highly influential person ``Alexander III" occurring in 21 new articles. This also illustrates the fact that number of articles of occurrence of an entity in newspaper alone cannot be used to define the popularity of a person. The results obtained also reveal the fact that not all persons with higher IPI might be highly influential. False positives are obtained for person entities  such as ``Mr Got" which is not a person entity and for entities such as ``Ann Arbor" and ``Van Cortlandt" which are in fact locations but got recognized as highly influential person entities.
+The influential persons of individual person category are further discussed in the following case studies: 
+\begin{table}
+\begin{center}
+    \begin{tabular}{|l|l|p{3.5cm}|p{4cm}|}
+    \hline
+    \textbf{PERSON NAME}     & \textbf{IPI}  &  \textbf{NUMBER OF ARTICLES OF OCCURRENCE} &  \textbf{PERSON CATEGORY}\\  \hline
+      
+    Wilson Barrett &  327.41 &	29 &  Highly Influential\\ \hline
+    Marie Antoinette &     264.48 &	31 &	Higly Influential\\ \hline  
+    Alexander III & 86.25  &	21 &	Highly Influential\\  \hline
+	James McCutcheon & 223.28 &	15	&	Medium Influential\\  \hline
+	Capt Creeten & 169.77 &	10	&	 Medium Influential \\ \hline 
+	Jacob Schaefer & 145.97 & 	10	&	Medium Influential \\ \hline 
+ 	Marie Jansen & 104.07 & 	10	&	Medium Influential \\ \hline 
+	Phil King&63.11	&	3	&	Marginally Influential \\ \hline
+ 	Mr Got	&	59.6	& 3	&	Marginally Influential \\ \hline
+	 Capt Williams & 56.45		&	3	&	Marginally Influential \\ \hline
+ 	Capt Schmlttberger	&	56.45	&	3	&	Marginally Influential \\ \hline
+  \end{tabular}
+  \end{center}
+    \caption {Table illustrating top 3 influential people with their IPI in each people category}
+\label{table:pcat1}
 \end{table}
 
 
 
-ranking
-how document parameters affect chains
-how lda affects chains
-take each person from the three categories
-visualization using google visualization toolkit?
 \subsection{Case Studies}
 
-influential person detection based on topics also
-change of topic detection parameters
+
+\begin{enumerate}
+
+\item
+Highly Influential Category- The top 3 person entities from Table ~\ref{table:pcat1} with highest IPI in this category have been correctly identified as person entities influencing a number of different news topics as well as large number of articles belonging to the same topic. Considering Wilson Barrett as an example, the person entity has highest IPI of 327.41 occurring in 29 articles, 4 unique topic types and 19 articles belonging to the same topic with the words : ``piano st rooms car york daily chicago city sunday upright parlor furnished broadway hotel av west train brooklyn monthly". The person entity when searched over the Web has been found as an English manager, actor and playwright leading to the conclusion of correctly being identified as being influential although there is no gold standard data available to compare its IPI with other person entities and validate if he is in fact the most influential person entity across the dataset.
+
+\item
+Medium Influential Category- The topmost influential entities from Table ~\ref{table:pcat1} in this category can be compared with the ones in highly influential category since their IPI are quite high. But the person with highest IPI in this category ``James McCutcheon" has been wrongly identified as a person entity and is in fact a linen store with many advertisements in news articles. It occurs in 15 news articles with 13 of them belonging to the same topic. On the other hand, ``Jacob Schaefer" and ``Marie Jansen" from this category are correctly recognized as medium influential as they belong to the fields of carrom billiards and theatre respectively and have been recognized as influential along with correct topic labels.
+ 
+\item
+Marginally Influential Category- Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities in this category are comparable to those in the other 2 categories. Most of the false positives are obtained in this category since it is difficult to identify an influential person that has low occurrences in articles, unique topic articles as well as low term frequency share.  Person name disambiguation is required for person entities of this category as can be seen from the top influential persons of this category from Table ~\ref{table:pcat1} being ``Mr Got", ``Capt Williams'' , ``Capt Schmittberger". The person entities in this category are also most susceptible to the spelling errors which is the reason for their low value of number of occurrences leading to low IPI values.
+
+\end{enumerate}
+
+ 
        
 \section{Conclusion}
 \label{influential:conclusion}
 
-The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
-documents: two words are similar to the extent that they appear in the same topics, and two documents are similar to 
-the extent that the same topics appear in those documents. 
+The problem of finding influential people from historical OCR news repository is studied in this research. We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining an influential person in the newspaper community to obtain the top influential people across categories of the people gazetteer.
+
+Most of the problems faced during the research surfaced due to the noise in OCR dataset used. We believe that finding influential persons from newspaper archives can provide much more beneficial results by using better spelling correction algorithms with improved accuracy.
+
+We didn't consider the problem of Named Entity Disambiguation into account while finding influential people in newspaper which is a difficult problem in itself since it is hard to disambiguate among persons with similar names occurring in newspaper articles with multiple topics. The problem still requires research with probably stricter measures of calculation of IPI for each person to compare and rank the topmost influential persons.
+  
+
                                                            

@@ -136,16 +136,18 @@ XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXX
 
 
 \section{Learning from newspapers}
-Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work – the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization [Crane and Jones 2006]. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project ([Smith 2002a], [Smith 2002b], [Smith and Crane 2001]), a general system to extract dates and names from text was developed. At the Hull Digital Library10, information capture and semantic indexing of the newspaper archive is done using document analysis and classification [Esposito et al. 1997]. In Collection OCR, Sankar et. al. [Sankar K. et al. 2010] use an approximate fast nearest neighbor algorithm based on hierarchical K-Means (HKM) to clean OCR text. 
+Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work – the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization\cite{crane2006challenge}. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project (\cite{ smith2002detectinga}, \cite{smith2002detectingb}, \cite{smith2001disambiguating}, a general system to extract dates and names from text was developed in order to detect significant events in document collections. 
+
+\cite{newman2006analyzing} use a combination of Statistical Topic Modeling and Named Entity Recognition techniques for analyzing the entities, topics trends and topics that relate entities mentioned in a news articles dataset. They also create networks based on the topic model based relationships among the entities.
 \cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and coreference names for the entity.
-But they do not focus on finding influential entities in which respect our research is different from their work.
+Both these research works stress on person entities in a newspaper environment but do not focus on finding influential entities in which respect our research is different from their work.
 
 
 \section{Developing Gazetteers}
-Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organisations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource used to ﬁnd occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurence and their respective topic.
+Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organizations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource used to ﬁnd occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurrence and their respective topic.
 
 Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
-\cite{zhang2009novel} discuss automatic generation of gazeteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archaeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
+\cite{zhang2009novel} discuss automatic generation of gazetteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
 There is also no relevant work that builds or uses historical person names gazetteer list for data mining that we know of.
 
 
@@ -216,7 +218,7 @@ An individual OCR text article has at least one or more of the following types o
 \end{description} 
 
 \section{Data Statistics}
-The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chrocling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
+The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
 is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
 
 
@@ -247,6 +249,7 @@ Kukich\cite{kukich1992techniques} comprehensively discusses various spelling cor
 On the other hand, Context-dependent techniques require contextual information and use either extensive NLP techniques or Statistical Language Modeling (SLM) for spelling correction.
 Bassil and Alwani\cite{bassil2012ocr} use Google 1-5 gram word dataset to gain context information in order to determine the correct words sequence in the text for correction.
 Tong and Evans\cite{tong1996statistical} use SLM approach involving information from letter n-grams,character confusion and word bi-gram probabilities to perform context sensitive spelling correction obtaining a 60 percent error reduction rate. 
+ %In Collection OCR, Sankar et. al. [Sankar K. et al. 2010] use an approximate fast nearest neighbor algorithm based on hierarchical K-Means (HKM) to clean OCR text.
 
 All these spelling correction techniques have developed over time and have been used in combination to achieve improved accuracy \cite{brill2000improved}. \cite{agarwal2013utilizing} use a combination of Google suggestions, LCS and character confusion probabilities for choosing the correct spelling on a small set of historical newspaper data and achieve recall and precision of $51\%$ and $100\%$ respectively.
 
@@ -315,7 +318,7 @@ $Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after 
 
 \subsubsection{SCE (Spelling Correction Evaluation) Algorithm}
 
-The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a digrammatic representation in Figure 4.1.
+The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a diagrammatic representation in Figure 4.1.
 
 \begin{figure} [!htb]
 \centering
@@ -465,9 +468,6 @@ The spelling correction algorithm is used to correct all the 14020 OCR raw text 
 In order to answer \textbf{Question 1} we do the following: 
 
 3 versions of each newspaper article are required: OCR raw text, spelling corrector corrected text and the original scanned newspaper article text. Since the dataset is quite large (14020) and it is not possible to get original text of each of these newspaper images, a smaller number of articles are chosen to study the results of spelling correction. 50 scanned newspaper images are taken and an online OCR \footnote{www.onlineocr.net} is run on them followed by some manual correction to get the original articles text. Accuracy can then be calculated for all 3 versions of 50 newspaper articles using the SCE algorithm by marking each word in the OCR text article as a TP, FP, TN or FN. 
-%% AAYUSHEE CHECK
-%%The dictionary used for the lookup does not contain the large people names list mentioned above.
-%%DOUBT--Didnt understand the question
 
 In order to answer \textbf{Question 2} we do the following: 
 %% AAYUSHEE CHECK--DONE
@@ -483,9 +483,7 @@ The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is co
 
 The spelling corrector takes 9 seconds on an average to correct the newspaper OCR articles. It takes a total of 36 hours to run on 14020 articles.
 
-%No need to talk about parallelization here.
-%Though the algorithm does not require parallelizing here but it can be parallelized by getting candidate lists for insertion, deletion, substitution and transposition of a word through parallel threads and combining them together for correction of a word.
- 
+
 %% Aayushee correct this section using the acronyms defined above--DONE
 But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
 
@@ -504,7 +502,7 @@ These statistics indicate that spelling correction using an extended dictionary 
 \item[$\bullet$]\noindent
 A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
 \item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
-\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a historical dictionary can perform speling correction better and improve the accuracy.
+\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a historical dictionary can perform spelling correction better and improve the accuracy.
 \item[$\bullet$] \noindent Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
 \end{description}
 
@@ -526,5 +524,158 @@ A better result can be obtained by correcting the New Line errors in the article
 
 \bibliography{aayushee}
 \chapter*{Appendix}\label{chapter:appendix} 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{PERSON ENTITY}    &       \textbf{IPI}    \\ \hline
+wilson barrett   & 327.41235 \\ \hline
+marie antoinette & 264.48248 \\ \hline
+rob roy          & 216.77463 \\ \hline
+ann arbor        & 196.8364  \\ \hline
+van cortlandt    & 123.29883 \\ \hline
+alexander iii    & 86.25286  \\ \hline
+john ii          & 58.9015   \\ \hline
+william ii       & 58.764606 \\ \hline
+john jacob astor & 55.564274 \\ \hline
+william i        & 44.84307  \\ \hline
+nicholas ii      & 41.00501  \\ \hline
+john j           & 40.21202  \\ \hline
+john w           & 31.704508 \\ \hline
+john thompson    & 29.755087 \\ \hline
+henry w          & 28.562605 \\ \hline
+sandy hook       & 22.617697 \\ \hline
+\end{tabular}
+\caption{Table representing all influential person entities with their IPI in the Highly Influential Persons Category}
+\label{table:app1}
+\end{table}
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{PERSON ENTITY}      &  \textbf{  IPI}        \\ \hline
+james mccutcheon   & 223.28214  \\ \hline
+capt creeten       & 169.77635  \\ \hline
+jacob schaefer     & 145.97162  \\ \hline
+john martin        & 133.13087  \\ \hline
+mrs herrmann       & 120.98331  \\ \hline
+capt hankey        & 117.98789  \\ \hline
+marie jansen       & 104.073456 \\ \hline
+lillian russell    & 102.203674 \\ \hline
+nat lead           & 101.46077  \\ \hline
+jay gould          & 95.45242   \\ \hline
+anthony comstock   & 90.308846  \\ \hline
+paul kumar         & 87.10851   \\ \hline
+buenos ayres       & 83.4436    \\ \hline
+messrs macmillan   & 79.58097   \\ \hline
+henry w dreyer     & 79.18698   \\ \hline
+north orlich       & 78.085144  \\ \hline
+julia l wyman      & 75.19533   \\ \hline
+schmitt berger     & 74.93656   \\ \hline
+mr john            & 69.086815  \\ \hline
+troy saratoga      & 69.006676  \\ \hline
+lottie collins     & 68.17696   \\ \hline
+lucille hill       & 67.04173   \\ \hline
+henry a meyer      & 66.74959   \\ \hline
+messrs appleton    & 58.549248  \\ \hline
+capt allaire       & 57.140232  \\ \hline
+queen victoria     & 56.656094  \\ \hline
+jacob brothers     & 56.469116  \\ \hline
+frederick baker    & 56.0512    \\ \hline
+elliott schenck    & 56.02888   \\ \hline
+toledo ann arbor   & 55.86186   \\ \hline
+jim hooker         & 54.99624   \\ \hline
+lawrence kip       & 53.462437  \\ \hline
+john wilson        & 52.78464   \\ \hline
+george wilkes      & 48.564274  \\ \hline
+charles frohman    & 47.075127  \\ \hline
+james dunne        & 46.954926  \\ \hline
+john maiden        & 46.412354  \\ \hline
+william collier    & 45.601     \\ \hline
+mr cesar           & 45.317196  \\ \hline
+olga nethersole    & 45.317196  \\ \hline
+isaac pitman       & 45.170284  \\ \hline
+conan doyle        & 44.292152  \\ \hline
+monroe salisbury   & 43.495827  \\ \hline
+joseph ii          & 41.270996  \\ \hline
+john scott         & 41.12521   \\ \hline
+cincinnati jackson & 39.672787  \\ \hline
+bret harte         & 39.662773  \\ \hline
+daniel webster     & 39.64056   \\ \hline
+carrie turner      & 27.390652  \\ \hline
+frank w angel      & 27.081802  \\ \hline
+\end{tabular}
+\caption{Table illustrating the top 50 influential person entities in the Medium Influential Persons Category}
+\label{table:app2}
+\end{table}
+
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{PERSON ENTITY }             & \textbf{IPI}       \\ \hline
+phil king                  & 63.11352  \\ \hline
+mr got                     & 59.606037 \\ \hline
+capt williams              & 56.45242  \\ \hline
+capt schmlttberger         & 56.45242  \\ \hline
+hun upton                  & 52.06511  \\ \hline
+capt pinckney              & 45.98572  \\ \hline
+principal mcallister       & 45.954926 \\ \hline
+aaron trow                 & 44.96826  \\ \hline
+hallen hart                & 44.317196 \\ \hline
+louis philippe             & 42.894478 \\ \hline
+caleb morton               & 41.244476 \\ \hline
+clayton cape vincent       & 41.101837 \\ \hline
+north amir                 & 40.430717 \\ \hline
+marie clavero              & 40.175583 \\ \hline
+john macdonald             & 39.553802 \\ \hline
+chauncey scott             & 39.348915 \\ \hline
+george iv                  & 38.930504 \\ \hline
+capt martens               & 37.96828  \\ \hline
+charley grant              & 37.96828  \\ \hline
+stewart smith              & 37.96828  \\ \hline
+fred hawkins               & 36.742905 \\ \hline
+napoleon bonaparte         & 36.597664 \\ \hline
+john howard                & 35.709515 \\ \hline
+frank i                    & 35.65943  \\ \hline
+de korn                    & 35.597664 \\ \hline
+rufus jr                   & 35.129013 \\ \hline
+john ould                  & 35.043407 \\ \hline
+mrs darner                 & 34.498833 \\ \hline
+arthur brewer              & 34.370617 \\ \hline
+john bunyan                & 33.39399  \\ \hline
+olney colne                & 32.821884 \\ \hline
+mrs talboys                & 32.52888  \\ \hline
+mr left                    & 32.48414  \\ \hline
+george green               & 32.477463 \\ \hline
+hugh allan                 & 31.599672 \\ \hline
+mr mon                     & 31.48414  \\ \hline
+hun john u kernan          & 31.138565 \\ \hline
+lia peat                   & 31.138565 \\ \hline
+vassil iii                 & 31.138565 \\ \hline
+hon nicholas k worthington & 31.138565 \\ \hline
+harland inrlslve           & 31.138565 \\ \hline
+ian hummer                 & 31.138565 \\ \hline
+julie m                    & 31.138565 \\ \hline
+ian krancltcn              & 31.138565 \\ \hline
+madame ilaucho             & 30.99971  \\ \hline
+hill junior                & 30.96995  \\ \hline
+stockton crescent          & 30.96995  \\ \hline
+tex pac                    & 30.604342 \\ \hline
+henry wolf                 & 30.469114 \\ \hline
+richard v hargett          & 30.343906 \\ \hline
+\end{tabular}
+\caption{Table showing the 50 topmost influential person entities in the Marginally Influential People Category}
+\label{table:app3}
+\end{table}
+
+
 
 \end{document}

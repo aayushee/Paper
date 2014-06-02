@@ -7,7 +7,9 @@ Historical newspaper archives are of extreme importance for genealogists, schola
 There have been extensive studies on text mining from newspapers that deal with clustering newspaper articles into categories\cite{dutta2011learning}, linking similar news stories related to an event \cite{khurdiya2011multi}\cite{shahaf2010connecting}, event extraction from news stories and news story summarization \cite{mckeown2002tracking}.
 
 
-Historical newspapers can also be used for People Search, for example, to gain information about important people and track the complete timeline of news articles related to them rather than searching for the articles directly. News articles related to an influential person can also be linked to his/her Wikipedia entry so that a user can directly read how, when and where the person had been involved. In fact missing entries can be added to Wikipedia for such influential people across multiple topic categories.
+Historical newspapers are also used for People Search, for example, to gain information about important people and track the complete timeline of news articles related to them rather than searching for the articles directly. Several websites like Genealogy Bank \footnote{http://www.genealogybank.com/gbnk/} , Newspaper Archives \footnote{http://newspaperarchive.com/},etc.. provide people search service that include obituaries, birth and death lists, newspaper articles, etc. related to historical people but not for free. Such information related to a person entity can be extracted from online freely available historical archives of newspapers for which the text requires cleaning and preprocessing to make the information available in the required format.
+  
+News articles related to an influential person can also be linked to his/her Wikipedia entry so that a user can directly read how, when and where the person had been involved. In fact missing entries can be added to Wikipedia for such influential people across multiple topic categories.
 Influential people from historical newspapers can be further studied to find patterns among them and create influential person networks so as to detect themes and learn about entities involved in historical events. This can be done by learning from temporal trends and network structure of connected influential persons and the respective articles they occur in. 
 
 
@@ -27,7 +29,7 @@ The problem of finding influential people in this scenario is a novel one as muc
 
  An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that he/she occurs in.
  A person might be considered influential  in the newspaper environment if the person gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking popular people across various categories in the news domain. 
-Popularity can be defined in other domains by counting number of votes, tweets, citations, etc. \cite{}but similar measures are not applicable in a newspaper setting where only newspaper articles mentioning multiple people are available.  
+Popularity can be defined in other domains by counting number of votes, tweets, citations,followers etc. \cite{cheng2014can}but similar measures are not applicable in a newspaper setting where only newspaper articles mentioning multiple people are available.  
  
 We divide the the problem of finding influential people into the following subproblems:
 \begin{description}
