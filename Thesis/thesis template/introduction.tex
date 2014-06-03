@@ -1,20 +1,40 @@
 
 
 
-\section {Research Motivation}
+\section {Motivation}
 
-Historical newspaper archives are of extreme importance for genealogists, scholars and historians. 
-There have been extensive studies on text mining from newspapers that deal with clustering newspaper articles into categories\cite{dutta2011learning}, linking similar news stories related to an event \cite{khurdiya2011multi}\cite{shahaf2010connecting}, event extraction from news stories and news story summarization \cite{mckeown2002tracking}.
+Newspapers are rich sources of history and millions of pages of historical newspapers have been digitized \cite{Allen_10} in recent years. A national program to develop an Internet-based, searchable database of U.S. newspapers called the National Digital Newspaper Program (NDNP) was setup in 2004 as a partnership between the National Endowment of Humanities (NEH) and the Library of Congress. Since then, several public and for-profit sectors have also digitized newspapers at a rapid pace making text from historical records available at a staggering rate. To deal with this wealth of information, scholars have mainly focused on text mining and information retrieval techniques followed by visualization of patterns extracted from the records \cite{McKeown_1995, Radev99c, mckeown2002tracking, dutta2011learning, Berberich_2007, khurdiya2011multi, shahaf2010connecting}. 
 
 
-Historical newspapers are also used for People Search, for example, to gain information about important people and track the complete timeline of news articles related to them rather than searching for the articles directly. Several websites like Genealogy Bank \footnote{http://www.genealogybank.com/gbnk/} , Newspaper Archives \footnote{http://newspaperarchive.com/},etc.. provide people search service that include obituaries, birth and death lists, newspaper articles, etc. related to historical people but not for free. Such information related to a person entity can be extracted from online freely available historical archives of newspapers for which the text requires cleaning and preprocessing to make the information available in the required format.
+\begin{figure*}[t]
+\begin{center}
+%\mbox{
+\subfigure[GenealogyBank]
+{
+%%\includegraphics[width=0.6\columnwidth]{odds_20070813_160000rb_M.pdf}
+\includegraphics[width=0.43\textwidth, height=0.23\textheight]{genealogy.jpg}
+\label{fig:gen}
+}
+\subfigure[FamilySearch]
+{
+%%\includegraphics[width=0.8\columnwidth]{20070813-C1-7d-roc.pdf}
+\includegraphics[width=0.43\textwidth, height=0.23\textheight]{FamilySearch}
+\label{fig:fam}
+}
+%}
+\caption{Two examples of online People Search Tools which utilize historic newspaper archives, military records, petitions, obituaries, census records and other forms of petitions to match proper nouns.}
+\label{figSearch}
+\end{center}
+\end{figure*}
+
+An important use of historical newspapers is for People Search\cite{BilenkoMCRF03,Friedman_92}) -- for example, to find important people and track the timelines of news articles related to them. Several websites like Genealogy Bank\footnote{http://www.genealogybank.com/gbnk/}, FamilySearch\footnote{https://familysearch.org/}, Newspaper Archives\footnote{http://newspaperarchive.com/}, Ancestry\footnote{http://www.ancestry.com/} provide people search service that include obituaries, birth and death lists, newspaper articles, military records, Revolutionary and Civil War pension requests, census records, land grants and other forms of petitions. Figure~\ref{figSearch} shows two such tools available online.
+
+%Existing literature also deals with the problem of spelling variations in people names -- solutions include use of Soundex\footnote{http://www.myheritage.com/FP/Company/megadex.php} technology that given a query, returns everything that ``sounds like" what the query term. Face recognition algorithms, video and audio clips have been used to enhance search. However research in this domain is still in its nascent stages.
+
+
+%Information related to a person can be extracted from online freely available historical archives of newspapers for which the text requires cleaning and preprocessing to make the information available in the required format.
   
-News articles related to an influential person can also be linked to his/her Wikipedia entry so that a user can directly read how, when and where the person had been involved. In fact missing entries can be added to Wikipedia for such influential people across multiple topic categories.
-Influential people from historical newspapers can be further studied to find patterns among them and create influential person networks so as to detect themes and learn about entities involved in historical events. This can be done by learning from temporal trends and network structure of connected influential persons and the respective articles they occur in. 
-
-
-Finding influential persons from historical newspapers, thus,  opens a wide range of possibilities. But the concept of finding influential persons in a newspaper setting is a novel one and has not yet been studied extensively which emphasizes the importance of this research. Using an open source historical news OCR dataset in spite of it being extremely noisy is also another factor which has motivated us to use such a dataset for this research.
-
+To the best of our knowledge, the problem of finding \emph{influential} people from historic newspaper archives has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. 
 
 \section{Problem Description}
 \label{problem}
@@ -25,21 +45,46 @@ The goal of this research is to find and rank influential people across multiple
 
 
 %DOUBT:  IS IT OK TO MENTION THESE DETAILS HERE OR THEY SHOULD BE WRITTEN IN RELATED WORK?
-The problem of finding influential people in this scenario is a novel one as much of the research work deals with identification of influential nodes in social networks or marketing and diffusion research. This research does not involve finding influential people in terms of their influence on their peers\cite{watts2007influentials} or influence propagation in a social network \cite{kempe2003maximizing} which is how the concept of influence is used in general.   
+%The problem of finding influential people in this scenario is a novel one as much of the research work deals with identification of influential nodes in social networks or marketing and diffusion research. This research does not involve finding influential people in terms of their influence on their peers\cite{watts2007influentials} or influence propagation in a social network \cite{kempe2003maximizing} which is how the concept of influence is used in general.   
 
- An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that he/she occurs in.
- A person might be considered influential  in the newspaper environment if the person gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking popular people across various categories in the news domain. 
-Popularity can be defined in other domains by counting number of votes, tweets, citations,followers etc. \cite{cheng2014can}but similar measures are not applicable in a newspaper setting where only newspaper articles mentioning multiple people are available.  
+ An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
+ A person may also be considered influential if s/he gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking \emph{popular} people across various categories in the news domain. 
+ ``Popularity" has been defined in other domains by counting number of votes, tweets, citations and followers. \cite{cheng2014can} but similar measures are not applicable in a newspaper setting where only the newspaper articles mentioning multiple people names are available.  
  
 We divide the the problem of finding influential people into the following subproblems:
-\begin{description}
-\item [$\bullet $Problem 1] \label{problem:1}: Dealing with a huge dataset consisting of a large number of OCR errors.
-\item [$\bullet $Problem 2] \label{2}: Develop an organized structure in order to ease the process of identification of influential people.
-\item [$\bullet $Problem 3] \label{3}: Define the criteria for identifying and ranking persons as `influential" in a newspaper environment.
-\end{description}
+\begin{itemize}
+\item \textbf{Problem 1: } Spell Correction and Cleaning of OCR text
+\item \textbf{Problem 2: } Development of a People Gazetteer -- develop an organized structure in order to ease the process of identification of influential people.
+\item \textbf{Problem 3: } Influential People Identification -- define the criteria for identifying and ranking people as ``influential".
+\end{itemize}
   
-Each of the above problems require consideration of the dataset size and characteristics along with the newspaper environment in mind. 
+%Each of the above problems require consideration of the dataset size and characteristics along with the newspaper environment in mind. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth, height=0.5\textheight]{framework3}
+\caption{Research Framework showing components of proposed solution}
+\label{fig:framework}
+\end{figure} 
 
+\section {Research Framework}
+
+We propose the following solution framework in Figure~\ref{fig:framework} for finding influential people from a historical news repository. Each component is briefly described as follows:
+
+\begin{enumerate}
+\item \textbf {Data Gathering}:  
+This component describes the source of data along with relevant statistics. It also includes descriptions of how the page level newspaper images are converted to text through OCR followed by article level segmentation. The different types of OCR errors encountered in the data are also described. This component is further discussed in Chapter ~\ref{chapter:data description}.
+
+\item \textbf {Data Preprocessing}:
+This component describes the preprocessing applied on the news articles. It describes relevant spelling correction algorithms, and then presents a novel algorithm for evaluation of the results. This component is further discussed in detail in Chapter ~\ref{chapter:data preprocessing}.
+
+\item \textbf {Development of People Gazetteer}:
+This component describes the process of development of people gazetteer which involves Named Entity Recognition in order to find person entities. This is followed by topic detection using LDA to assign topics to news articles and link both to obtain an organized structure. This component is discussed in detail in Chapter ~\ref{chapter:people gazetteer}.
+
+\item \textbf {Influential Person Identification}:
+This component defines an ``Influential Person Index" (IPI) that incorporates several criteria for identifying and ranking of ``influential people" across newspaper topics. Details about IPI, ranking and final results with some case studies are discussed in Chapter ~\ref{chapter:influential people detection}.
+
+\end{enumerate}
+ 
 
 
 %DOUBT: EITHER WRITE AS WE AIM TO ANSWER THESE QUESTIONS IN THIS RESEARCH OR WE DIVIDE THE PROBLEM INTO THESE SUBPROBLEMS...
@@ -50,36 +95,13 @@ Each of the above problems require consideration of the dataset size and charact
 
 
 %DOUBT: NOT SURE WHETHER RESEARCH FRAMEWORK SHOULD COME FIRST OR NOVEL CONTRIBUTION?
-\section{Novel Contribution}
-We make the following novel contributions for addressing the research problem mentioned in Section ~\ref{problem}:
+\section{Research Contributions}
+This thesis has the following novel contributions:
 \begin{enumerate}
-\item Develop an evaluation algorithm for measuring the performance of spelling correction preprocessing applied to the dataset consisting of OCR errors.
-\item Develop a People Gazetteer; an organized  dictionary of person names and a list of articles in which his name occurs along with the corresponding topic of each article to facilitate identification of influential people.
-\item Define an Influential Person Index (IPI) and metrics for its calculation in order to identify and rank influential people.
+\item A new algorithm for \emph{evaluation} of the performance of the spelling correction algorithm is presented. 
+\item Development of the People Gazetteer -- an organized  dictionary of people names and a list of articles in which the name occurs along with the corresponding topic of each article to facilitate identification of influential people.
+\item Define an Influential Person Index (IPI) and metrics for its calculation in order to identify and rank influential people. Case studies of the top-K influential people detected are also discussed and verified with Wikipedia data. 
+
 \end{enumerate}
 
 
-\section {Research Framework }
-
-We propose the solution framework in Figure 1.1 for the purpose of finding influential people from a historical news repository. Each component of the solution framework is briefly described as follows:
-
-\begin{enumerate}
-\item \textbf {Data Gathering}:  
-This is the first component of this research and describes the source of gathering data along with data characteristics and statistics. It mentions conversion of page level newspaper images into text through OCR followed by article level segmentation and description of various types of errors in the data. This component is further discussed in Chapter ~\ref{chapter:data description}.
-
-\item \textbf {Data Preprocessing}:
-This component describes the preprocessing applied on the news articles dataset. It keys out the process of spelling correction of data in detail with spelling correction algorithm, a novel algorithm for its evaluation and results. This component is further discussed in detail in Chapter ~\ref{chapter:data preprocessing}.
-
-\item \textbf {Development of People Gazetteer}:
-This component describes the process of development of people gazetteer which involves Named Entity Recognition in order to find person entities, Topic Detection using LDA to assign topics across the news articles and linking of both to obtain an organized structure. This component is discussed in detail in Chapter ~\ref{chapter:people gazetteer}.
-
-\item \textbf {Influential Person Identification}:
-This component defines an ``Influential Person Index" (IPI) that incorporates several criteria for identifying and ranking of ``influential people" across newspaper topics. Details about IPI, ranking and final results with some case studies are discussed in Chapter ~\ref{chapter:influential people detection}.
-
-\end{enumerate}
- 
-\begin{figure}[h]
-\centering
-\includegraphics{framework3}
-\caption{Research Framework diagram showing components of proposed solution}
-\end{figure} 
