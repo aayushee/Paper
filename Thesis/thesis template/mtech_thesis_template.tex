@@ -11,6 +11,15 @@
 \usepackage{subfigure}
 
 
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{multirow}
+\usepackage{pdflscape}
+
+
+
 %\usepackage{noReferences}
 \usepackage[small]{caption}
 \usepackage[leftcaption]{sidecap}
@@ -74,25 +83,26 @@ This is to certify that the thesis titled \textbf{``Finding Influential People f
 
 \begin{abstract}
 
- Historical newspaper archives provide a wealth of information. They
+  Historical newspaper archives provide a wealth of information. They
 are of particular interest to genealogists, historians and scholars
 for People Search.
-
- In this thesis, we design a People Gazetteer from
+In this thesis, we design a People Gazetteer from
 the noisy OCR text of historical newspapers and identify “influential”
 people from it. A People Gazetteer is a dictionary of personal names;
-each entry of the gazetteer is  a tuple containing a person name and a
-list of articles in which his name occurs.
-
+each entry of the gazetteer is a tuple containing a person name and a
+list of articles in which his name occurs along with the corresponding
+topic associated each article.
 To build the People Gazetteer, we first spell correct the noisy text
 using an edit distance based algorithm. A novel N-gram based
 evaluation algorithm is designed for measuring the performance of the
 spell corrector. Next, a Named Entity Recognizer is run on the text of
 each article to identify person entities and an LDA-based topic
 detector to assign categories to articles. To identify influential
-people from People Gazetteer across each category, we define the notion
-of an Influential Person Index (IPI) and rank based on it. Our corpus
-is a sample of 14020 newspaper articles (roughly two months’ data)
+people across each category of People Gazetteer, we define the notion
+of an Influential Person Index (IPI) and rank based on it. We study the
+topmost influential people and present many important insights from the 
+corpus based on the parameters defined and verification done from Wikipedia.
+Our corpus is a sample of 14020 OCR newspaper articles (roughly two months’ data)
 obtained from “The Sun” newspaper in the Chronicling America project.
 
 \end{abstract}
@@ -109,7 +119,15 @@ obtained from “The Sun” newspaper in the Chronicling America project.
 \pagestyle{plain}
 \pagenumbering{roman}
 
-XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX 
+Any accomplishment requires the effort of many people and this thesis is no different. It gives me immense pleasure in recording my appreciation and a deep sense of gratitude to all the individuals who extended their unstrained cooperation in completing my thesis.
+
+I express my sincere thanks and gratitude towards my advisor Dr. Haimonti Dutta for her continuous support and guidance extended to me in making this thesis possible and providing me an opportunity to work on an interesting research problem. I am highly obliged for the patience, motivation, enthusiasm and knowledge provided by her throughout the research and writing of this thesis.
+
+Besides my advisor, I would like to thank the rest of my thesis committee: Dr. Srikanta Bedathur and Dr. Lipika Dey, for their encouragement and insightful comments.
+
+Last but not the least, I thank my fellow colleagues who were always there to discuss my problems and provide me moral boost- up in developing this thesis.\\ \vspace{0.2in}
+
+Aayushee Gupta
 
 \newpage
 
@@ -290,7 +308,7 @@ Following sections describe the evaluation parameters for estimating the perform
  \item[$\bullet$Accuracy]
  The evaluation metric used for measuring the performance of Spelling correction algorithm is Accuracy which requires calculation of number of OCR errors that got corrected when compared to the original scanned newspaper text. The measure has been chosen so as to include the complete text coverage and not just check for words that got corrected after spell correction as in the latter case, the  number of FP and TN get missed which won't give the correct measure of how well the spell corrector works. The formula used for calculating Accuracy is defined by Manning and Schutze,1999 (p.268-269) as follows:
 
-$Accuracy=  \dfrac{TP+FP} {TP+ FP + TN + FN}$
+$$Accuracy=  \dfrac{TP+FP} {TP+ FP + TN + FN}$$
 
 
 where 
@@ -426,7 +444,7 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 \begin{center}
 \includegraphics[scale=0.4]{img3}
 \includegraphics[scale=0.75]{originalimg3}
-\caption{Scanned image of a newspape article (left) along with its original text (right)}
+\caption{Scanned image of a newspaper article (left) along with its original text (right)}
 \end{center}
 \end{figure}
 
@@ -490,7 +508,6 @@ The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is co
 The spelling corrector takes 9 seconds on an average to correct the newspaper OCR articles. It takes a total of 36 hours to run on 14020 articles.
 
 
-%% Aayushee correct this section using the acronyms defined above--DONE
 But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
 
 \textit{PNDR} for \textbf{Baseline: }: 72.5\% 
@@ -502,13 +519,14 @@ But the spelling correction is useful in terms of Person Names Detection Rate \t
 These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
  
 
-\textbf{Discussion: }
+\subsection{Discussion}
+\label{spell:discussion}
 
 \begin{description}
 \item[$\bullet$]\noindent
-A better result can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
+We believe a better accuracy of spell correction can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
 \item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
-\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a historical dictionary can perform spelling correction better and improve the accuracy.
+\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a dictionary with historical terms,places and people names can certainly perform spelling correction better and improve the accuracy.
 \item[$\bullet$] \noindent Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
 \end{description}
 
@@ -519,6 +537,26 @@ A better result can be obtained by correcting the New Line errors in the article
 \input{pplGazette} 
 
 \input{influential}
+
+
+\chapter{Conclusion}
+\label{chapter:conclusion}
+
+The problem of finding influential people from historical OCR news repository has been studied in this research. Being a novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results we obtained.
+ We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the top influential people across categories of the people gazetteer.
+  
+
+Most of the problems faced during this research surfaced due to the noise in OCR dataset used. The problem of finding influential persons from newspaper archives opens up a wide range of research problems as illustrated from the discussion sections ~\ref{gaz:discussion} ~\ref{influential:discussion} in each component of our research framework. 
+We believe each of the components of our research framework, namely Spelling correction on OCR news articles, Person Named Entity Recognition, Topic Detection and parameters definition to measure and rank influence scores of persons can be researched further in order to obtain much more beneficial results from influential people detection.
+Spelling correction algorithms with improved accuracy can certainly improve the influential persons ranking as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
+Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
+
+We didn't consider Named Entity Disambiguation into account during detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
+
+ The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
+  
+
+
 
 %\newpage
 %\bibliographystyle{these}
@@ -533,155 +571,183 @@ A better result can be obtained by correcting the New Line errors in the article
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+
 \hline
-\textbf{PERSON ENTITY}    &       \textbf{IPI}    \\ \hline
-wilson barrett   & 327.41235 \\ \hline
-marie antoinette & 264.48248 \\ \hline
-rob roy          & 216.77463 \\ \hline
-ann arbor        & 196.8364  \\ \hline
-van cortlandt    & 123.29883 \\ \hline
-alexander iii    & 86.25286  \\ \hline
-john ii          & 58.9015   \\ \hline
-william ii       & 58.764606 \\ \hline
-john jacob astor & 55.564274 \\ \hline
-william i        & 44.84307  \\ \hline
-nicholas ii      & 41.00501  \\ \hline
-john j           & 40.21202  \\ \hline
-john w           & 31.704508 \\ \hline
-john thompson    & 29.755087 \\ \hline
-henry w          & 28.562605 \\ \hline
-sandy hook       & 22.617697 \\ \hline
+
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten     & 3.380151 & no                 & spelled incorrectly \\ \hline
+capt hankey      & 3.022371 & yes                &                                      \\ \hline
+capt pinckney    & 2.933288 & yes                &                                      \\ \hline
+john macdonald   & 2.854389 & yes                &                                      \\ \hline
+john martin      & 2.827969 & yes                &                                      \\ \hline
+aaron trow       & 2.814171 & yes                & fictional character                  \\ \hline
+mrs oakes        & 2.791536 & no                 & false positive                       \\ \hline
+buenos ayres     & 2.767399 & no                 & location                             \\ \hline
+alexander iii    & 2.742552 & yes                &                                      \\ \hline
+mr got           & 2.736363 & no                 & false positive                       \\ \hline
+mrs martin       & 2.719383 & no                 & false positive                       \\ \hline
+ann arbor        & 2.681657 & no                 & location                             \\ \hline
+caleb morton     & 2.63808  & no                 & fictional character                  \\ \hline
+anthony comstock & 2.633381 & yes                &                                      \\ \hline
+toledo ann arbor & 2.610495 & no                 & location                             \\ \hline
+john thompson    & 2.609841 & yes                &                                      \\ \hline
+nat lead         & 2.594452 & no                 & false positive                       \\ \hline
+ed kearney       & 2.543152 & yes                & name of horse                        \\ \hline
+van cortlandt    & 2.533131 & no                 & location                             \\ \hline
+louis philippe   & 2.523525 & yes                &                                      \\ \hline
+mrs talboys      & 2.522888 & yes                & fictional character                  \\ \hline
+jim hooker       & 2.500915 & yes                & false positive                       \\ \hline
+marie clavero    & 2.497384 & no                 & false positive                       \\ \hline
+father watson    & 2.450817 & no                 & false positive                       \\ \hline
+james mccutcheon & 2.431448 & no                 &                       \\ \hline
+hugh allan       & 2.4287   & yes                &                                      \\ \hline
+william i        & 2.4222   & yes                &                                      \\ \hline
+marie antoinette & 2.40731  & yes                &                                      \\ \hline
+schmitt berger   & 2.396639 & no                 & false positive                       \\ \hline
+jacob schaefer   & 2.392976 & yes                &                                      \\ \hline
+             
 \end{tabular}
-\caption{Table representing all influential person entities with their IPI in the Highly Influential Persons Category}
+\caption{Table representing top 30 influential person entities with 30 Topics LDA Model along with evaluation results and comments.}
 \label{table:app1}
 \end{table}
 
 
-
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
 \hline
-\textbf{PERSON ENTITY}      &  \textbf{  IPI}        \\ \hline
-james mccutcheon   & 223.28214  \\ \hline
-capt creeten       & 169.77635  \\ \hline
-jacob schaefer     & 145.97162  \\ \hline
-john martin        & 133.13087  \\ \hline
-mrs herrmann       & 120.98331  \\ \hline
-capt hankey        & 117.98789  \\ \hline
-marie jansen       & 104.073456 \\ \hline
-lillian russell    & 102.203674 \\ \hline
-nat lead           & 101.46077  \\ \hline
-jay gould          & 95.45242   \\ \hline
-anthony comstock   & 90.308846  \\ \hline
-paul kumar         & 87.10851   \\ \hline
-buenos ayres       & 83.4436    \\ \hline
-messrs macmillan   & 79.58097   \\ \hline
-henry w dreyer     & 79.18698   \\ \hline
-north orlich       & 78.085144  \\ \hline
-julia l wyman      & 75.19533   \\ \hline
-schmitt berger     & 74.93656   \\ \hline
-mr john            & 69.086815  \\ \hline
-troy saratoga      & 69.006676  \\ \hline
-lottie collins     & 68.17696   \\ \hline
-lucille hill       & 67.04173   \\ \hline
-henry a meyer      & 66.74959   \\ \hline
-messrs appleton    & 58.549248  \\ \hline
-capt allaire       & 57.140232  \\ \hline
-queen victoria     & 56.656094  \\ \hline
-jacob brothers     & 56.469116  \\ \hline
-frederick baker    & 56.0512    \\ \hline
-elliott schenck    & 56.02888   \\ \hline
-toledo ann arbor   & 55.86186   \\ \hline
-jim hooker         & 54.99624   \\ \hline
-lawrence kip       & 53.462437  \\ \hline
-john wilson        & 52.78464   \\ \hline
-george wilkes      & 48.564274  \\ \hline
-charles frohman    & 47.075127  \\ \hline
-james dunne        & 46.954926  \\ \hline
-john maiden        & 46.412354  \\ \hline
-william collier    & 45.601     \\ \hline
-mr cesar           & 45.317196  \\ \hline
-olga nethersole    & 45.317196  \\ \hline
-isaac pitman       & 45.170284  \\ \hline
-conan doyle        & 44.292152  \\ \hline
-monroe salisbury   & 43.495827  \\ \hline
-joseph ii          & 41.270996  \\ \hline
-john scott         & 41.12521   \\ \hline
-cincinnati jackson & 39.672787  \\ \hline
-bret harte         & 39.662773  \\ \hline
-daniel webster     & 39.64056   \\ \hline
-carrie turner      & 27.390652  \\ \hline
-frank w angel      & 27.081802  \\ \hline
-\end{tabular}
-\caption{Table illustrating the top 50 influential person entities in the Medium Influential Persons Category}
-\label{table:app2}
-\end{table}
 
-
-
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-\textbf{PERSON ENTITY }             & \textbf{IPI}       \\ \hline
-phil king                  & 63.11352  \\ \hline
-mr got                     & 59.606037 \\ \hline
-capt williams              & 56.45242  \\ \hline
-capt schmlttberger         & 56.45242  \\ \hline
-hun upton                  & 52.06511  \\ \hline
-capt pinckney              & 45.98572  \\ \hline
-principal mcallister       & 45.954926 \\ \hline
-aaron trow                 & 44.96826  \\ \hline
-hallen hart                & 44.317196 \\ \hline
-louis philippe             & 42.894478 \\ \hline
-caleb morton               & 41.244476 \\ \hline
-clayton cape vincent       & 41.101837 \\ \hline
-north amir                 & 40.430717 \\ \hline
-marie clavero              & 40.175583 \\ \hline
-john macdonald             & 39.553802 \\ \hline
-chauncey scott             & 39.348915 \\ \hline
-george iv                  & 38.930504 \\ \hline
-capt martens               & 37.96828  \\ \hline
-charley grant              & 37.96828  \\ \hline
-stewart smith              & 37.96828  \\ \hline
-fred hawkins               & 36.742905 \\ \hline
-napoleon bonaparte         & 36.597664 \\ \hline
-john howard                & 35.709515 \\ \hline
-frank i                    & 35.65943  \\ \hline
-de korn                    & 35.597664 \\ \hline
-rufus jr                   & 35.129013 \\ \hline
-john ould                  & 35.043407 \\ \hline
-mrs darner                 & 34.498833 \\ \hline
-arthur brewer              & 34.370617 \\ \hline
-john bunyan                & 33.39399  \\ \hline
-olney colne                & 32.821884 \\ \hline
-mrs talboys                & 32.52888  \\ \hline
-mr left                    & 32.48414  \\ \hline
-george green               & 32.477463 \\ \hline
-hugh allan                 & 31.599672 \\ \hline
-mr mon                     & 31.48414  \\ \hline
-hun john u kernan          & 31.138565 \\ \hline
-lia peat                   & 31.138565 \\ \hline
-vassil iii                 & 31.138565 \\ \hline
-hon nicholas k worthington & 31.138565 \\ \hline
-harland inrlslve           & 31.138565 \\ \hline
-ian hummer                 & 31.138565 \\ \hline
-julie m                    & 31.138565 \\ \hline
-ian krancltcn              & 31.138565 \\ \hline
-madame ilaucho             & 30.99971  \\ \hline
-hill junior                & 30.96995  \\ \hline
-stockton crescent          & 30.96995  \\ \hline
-tex pac                    & 30.604342 \\ \hline
-henry wolf                 & 30.469114 \\ \hline
-richard v hargett          & 30.343906 \\ \hline
 \end{tabular}
 \caption{Table showing the 50 topmost influential person entities in the Marginally Influential People Category}
 \label{table:app3}
 \end{table}
 
 
+  \newpage
+ \begin{longtable}[c]{| p{1cm} | p{16cm} |}
+ \caption{Topics ID and words obtained from the 100 Topics LDA model.\label{long}}\\
+\hline
+ Topic ID & Topic Words\\
+ \hline
+ \endfirsthead
+ 
+ \hline
+ \multicolumn{2}{|c|}{Continuation of Table \ref{long}}\\
+ \hline
+ Topic ID & Topic Words\\
+ \hline
+ \endhead
+ 
+ \hline
+ \endfoot
+ 
+ %\hline
+ %\multicolumn{2}{| c |}{End of Table}\\
+ %\hline\hline
+ %\endlastfoot
+
+0  & chinese japanese china japan war government american port united foreign states minister treaty arthur british country despatch admiral army                     \\ \hline
+1  & theatre box taught sat tonight mat open academy north marine grand extra matinee bank terms today manager time proprietor                                        \\ \hline
+2  & boat ship water crew vessel steamer island vessels capt port sea deck captain ships boats nov board american schooner                                            \\ \hline
+3  & mr committee mayor city meeting york strong col hall dr members night seventy held member yesterday tammany club office                                          \\ \hline
+4  & day place long great water time feet found good men town make people work days big miles side la                                                                 \\ \hline
+5  & round jack match fight pounds champion night rounds contest weight left club bout jackson light pound referee ring hilly                                         \\ \hline
+6  & white women color black dress picture made blue front woman silk skirt pretty green velvet pink beautiful satin fashion                                          \\ \hline
+7  & sun sunday december november york saturday monday tuesday wednesday friday daily thursday tile association printing cents publishing ann country                 \\ \hline
+8  & time law make made letter public matter state question action ha con opinion bo tin ho put order fact                                                            \\ \hline
+9  & bank money business amount hank estate company account made national check firm paid insurance yesterday property stock real banks                               \\ \hline
+10 & dr school college university prof schools students education harvard student medical armenian turkish president teacher sultan study professor columbia          \\ \hline
+11 & emperor prince french alexander czar london nov government imperial russian german lord france foreign today court russia minister von                           \\ \hline
+12 & tif fff strict iliff hip mrt hackett fat acting usmc agree minimum trtd incur client fairly found hf minuit                                                      \\ \hline
+13 & court judge justice case jury attorney trial district supreme lawyer charge counsel yesterday law mr cases prison charges defendant                              \\ \hline
+14 & kt ii mate chess game ik kit ki kk kill york play match ktr move played pk won white                                                                             \\ \hline
+15 & hut girl woman heart girls love eyes wife moment lady child mother miss clarence life voice hand word husband                                                    \\ \hline
+16 & liquor saloon goods law dry beer license wine salons drink stores excise keepers men grocer dealers sell society bottle                                          \\ \hline
+17 & yacht cup club challenge race york lord committee deed americas squadron america royal racing unravel letter english boat secretary                              \\ \hline
+18 & time great made number years fact ot part large year la form work ago bo con point interest present                                                              \\ \hline
+19 & train car railroad road company city bridge street line track station cable trolley avenue engineer passenger cars elevated men                                  \\ \hline
+20 & man ho good time told thing day dont hut young make lie bad back asked ha put men give                                                                           \\ \hline
+21 & cent week year pf total market ft net stock today central month sales short january exchange national receipts earnings                                          \\ \hline
+22 & birds bird bear deer wild gun shot killed hunter woods county shooting game hunting yards hunt hawk thee hunters                                                 \\ \hline
+23 & murphy vi marie heat vv de ih martin adolphe oconnell wheeler mcdonald franklin day fuller june casey minute blanche                                             \\ \hline
+24 & st west broadway christmas furniture york prices holiday carpets av cor goods world presents stores tub ave free machine                                         \\ \hline
+25 & clark damage clarke lee cab lark darby nitrate town damp pigs clarks holland steed stanley trifling isoa marks beadles                                           \\ \hline
+26 & price black silk ladies prices goods fine quality tea worth wool full regular special fancy extra yard men long                                                  \\ \hline
+27 & osborn allen failing harder jenkins erases lids oppenheim swain waterbury alms hester klos curtly acid ecb lind younker mia                                      \\ \hline
+28 & clay city bv head kentucky goodwin kitty driver lay br wilkes halo chief welter prices maud class triple jesse                                                   \\ \hline
+29 & president united today nov cleveland secretary dec washington states press chicago southern morning state service news received house collector                  \\ \hline
+30 & piano upright av monthly wanted st private brooklyn price open york broadway bargain free good rent school factory prices                                        \\ \hline
+31 & bill tax income gold states treasury united mr law government congress national currency tariff house notes bank senate direct                                   \\ \hline
+32 & canal minnie mackinnon talboys canals mcginley obrien freda condo ollrlen imre elbow ida toxic mingle pt tilde vos champlin                                      \\ \hline
+33 & company york bonds trust cent mortgage interest city bond stock wall committee railroad st coupon central street bondholders agreement                           \\ \hline
+34 & trade country american cotton cent business price state cents market coal states sugar labor population united prices free supply                                \\ \hline
+35 & hotel dinner hotels cook restaurant waiter allison money kitchen proprietor guests majestic guest table wine luncheon soup dinners lodging                       \\ \hline
+36 & church father catholic archbishop priest st holy bishop altar priests parish dr mass corrigan rector cathedral present rev service                               \\ \hline
+37 & army war men navy military company regiment officers service admiral col naval officer department gen command guard battle capt                                  \\ \hline
+38 & room rooms st furnished board rent av house west front private bath large city heated ht east small light                                                        \\ \hline
+39 & tn thu thin lie time ho nn anti tin nail hut und bo ns hu tu nut tint tim                                                                                        \\ \hline
+40 & ii ll la li ti uu al tl ui il tt air rt iv ra iii ft rl tut                                                                                                      \\ \hline
+41 & election party republican vote state democratic district senator elected majority candidate democrats republicans county ticket democrat congress york political \\ \hline
+42 & iii ii ill lit ll st si vi il iv ti im till ft mi li lull oil ml                                                                                                 \\ \hline
+43 & iii ii lit ill lie tin tu nail ll lu hit mi lo ti fur hut ut im nl                                                                                               \\ \hline
+44 & lu lui uu ur ilium lulu city fruit au izu ilii ul fur fluid isle loud lou lupus tu                                                                               \\ \hline
+45 & sir john canadian thompson canada macdonald montreal whist dominion toronto quebec partner ottawa charles premier halifax lead ontario donald                    \\ \hline
+46 & people american man great country men world life good english england war public power history political women spirit wo                                         \\ \hline
+47 & game team football play half line ball back yale eleven left played harvard end college field men tackle princeton                                               \\ \hline
+48 & feet line street north point minutes feel boundary easterly western avenue seconds northerly distance degrees southerly west degree fret                         \\ \hline
+49 & north fair south weather york western west wind texas states southern carolina rain city average virginia jersey northern yesterday                              \\ \hline
+50 & book author story books work cloth published volume illustrated library paper american life history york edition written read art                                \\ \hline
+51 & jan january dec annual union payable transfer declared savings bo dee tile ou thereto draw ending point monday semiannual                                        \\ \hline
+52 & lu la tu tb lo fur wa bad ut ha ou uu les tea late au lb ot ibe                                                                                                  \\ \hline
+53 & daily car york chicago sunday st train pullman parlor point dining west city foot week night company buffalo anti                                                \\ \hline
+54 & martin taylor wolf lena wallet pp consul andrew hollman jacobus brayman softly schlosser martins towel pile llrauman forgot trauma                               \\ \hline
+55 & inches white coral jump ice state black pitch skates vault bar poly heel blade tentacles foot tooth inch stating                                                 \\ \hline
+56 & st york city corner day ave ac court ward park ht rt january water inth terms con tub fewer                                                                      \\ \hline
+57 & opera theatre play stage music week performance company night audience evening concert season mme house manager york orchestra musical                           \\ \hline
+58 & daily steamship directed letter walls close al fur letters australia direct japan china steamer la supplementary mall ship hawaii                                \\ \hline
+59 & funeral dec clock late year residence st church kelly nov services interest york saturday friday attend cemetery west thursday                                   \\ \hline
+60 & york nov dec orleans london liverpool city oct antwerp si hamburg sew havana passed dee bs hull st charleston                                                    \\ \hline
+61 & dr health cure remedy physician goods blood cold medical disease liver medicine sick weak syrupy cured nervous pure cures                                        \\ \hline
+62 & street avenue yesterday police policeman station arrested night west man east court john morning found held justice detective clock                              \\ \hline
+63 & won time race ran mile furlough half lo track fourth jockey curling today favorite selling handicap lot run tim                                                  \\ \hline
+64 & time limo lime limit amid tim semi whim miami lmm mitt jv sum html tiers coon strait ime anal                                                                    \\ \hline
+65 & building feet schaefer built build run work brick bulliard buildings wall cost ives play shot walls wizard structure corner                                      \\ \hline
+66 & men killed death body man shot found murder dead dec ho night blood head revolver kill negro wound bullet                                                        \\ \hline
+67 & fish baker seely linked lake trout angel bank leather water fishing frederick frog pond creek belly shoe licked crane                                            \\ \hline
+68 & jerry ave disbursements bem natel watts mock illegal neuron checked noo elliot reserve britain loop hugo stallion llullltt ila                                   \\ \hline
+69 & money found office stolen burglar store worth post burglars diamond thieves thief robbery robbed nov open watch robbers robber                                   \\ \hline
+70 & gun inch guns armor powder feet steel plate topped pounds navy battle shell ships works mortar charge explosion carriage                                         \\ \hline
+71 & club meeting held association york league clubs men members brooklyn record national annual ii athletic season amateur bicycle race                              \\ \hline
+72 & arbor ann toledo holder north lion comptrollers tick depositary wall fractions entire entitle hundred brooklyn expense rr title appearing                        \\ \hline
+73 & mrs mr miss john william henry charles daughter george evening james sir dr society van street large present jr                                                  \\ \hline
+74 & av wife st lo john ar yrs tn si mary al prop wm west henry ano lot win jr                                                                                        \\ \hline
+75 & henry scott miller wright ogden murray finn jones june donaldson walker illicit klan whisper king jasper david bulletin bentley                                  \\ \hline
+76 & mr police witness committee capt asked captain money inspector paid told called testimony commissioner superintendent charges martin sir force                   \\ \hline
+77 & nov hats election prepare oct fain turner casino flank wyman hopper coming carrie hutton columbus contact flay jansen pastor                                     \\ \hline
+78 & horse horses class years prize show ring trotting trotter year mare shown york turf owner hands hone record br                                                   \\ \hline
+79 & john county city william james thomas smith charles brooklyn ward johnson george hoard clerk district york yesterday jersey alderman                             \\ \hline
+80 & park landscape architect driveway city harlem van work branch central kearney hoard clausen kinds attention carriage dark carriages hell                         \\ \hline
+81 & money work bet field morton lady fred trial point strong run ran dwyer good owned domino made kennel dixie                                                       \\ \hline
+82 & time night room wa house clock door morning men back left man front began ran turned started ing floor                                                           \\ \hline
+83 & mr sir smith hale hell week air gentleman russell jar ingram wrote letter aid wilson daniel webster browne friends                                               \\ \hline
+84 & dam lally attila wick older uer rival denton lofty hold weimar kramer alae hampton jintur iullnian wallklll judith tetanic                                       \\ \hline
+85 & water feet air inches iron power gas steel machine surface light weight pounds wood tube paper eye inch metal                                                    \\ \hline
+86 & year report present city made time work york department public make number system hoard plan years commission bo money                                           \\ \hline
+87 & tramp card cards hand poker pot cowboy dealer deal labia pony opened takes flush count deals busy draw xml                                                       \\ \hline
+88 & indian indians territory dog desert sheep white tribes cattle life mexico animals snake tribe dogs animal patagones live panthers                                \\ \hline
+89 & part term clear day adjourned calendar court march cases motion november iv called die count trial earl parts case                                               \\ \hline
+90 & special cigar woolsey iota earls clint cecil lax uku trees linear weal otto status mihir ossium recite rau fiona                                                 \\ \hline
+91 & ran ill tn lo ant ton ll ten al end tl fur nail tie met part nl work er                                                                                          \\ \hline
+92 & mrs mr years wife home house ago woman city died children ho husband mother time father family left year                                                         \\ \hline
+93 & xx thu guns filth xxlll kvas xvi vill xxi karp izu knox xxhlch xi xvhlch clanton iite tax lax                                                                    \\ \hline
+94 & la ot ta aa te day tea wa aad tb bat br ia au ar sad tt today ran                                                                                                \\ \hline
+95 & total ii club score night alleys tournament rolled scores game empire iso columbia national brooklyn team jersey games alley                                     \\ \hline
+96 & olcott mh iiiiii madman kkhti lilly sots lah warm kai murri billet ieiri mutual jlyn sis orin concu mell                                                         \\ \hline
+97 & work women men labor strike union strikers trade wages employees day denver factory cloak hall shop sums unions workers                                          \\ \hline
+98 & walters mount tarbell addicus orbit chips pri cartwright dillon coxe walden trudell kov lssp pencil chip villain adduct allude                                   \\ \hline
+99 & church dr pastor rev sunday churches minister congregation methods choir baptist presbyterians pulpit episcopal sermon meeting christian services service        \\ \hline
+ 
+ \end{longtable}
 
 \end{document}
