@@ -164,9 +164,8 @@ $PrintPersonNameandMaxIPI(IPIScores)$ : prints $Person$ name with its IPI in dec
 \section{Results}
 \label{influential:results}
 
-Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the 2 people gazetteers developed in Chapter~\ref{chapter:people gazetteer} using 30 Topics and 100 Topics LDA Model respectively. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
+Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the 2 people gazetteers developed in Chapter~\ref{chapter:people gazetteer} using 30 Topics and 100 Topics LDA Model respectively. The weights $w_a$, $w_b$ and $w_c$ are all set to 1 to give equal importance to each of the parameters during calculation of DI and IPI. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
 It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons.
-Each of the metrics used in calculation of DI and IPI is given equal weight and affects the scores in a different manner.  
 Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence.
 
 
@@ -248,7 +247,7 @@ Highly Influential Category- This category as defined in Section~\ref{ner:result
 
 \item
 Medium Influential Category- The top 10 influential entities from Tables ~\ref{table:30t} and ~\ref{table:100t} contain the most number of person entities from this person category. The person entity``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include `` mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
-Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons but suffer from the problem of coreferred person names and named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
+Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons but suffer from the problem of co-referred person names and named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
  
 \item
 Marginally Influential Category- Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
@@ -261,11 +260,11 @@ Several person entities with low occurrences in news articles like ``aaron trow"
 \subsection{Evaluation}
 
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
-To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 detected from the people gazetteer with 30 Topics LDA Model..
+To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 detected from the people gazetteer with 30 Topics LDA Model.
 
-Among the top 30, 16 of the person entities were found to be influential and popular in the 19th century across topic categories like theatre, politics, shipping, etc.
+Among the top 30, 16 of the person entities were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc.
  Most of the false positives although influential in other respects but are not  influential person entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
- False positives are obtained for person entities  such as ``Mr Got" which is not a person entity at all and for entities such as ``Ann Arbor" and ``Van Cortlandt" which are in fact locations but got recognized as highly influential person entities.
+ False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are in fact locations but got recognized as highly influential person entities.
  
  The ranked list of the top 30 influential persons with their IPI from List L1 can be seen in the Appendix (Table ~\ref{table:app1}) where evaluation result for each person entity is also presented.
 
@@ -279,8 +278,7 @@ Among the top 30, 16 of the person entities were found to be influential and pop
 
 \begin{description}
 \item[$\bullet$]\noindent
-We used a linear combination of each of the parameters in calculation of DI and IPI and assigned equal values to the weights associated with each of them by not favoring any specific parameter. This is evident from the 
-The parameters defined are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined to do so. 
+We used a linear combination of each of the parameters in calculation of DI and IPI and assigned equal values to the weights associated with each of them by not favoring any specific parameter. This is evident from the results which do not consistently favor any specific parameter. The parameters defined are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined to do so. 
 
 \item[$\bullet$]\noindent
 The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of topmost influential people and obtaining the complete list of ranked influential people based on the learned parameters.
@@ -289,9 +287,9 @@ The parameters for calculation of DI and IPI can also be learned by performing r
 The NDL(Normalized Document Length) parameter defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person entity's document list or total number of tokens in the complete dataset which can be experimented with according to the dataset.
 
 \item[$\bullet$]\noindent
-The topmost influential people contain several false positives also which occur not due to the influence measures defined but due to other factors discussed in Section ~\ref{gaz:discussion}. Several location and organization names have been misrecognized after performing Spelling correction and PNER for influential entities like ``Van Cortlandt", ``Ann Arbor" , ``Sandy Hook" ,etc.  There is also the problem of resolution of person name coreferences in cases where persons like ``Mrs. Martins" , ``Mr. Smith", etc. have been recognized as influential.  
+The topmost influential people contain several false positives also which occur not due to the influence measures defined but due to other factors discussed in Section ~\ref{gaz:discussion}. Several location and organization names have been misrecognized as person entities after performing Spelling correction and PNER resulting in false detection of some highly influential entities like ``van cortlandt", ``ann arbor" , ``sandy hook", etc.  There is also the problem of resolution of person name co-references in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
 
 \item[$\bullet$] \noindent
-The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people from the two different LDA Topic models we chose. 
+The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA Topic model settings used. 
 
 \end{description}

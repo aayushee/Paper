@@ -1,10 +1,10 @@
-\chapter{PEOPLE GAZETTEER}
+\chapter{Development of People Gazetteer}
 \label{chapter:people gazetteer}
 
 People Gazetteer as defined in Section~\ref{intro:rc} consists of tuples of person names along with list of documents in which they occur and their corresponding topics. It is developed as an organized structure that can facilitate the process of detection of influential persons from the dataset in an efficient and easy way. This chapter describes the 2-step process of construction of the People Gazetteer by
 a) Extraction of person names from the news articles dataset using Named Entity Recognition in  Section~\ref{ner} and
 b) Assignment of topics to news articles using LDA topic detection in  Section~\ref{topic detection}.
-Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result}.
+Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result} followed by discussion in Section~\ref{gaz:discussion}
 
 \section{Person Named Entity Recognition (PNER)}
 \label{ner}
@@ -34,10 +34,11 @@ The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is
 
 
 
-NER on a sample news article from the dataset can be seen in Figure ~\ref{figure:sample}.
- Stanford NER recognizes a person's full name as separate names by default which is rectified by combining these multi-term entities into single person entities. Person names tagged with ``PERSON" category are stored while running NER on the dataset.
-Whenever a person name occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document lists.
-The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 38426 person entities. The output obtained can be seen in Table ~\ref{table:Table1} which shows the number of person entities with the corresponding number of documents in which they occur.  
+NER on a sample news article from the dataset can be seen in Figure~\ref{figure:sample}.
+ Stanford NER recognizes a person's full name as separate names by default which is rectified by combining these multi-term entities into single person entities. For example, the person name ``John Smith" is recognized as two separate person entities which we combine to form a single multi-term person entity.
+Person names tagged with ``PERSON" category are stored while running NER on the dataset.
+Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document lists.
+The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 38426 person entities. The output obtained can be seen in Table~\ref{table:Table1} which shows the number of person entities with the corresponding number of documents in which they occur.  
 
 
 \begin{table}[h]
@@ -82,7 +83,7 @@ The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 a
 
 We divide the people entities extracted into following categories so that separate analysis can be done for each category:
 \begin{description}
- \item[$\bullet$Marginally Influential]: This category includes all person entities with occurrence in less than 4 news articles. (38066 person entities as calculated from Table 5.1)
+ \item[$\bullet$Marginally Influential]: This category includes all person entities with occurrence in less than 4 news articles. (38066 person entities as calculated from Table~\ref{table:Table1} )
 \item[$\bullet$Medium Influential]: This category includes all person entities with occurrence from 4 to 15 news articles. (344 person entities) 
 \item[$\bullet$Highly Influential] : This category includes all person entities with occurrence in 16 or more news articles. (16 person entities)
 \end{description}
@@ -97,7 +98,7 @@ unstructured collection of documents and can organize the collection according t
 Here, a topic refers to a set of words which describe what any document is about.
  A topic model examines the set of documents and discovers based on the statistics of the words in each, what the topics might be and what each document's balance of topics is.
 Documents are considered as a mixture of topics and each topic a probability distribution over words.
- Topic detection is the process of identifying topics in a document collection using a topic model. A simple example of topic model illustrated by \cite{blei2012probabilistic} can be seen in Figure 5.2.
+ Topic detection is the process of identifying topics in a document collection using a topic model. A simple example of topic model illustrated by \cite{blei2012probabilistic} can be seen in Figure~\ref{figure:example}.
 
 Topic detection is essential to this research in order to determine the topics of individual news articles that a person entity occurs in so that the person entity can be linked to the documents in which he/she occurs along with their respective topics.
 
@@ -105,6 +106,7 @@ Topic detection is essential to this research in order to determine the topics o
 \begin{center}
 \includegraphics[scale=0.8]{topicmodel}
 \caption{Simple topic modelling approach for a single article\cite{blei2012probabilistic}}.
+\label{figure:example}
 \end{center}
 \end{figure} 
 
@@ -173,7 +175,7 @@ The two models from topic detection are thus used with following parameters:
  \item \textbf{100 Topics LDA Model} : Number of topics = 100, Number of iterations = 500, Number of threads=4
 \end{enumerate}
 The first model takes 7.5 minutes for training while the second one takes 8.6 minutes.
-The set of 30 topics obtained through the first model are illustrated in Table ~\ref{table:topicwords} and the other model with 100 topics in Appendix Table~\ref{long}. Some of the topics words can be easily identified to belong to  the following topics: music performance, court events, elections and government and shipping.
+The set of 30 topics obtained through the first model are illustrated in Table~\ref{table:topicwords} and the other model with 100 topics in Appendix Table~\ref{long}. Some of the topics words can be easily identified to belong to  the following topics: music performance, court events, elections and government and shipping.
 
 Topic modeling gives as output, for each article in the dataset, a set of topics with their probability distribution score for the article. The topic with highest topic probability score is associated with each article in the dataset. 
 
@@ -246,7 +248,7 @@ The PNER isn't able to recognize individual entities when multiple person entiti
 For example, in an article with the original line text as: ``They gave money to Ronn, Collector. A. Augustus Healy, Speaker has been appointed..." has the OCR line text as: ``They gave money to Ronn Collector A Augustus Healy Speaker has been appointed.." leading to the recognition of ``Ronn Collector A Augustus Healy Speaker" as one single person entity.
 
 \item
-The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles For Example, the person ``John Smith" detected in two different articles might or might not be the same person) also occur in the People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics.  
+The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles. For example, the person ``John Smith" detected in two different articles might or might not be the same person) also occur in the People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics.  
 
 
 \item

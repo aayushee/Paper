@@ -73,7 +73,7 @@ Keywords: Gazetteer, Text Mining, Information Retrieval, OCR, Spelling Correctio
 \section*{Certificate}\label{section:certificate}
 \end{center}
 %\vspace{3in}
-This is to certify that the thesis titled \textbf{``Finding Influential People from Historical new repository"} submitted by \textbf{Aayushee Gupta} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her under our guidance and supervision in the Data Engineering group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
+This is to certify that the thesis titled \textbf{``Finding Influential People from Historical News Repository"} submitted by \textbf{Aayushee Gupta} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her under our guidance and supervision in the Data Engineering group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
 
 \textbf{Dr. Haimonti Dutta}\\
 %\textbf{Dr. Srikanta Bedathur}\\
@@ -110,7 +110,7 @@ are of particular interest to genealogists, historians and scholars
 for People Search.
 
 In this thesis, we design a People Gazetteer from
-the noisy OCR text of historical newspapers and identify “influential”
+the noisy OCR text of historical newspapers and identify ``influential"
 people from it. A People Gazetteer is a dictionary of personal names;
 each entry of the gazetteer is a tuple containing a person name and a
 list of articles in which his name occurs along with the corresponding
@@ -125,7 +125,7 @@ detector to assign categories to articles. To identify influential
 people across each category of People Gazetteer, we define the notion
 of an Influential Person Index (IPI) and rank based on it. 
 
-Our corpus is a sample of 14020 OCR newspaper articles (roughly two months’ data)
+Our corpus is a sample of 14020 OCR newspaper articles (roughly two months' data)
 obtained from ``The Sun" newspaper in the Chronicling America project.
 We present results on the top-K influential people obtained from our algorithm by varying its parameters and verify results using Wikipedia.
 
@@ -187,12 +187,12 @@ digitize, create, clean and process content and provide editorial or processing 
 Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work -- the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization\cite{crane2006challenge}. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project \cite{smith2002detectinga, smith2002detectingb, smith2001disambiguating}, a general system to extract dates and names from text was developed in order to detect significant events in document collections. 
 
 \cite{newman2006analyzing} use a combination of Statistical Topic Modeling and Named Entity Recognition techniques for analyzing the entities, topics trends and topics that relate entities mentioned in a news articles dataset. They also create networks based on the topic model based relationships among the entities.
-\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and coreference names for the entity.
+\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and co-reference names for the entity.
 Both these research works stress on person entities in a newspaper environment but do not focus on finding influential entities in which respect our research is different from their work.
 
 
 \section{Developing Gazetteers}
-Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organizations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource used to Ô¨Ånd occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurrence and their respective topic.
+Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organizations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource which is used to find occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurrence and their respective topic.
 
 Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
 \cite{zhang2009novel} discuss automatic generation of gazetteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
@@ -255,14 +255,15 @@ An individual OCR text article has at least one or more of the following types o
 \includegraphics[scale=0.75]{originalimage}
 \includegraphics[scale=0.80]{ocr}
 \caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
+\label{figure:1}
 \end{figure}
 
 \begin{description}
- \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure 3.1, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
- \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure 3.1, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
- \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure 3.1, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
-\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure 3.1, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
-\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure 3.1, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
+ \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
+ \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
+ \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
+\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
+\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
 \end{description} 
 
 \section{Data Statistics}
@@ -279,7 +280,7 @@ The garbled OCR text makes data preprocessing mandatory before application of an
 
 \section{Spelling Correction}
 
-Several kinds of spelling errors exist in the data as described in chapter~\ref{chapter:data description}. This chapter first provides a brief review of spelling correction algorithms that exist in literature (Section~\ref{spell:rw}); Section~\ref{spell:algo} describes the algorithm used in this research and evaluation results on the OCR dataset are presented in Section~\ref{spell:eval}.
+Several kinds of spelling errors exist in the data as described in chapter~\ref{chapter:data description}. This chapter first provides a brief review of spelling correction algorithms that exist in literature (Section~\ref{spell:rw}); Section~\ref{spell:algo} describes the spelling correction algorithm used in this research and evaluation results on the OCR dataset are presented in Section~\ref{spell:eval} followed by discussion in Section~\ref{spell:discussion}.
 
 % DOUBT: Do the following lines need to be removed?
 %The garbled OCR dataset  needs to be refined by correcting the text with the help of a human editor manually or automatic spelling corrector. Due to the huge size of dataset, human editing would be extremely time consuming and expensive making it impossible and indicating requirement of a spelling correction technique. 
@@ -314,7 +315,7 @@ Personal name spelling correction has also been studied separately including com
 \label{spell:algo}
 
 The Edit Distance algorithm based on Levenshtein distance\cite{levenshtein1966binary} has been used for spelling correction. It is an isolated word correction technique that uses dictionary based-look up method and distance between strings for matching the text and correcting it. An ``edit distance" corresponds to the minimum number of insertions, deletions, and substitutions required to transform one string into another. The algorithm corrects Non-Real Word spelling errors up to an edit distance of 2 , i.e. , it corrects words which have spelling errors that can be corrected by making at most 2 operations of insertion, deletion and substitution of letters in the word. The choice of 2 is governed by the trade off between algorithm runtime and quality of spelling correction. A bigger value improves the spelling correction accuracy but increases the runtime also while a smaller value decreases accuracy and the algorithm runtime.
-The spelling corrector has been designed as suggested by Peter Norvig \footnote{ http://norvig.com/spell-correct.html}. The algorithm requires a dictionary which is used to check if each word of the text exists in it or not. If the word already exists in the dictionary then no change is made to the word and if not, then a candidate list of words is created from the word to be corrected by inserting, substituting or deleting up to 2 letters from it.  This list of words is again checked for in the dictionary and returned as suggestions for the word to be corrected. The correction is made with the word formed from lowest edit distance and occurring with more frequency in the dictionary. This makes the edit distance algorithm dependent on the type of dictionary chosen for correction which means the dictionary must be well chosen for spelling correction of a specific document collection. The algorithm runs faster by reading the dictionary only once and keeping a data structure in memory for its word counts which can be referred to whenever a word comes up for correction.
+The spelling corrector has been designed as suggested by Peter Norvig\footnote{ http://norvig.com/spell-correct.html}. The algorithm requires a dictionary which is used to check if each word of the text exists in it or not. If the word already exists in the dictionary then no change is made to the word and if not, then a candidate list of words is created from the word to be corrected by inserting, substituting or deleting up to 2 letters from it.  This list of words is again checked for in the dictionary and returned as suggestions for the word to be corrected. The correction is made with the word formed from lowest edit distance and occurring with more frequency in the dictionary. This makes the edit distance algorithm dependent on the type of dictionary chosen for correction which means the dictionary must be well chosen for spelling correction of a specific document collection. The algorithm runs faster by reading the dictionary only once and keeping a data structure in memory for its word counts which can be referred to whenever a word comes up for correction.
 
 \subsection{Spelling Correction Algorithm Evaluation}
 
@@ -335,17 +336,17 @@ Following sections describe the evaluation parameters for estimating the perform
 $$Accuracy=  \dfrac{TP+FP} {TP+ FP + TN + FN}$$
 
 
-where 
+where, 
 
-TP=Number of True Positives,
+$TP$=Number of True Positives,
 
-TN=Number of True Negatives,
+$TN$=Number of True Negatives,
 
- FP=Number of False Positives,
+ $FP$=Number of False Positives,
 
- FN=Number of False Negatives. 
+ $FN$=Number of False Negatives. 
 
-The aim of the SCE algorithm is to make a word-to-word correspondence between the OCR corrected text and the original OCR text and to mark each token in the OCR text as a TP, FP, TN or FN. Reynaert and Martin\cite{reynaert2008all} suggest a way to define these terms by distinguishing between correct words and incorrect words in the text through the set of non-target, target and selected words and use Precision and Recall evaluation measures for measuring performance of spelling correction. 
+The aim of the SCE algorithm is to make a word-to-word correspondence between the OCR corrected text and the original OCR text and to mark each token in the OCR text as a $TP$, $FP$, $TN$ or $FN$. Reynaert and Martin\cite{reynaert2008all} suggest a way to define these terms by distinguishing between correct words and incorrect words in the text through the set of non-target, target and selected words and use Precision and Recall evaluation measures for measuring performance of spelling correction. 
 
 According to our spelling corrector, a ``true positive" is said to occur when a word from the OCR text gets corrected and the corrected spelling matches the one in original article text while a ``false positive" occurs if the corrected spelling does not match the corresponding word in the original article text. A ``true negative" occurs when a word does not get corrected by the algorithm as it is already correct and matches the correct word in the original text also. On the other hand, a ``false negative" occurs when the algorithm is unable to correct the word (there is no change in spelling of the word) and it does not match the corresponding word in the original text but should have been corrected.
 
@@ -355,23 +356,24 @@ According to our spelling corrector, a ``true positive" is said to occur when a 
 Time is also an essential parameter while measuring the performance of spelling correction. Since the dataset is quite large, it is important that the algorithm does not take too long to correct an article and needs to be parallelized in case it takes more time for correction.
 
 
-\item[$\bullet$Person Names Detection Rate]
+\item[$\bullet$Person Names Detection Rate(PNDR)]
 
 The spelling correction algorithm is evaluated on the basis of another parameter which is used to consider the special case of person entity names spelling correction, as the main goal of research is to detect these names with correct spellings.
-Person Names Detection Rate can be defined as the ratio of person names recognized through Named Entity Recognition before spelling correction process and the total number of person names recognized in the original newspaper articles.
+Person Names Detection Rate can be defined as the ratio of person names recognized through Named Entity Recognition (NER) before spelling correction process and the total number of person names recognized in the original newspaper articles.
 
-$Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after spelling correction}} {\text{ Person Names recognized in original newspaper articles}} $
+$$Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after spelling correction}} {\text{ Person Names recognized in original newspaper articles}} $$
 
 \end{description}
 
 \subsubsection{SCE (Spelling Correction Evaluation) Algorithm}
 
-The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a diagrammatic representation in Figure 4.1.
+The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a diagrammatic representation in Figure~\ref{figure:2}.
 
 \begin{figure} [!htb]
 \centering
 \includegraphics[scale=0.8]{ngram}
 \caption{Schematic diagram for alignment of spell corrected article text with original article text for a word $W_{k}$}
+\label{figure:2}
 \end{figure}
 For each token in the spell corrected text (Corrected.txt), the corresponding token  in the scanned text article along with 2 tokens before and 2 tokens after it are considered for alignment\footnote{ The choice of 2 is based on the Word Split and Join errors in the dataset. Choosing n=2 allows a window of words to be considered to make up for the alignment lost because of Word Split and Join errors.}.
 If the token being considered matches with any of these words in the scanned text article words window and its spelling has been corrected when compared to the corresponding token in raw OCR text (OCR.txt), then it is marked as a ``True Positive" which is actually rewarding the Spell corrector for making the correct spelling change. A ``False Positive" is marked if it does not match any of the words despite its spelling being corrected. If the token being considered matches any of the words in the words window but no spelling correction has been made for it, then it is marked as a ``True Negative" and if it does not match any word in the window and the spelling corrector also did not correct it, then it is marked as a ``False Negative" as the word got missed by the corrector. 
@@ -469,6 +471,7 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 \includegraphics[scale=0.4]{img3}
 \includegraphics[scale=0.75]{originalimg3}
 \caption{Scanned image of a newspaper article (left) along with its original text (right)}
+\label{figure:3}
 \end{center}
 \end{figure}
 
@@ -477,6 +480,7 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 \includegraphics[scale=0.75]{ocr3}
 \includegraphics[scale=0.75]{corrected3}
 \caption{OCR raw text (left) and Spell corrected text (right) of the article}
+\label{figure:4}
 \end{figure} 
 
 
@@ -484,7 +488,7 @@ A limitation of the SCE algorithm is that it requires all 3 versions of a newspa
 
 
 Working of the SCE algorithm can be demonstrated with the help of the following example:
-Consider 3 versions of a scanned image of a newspaper article,  the original text of the scanned image in Figure 4.2 and the raw OCR text and the corrected text (after spell correction) in Figure 4.3. As highlighted in the figures, for line 6 the line texts are:
+Consider 3 versions of a scanned image of a newspaper article,  the original text of the scanned image in Figure~\ref{figure:3} and the raw OCR text and the corrected text (after spell correction) in Figure~\ref{figure:4}. As highlighted in the figures, for line 6 the line texts are:
 
  OcrLine= \textit{by tltn rejmrt of th cepert aocountauts who}
 
@@ -492,9 +496,9 @@ CorrectedLine= \textit{by than report of the expert accountants who}
 
 OriginalLine= \textit{by the report of the expert accountants who} 
 
-Here, for each token of CorrectedLine, we find its index and call the MatchWordGrams function accordingly. For the first token 'by' at index i=0 in CorrectedLine, we consider the word window to be "by the report" (index j=0 to 2) in OriginalLine by matching iteratively with each token to see if there is a match and also if there has been a spelling correction by comparing with the corresponding token in OcrLine. Here, no change was made to the spelling of 'by' and it matches with a word in words window, so it is marked as a FN. For the second token 'than' at index i=1, we consider the word window to be "by the report of" (index j=0 to 3) for which there is no match in the window but there has been a spelling correction from 'tltn' to 'than', which implies the correction was wrong and the token is marked as a FP. For the third token 'report' at index i=2, we consider the window as "by the report of the" (index j=0 to 4) in Original Line and find that there is a match in the word window and there has been a spelling correction too from 'rejmrt' to 'report' which makes this token a TP. Similarly, rest of the tokens get marked for each line in the Corrected.txt. 
+Here, for each token of CorrectedLine, we find its index and call the MatchWordGrams function accordingly. For the first token `by' at index i=0 in CorrectedLine, we consider the word window to be ``by the report" (index j=0 to 2) in OriginalLine by matching iteratively with each token to see if there is a match and also if there has been a spelling correction by comparing with the corresponding token in OcrLine. Here, no change was made to the spelling of 'by' and it matches with a word in words window, so it is marked as a FN. For the second token `than' at index i=1, we consider the word window to be ``by the report of" (index j=0 to 3) for which there is no match in the window but there has been a spelling correction from `tltn' to `than', which implies the correction was wrong and the token is marked as a $FP$. For the third token 'report' at index i=2, we consider the window as ``by the report of the" (index j=0 to 4) in Original Line and find that there is a match in the word window and there has been a spelling correction too from `rejmrt' to `report' which makes this token a $TP$. Similarly, rest of the tokens get marked for each line in the Corrected.txt. 
 
-Another example can be considered from Line 10 in Figure 4.2 and Figure 4.3 where the number of tokens is different in CorrectedLine and OriginalLine. In such a case, direct alignment between tokens is not possible because of which the words window becomes useful. Here, when the last token 'Richmond' of CorrectedLine is considered at index i=3, the corresponding words window becomes "Jury now sitting at Richmond" (index j=1 to 5) for which there is a match in the words windows and corresponding spelling has also been changed from 'tilchmond' to 'Richmond' which makes it a TP. Had the word window not been considered, the corresponding token at index j=3 in OriginalLine would have been chosen as 'sitting' which would have resulted in a FP. 
+Another example can be considered from Line 10 in Figure~\ref{figure:3} and Figure~\ref{figure:4} where the number of tokens is different in CorrectedLine and OriginalLine. In such a case, direct alignment between tokens is not possible because of which the words window becomes useful. Here, when the last token `Richmond' of CorrectedLine is considered at index i=3, the corresponding words window becomes ``Jury now sitting at Richmond" (index j=1 to 5) for which there is a match in the words windows and corresponding spelling has also been changed from `tilchmond' to `Richmond' which makes it a $TP$. Had the word window not been considered, the corresponding token at index j=3 in OriginalLine would have been chosen as `sitting' which would have resulted in a $FP$. 
    
 
 
@@ -515,7 +519,7 @@ The spelling correction algorithm is used to correct all the 14020 OCR raw text 
 \noindent \textbf{Methods: }
 In order to answer \textbf{Question 1} we do the following: 
 
-3 versions of each newspaper article are required: OCR raw text, spelling corrector corrected text and the original scanned newspaper article text. Since the dataset is quite large (14020) and it is not possible to get original text of each of these newspaper images, a smaller number of articles are chosen to study the results of spelling correction. 50 scanned newspaper images are taken and an online OCR \footnote{www.onlineocr.net} is run on them followed by some manual correction to get the original articles text. Accuracy can then be calculated for all 3 versions of 50 newspaper articles using the SCE algorithm by marking each word in the OCR text article as a TP, FP, TN or FN. 
+3 versions of each newspaper article are required: OCR raw text, spelling corrector corrected text and the original scanned newspaper article text. Since the dataset is quite large (14020) and it is not possible to get original text of each of these newspaper images, a smaller number of articles are chosen to study the results of spelling correction. 50 scanned newspaper images are taken and an online OCR \footnote{www.onlineocr.net} is run on them followed by some manual correction to get the original articles text. Accuracy can then be calculated for all 3 versions of 50 newspaper articles using the SCE algorithm by marking each word in the OCR text article as a $TP$, $FP$, $TN$ or $FN$. 
 
 In order to answer \textbf{Question 2} we do the following: 
 %% AAYUSHEE CHECK--DONE
@@ -551,7 +555,8 @@ These statistics indicate that spelling correction using an extended dictionary 
 We believe a better accuracy of spell correction can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
 \item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
 \item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a dictionary with historical terms,places and people names can certainly perform spelling correction better and improve the accuracy.
-\item[$\bullet$] \noindent Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
+\item[$\bullet$] \noindent 
+Our spell corrector corrects Non-Real Word errors by focusing on isolated words in the dataset. Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
 \end{description}
 
 
@@ -566,16 +571,17 @@ We believe a better accuracy of spell correction can be obtained by correcting t
 \chapter{Conclusion}
 \label{chapter:conclusion}
 
-The problem of finding influential people from historical OCR news repository has been studied in this research. Being a novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results we obtained.
- We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the top influential people across categories of the people gazetteer.
+The problem of finding influential people from historical OCR news repository has been studied in this research. In studying this novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results obtained.
+ We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the ranked list of influential people.
   
 
-Most of the problems faced during this research surfaced due to the noise in OCR dataset used. The problem of finding influential persons from newspaper archives opens up a wide range of research problems as illustrated from the discussion sections ~\ref{gaz:discussion} ~\ref{influential:discussion} in each component of our research framework. 
-We believe each of the components of our research framework, namely Spelling correction on OCR news articles, Person Named Entity Recognition, Topic Detection and parameters definition to measure and rank influence scores of persons can be researched further in order to obtain much more beneficial results from influential people detection.
+Most of the problems faced during this research surfaced due to the noise in OCR dataset used. The problem of finding influential persons from newspaper archives opens up a wide range of research problems as illustrated from the discussion sections~\ref{gaz:discussion} and ~\ref{influential:discussion}. 
+We believe each of the components of our research framework, namely Spelling correction on OCR news articles, Person Named Entity Recognition, Topic Detection and parameters definition to measure and rank influence scores of persons can be researched further in order to obtain more beneficial results from influential people detection.
+
 Spelling correction algorithms with improved accuracy can certainly improve the influential persons ranking as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
 Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
 
-We didn't consider Named Entity Disambiguation into account during detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
+We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
 
  The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
   
@@ -607,14 +613,14 @@ john macdonald   & 2.854389 & yes                &                              
 john martin      & 2.827969 & yes                &                                      \\ \hline
 aaron trow       & 2.814171 & yes                & fictional character                  \\ \hline
 mrs oakes        & 2.791536 & no                 & false positive                       \\ \hline
-buenos ayres     & 2.767399 & no                 & location                             \\ \hline
+buenos ayres     & 2.767399 & no                 & location name                            \\ \hline
 alexander iii    & 2.742552 & yes                &                                      \\ \hline
 mr got           & 2.736363 & no                 & false positive                       \\ \hline
 mrs martin       & 2.719383 & no                 & false positive                       \\ \hline
-ann arbor        & 2.681657 & no                 & location                             \\ \hline
+ann arbor        & 2.681657 & no                 & location name                            \\ \hline
 caleb morton     & 2.63808  & no                 & fictional character                  \\ \hline
 anthony comstock & 2.633381 & yes                &                                      \\ \hline
-toledo ann arbor & 2.610495 & no                 & location                             \\ \hline
+toledo ann arbor & 2.610495 & no                 & location name                            \\ \hline
 john thompson    & 2.609841 & yes                &                                      \\ \hline
 nat lead         & 2.594452 & no                 & false positive                       \\ \hline
 ed kearney       & 2.543152 & yes                & name of horse                        \\ \hline
@@ -624,7 +630,7 @@ mrs talboys      & 2.522888 & yes                & fictional character          
 jim hooker       & 2.500915 & yes                & false positive                       \\ \hline
 marie clavero    & 2.497384 & no                 & false positive                       \\ \hline
 father watson    & 2.450817 & no                 & false positive                       \\ \hline
-james mccutcheon & 2.431448 & no                 &                       \\ \hline
+james mccutcheon & 2.431448 & no                 & part of an organization name                      \\ \hline
 hugh allan       & 2.4287   & yes                &                                      \\ \hline
 william i        & 2.4222   & yes                &                                      \\ \hline
 marie antoinette & 2.40731  & yes                &                                      \\ \hline
