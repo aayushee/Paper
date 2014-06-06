@@ -76,22 +76,46 @@ Keywords: Gazetteer, Text Mining, Information Retrieval, OCR, Spelling Correctio
 This is to certify that the thesis titled \textbf{``Finding Influential People from Historical new repository"} submitted by \textbf{Aayushee Gupta} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her under our guidance and supervision in the Data Engineering group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
 
 \textbf{Dr. Haimonti Dutta}\\
-\textbf{Dr. Srikanta Bedathur}\\
-\textbf{Dr. Lipika Dey}\\
+%\textbf{Dr. Srikanta Bedathur}\\
+%\textbf{Dr. Lipika Dey}\\
 \textbf{Indraprastha Institute of Information Technology, New Delhi}
 %\doublespacing
 
 \begin{abstract}
 
-  Historical newspaper archives provide a wealth of information. They
+%  Historical newspaper archives provide a wealth of information. They
+%are of particular interest to genealogists, historians and scholars
+%for People Search.
+%In this thesis, we design a People Gazetteer from
+%the noisy OCR text of historical newspapers and identify “influential”
+%people from it. A People Gazetteer is a dictionary of personal names;
+%each entry of the gazetteer is a tuple containing a person name and a
+%list of articles in which his name occurs along with the corresponding
+%topic associated each article.
+%To build the People Gazetteer, we first spell correct the noisy text
+%using an edit distance based algorithm. A novel N-gram based
+%evaluation algorithm is designed for measuring the performance of the
+%spell corrector. Next, a Named Entity Recognizer is run on the text of
+%each article to identify person entities and an LDA-based topic
+%detector to assign categories to articles. To identify influential
+%people across each category of People Gazetteer, we define the notion
+%of an Influential Person Index (IPI) and rank based on it. We study the
+%topmost influential people and present many important insights from the 
+%corpus based on the parameters defined and verification done from Wikipedia.
+%Our corpus is a sample of 14020 OCR newspaper articles (roughly two months’ data)
+%obtained from “The Sun” newspaper in the Chronicling America project.
+
+ Historical newspaper archives provide a wealth of information. They
 are of particular interest to genealogists, historians and scholars
 for People Search.
+
 In this thesis, we design a People Gazetteer from
-the noisy OCR text of historical newspapers and identify “influential”
+the noisy OCR text of historical newspapers and identify �influential�
 people from it. A People Gazetteer is a dictionary of personal names;
 each entry of the gazetteer is a tuple containing a person name and a
 list of articles in which his name occurs along with the corresponding
-topic associated each article.
+topic associated with each article.
+
 To build the People Gazetteer, we first spell correct the noisy text
 using an edit distance based algorithm. A novel N-gram based
 evaluation algorithm is designed for measuring the performance of the
@@ -99,11 +123,11 @@ spell corrector. Next, a Named Entity Recognizer is run on the text of
 each article to identify person entities and an LDA-based topic
 detector to assign categories to articles. To identify influential
 people across each category of People Gazetteer, we define the notion
-of an Influential Person Index (IPI) and rank based on it. We study the
-topmost influential people and present many important insights from the 
-corpus based on the parameters defined and verification done from Wikipedia.
-Our corpus is a sample of 14020 OCR newspaper articles (roughly two months’ data)
-obtained from “The Sun” newspaper in the Chronicling America project.
+of an Influential Person Index (IPI) and rank based on it. 
+
+Our corpus is a sample of 14020 OCR newspaper articles (roughly two months� data)
+obtained from ``The Sun" newspaper in the Chronicling America project.
+We present results on the top-K influential people obtained from our algorithm by varying its parameters and verify results using Wikipedia.
 
 \end{abstract}
 
@@ -613,15 +637,15 @@ jacob schaefer   & 2.392976 & yes                &                              
 \end{table}
 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
+%\begin{table}[h]
+%\centering
+%\begin{tabular}{|l|l|}
+%\hline
 
-\end{tabular}
-\caption{Table showing the 50 topmost influential person entities in the Marginally Influential People Category}
-\label{table:app3}
-\end{table}
+%\end{tabular}
+%\caption{Table showing the 50 topmost influential person entities in the Marginally Influential People Category}
+%\label{table:app3}
+%\end{table}
 
 
   \newpage
