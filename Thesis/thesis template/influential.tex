@@ -28,30 +28,31 @@ Following subsections describe the parameters for calculation of DI and IPI of a
 
 \subsection{Document Index (DI)}
 
-DI refers to the Document Index of a document in a person's document list in the people gazetteer. It is used to measure the influence score of each document in which a person entity occurs and how this score in turn affects a person's influence score in the news articles. Following parameters are considered for the calculation of this index:
+The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. Following parameters are considered for the calculation of this index:
 
-\begin{description}
-\item[$\bullet$Normalized Document Length (NDL)]
-Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the maximum news article length out of 14020 articles in the dataset to get Normalized Document Length as follows: 
+\begin{enumerate}
+\item Normalized Document Length (NDL)
+Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the maximum news article length (of 14020 articles in the dataset) to get Normalized Document Length as follows: 
 
-$Normalized Document Length (NDL)=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$
+$\text{Normalized Document Length} (NDL)=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$
 
 
 %\item[$\bullet$IDF]
 %IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurrence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
 
-\item[$\bullet$Normalized Term Frequency(NTF)]
-Term Frequency (TF) accounts for the number of occurrences of a person entity's name in a news article. The TF of the person name affects a document's influence score as a higher number of occurrences in the document make the document more important for the person entity. TF is further normalized and calculated as follows:
+\item Normalized Term Frequency (NTF)
+Term Frequency (TF) accounts for the number of occurrences of a person's name in a news article. The TF of the person name affects a document's influence score as a higher number of occurrences in the document makes it more important. TF is further normalized and calculated as follows:
 
-$Normalized Term Frequency (NTF)=	1	+\log	$(TF of person entity in current article)
+$\text{Normalized Term Frequency} (NTF)=	1	+\log	$(TF of person entity in current article)
 
 
-\item[$\bullet$Number of similar articles(NSIM)]
-This parameter is used in calculation of the DI by finding articles of similar topic in the document list of the person entity for which IPI is to be calculated. 
-The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
-documents. Two documents are considered similar to the extent that the same topics appear in those documents. For a document $d$ whose DI is to be calculated, we consider 
+\item Number of similar articles (NSIM)
+This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
+%The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
+%documents.
+Two documents are considered similar if they belong to the same topics. For a document $d$ whose DI is to be calculated, we consider 
 
-SIM= Number of articles with the same topic as that of $d$ in the document list of person entity for which IPI is to be calculated.
+SIM= Number of articles with the same topic as that of $d$ in the document list of person entity.
 
 This measure is normalized by dividing it with the number of total articles in the document list of the person entity as follows:
 
@@ -60,10 +61,10 @@ $NSIM= \dfrac{\text{SIM}} {\text{Total number of articles in the person's docume
 \end{center}
 NSIM can be said to be equivalent to the proportion of topic similar articles that any document $d$ has.
 
-This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents also of the same topic in the person's list. 
+This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents of the same topic in the person's list. 
 
 
-\end{description}
+\end{enumerate}
 
 DI for each document is a function of the above mentioned parameters and is calculated using the following formula :
 \begin{center}
@@ -75,7 +76,7 @@ where, $w_a$,$ w_b$ and $w_c$ are the weights associated with each of the parame
 
 DI is actually a heuristic measure of these three parameters where each of the parameters can be weighted as per dataset characteristics and user requirements. For example, a higher value to $w_a$ and lower to $w_b$ and $w_c$ indicates documents with longer lengths are considered more important for influencing a person's IPI. On the other hand, a higher value to $w_b$ and lower to $w_a$ and $w_c$ indicates a document with larger proportion of topic similar articles influences the person's IPI more suggesting assignment of high influence score to a person entity occurring repeatedly in a specific news topic.  
 
-\subsection{Influential Person Index(IPI)}
+\subsection{Influential Person Index (IPI)}
 
 Once DI is calculated for each document in a person's list, an index is calculated for the person entity in order to measure its influence in the news dataset and calculate its influential score. The ``Influential Person Index" defined for this purpose is calculated as follows:
 		
@@ -84,7 +85,7 @@ $IPI= max DI(d_1, d_2, ...,d_n)+ UniqT$
 \end{center}
 
 where , $max DI(d_1, d_2, ...,d_n)$ = Maximum Document Index of a document $d_i$ in a person entity's list of  $n$ articles, and
-\begin{center} $UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics}}$\end{center} 
+\begin{center} $UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$\end{center} 
 
 The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
 
@@ -92,7 +93,7 @@ Ranking is done across each person category of the people gazetteer to obtain to
   
 \subsection{Procedure for finding influential persons}
 
-Algorithm ~\ref{algorithm:3} depicts the complete procedure for measuring influence and ranking of influential persons from all categories of the people gazetteer. It starts with calculation of DI for each news article in a person's document list by calculating the required parameters of NDL, NSIM and NTF which are assigned 0 values initially. The respective weights $w_a$,$w_b$,$w_c$ are taken as inputs and multiplied with each parameter to get final DI score which is added to the list of DI scores $DIScoreList$. The list is sorted to find the maximum DI value among all news articles in the person's document list. The maximum DI score is then added to the UniqT parameter to get the final IPI for each person entity which are again stored and sorted to obtain a ranked list of influential person entities.  
+Algorithm ~\ref{algorithm:3} depicts the procedure for measuring influence and ranking of influential people from the gazetteer. It starts with calculation of DI for each news article in a person's document list by calculating the required parameters of NDL, NSIM and NTF which are assigned 0 values initially. The respective weights $w_a$,$w_b$,$w_c$ are taken as inputs and multiplied with each parameter to get final DI score which is added to the list of DI scores $DIScoreList$. The list is sorted to find the maximum DI value among all news articles in the person's document list. The maximum DI score is then added to the UniqT parameter to get the final IPI for each person entity which are again stored and sorted to obtain a ranked list of influential person entities.  
 
 \begin{algorithm}[!htb]
 \caption{Procedure to calculate IPI and rank person entities based on it}
@@ -134,55 +135,104 @@ $NDL=GetDocLength(doc)/GetMaxDocLength()$;
 
 \EndFunction
 
-\SetSideCommentLeft{$GetPersonTF(doc)$: calculates TF of person entity in document $doc$.
+%\SetSideCommentLeft{$GetPersonTF(doc)$: calculates TF of person entity in document $doc$.
 
-$GetDocLength(doc)$: calculates number of tokens in $doc$.
+%$GetDocLength(doc)$: calculates number of tokens in $doc$.
 
- $GetMaxDocLength()$ : calculates maximum number of tokens in any document.
+% $GetMaxDocLength()$ : calculates maximum number of tokens in any document.
 
-$GetTopicSimilarArticles(doc,DocList)$: calculates normalized number of topic 
+%$GetTopicSimilarArticles(doc,DocList)$: calculates normalized number of topic 
 
-similar articles for $doc$ in the $DocList$.
+%similar articles for $doc$ in the $DocList$.
 
-$Sort(DIScoreList)$ :sorts the $DIScoreList$.
+%$Sort(DIScoreList)$ :sorts the $DIScoreList$.
 
-$Max(DIScoreList)$ : finds the maximum score from $DIScoreList$.
+%$Max(DIScoreList)$ : finds the maximum score from $DIScoreList$.
 
-$GetUniqueTopics(Person,TopicList)$ : calculates normalized unique topics for
+%$GetUniqueTopics(Person,TopicList)$ : calculates normalized unique topics for
 
- $Person$ in its $TopicList$. 
+% $Person$ in its $TopicList$. 
 
-$Sort(IPIScores)$: sorts the $IPIScores$ by IPI values.
+%$Sort(IPIScores)$: sorts the $IPIScores$ by IPI values.
 
-$PrintPersonNameandMaxIPI(IPIScores)$ : prints $Person$ name with its IPI in decreasing order of IPI value. }	
+%$PrintPersonNameandMaxIPI(IPIScores)$ : prints $Person$ name with its IPI in decreasing order of IPI value. }	
 
 \end{algorithmic}
 \end{algorithm}
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|} \hline
+Function Name & Description \\ \hline
+GetPersonTF(doc) & Calculates TF of the person entity \\
+ & in document $doc$ \\ \hline
+GetDocLength(doc) & Calculates number of tokens in $doc$. \\ \hline
+GetMaxDocLength() & Calculates maximum number of \\
+& tokens in any document.\\ \hline
+GetTopicSimilarArticles(doc,DocList) &  Calculates normalized number \\
+& of topic similar articles for $doc$ in the $DocList$. \\ \hline
+Sort(DIScoreList) & Sorts the $DIScoreList$ \\ \hline
+Max(DIScoreList) & Finds the maximum score from $DIScoreList$. \\ \hline
+GetUniqueTopics(Person,TopicList) & Calculates normalized unique \\
+& topics for $Person$ in its $TopicList$. \\ \hline
+Sort(IPIScores) & Sorts the $IPIScores$ by IPI values. \\ \hline
+PrintPersonNameandMaxIPI(IPIScores) & Prints $Person$ name with its \\
+& IPI in decreasing order of IPI value. \\ \hline
+\end{tabular}
+\end{center}
+\caption{Description of the functions used in Algorithm~\ref{algorithm:3}}
+\label{default}
+\end{table}%
 
-\newpage
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.75]{IPIChart}
+\end{center}
+%\includegraphics[scale=0.80]{ocr}
+\caption{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.}
+\label{figure:IPI}
+\end{figure}
+
+
+%\newpage
 \section{Results}
 \label{influential:results}
-
-Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the 2 people gazetteers developed in Chapter~\ref{chapter:people gazetteer} using 30 Topics and 100 Topics LDA Model respectively. The weights $w_a$, $w_b$ and $w_c$ are all set to 1 to give equal importance to each of the parameters during calculation of DI and IPI. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
+Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the people gazetteer (developed in Chapter~\ref{chapter:people gazetteer}) using 30 Topics and 100 Topics LDA Model respectively. The weights $w_a$, $w_b$ and $w_c$ are all set to 1 to give equal importance to each of the parameters during calculation of DI and IPI. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
 It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons.
-Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence.
+Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence. Figure~\ref{figure:IPI} shows the average IPI from the two ranked lists -- it appears that the average IPI for highly influential people is more susceptible to changes in number of topics.
 
+
+
+%\begin{table}
+%\begin{center}
+
+%    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+%    \hline
+%    \textbf{Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	&	\textbf{Average IPI(List 1)} & \textbf{Average IPI(List 2)}\\  \hline
+%Marginal & 38066 & 1.04 & 2119.6 & 1.07 & 1.16	& 1.14	\\ \hline
+%Medium & 344 & 5.75 & 1976.3 & 6.68 & 1.78 & 1.66	 \\ \hline
+%High & 16 & 22.8 & 2971.5 & 29.870	& 2.21 &	2.05	 \\	\hline 
+%  \end{tabular}
+%  \end{center}
+%    \caption {Table illustrating average statistics for each Person Category of People Gazetteer across 2 Topic Models}
+%\label{table:stats}
+%\end{table}
 
 \begin{table}
 \begin{center}
 
-    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
     \hline
-    \textbf{Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	&	\textbf{Average IPI(List 1)} & \textbf{Average IPI(List 2)}\\  \hline
-Marginal & 38066 & 1.04 & 2119.6 & 1.07 & 1.16	& 1.14	\\ \hline
-Medium & 344 & 5.75 & 1976.3 & 6.68 & 1.78 & 1.66	 \\ \hline
-High & 16 & 22.8 & 2971.5 & 29.870	& 2.21 &	2.05	 \\	\hline 
+    \textbf{Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	\\  \hline
+Marginal & 38066 & 1.04 & 2119.6 & 1.07 	\\ \hline
+Medium & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
+High & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
   \end{tabular}
   \end{center}
     \caption {Table illustrating average statistics for each Person Category of People Gazetteer across 2 Topic Models}
 \label{table:stats}
 \end{table}
+
 
 The following sections present comparison between the ranked influential person lists L1 and L2, some case studies and evaluation results:
  
