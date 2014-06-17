@@ -85,13 +85,13 @@ Divided into subproblems:
 \frametitle{Related Work}
 \begin{itemize}
 \item
-GATE gazetteers define gazetteers as set of lists containing names of entities such as cities, organizations, days of week, etc
+GATE gazetteers\footnote{http://gate.ac.uk/sale/tao/splitch13.html} define gazetteers as set of lists containing names of entities such as cities, organizations, days of week, etc
 \item
-Gazetteers have been used as a processing resource to find occurrence of entity names in text (Example: Named Entity Recognition)
+Gazetteers have been used as a processing resource to find occurrence of entity names in text\cite{carlson2009learning}\cite{zhang2009novel} (Example: Named Entity Recognition)
 \item
-Influential people identification has been done mostly in the field of social networking, marketing and diffusion research
+Influential people identification has been done mostly in the field of social networking, marketing and diffusion research\cite{cha2010measuring}\cite{agarwal2008identifying}
 \item
- Number of votes, tweets, comments, followers, etc are common parameters used for defining influence but no applicable to the newspaper environment 
+ Number of votes, tweets, comments, followers, etc are common parameters used for defining influence but not applicable to the newspaper environment 
 \end{itemize} 
 
 \end{frame}
@@ -134,18 +134,28 @@ Influential people identification has been done mostly in the field of social ne
 \item
 Required to deal with OCR errors in the news articles
 \item
-Edit distance algorithm used for spelling correction of non-real and non-word OCR errors\\ \vspace{0.2in}
-Based on levenshtein distance and can correct errors due to substitution, insertion and deletion of at most 2 letters in a word 
+Edit distance algorithm used for spelling correction of non-real and non-word OCR errors using precompiled dictionary for look-up
+\item
+Person name correction is improved by enhancing dictionary with people names by running Stanford NER-CRF parser on subsets of the ClueWeb12 dataset available as a part of TREC 2013 Crowdsourcing track
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Spelling Correction Algorithm}
+
 \begin{itemize}
-\item ``Edit distance" corresponds to the minimum number of insertion, deletion and substitution required to transform one string into another
-\item Precompiled dictionary is used to search for candidate list of words within edit distance 2 from the word to be corrected
- \item Word correction is done by replacement with the highest frequency word and lowest edit distance among the candidate list of words
-\item Person name correction is improved by enhancing dictionary with people names by running Stanford NER-CRF parser on subsets of the ClueWeb12 dataset available as a part of TREC 2013 Crowdsourcing track
+\item ``Edit distance" corresponds to the minimum number of insertion, deletion and substitution required to transform one string into another\\
+\begin{center}
+\includegraphics[scale=0.35]{images/edit2.png}
+\end{center}
+\item String Edit distance algorithm for spelling correction:
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{images/editdistance.png}
+\end{center}
+\end{figure}
+%\item Precompiled dictionary is used to search for candidate list of words within edit distance 2 from the word to be corrected
+%\item Word correction is done by replacement with the highest frequency word and lowest edit distance among the candidate list of words
 
 \end{itemize}
 \end{frame}
@@ -187,11 +197,31 @@ $$PNDR=\dfrac{ \text{Person Names recognized before/after spelling correction}} 
 \frametitle{Spelling Correction Evaluation (SCE) Algorithm}
 \begin{itemize}
 \item Word by word correspondence between corrected and original dataset not possible because of Word Split and Join errors in OCR dataset
-\item SCE algorithm performs automatic evaluation of word by word post  spelling correction on OCR dataset 
-\item Algorithm uses an n-gram words approach by considering a window of k words before and after each word in the original text for each word in the corrected text
-\item Each word in the corrected text is marked as a True Positive, True Negative, False Positive, False Negative based on whether the spelling had been corrected and if a match is found in the k words window of the original text
+\item SCE algorithm performs word by word automatic evaluation on post spell corrected OCR dataset using an n-word grams approach
+%\item Algorithm uses an n-word grams approach by considering a window of k words before and after each word in the original text for each word in the corrected text
+%\item Each word in the corrected text is marked as a True Positive, True Negative, False Positive, False Negative based on whether the spelling had been corrected and if a match is found in the k words window of the original text
 \end{itemize}
+
+\begin{columns}
+\column{0.7\textwidth}
+%\begin{figure} [!htb]
+\centering
+\includegraphics[scale=0.5]{images/ngram}
+%\end{figure}
+
+\column{0.3\textwidth}
+%\begin{figure} 
+\centering
+\includegraphics[scale=0.5]{images/ngram2}
+%\caption{Schematic diagram for alignment of spell corrected article text with original article text for a word $W_{k}$}
+%\end{figure}
+
+\end{columns}
+\begin{figure}
+\caption{Schematic diagram for alignment of spell corrected article text with original article text for a word $W_{k}$}
+\end{figure}
 \end{frame}
+
 
 
 \begin{frame}
@@ -257,18 +287,43 @@ Richmond  &  sitting at Richmond & TP \\ \hline
 \end{table}
 \end{frame}
 
+\begin{frame}
+\frametitle{Spelling Correction Evaluation Results}
+\begin{itemize}
+\item
+SCE algorithm tested on 50 spell corrected articles using 3 versions of each article: Original text, Raw OCR text and Spell Corrected text
+\item
+Accuracy = $72.7 \%$
+\item
+Time taken for spell correction = 9 seconds on average per article
+\item
+PNDR from Raw OCR = 72.5\%
+\item
+PNDR from spell corrected text = 63.3\%
+\item
+PNDR from spell corrected text with enhanced people names dictionary = 82.5\%
+\item
+Results indicate less accuracy due to large number of incorrected OCR errors and usefulness of person names dictionary for spell correction and person names detection 
+\end{itemize}
+\end{frame}
+
 
 \subsection{Development of People Gazetteer}
 \tableofcontents[currentsection,currentsubsection]
 \begin{frame}
 \frametitle{Development of People Gazetteer}
-Two step process:
 \begin{itemize}
+\item
+People Gazetteer: an organized structure developed to ease the process of influential people identification
+\item
+Two step process:
+\begin{enumerate}
 \item
 Person Named Entity Recognition (PNER)-
  Extraction of person names from the news articles dataset using Named Entity Recognition
 \item
 Topic Detection-Assignment of topics to news articles using LDA model
+\end{enumerate}
 \end{itemize}
 \end{frame}
 
@@ -280,7 +335,7 @@ Topic Detection-Assignment of topics to news articles using LDA model
 \item
  Stanford CRF-NER used for the process of Named Entity Recognition 
 \item
-Only multi-term person entities are analyzed
+Only multi-term person entities are analyzed \\
 Example: \alert {Henry} is ignored while \alert{Henry Smith} is stored
 \item
 Inverted Index is created to link person entities with the list of news articles in which they occur
@@ -321,13 +376,62 @@ Highly Influential & more than 15 & 16 \\ \hline
 
 \begin{frame}
 \frametitle{Topic Model Evaluation}
+\begin{itemize}
+\item
+Evaluation required to decide parameters to be used for topic modeling
+\item
+Evaluation measure:	\alert{Perplexity}\\
+\begin{enumerate}
+\item 
+It indicates how surprised a trained model is when given a held out test data and calculated as follows:
+
+$$Perplexity= \exp(-\dfrac{\text{Log Likelihood of held-out test set}}{\text{Number of tokens in held-out test set}})$$
+
+\item
+It is a decreasing function of the log likelihood of the unseen documents 
+\item
+Lower the perplexity, better is the topic model
+\end{enumerate}
+\end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{People Gazetteer Sample Output}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Topic Model Evaluation Results}
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[scale=0.7]{images/gazetteer.png}
+\includegraphics[scale=0.5]{images/topicperplex2}
+\caption{Test Set Perplexity versus Number of Topics for a random $90-10$ split of the data using AD-LDA. The maximum number of words in each topic is $20$, number of iterations $500$ and the number of processors $4$ for this experiment.}
+\end{center}
+\end{figure}
+
+\begin{itemize}
+\item
+ Variability in perplexity with respect to the number of topics was found to be much greater than the variability due to the number of processors or number of iterations
+
+\item
+Two models finalized from topic detection and used for developing people gazetteer:
+\begin{enumerate}
+ \item \textbf{30 Topics LDA Model} : Number of topics = 30, Number of iterations = 500, Number of threads=4
+ \item \textbf{100 Topics LDA Model} : Number of topics = 100, Number of iterations = 500, Number of threads=4
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Output of People Gazetteer}
+\begin{itemize}
+\item
+Person Name + Document List + Document Topic =$>$ People Gazetteer
+%\item The list of articles obtained for each person entity after application of PNER and highest scoring topic assigned to each article during Topic Detection are combined to obtain People Gazetteer
+%\item Two people gazetteers are obtained for topic model settings of 30 Topics LDA Model and 100 Topics LDA Model respectively
+\end{itemize}
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.7]{images/gaz2.png}
+\caption{Snapshot of the people gazetteer using 30 Topics LDA Model where each person entity is associated with a list consisting of a text Document ID and its corresponding Topic ID.}
 \end{center}
 \end{figure}
 \end{frame}
@@ -342,7 +446,7 @@ Define Document Index (DI) to measure effect of each document on a person's infl
 \item
 Calculate Influential Person Index (IPI) for each person entity based on the maximum DI in their document list
 \item
-Rank person entities in decreasing order of IPI
+Rank person entities in the people gazetteer in decreasing order of IPI
 \end{itemize}
 \end{frame}
 
@@ -360,9 +464,9 @@ Parameters for estimating DI:
 $$\text{ NDL}=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$$
 
 \item
-\alert{Normalized Term Frequency} (NTF) : normalized number of occurrences of a person's name in a news article
+\alert{Normalized Term Frequency} (NTF) : normalized number of occurrences of a person's name in a news article\\ \vspace{0.15in}
 
-$\text{NTF}=	1	+\log	$(TF of person entity in current article)
+$\text{NTF}=	1	+\log	$(TF of person entity in current article)\\ \vspace{0.1in}
 
 \item  
 \alert{Number of similar articles} (NSIM) :  proportion of topic similar articles for a news article in a person's list
@@ -383,7 +487,7 @@ DI is a heuristic measure of these three parameters where each of the parameters
 \end{frame}
 
 \begin{frame}
-\frametitle{Calculation of IPI}
+\frametitle{Influential Person Index}
 \begin{itemize}
 \item
 An index calculated for each person entity in order to measure its influence in the news dataset and calculate its influential score
@@ -400,9 +504,82 @@ $$UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's list
 \end{frame}
 
 \section{Results}
-\begin{frame}
+\begin{frame}[allowframebreaks]
+\frametitle{Comparison Across Influential Person Lists}
+Two ranked influential person lists, namely $L_1$ and $L_2$ are obtained after calculation of IPI from each people gazetteer using 30 Topics and 100 Topics LDA Model respectively
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{IPIChart}
+\end{center}
+\caption{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topic LDA model respectively.}
+\end{figure}
 
+
+\begin{table}
+\begin{center}
+    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Person Category}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	\\  \hline
+Marginal  & 1.04 & 2119.6 & 1.07 	\\ \hline
+Medium  & 5.75 & 1976.3 & 6.68  \\ \hline
+High  & 22.8 & 2971.5 & 29.870	 \\	\hline 
+  \end{tabular}
+  \end{center}
+    \caption {Average statistics for each Person Category of People Gazetteer across 2 Topic Models}
+\end{table}
+\begin{itemize}
+\item
+Results indicate the fact that highly influential category people are more susceptible to change in number of topics
+\item
+Number of articles of occurrence for a person entity also cannot be used uniquely to determine a person as ``influential"
+\end{itemize}
 \end{frame}
+
+\begin{frame}[allowframebreaks]
+    \scalebox{0.55}{\begin{minipage}{1.8\textwidth}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
+\hline
+Person Name    & IPI  & Number of Articles & Person Category & NDL  & NTF  & NSIM & TOPIC WORDS                                                          & UniqT & Rank \\ \hline
+capt creeten   & 3.38 & 10                 & Medium          & 0.56 & 1.95 & 0.8  & mr court police judge justice case yesterday street district         & 0.06  & 1    \\ \hline
+capt hankey    & 3.02 & 6                  & Medium          & 0.68 & 1.6  & 0.66 & club game team play football half ball left college back             & 0.06  & 2    \\ \hline
+capt pinckney  & 2.93 & 3                  & Marginal        & 0.38 & 1.84 & 0.67 & man ho men night back wa room left house told bad                    & 0.03  & 3    \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
+\hline
+Person Name    & IPI  & Number of Articles & Person Category        & NDL  & NTF  & NSIM & Topic Words                                                                 & UniqT & Rank \\ \hline
+capt creeten   & 3.33 & 10                 & Medium     & 0.56 & 1.95 & 0.8  & mr police witness committee capt asked captain money inspector paid         & 0.02  & 1    \\ \hline
+mrs martin     & 3.23 & 8                  & Medium     & 0.20 & 2.38 & 0.5  & mrs mr years wife home house ago woman city died                            & 0.02  & 2    \\ \hline
+alexander iii  & 3.09 & 31                 & High     & 0.49 & 2.04 & 0.48 & emperor prince french alexander czar london nov government imperial russian & 0.07  & 3    \\ \hline
+\end{tabular}
+\end{center}
+\caption{Comparison of top 3 influential persons for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topic LDA model respectively.}
+\end{table}
+
+\end{minipage}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evaluation}
+\begin{itemize}
+\item
+No gold standard data available regarding influential persons  in the newspaper archives from November-December 1894
+\item
+Evaluation done through Wikipedia search of top 30 influential persons of ranked lists L1 and L2
+\item 16 and 14 out of the top 30 person entities were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. in lists L1 and L2 respectively
+
+\end{itemize}
+\end{frame}
+
 
 \section{Discussion}
 \begin{frame}
@@ -411,16 +588,50 @@ $$UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's list
 \item
 Spelling Correction algorithm needs to be improved in order to correct other OCR errors like New Line and Word Split and Join errors
 \item
+Lack of punctuation in the OCR dataset leads to high number of false positives during the process of PNER
+\item
 Person Named Entity Disambiguation : a hard problem to solve since persons with similar names can occur in multiple topic related articles in newspapers
 \item
-Co-reference Resolution of person names needs to be performed to link multiple ways in which a single person is addressed to avoid analyzing unnecessary person names
+Co-reference Resolution of person names needs to be performed to link multiple ways in which a single person is addressed
 \item
 Heuristic-based parameter estimation of IPI can be replaced by an optimization approach such as multiple instance clustering to avoid choosing of parameter weights  and biasing of results 
 \end{itemize}
 \end{frame}
 
 \section*{References}
-\begin{frame}
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{References}    
+  \begin{thebibliography}{10}   
+ \beamertemplatebookbibitems
+\bibitem{carlson2009learning}
+{\sc Carlson, A., Gaffney, S., and Vasile, F.}
+\newblock Learning a named entity tagger from gazetteers with the partial
+  perceptron.
+\newblock In {\em AAAI Spring Symposium: Learning by Reading and Learning to
+  Read\/} (2009), pp.~7--13.
+
+  \beamertemplatebookbibitems
+
+\bibitem{zhang2009novel}
+{\sc Zhang, Z., and Iria, J.}
+\newblock A novel approach to automatic gazetteer generation using wikipedia.
+\newblock In {\em Proceedings of the 2009 Workshop on The People's Web Meets
+  NLP: Collaboratively Constructed Semantic Resources\/} (2009), Association
+  for Computational Linguistics, pp.~1--9.
+
+ 
+  \beamertemplatebookbibitems
+ \bibitem{cha2010measuring}
+{\sc Cha, M., Haddadi, H., Benevenuto, F., and Gummadi, P.~K.}
+\newblock Measuring user influence in twitter: The million follower fallacy.
+\newblock {\em ICWSM 10\/} (2010), 10--17.
+  \beamertemplatearticlebibitems
+ \bibitem{agarwal2008identifying}
+{\sc Agarwal, N., Liu, H., Tang, L., and Yu, P.~S.}
+\newblock Identifying the influential bloggers in a community.
+\newblock In {\em Proceedings of the 2008 international conference on web
+  search and data mining\/} (2008), ACM, pp.~207--218.
+  \end{thebibliography}
 
 \end{frame}
 \end{document}
