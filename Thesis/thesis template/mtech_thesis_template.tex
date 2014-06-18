@@ -182,7 +182,7 @@ Aayushee Gupta
 \section{Learning from newspapers}
 
 Crowdsourcing has been used extensively in historical newspaper archives in recent years to 
-digitize, create, clean and process content and provide editorial or processing interventions. For example, the Australian Newspapers Digitization Program \cite{ADNP} allows communities to explore their rich newspaper heritage by enabling free online public access to over 830,000 newspaper pages containing 8.4 million articles. The public enhanced the data by correcting over 7 million lines of text and adding 200,000 tags and 4600 comments \cite{holley_09,holley_09a,Holley_10,Holley10a}. The California Digital Newspaper Collection (CDNC)\footnote{http://cdnc.ucr.edu/cgi-bin/cdnc}, which contains 61,412 issues comprising 545,955 pages and 6,364,529 articles from newspapers published in California between 1846-1922 has also crowdsourced text correction. The National Library of Finland embraced the the idea of making crowdsourced text correction a game -- users corrected their digitized newspapers by playing the game ``Hunt the Mole!" \cite{chrons_11}. The program consists of two games featuring adventures of a mole. In Mole Hunt the players are shown two different words and they must determine as quickly as possible if the words are the same. In Mole Bridge players try to write the word that appears in the screen correctly. 
+digitize, create, clean and process content and provide editorial or processing interventions. For example, the Australian Newspapers Digitization Program \cite{ADNP} allows communities to explore their rich newspaper heritage by enabling free online public access to over 830,000 newspaper pages containing 8.4 million articles. The public enhanced the data by correcting over 7 million lines of text and adding 200,000 tags and 4600 comments \cite{holley_09,holley_09a,Holley_10,Holley10a}. The California Digital Newspaper Collection (CDNC)\footnote{http://cdnc.ucr.edu/cgi-bin/cdnc}, which contains 61,412 issues comprising 545,955 pages and 6,364,529 articles from newspapers published in California between 1846-1922 has also crowdsourced text correction. The National Library of Finland embraced the idea of making crowdsourced text correction a game -- users corrected their digitized newspapers by playing the game ``Hunt the Mole!" \cite{chrons_11}. The program consists of two games featuring adventures of a mole. In Mole Hunt the players are shown two different words and they must determine as quickly as possible if the words are the same. In Mole Bridge players try to write the word that appears in the screen correctly. 
 
 Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work -- the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization\cite{crane2006challenge}. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project \cite{smith2002detectinga, smith2002detectingb, smith2001disambiguating}, a general system to extract dates and names from text was developed in order to detect significant events in document collections. 
 
@@ -496,7 +496,7 @@ CorrectedLine= \textit{by than report of the expert accountants who}
 
 OriginalLine= \textit{by the report of the expert accountants who} 
 
-Here, for each token of CorrectedLine, we find its index and call the MatchWordGrams function accordingly. For the first token `by' at index i=0 in CorrectedLine, we consider the word window to be ``by the report" (index j=0 to 2) in OriginalLine by matching iteratively with each token to see if there is a match and also if there has been a spelling correction by comparing with the corresponding token in OcrLine. Here, no change was made to the spelling of 'by' and it matches with a word in words window, so it is marked as a FN. For the second token `than' at index i=1, we consider the word window to be ``by the report of" (index j=0 to 3) for which there is no match in the window but there has been a spelling correction from `tltn' to `than', which implies the correction was wrong and the token is marked as a $FP$. For the third token 'report' at index i=2, we consider the window as ``by the report of the" (index j=0 to 4) in Original Line and find that there is a match in the word window and there has been a spelling correction too from `rejmrt' to `report' which makes this token a $TP$. Similarly, rest of the tokens get marked for each line in the Corrected.txt. 
+Here, for each token of CorrectedLine, we find its index and call the MatchWordGrams function accordingly. For the first token `by' at index i=0 in CorrectedLine, we consider the word window to be ``by the report" (index j=0 to 2) in OriginalLine by matching iteratively with each token to see if there is a match and also if there has been a spelling correction by comparing with the corresponding token in OcrLine. Here, no change was made to the spelling of `by' and it matches with a word in words window, so it is marked as a FN. For the second token `than' at index i=1, we consider the word window to be ``by the report of" (index j=0 to 3) for which there is no match in the window but there has been a spelling correction from `tltn' to `than', which implies the correction was wrong and the token is marked as a $FP$. For the third token `report' at index i=2, we consider the window as ``by the report of the" (index j=0 to 4) in Original Line and find that there is a match in the word window and there has been a spelling correction too from `rejmrt' to `report' which makes this token a $TP$. Similarly, rest of the tokens get marked for each line in the Corrected.txt. 
 
 Another example can be considered from Line 10 in Figure~\ref{figure:3} and Figure~\ref{figure:4} where the number of tokens is different in CorrectedLine and OriginalLine. In such a case, direct alignment between tokens is not possible because of which the words window becomes useful. Here, when the last token `Richmond' of CorrectedLine is considered at index i=3, the corresponding words window becomes ``Jury now sitting at Richmond" (index j=1 to 5) for which there is a match in the words windows and corresponding spelling has also been changed from `tilchmond' to `Richmond' which makes it a $TP$. Had the word window not been considered, the corresponding token at index j=3 in OriginalLine would have been chosen as `sitting' which would have resulted in a $FP$. 
    
@@ -554,7 +554,7 @@ These statistics indicate that spelling correction using an extended dictionary 
 \item[$\bullet$]\noindent
 We believe a better accuracy of spell correction can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
 \item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
-\item[$\bullet$]\noindent How choice of a dictionary for the edit distance algorithm affects the results still remains to be verified. We believe using a dictionary with historical terms,places and people names can certainly perform spelling correction better and improve the accuracy.
+\item[$\bullet$]\noindent Choice of a dictionary for the edit distance algorithm affects the results as indicated by improvement in PNDR while using an enhanced person names dictionary. We believe using a dictionary with historical terms, places and people names can certainly perform spelling correction better and improve the accuracy also.
 \item[$\bullet$] \noindent 
 Our spell corrector corrects Non-Real Word errors by focusing on isolated words in the dataset. Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
 \end{description}
@@ -578,12 +578,14 @@ The problem of finding influential people from historical OCR news repository ha
 Most of the problems faced during this research surfaced due to the noise in OCR dataset used. The problem of finding influential persons from newspaper archives opens up a wide range of research problems as illustrated from the discussion sections~\ref{gaz:discussion} and ~\ref{influential:discussion}. 
 We believe each of the components of our research framework, namely Spelling correction on OCR news articles, Person Named Entity Recognition, Topic Detection and parameters definition to measure and rank influence scores of persons can be researched further in order to obtain more beneficial results from influential people detection.
 
-Spelling correction algorithms with improved accuracy can certainly improve the influential persons ranking as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
+Spelling correction algorithms with improved accuracy can certainly improve the influential persons results as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
 Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
 
 We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
 
  The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
+
+Non-heuristic based estimation for finding influential persons can also be done using optimization approaches such as unsupervised multiple instance clustering\cite{zhang2009m3ic}. This approach can be used to cluster person entities into ``influential" or ``non-influential" by considering each person entity as a bag with articles of their occurrence as the instances for each bag. It is a combination of Constrained Concave-Convex Procedure and  Cutting Plane method with faster convergence. Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not.
   
 
 
@@ -599,14 +601,12 @@ We didn't consider Named Entity Disambiguation into account while developing the
 \bibliography{aayushee}
 \chapter*{Appendix}\label{chapter:appendix} 
 
-\begin{table}[h]
+\begin{table}[!h]
 \centering
 \begin{tabular}{|l|l|p{3cm}|p{3cm}|}
-
 \hline
-
 \textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
-capt creeten     & 3.380151 & no                 & spelled incorrectly \\ \hline
+capt creeten     & 3.380151 & no                 & spelled incorrectly;capt creedon \\ \hline
 capt hankey      & 3.022371 & yes                &                                      \\ \hline
 capt pinckney    & 2.933288 & yes                &                                      \\ \hline
 john macdonald   & 2.854389 & yes                &                                      \\ \hline
@@ -634,24 +634,53 @@ james mccutcheon & 2.431448 & no                 & part of an organization name 
 hugh allan       & 2.4287   & yes                &                                      \\ \hline
 william i        & 2.4222   & yes                &                                      \\ \hline
 marie antoinette & 2.40731  & yes                &                                      \\ \hline
-schmitt berger   & 2.396639 & no                 & false positive                       \\ \hline
+schmitt berger   & 2.396639 & no                 & spelled incorrectly;max f schmittberger                       \\ \hline
 jacob schaefer   & 2.392976 & yes                &                                      \\ \hline
              
 \end{tabular}
-\caption{Table representing top 30 influential person entities with 30 Topics LDA Model along with evaluation results and comments.}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 30 Topics LDA Model along with evaluation results and comments.}
 \label{table:app1}
 \end{table}
 
-
-%\begin{table}[h]
-%\centering
-%\begin{tabular}{|l|l|}
-%\hline
-
-%\end{tabular}
-%\caption{Table showing the 50 topmost influential person entities in the Marginally Influential People Category}
-%\label{table:app3}
-%\end{table}
+\clearpage
+\begin{table}[!h]
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+\hline
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten & 3.333485 & no & spelled incorrectly; capt creedon \\ \hline
+mrs martin & 3.23105 & no & false positive \\ \hline
+alexander iii & 3.090361 & yes &  \\ \hline
+capt hankey & 2.975704 & yes &  \\ \hline
+aaron trow & 2.790838 & yes &  \\ \hline
+john macdonald & 2.774389 & no &  \\ \hline
+mrs oakes & 2.744869 & no & false positive \\ \hline
+john martin & 2.711302 & yes &  \\ \hline
+ed kearney & 2.629342 & yes & name of horse \\ \hline
+caleb morton & 2.614746 & no & fictional character \\ \hline
+john ward & 2.57499 & yes &  \\ \hline
+nat lead & 2.571118 & no & false positive \\ \hline
+mrs talboys & 2.499555 & yes & fictional character \\ \hline
+buenos ayres & 2.490502 & no & location \\ \hline
+van cortlandt & 2.490169 & no & location \\ \hline
+john thompson & 2.482063 & yes &  \\ \hline
+louis philippe & 2.476858 & yes &  \\ \hline
+marie clavero & 2.474051 & no & false positive \\ \hline
+hardy fox & 2.449248 & no &  \\ \hline
+mme melba & 2.415785 & yes &  \\ \hline
+charles weisman & 2.405938 & no & false positive \\ \hline
+hugh allan & 2.405367 & yes &  \\ \hline
+mr got & 2.389697 & no & false positive \\ \hline
+schmitt berger & 2.373305 & no & spelled incorrectly \\ \hline
+phil king & 2.363644 & yes &  \\ \hline
+henry a meyer & 2.350396 & yes &  \\ \hline
+north orlich & 2.348236 & no & false positive \\ \hline
+james mccutcheon & 2.338115 & no & part of organization name \\ \hline
+gen porter & 2.330658 & yes &  \\ \hline
+miller hageman & 2.327831 & no &  \\ \hline
+\end{tabular}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 100 Topics LDA Model along with evaluation results and comments.}
+\label{table:app2}
+\end{table}
 
 
   \newpage

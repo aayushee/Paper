@@ -13,7 +13,7 @@ Influential people detection has been mostly done in the field of social network
  
 
 \cite{lerman2010using} define popularity of a news story in terms of number of reader votes received by it and predict popularity of a news story over time based on voting history and the probability that a user seeing a story at specific position in a list will vote on it. 
-A more relevant work regarding detection of influential people is presented in \cite{agarwal2008identifying} where influential bloggers are identified on a blog site. Influence of each blogger is quantified by taking maximum of the influence scores of each blog posted by a blogger. The influence score of each blog is calculated using parameters of importance in a blogsite like number of posts that refer to the blog, number of comments on the blog, number of other posts that the blog refers to and length of the blog. Influential blogger categories are also created based on their temporal patterns of blog posting. 
+A more relevant work regarding detection of influential people is presented in \cite{agarwal2008identifying} where influential bloggers are identified on a blog site. Influence of each blogger is quantified by taking maximum of the influence scores of each blog posted by a blogger. The influence score of each blog is calculated using parameters of importance in a blogsite like number of posts that refer to the blog, number of comments on the blog, number of other posts that the blog refers to and length of the blog. Influential blogger categories are also created based on the temporal patterns of blog posting by bloggers. 
 
 \cite{cha2010measuring} describe another set of measures for detection of top influential users on Twitter using number of retweets, mentions and followers for an individual. They perform ranking based on each measure separately and use Spearman's rank correlation coefficient to find correlation among ranks and effect of each measure contributing to a person's influence. The influence ranks of topmost influential users on Twitter are presented across various topics as well as time.
 
@@ -31,22 +31,23 @@ Following subsections describe the parameters for calculation of DI and IPI of a
 The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. Following parameters are considered for the calculation of this index:
 
 \begin{enumerate}
-\item Normalized Document Length (NDL)
+\item \textbf{Normalized Document Length} (NDL)\\
 Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the maximum news article length (of 14020 articles in the dataset) to get Normalized Document Length as follows: 
 
-$\text{Normalized Document Length} (NDL)=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$
+$$NDL=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$$
 
 
 %\item[$\bullet$IDF]
 %IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurrence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
 
-\item Normalized Term Frequency (NTF)
+\item\textbf{ Normalized Term Frequency} (NTF)\\
 Term Frequency (TF) accounts for the number of occurrences of a person's name in a news article. The TF of the person name affects a document's influence score as a higher number of occurrences in the document makes it more important. TF is further normalized and calculated as follows:
 
-$\text{Normalized Term Frequency} (NTF)=	1	+\log	$(TF of person entity in current article)
+\begin{center}
+$NTF=	1	+\log	$(TF of person entity in current article)
+\end{center}
 
-
-\item Number of similar articles (NSIM)
+\item \textbf{Number of similar articles} (NSIM)\\
 This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
 %The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
 %documents.
@@ -310,13 +311,13 @@ Several person entities with low occurrences in news articles like ``aaron trow"
 \subsection{Evaluation}
 
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
-To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 detected from the people gazetteer with 30 Topics LDA Model.
+To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 and L2 detected from the people gazetteer with 30 Topics LDA and 100 Topics LDA Model respectively.
 
-Among the top 30, 16 of the person entities were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc.
- Most of the false positives although influential in other respects but are not  influential person entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
+Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. 
+ Most of the false positives although influential in other respects but were not  influential `person' entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
  False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are in fact locations but got recognized as highly influential person entities.
  
- The ranked list of the top 30 influential persons with their IPI from List L1 can be seen in the Appendix (Table ~\ref{table:app1}) where evaluation result for each person entity is also presented.
+ The ranked list of the top 30 influential persons with their IPI from Lists L1 and L2 can be seen in the Appendix (Table ~\ref{table:app1}.~\ref{table:app2}) where evaluation result for each person entity is also presented.
 
  
 
