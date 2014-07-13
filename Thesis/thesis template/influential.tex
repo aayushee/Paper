@@ -313,15 +313,22 @@ Several person entities with low occurrences in news articles like ``aaron trow"
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
 To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 and L2 detected from the people gazetteer with 30 Topics LDA and 100 Topics LDA Model respectively.
 
-Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. 
+Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential persons from Lists L1 and L2 found in Wikipedia are shown in Figure~\ref{figure:inf}. 
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.79]{ip}
+\caption{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation}
+\label{figure:inf}
+\end{center}
+\end{figure}
+
+
  Most of the false positives although influential in other respects but were not  influential `person' entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
  False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are in fact locations but got recognized as highly influential person entities.
  
  The ranked list of the top 30 influential persons with their IPI from Lists L1 and L2 can be seen in the Appendix (Table ~\ref{table:app1}.~\ref{table:app2}) where evaluation result for each person entity is also presented.
 
- 
-
-% %DOUBT: the problems discussed here are mentioned again in conclusion. Do they need to be mentioned here or it is better to write them in conclusion only?
 
 \section{Discussion}
 \label{influential:discussion}

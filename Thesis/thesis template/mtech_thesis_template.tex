@@ -9,6 +9,8 @@
 \usepackage{amsmath}
  \usepackage{booktabs}
 \usepackage{subfigure}
+\usepackage{colortbl}
+\usepackage{hhline}
 
 
 \usepackage{longtable}
@@ -333,7 +335,7 @@ Following sections describe the evaluation parameters for estimating the perform
  \item[$\bullet$Accuracy]
  The evaluation metric used for measuring the performance of Spelling correction algorithm is Accuracy which requires calculation of number of OCR errors that got corrected when compared to the original scanned newspaper text. The measure has been chosen so as to include the complete text coverage and not just check for words that got corrected after spell correction as in the latter case, the  number of FP and TN get missed which won't give the correct measure of how well the spell corrector works. The formula used for calculating Accuracy is defined by Manning and Schutze,1999 (p.268-269) as follows:
 
-$$Accuracy=  \dfrac{TP+FP} {TP+ FP + TN + FN}$$
+$$Accuracy=  \dfrac{TP+TN} {TP+ FP + TN + FN}$$
 
 
 where, 
@@ -525,7 +527,7 @@ In order to answer \textbf{Question 2} we do the following:
 %% AAYUSHEE CHECK--DONE
 \begin{enumerate}
 \item Person Name Detection from raw OCR (\textbf{Baseline: }) The NER is run on the raw garbled OCR text.
-\item Person Name Detection from spell corrected text (\textbf{PND+Spell Correction: })The NER is run on the spell corrected (using the edit distance algorithm) OCR text without the people names list in the dictionary.
+\item Person Name Detection from spell corrected text (\textbf{PND+Spell Correction+Simple Dictionary: })The NER is run on the spell corrected (using the edit distance algorithm) OCR text without the people names list in the dictionary.
 \item Person Name Detection from spell corrected text with enhanced dictionary (\textbf{PND+Spell Correction+Enhanced Dictionary: }) The NER is run on the spell corrected (using the edit distance algorithm) OCR text with the enhanced people names list in the dictionary.
 
 \end{enumerate}
@@ -538,14 +540,14 @@ The spelling corrector takes 9 seconds on an average to correct the newspaper OC
 
 But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
 
-\textit{PNDR} for \textbf{Baseline: }: 72.5\% 
+\textit{PNDR} for \textbf{Baseline: }: 71.5\% 
 
-\textit{PNDR} for \textbf{PND+Spell Correction: }: 63.3\% 
+\textit{PNDR} for \textbf{PND+Spell Correction+Simple Dictionary: }: 63.3\% 
 
-\textit{PNDR} for \textbf{PND+Spell Correction+Enhanced Dictionary: }: 82.5\% 
+\textit{PNDR} for \textbf{PND+Spell Correction+Enhanced Dictionary: }: 85.5\% 
 
 These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
- 
+ Table~\ref{table:pndr} shows some of the person names recognized while calculation of PNDR for each case. The reason for PNDR going down after spell correction with simple dictionary is demonstrated from the table as unnecessary spelling corrections are made while using this dictionary. On the other hand, since the enhanced dictionary contains several person names and no unnecessary spelling corrections are made, more persons name are recognized in this case when compared to the original text leading to a much higher PNDR. 
 
 \subsection{Discussion}
 \label{spell:discussion}
@@ -601,6 +603,29 @@ Non-heuristic based estimation for finding influential persons can also be done 
 \bibliography{aayushee}
 \chapter*{Appendix}\label{chapter:appendix} 
 
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{3cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+\textbf{Original}        & \textbf{OCR}                   & \textbf{Spell Corrected (Simple Dictionary)}         & \textbf{Spell Corrected (Enhanced Dictionary)} \\ \hline
+James H Grady            & James H Grady  \cellcolor[gray]{.8}                & Gilman James H Grady      & Gilman James H Grady         \\ \hline
+Eugene Kelly             & Eugene Kelly  \cellcolor[gray]{.8}                 & Kelly $-$$>$ belly   & Eugene Kelly    \cellcolor[gray]{.8}             \\ \hline
+Stephen S Blake          & Stephen S Blake \cellcolor[gray]{.8}               & Blake $-$$>$ blame   & Stephen S Blake   \cellcolor[gray]{.8}           \\ \hline
+Abraham Gruber           & Abraham Gruber \cellcolor[gray]{.8}                & Gruber $-$$>$ rubber & Abraham Gruber  \cellcolor[gray]{.8}             \\ \hline
+John Mcbride             & John Mcbride  \cellcolor[gray]{.8}                 & Mcbride $-$$>$ bride & John Mcbryde                 \\ \hline
+John A Cairns            & John                           & John                      & John A Cairns   \cellcolor[gray]{.8}             \\ \hline
+Wilmot Smith             & - (recognized as organization) & Wilmot Smith \cellcolor[gray]{.8}              & Wilmot Smith    \cellcolor[gray]{.8}             \\ \hline
+Samuel Goldfarb          & bamucl Ooldfarb                & Samuel Ooldfarb           & Samuel Goldfarb \cellcolor[gray]{.8}             \\ \hline
+Lieut Southerland        & Lieut Boutherland              & Sutherland                & Lieut Southerland  \cellcolor[gray]{.8}          \\ \hline
+Mr Justice Brewer Potter & Potter                         & Potter                    & Mr Justice Brewer Potter \cellcolor[gray]{.8}     \\ \hline
+Samuel Rich              & Bamuel Rich                    & Samuel Rich    \cellcolor[gray]{.8}           & Samuel Rich       \cellcolor[gray]{.8}           \\   \hline
+Frederick Betts          & Frederick lletts               & lletts $-$$>$ lets            & Frederick Betts\cellcolor[gray]{.8}              \\ \hline
+\end{tabular}
+\caption{Table showing some of the person names recognized while calculation of PNDR before spell correction (OCR text) and after spell correction (Spell Corrected text) using both Simple and Enhanced Person Names Dictionary. Correctly recognized names are shown in the colored cells. }
+\label{table:pndr}
+\end{table}
+
+
 \begin{table}[!h]
 \centering
 \begin{tabular}{|l|l|p{3cm}|p{3cm}|}
@@ -644,6 +669,7 @@ jacob schaefer   & 2.392976 & yes                &                              
 
 \clearpage
 \begin{table}[!h]
+\centering
 \begin{tabular}{|l|l|p{3cm}|p{3cm}|}
 \hline
 \textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
