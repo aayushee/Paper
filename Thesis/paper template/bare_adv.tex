@@ -488,7 +488,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
 
-\author{Haimonti~Dutta, Aayushee~Gupta}
+\author{Aayushee~Gupta, Hamonti~Dutta, Lipika~Dey, Srikanta~Bedathur}
 %\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
 %        John~Doe,~\IEEEmembership{Fellow,~OSA,}
 %        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}
@@ -522,8 +522,8 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 
 
 % The paper headers IS THIS REQUIRED??
-\markboth{Journal of \LaTeX\ Class Files,~Vol.~13, No.~9, September~2014}%
-{Shell \MakeLowercase{\textit{et al.}}: Bare Advanced Demo of IEEEtran.cls for Journals}
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~13, No.~9, September~2014}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Advanced Demo of IEEEtran.cls for Journals}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
 % 
@@ -662,14 +662,6 @@ To the best of our knowledge, the problem of finding \emph{influential} people f
 % (should never be an issue)
 
 
-
-%WHAT IS THE USE OF THIS??
-\hfill mds
- 
-\hfill September 17, 2014
-
-
-
 \section{Problem Description}
 \label{problem}
 
@@ -686,12 +678,12 @@ We divide the the problem of finding influential people into the following subpr
 \item \textbf{Problem 3: } Influential People Identification -- define the criteria for identifying and ranking people as ``influential".
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure*}
 \centering
 \includegraphics[width=0.65\textwidth, height=0.6\textheight]{framework4}
 \caption{Research Framework showing components of proposed solution}
 \label{fig:framework}
-\end{figure} 
+\end{figure*} 
 
 
 
@@ -741,23 +733,25 @@ segmentation is poor or non-existent; the OCR scanning process is far
 from perfect and the documents generated from it contains a large
 amount of garbled text.
 
-\subsection{Data Characteristics}
-An individual OCR text article has at least one or more of the following types of spelling errors:
-
-\begin{figure}[hbt]
+\begin{figure*}
 \includegraphics[scale=0.75]{originalimage}
 \includegraphics[scale=0.80]{ocr}
 \caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
 \label{figure:1}
-\end{figure}
+\end{figure*}
 
-\begin{description}
- \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
- \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
- \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
-\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
-\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
-\end{description} 
+\subsection{Data Characteristics}
+An individual OCR text article has at least one or more of the following types of spelling errors:
+
+
+
+\begin{itemize}
+ \item \textbf{Real word errors}	 include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
+ \item \textbf{Non-real word} errors include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
+ \item \textbf{Non-word errors} include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
+\item \textbf{New Line errors} include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
+\item \textbf{Word Split and Join errors} include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
+\end{itemize} 
 
 \subsection{Data Statistics}
 The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
@@ -798,12 +792,12 @@ The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is
 
 \subsubsection{PNER Results}
 \label{ner:results}
-\begin{figure}[h]
+\begin{figure*}
   \centering
 \includegraphics{NER1}
 \caption{NER on a sample news article}
 \label{figure:sample}
-\end{figure} 
+\end{figure*} 
 
 
 
@@ -814,12 +808,51 @@ Person names tagged with ``PERSON" category are stored while running NER on the 
 Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document lists.
 The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 38426 person entities. The output obtained can be seen in Table~\ref{table:Table1} which shows the number of person entities with the corresponding number of documents in which they occur.  
 
+\begin{table*}
+  \begin{center}
+\begin{tabular}{|l|l|l|}
+    \hline
+\textbf{No. of Person Entities} & \textbf{No. of articles} \\ \hline
+36615                  & 1               \\ \hline
+1122                   & 2               \\	\hline
+329                    & 3               \\	\hline
+123                    & 4               \\	\hline
+87                     & 5               \\	\hline
+48                     & 6               \\	\hline
+29                     & 7               \\	\hline
+19                     & 8               \\	\hline
+16                     & 9               \\	\hline
+5                      & 10              \\	\hline
+4                      & 11              \\	\hline
+6                      & 12              \\	\hline
+4                      & 14              \\	\hline
+3                      & 15              \\	\hline
+2                      & 16              \\	\hline
+1                      & 17              \\	\hline
+1                      & 18              \\	\hline
+3                      & 19              \\	\hline
+1                      & 20              \\	\hline
+1                      & 21              \\	\hline
+1                      & 22              \\	\hline
+1                      & 23              \\	\hline
+1                      & 27              \\	\hline
+1                      & 29              \\	\hline
+1                      & 31              \\	\hline
+1                      & 34              \\	\hline
+1                      & 35              \\ 	\hline
+\end{tabular}
+\end{center}
+\caption{Table showing output of PNER on 14020 articles}
+\label{table:Table1}
+\end{table*}
+
+
 We divide the people entities extracted into following categories so that separate analysis can be done for each category:
-\begin{description}
- \item[$\bullet$Marginally Influential]: This category includes all person entities with occurrence in less than 4 news articles. (38066 person entities as calculated from Table~\ref{table:Table1} )
-\item[$\bullet$Medium Influential]: This category includes all person entities with occurrence from 4 to 15 news articles. (344 person entities) 
-\item[$\bullet$Highly Influential] : This category includes all person entities with occurrence in 16 or more news articles. (16 person entities)
-\end{description}
+\begin{itemize}
+ \item \textbf{Marginally Influential}: This category includes all person entities with occurrence in less than 4 news articles. (38066 person entities as calculated from Table~\ref{table:Table1} )
+\item \textbf{Medium Influential}: This category includes all person entities with occurrence from 4 to 15 news articles. (344 person entities) 
+\item \textbf{Highly Influential} : This category includes all person entities with occurrence in 16 or more news articles. (16 person entities)
+\end{itemize}
 These categories have been created manually simply based on the number of articles of occurrence of a person entity and do not directly lead to the conclusion of a person entity with large number of articles being influential.
 
 
@@ -835,19 +868,18 @@ Documents are considered as a mixture of topics and each topic a probability dis
 
 Topic detection is essential to this research in order to determine the topics of individual news articles that a person entity occurs in so that the person entity can be linked to the documents in which he/she occurs along with their respective topics.
 
-\begin{figure}[h]
+\begin{figure*}
 \begin{center}
 \includegraphics[scale=0.8]{topicmodel}
 \caption{Simple topic modelling approach for a single article\cite{blei2012probabilistic}}.
 \label{figure:example}
 \end{center}
-\end{figure} 
+\end{figure*} 
 
 
 \subsubsection{Topic Detection Model}
 \label{topic detection:model}
-
-Latent Dirichlet Allocation (LDA) Model
+\paragraph\textbf{Latent Dirichlet Allocation (LDA) Model}
 
 LDA is a generative probabilistic model in which each document is modeled as a finite mixture over an underlying set of topics and each topic, in turn, is modeled as an infinite mixture over an underlying set of topic probabilities\cite{blei2003latent}. In other words, documents exhibit multiple topics and each topic is a distribution over a fixed vocabulary.
 The LDA model can be briefly reviewed as follows:
@@ -861,7 +893,7 @@ topics ${\Phi_k}$.  The inferencing is either done using variational bayesian me
 However, the simple LDA approach can take several days to run over a large corpora.
 
 
-Distributed LDA Model
+\paragraph\textbf{Distributed LDA Model}
  
 The simple LDA method takes a long time for topic modeling which is why the distributed version suits large datasets such as ours. The data is partitioned across separate processors and inference is done in a parallel, distributed fashion. 
 
@@ -881,7 +913,7 @@ Here, held-out test set refers to the fact that complete dataset is split into t
 
 Perplexity is a decreasing function of the log likelihood of the unseen documents as can be seen from its formula and lower the perplexity, better is the topic model.
 
-Results
+\subsubsection{Results}
 \label{topic detection:result}
 
 The AD-LDA model as described in \cite{newman2009distributed} and implemented in the Mallet\cite{McCallumMALLET} toolkit (known as PLDA model) is used for topic detection over the complete dataset of 14020 news articles. 
@@ -890,13 +922,13 @@ Several topic models are first evaluated with different parameter settings in or
 
 %After training, parameter settings as number of topics varying from 10 to 100, number of iterations from 100 to 500 and number of processors from 1 to 8, the log likelihood of held-out test dataset is calculated along with number of tokens in it to obtain perplexity.
 
-\begin{figure}[h]
+\begin{figure*}
 \begin{center}
 \includegraphics{topicperplex2}
 \caption{Test Set Perplexity versus Number of Topics for a random $90-10$ split of the data. The maximum number of words in each topic is $20$, number of iterations $500$ and the number of processors $4$ for this experiment.}
 \label{figure:perplex}
 \end{center}
-\end{figure}
+\end{figure*}
 
 Perplexity is calculated by splitting the data into 90\% for training and rest 10\% for testing. 
 Figure~\ref{figure:perplex} shows the variation of the test perplexity versus the number of topics for one random $90-10$ split of the data\footnote{We also vary the number of iterations from 100 to 500 and number of processors from 1 to 8 to study their effect on perplexity. However the number of topics is most influenced by perplexity and hence the other results are not presented here.}. The maximum number of words in each topic is set to $20$, number of iterations $500$ and the number of processors $4$ for this experiment. It exhibits a decreasing perplexity with increase in number of topics. Typically, the number of topics should be chosen as high as possible in order to consider a better model with low perplexity but the model with high number of topics also takes longer to run on a large dataset. The number of topics is set to a value from where further increase in number of topics does not lead to a large decrease in perplexity. We choose the number of topics as $30$ and $100$ and demonstrate their effect on the influential people detection.
@@ -920,12 +952,12 @@ Topic modeling gives as output, for each article in the dataset, a set of topics
 The list of articles obtained for each person entity after application of PNER and highest scoring topic assigned to each article during Topic Detection are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles where each article is further associated with its corresponding highest scoring topic.
 
 Two people gazetteers are obtained, each corresponding to the two model settings of 30 Topics LDA Model and 100 Topics LDA Model, respectively. A snapshot of the people gazetteer using 30 Topics LDA Model can be seen in Figure~\ref{figure:gazette} where each person entity is followed by a document list consisting of a Document ID and its corresponding Topic ID. A similar people gazetteer is also obtained using 100 Topics LDA Model. Both People Gazetteers are further used in Chapter~\ref{chapter:influential people detection} for detecting and ranking influential person entities from them.
-\begin{figure}[!h]
+\begin{figure*}
 \centering
 \includegraphics{gazetteer}
 \caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID}
 \label{figure:gazette}
-\end{figure} 
+\end{figure*} 
 
 
 
@@ -948,7 +980,7 @@ Two people gazetteers are obtained, each corresponding to the two model settings
 % option should be used if it is desired that the figures are to be
 % displayed while in draft mode.
 %
-%\begin{figure}[!t]
+%\begin{figure*}
 %\centering
 %\includegraphics[width=2.5in]{myfigure}
 % where an .eps filename suffix will be assumed under latex, 
@@ -971,7 +1003,7 @@ Two people gazetteers are obtained, each corresponding to the two model settings
 % Watch out that the combined width of all the subfigures on a 
 % line do not exceed the text width or a line break will occur.
 %
-%\begin{figure*}[!t]
+%\begin{figure*}
 %\centering
 %\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
 %\label{fig_first_case}}
@@ -1018,7 +1050,6 @@ Two people gazetteers are obtained, each corresponding to the two model settings
 %\hline
 %\end{tabular}
 %\end{table}
-2iki2kjkj
 
 % Note that the IEEE does not put floats in the very first column
 % - or typically anywhere on the first page for that matter. Also,
@@ -1033,17 +1064,7 @@ Two people gazetteers are obtained, each corresponding to the two model settings
 
 
 
-\section{Conclusion}
 
-The problem of finding influential people from historical OCR news repository has been studied in this research. In studying this novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results obtained.
- We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the ranked list of influential people.
-Spelling correction algorithms with improved accuracy can certainly improve the influential persons results as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
-Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
-We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
-
- The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
-
-Non-heuristic based estimation for finding influential persons can also be done using optimization approaches such as unsupervised multiple instance clustering\cite{zhang2009m3ic}. This approach can be used to cluster person entities into ``influential" or ``non-influential" by considering each person entity as a bag with articles of their occurrence as the instances for each bag. It is a combination of Constrained Concave-Convex Procedure and  Cutting Plane method with faster convergence. Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not.
 
 
 \section{Influential People Detection}
@@ -1131,8 +1152,9 @@ Algorithm ~\ref{algorithm:3} depicts the procedure for measuring influence and r
 \Function {CalculateIPI}{}
   
 
-
- \KwIn{$PeopleGazetter(Persons,(DocList,TopicList))$, $w_a$,$w_b$,$w_c$}
+%%%%%%DOUBT HERE.....
+ \KwIn{$PeopleGazetter(Persons,(DocList,$}
+\KwIn{$TopicList))$, $w_a$,$w_b$,$w_c$}
 \KwResult{Ranked list of Person Name and IPI}  
  $NTF \leftarrow $0,  $NDL \leftarrow $0, $NSIM \leftarrow $0, $DI\leftarrow $0, $UniqT\leftarrow $0, $IPI\leftarrow $0\;  
   
@@ -1166,7 +1188,7 @@ $NDL=GetDocLength(doc)/GetMaxDocLength()$;
 \end{algorithmic}
 \end{algorithm}
 
-\begin{table}[h]
+\begin{table*}
 \begin{center}
 \begin{tabular}{|c|c|} \hline
 Function Name & Description \\ \hline
@@ -1188,16 +1210,16 @@ PrintPersonNameandMaxIPI(IPIScores) & Prints $Person$ name with its \\
 \end{center}
 \caption{Description of the functions used in Algorithm~\ref{algorithm:3}}
 \label{default}
-\end{table}%
+\end{table*}%
 
-\begin{figure}[h]
+\begin{figure*}
 \begin{center}
 \includegraphics[scale=0.75]{IPIChart}
 \end{center}
 %\includegraphics[scale=0.80]{ocr}
 \caption{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.}
 \label{figure:IPI}
-\end{figure}
+\end{figure*}
 
 
 
@@ -1207,7 +1229,7 @@ Two ranked influential person lists, namely L1 and L2 are obtained after calcula
 It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons.
 Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence. Figure~\ref{figure:IPI} shows the average IPI from the two ranked lists -- it appears that the average IPI for highly influential people is more susceptible to changes in number of topics.
 
-\begin{table}
+\begin{table*}
 \begin{center}
 
     \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
@@ -1220,12 +1242,12 @@ High & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline
   \end{center}
     \caption {Table illustrating average statistics for each Person Category of People Gazetteer across 2 Topic Models}
 \label{table:stats}
-\end{table}
+\end{table*}
 
 
 The following sections present comparison between the ranked influential person lists L1 and L2, some case studies and evaluation results:
  
-\begin{table}[!h]
+\begin{table*}
 \begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
 \hline
 Person Name    & IPI  & Number of Articles & Person Category & NDL  & NTF  & NSIM & TOPIC WORDS                                                          & UniqT & Rank \\ \hline
@@ -1242,9 +1264,9 @@ mr got         & 2.73 & 3                  & Marginal        & 0.56 & 1.47 & 0.6
 \end{tabular}
 \caption{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
 \label{table:30t}
-\end{table}
+\end{table*}
 
-\begin{table}[!h]
+\begin{table*}
 \resizebox{16cm}{!} {
 \begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
 \hline
@@ -1263,8 +1285,8 @@ caleb morton   & 2.61 & 1                  & Marginal & 0.70 & 1.9  & 0    & day
 \end{tabular}}
 \caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
 \label{table:100t}
-\end{table}
-\section{Comparison Across Ranked Influential Person Lists }
+\end{table*}
+\subsection{Comparison Across Ranked Influential Person Lists }
 
 The top 10 influential persons from List L1 and L2 detected from each of the people gazetteers are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively.
 It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by Medium and Marginal category persons having considerably less number of articles of occurrence. This indicates the fact that number of articles of occurrence has not been given priority while measuring influence of a person entity. 
@@ -1276,7 +1298,7 @@ The ranked influential lists L1 and L2 can be contrasted in terms of NSIM, UniqT
 However, when the NSIM (normalized number of topic similar articles) value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 3 in the second table. 
 This indicates the fact that LDA Topic Model used affects the ranking of influential persons when number of topics are varied.
 
-  \section{Case Studies}
+  \subsection{Case Studies}
 
 Some of the topmost 10 influential person entities of lists L1 and L2  (Table ~\ref{table:30t} and ~\ref{table:100t}) identified from each person category of the 2 people gazetteers are discussed below: 
 \begin{enumerate}
@@ -1296,20 +1318,20 @@ Several person entities with low occurrences in news articles like ``aaron trow"
 \end{enumerate} 
 
 
-\section{Evaluation}
+\subsection{Evaluation}
 
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
 To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 and L2 detected from the people gazetteer with 30 Topics LDA and 100 Topics LDA Model respectively.
 
 Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential persons from Lists L1 and L2 found in Wikipedia are shown in Figure~\ref{figure:inf}. 
 
-\begin{figure}[!htb]
+\begin{figure*}
 \begin{center}
 \includegraphics[scale=0.79]{ip}
 \caption{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation}
 \label{figure:inf}
 \end{center}
-\end{figure}
+\end{figure*}
 
 
  Most of the false positives although influential in other respects but were not  influential `person' entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
@@ -1340,7 +1362,17 @@ The choice of parameters for topic detection also affects the detection of influ
 
 \end{description}
 
+\section{Conclusion}
 
+The problem of finding influential people from historical OCR news repository has been studied in this research. In studying this novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results obtained.
+ We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the ranked list of influential people.
+Spelling correction algorithms with improved accuracy can certainly improve the influential persons results as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
+Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
+We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
+
+ The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
+
+Non-heuristic based estimation for finding influential persons can also be done using optimization approaches such as unsupervised multiple instance clustering\cite{zhang2009m3ic}. This approach can be used to cluster person entities into ``influential" or ``non-influential" by considering each person entity as a bag with articles of their occurrence as the instances for each bag. It is a combination of Constrained Concave-Convex Procedure and  Cutting Plane method with faster convergence. Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not.
 
 % if have a single appendix:
 %\appendix[Proof of the Zonklar Equations]
@@ -1357,27 +1389,131 @@ The choice of parameters for topic detection also affects the detection of influ
 %
 
 
-\appendices
-\section{Proof of the First Zonklar Equation}
-Appendix one text goes here.
+
+% references section
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{aayushee}
+
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
+ % 0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+
+
+%\appendices
+%Appendix one text goes here.
 
 % you can choose not to have a title for an appendix
 % if you want by leaving the argument blank
-\section{}
-Appendix two text goes here.
+%\section{}
+%Appendix two text goes here.
+
+\begin{table*}
+\centering
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+\hline
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten     & 3.380151 & no                 & spelled incorrectly;capt creedon \\ \hline
+capt hankey      & 3.022371 & yes                &                                      \\ \hline
+capt pinckney    & 2.933288 & yes                &                                      \\ \hline
+john macdonald   & 2.854389 & yes                &                                      \\ \hline
+john martin      & 2.827969 & yes                &                                      \\ \hline
+aaron trow       & 2.814171 & yes                & fictional character                  \\ \hline
+mrs oakes        & 2.791536 & no                 & false positive                       \\ \hline
+buenos ayres     & 2.767399 & no                 & location name                            \\ \hline
+alexander iii    & 2.742552 & yes                &                                      \\ \hline
+mr got           & 2.736363 & no                 & false positive                       \\ \hline
+mrs martin       & 2.719383 & no                 & false positive                       \\ \hline
+ann arbor        & 2.681657 & no                 & location name                            \\ \hline
+caleb morton     & 2.63808  & no                 & fictional character                  \\ \hline
+anthony comstock & 2.633381 & yes                &                                      \\ \hline
+toledo ann arbor & 2.610495 & no                 & location name                            \\ \hline
+john thompson    & 2.609841 & yes                &                                      \\ \hline
+nat lead         & 2.594452 & no                 & false positive                       \\ \hline
+ed kearney       & 2.543152 & yes                & name of horse                        \\ \hline
+van cortlandt    & 2.533131 & no                 & location                             \\ \hline
+louis philippe   & 2.523525 & yes                &                                      \\ \hline
+mrs talboys      & 2.522888 & yes                & fictional character                  \\ \hline
+jim hooker       & 2.500915 & yes                & false positive                       \\ \hline
+marie clavero    & 2.497384 & no                 & false positive                       \\ \hline
+father watson    & 2.450817 & no                 & false positive                       \\ \hline
+james mccutcheon & 2.431448 & no                 & part of an organization name                      \\ \hline
+hugh allan       & 2.4287   & yes                &                                      \\ \hline
+william i        & 2.4222   & yes                &                                      \\ \hline
+marie antoinette & 2.40731  & yes                &                                      \\ \hline
+schmitt berger   & 2.396639 & no                 & spelled incorrectly;max f schmittberger                       \\ \hline
+jacob schaefer   & 2.392976 & yes                &                                      \\ \hline
+             
+\end{tabular}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 30 Topics LDA Model along with evaluation results and comments.}
+\label{table:app1}
+\end{table*}
+
+
+\begin{table*}
+\centering
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+\hline
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten & 3.333485 & no & spelled incorrectly; capt creedon \\ \hline
+mrs martin & 3.23105 & no & false positive \\ \hline
+alexander iii & 3.090361 & yes &  \\ \hline
+capt hankey & 2.975704 & yes &  \\ \hline
+aaron trow & 2.790838 & yes &  \\ \hline
+john macdonald & 2.774389 & no &  \\ \hline
+mrs oakes & 2.744869 & no & false positive \\ \hline
+john martin & 2.711302 & yes &  \\ \hline
+ed kearney & 2.629342 & yes & name of horse \\ \hline
+caleb morton & 2.614746 & no & fictional character \\ \hline
+john ward & 2.57499 & yes &  \\ \hline
+nat lead & 2.571118 & no & false positive \\ \hline
+mrs talboys & 2.499555 & yes & fictional character \\ \hline
+buenos ayres & 2.490502 & no & location \\ \hline
+van cortlandt & 2.490169 & no & location \\ \hline
+john thompson & 2.482063 & yes &  \\ \hline
+louis philippe & 2.476858 & yes &  \\ \hline
+marie clavero & 2.474051 & no & false positive \\ \hline
+hardy fox & 2.449248 & no &  \\ \hline
+mme melba & 2.415785 & yes &  \\ \hline
+charles weisman & 2.405938 & no & false positive \\ \hline
+hugh allan & 2.405367 & yes &  \\ \hline
+mr got & 2.389697 & no & false positive \\ \hline
+schmitt berger & 2.373305 & no & spelled incorrectly \\ \hline
+phil king & 2.363644 & yes &  \\ \hline
+henry a meyer & 2.350396 & yes &  \\ \hline
+north orlich & 2.348236 & no & false positive \\ \hline
+james mccutcheon & 2.338115 & no & part of organization name \\ \hline
+gen porter & 2.330658 & yes &  \\ \hline
+miller hageman & 2.327831 & no &  \\ \hline
+\end{tabular}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 100 Topics LDA Model along with evaluation results and comments.}
+\label{table:app2}
+\end{table*}
+
 
 
 % use section* for acknowledgment
 \ifCLASSOPTIONcompsoc
   % The Computer Society usually uses the plural form
-  \section*{Acknowledgments}
+  %\section*{Acknowledgments}
 \else
   % regular IEEE prefers the singular form
-  \section*{Acknowledgment}
+  %\section*{Acknowledgment}
 \fi
 
 
-The authors would like to thank...
+%The authors would like to thank...
 
 
 % Can use something like this to put references on a page
@@ -1396,27 +1532,7 @@ The authors would like to thank...
 % The "triggered" command can be changed if desired:
 %\IEEEtriggercmd{\enlargethispage{-5in}}
 
-% references section
 
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
 
 % biography section
 % 
@@ -1429,22 +1545,13 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
 %\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
-
-% if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
-
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
