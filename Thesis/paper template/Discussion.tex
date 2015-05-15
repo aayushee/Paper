@@ -1,0 +1,18 @@
+\begin{description}
+\item[$\bullet$]\noindent
+We used a linear combination of each of the parameters in calculation of DI and IPI and assigned equal values to the weights associated with each of them by not favoring any specific parameter. This is evident from the results which do not consistently favor any specific parameter. The parameters defined are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined to do so. 
+
+\item[$\bullet$]\noindent
+The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of topmost influential people and obtaining the complete list of ranked influential people based on the learned parameters.
+
+\item[$\bullet$]\noindent
+The NDL(Normalized Document Length) parameter defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person entity's document list or total number of tokens in the complete dataset which can be experimented with according to the dataset.
+
+\item[$\bullet$]\noindent
+The topmost influential people contain several false positives also which occur not due to the influence measures defined but due to other factors like Named Entity Disambiguation which is not addressed in this paper. Several location and organization names have been misrecognized as person entities after performing Spelling correction and PNER resulting in false detection of some highly influential entities like ``van cortlandt", ``ann arbor" , ``sandy hook", etc.  
+%There is also the problem of resolution of person name co-references in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
+
+\item[$\bullet$] \noindent
+The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA Topic model settings used. 
+
+\end{description}

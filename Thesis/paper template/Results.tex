@@ -1,0 +1,113 @@
+Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the people gazetteer (developed in Chapter~\ref{chapter:people gazetteer}) using 30 Topics and 100 Topics LDA Model respectively. The weights $w_a$, $w_b$ and $w_c$ are all set to 1 to give equal importance to each of the parameters during calculation of DI and IPI. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
+It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons.
+Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence. Figure~\ref{figure:IPI} shows the average IPI from the two ranked lists -- it appears that the average IPI for highly influential people is more susceptible to changes in number of topics.
+
+\begin{table*}
+\begin{center}
+
+    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	\\  \hline
+Marginal & 38066 & 1.04 & 2119.6 & 1.07 	\\ \hline
+Medium & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
+High & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
+  \end{tabular}
+  \end{center}
+    \caption {Table illustrating average statistics for each Person Category of People Gazetteer across 2 Topic Models}
+\label{table:stats}
+\end{table*}
+
+
+The following sections present comparison between the ranked influential person lists L1 and L2, some case studies and evaluation results:
+ 
+\begin{table*}
+\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
+\hline
+Person Name    & IPI  & Number of Articles & Person Category & NDL  & NTF  & NSIM & TOPIC WORDS                                                          & UniqT & Rank \\ \hline
+capt creeten   & 3.38 & 10                 & Medium          & 0.56 & 1.95 & 0.8  & mr court police judge justice case yesterday street district         & 0.06  & 1    \\ \hline
+capt hankey    & 3.02 & 6                  & Medium          & 0.68 & 1.6  & 0.66 & club game team play football half ball left college back             & 0.06  & 2    \\ \hline
+capt pinckney  & 2.93 & 3                  & Marginal        & 0.38 & 1.84 & 0.67 & man ho men night back wa room left house told bad                    & 0.03  & 3    \\ \hline
+john macdonald & 2.85 & 3                  & Marginal        & 0.55 & 2.2  & 0    & great people life man women good country world american part         & 0.1   & 4    \\ \hline
+john martin    & 2.82 & 12                 & Medium          & 0.56 & 1.6  & 0.5  & mr court police judge justice case yesterday street district witness & 0.17  & 5    \\ \hline
+aaron trow     & 2.81 & 1                  & Marginal        & 0.7  & 2.07 & 0    & man ho men night back wa room left house told                        & 0.03  & 6    \\ \hline
+mrs oakes      & 2.79 & 5                  & Medium          & 0.08 & 2.04 & 0.6  & street mrs mr avenue wife house miss yesterday years home            & 0.06  & 7    \\ \hline
+buenos ayres   & 2.76 & 6                  & Medium          & 0.43 & 1.6  & 0.67 & white water indian black long found thu big dog time                 & 0.06  & 8    \\ \hline
+alexander iii  & 2.74 & 31                 & High            & 0.24 & 2.04 & 0.29 & great people life man women good country world american part         & 0.16  & 9    \\ \hline
+mr got         & 2.73 & 3                  & Marginal        & 0.56 & 1.47 & 0.67 & mr court police judge justice case yesterday street district witness & 0.03  & 10    \\ \hline
+\end{tabular}
+\caption{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
+\label{table:30t}
+\end{table*}
+
+\begin{table*}
+\resizebox{16cm}{!} {
+\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
+\hline
+Person Name    & IPI  & Number of Articles & Person Category        & NDL  & NTF  & NSIM & Topic Words                                                                 & UniqT & Rank \\ \hline
+capt creeten   & 3.33 & 10                 & Medium     & 0.56 & 1.90 & 0.8  & mr police witness committee capt asked captain money inspector paid         & 0.06  & 1    \\ \hline
+mrs martin     & 3.23 & 8                  & Medium     & 0.20 & 2.38 & 0.5  & mrs mr years wife home house ago woman city died                            & 0.02  & 2    \\ \hline
+alexander iii  & 3.09 & 31                 & High     & 0.49 & 2.04 & 0.48 & emperor prince french alexander czar london nov government imperial russian & 0.07  & 3    \\ \hline
+capt hankey    & 2.97 & 6                  & Medium    & 0.68 & 1.6  & 0.66 & game team football play half line ball back yale eleven                     & 0.02  & 4    \\ \hline
+aaron trow     & 2.79 & 1                  & Marginal & 0.70 & 2.07 & 0    & day place long great water time feet found good men                         & 0.01  & 5    \\ \hline
+john macdonald & 2.77 & 3                  & Marginal & 0.55 & 2.2  & 0    & people american man great country men world life good english               & 0.02  & 6    \\ \hline
+mrs oakes      & 2.74 & 5                  & Medium     & 0.08 & 2.04 & 0.6  & mrs mr years wife home house ago woman city died                            & 0.02  & 7    \\ \hline
+john martin    & 2.71 & 12                 & Medium     & 0.56 & 1.6  & 0.5  & mr police witness committee capt asked captain money inspector paid         & 0.05  & 8    \\ \hline
+ed kearney     & 2.63 & 7                  & Medium     & 0.16 & 1.6  & 0.85 & won time race ran mile furlough half lo track fourth                        & 0.01  & 9    \\ \hline
+caleb morton   & 2.61 & 1                  & Marginal & 0.70 & 1.9  & 0    & day place long great water time feet found good men                         & 0.01  & 10   \\ \hline
+
+\end{tabular}}
+\caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
+\label{table:100t}
+\end{table*}
+\subsection{Comparison Across Ranked Influential Person Lists }
+
+The top 10 influential persons from List L1 and L2 detected from each of the people gazetteers are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively.
+It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by Medium and Marginal category persons having considerably less number of articles of occurrence. This indicates the fact that number of articles of occurrence has not been given priority while measuring influence of a person entity. 
+The statistics for top 10 influential people from both the tables also suggest that none of the measures of NDL, NTF or NSIM can be alone used to say whether a person entity is influential since these value do not decrease or increase consistently although the NTF measure does contribute most to the IPI of any person.
+
+%\newpage
+The ranked influential lists L1 and L2 can be contrasted in terms of NSIM, UniqT and Topic Words since they vary across different number of topics and to see the effect of 30 and 100 Topics LDA Models on influential person detection.
+ If NSIM (normalized number of topic similar articles) remains same in L1 and L2 during influential person detection from both the people gazetteers, then the same highest scoring article' DI is selected for calculation of IPI in both of them. This is why the parameters NDL (Normalized Document Length) and NTF (Normalized Term Frequency) remain same across both the lists. This can be seen for person like ``capt creeten", ``capt hankey", ``aaron trow" and "mrs oakes" in Tables ~\ref{table:30t} and ~\ref{table:100t}. But the value of UniqT for these persons decreases leading to decrease in their final IPI in the second table. This is because LDA model with higher number of topics (100) is used in this case due to which the proportion of unique topics becomes lower when NSIM does not change.
+However, when the NSIM (normalized number of topic similar articles) value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 3 in the second table. 
+This indicates the fact that LDA Topic Model used affects the ranking of influential persons when number of topics are varied.
+
+  \subsection{Case Studies}
+
+Some of the topmost 10 influential person entities of lists L1 and L2  (Table ~\ref{table:30t} and ~\ref{table:100t}) identified from each person category of the 2 people gazetteers are discussed below: 
+\begin{enumerate}
+
+\item
+Highly Influential Category- This category as defined in Section~\ref{ner:results} includes person entities influencing number of news articles greater than 16. However, only one person entity (``alexander iii") from this category occurs in the top 10 influential persons. The entry for ``alexander iii" has an IPI of 2.94 and 3.09 respectively in list L1 and L2 . The person entity occurs in 31 news articles with 5 and 7 different topics in each of the lists. The most common topic words associated with this person entity are: ``emperor prince french alexander czar london nov government imperial russian" indicating the importance of this entity in government related news topics. The 100 Topic LDA model increases the IPI value of this entity because the NSIM value increases (more number of similar topic articles talk about this person) and a longer article gets maximum DI score resulting in a high IPI value and improvement in the ranking from rank 9 in the first table to rank 3 in the second.
+
+\item
+Medium Influential Category- The top 10 influential entities from Tables ~\ref{table:30t} and ~\ref{table:100t} contain the most number of person entities from this person category. The person entity``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include `` mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
+Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons but suffer from the problem of named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
+ 
+\item
+Marginally Influential Category- Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
+Several person entities with low occurrences in news articles like ``aaron trow", ``caleb morton", ``john macdonald"  belong to this category. These entities in spite of occurring in very few articles (1 to 3) occur a large number of times in those articles with comparatively longer article length indicating the importance of these entities with respect to the articles they occur in. Since each of the features has been given equal weight during the calculation of IPI,  these person entities with high NDL and NTF have been identified among the top 10 influential persons. 
+ The person entity ``mr got" ranked as a high influential person belonging to this category has actually been falsely detected as influential as the PNER seems to have misrecognized this entity as a person entity.  
+
+\end{enumerate} 
+
+
+\subsection{Evaluation}
+
+Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
+To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 and L2 detected from the people gazetteer with 30 Topics LDA and 100 Topics LDA Model respectively.
+
+Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential persons from Lists L1 and L2 found in Wikipedia are shown in Figure~\ref{figure:inf}. 
+
+\begin{figure*}
+\begin{center}
+\includegraphics[scale=0.79]{ip}
+\caption{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation}
+\label{figure:inf}
+\end{center}
+\end{figure*}
+
+
+ Most of the false positives although influential in other respects but were not  influential `person' entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
+ False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are in fact locations but got recognized as highly influential person entities.
+ 
+ The ranked list of the top 30 influential persons with their IPI from Lists L1 and L2 can be seen in the Appendix (Table ~\ref{table:app1}.~\ref{table:app2}) where evaluation result for each person entity is also presented.

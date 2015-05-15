@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  1 MAY 2015 02:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  15 MAY 2015 23:08
 entering extended mode
-**C:/Users/AAYUSHEE/workspace/Thesis/paper*template/bare_adv.tex
-("C:/Users/AAYUSHEE/workspace/Thesis/paper template/bare_adv.tex"
+**C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper*template/bare_adv.tex
+("C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/bare_adv.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
-("C:\Users\AAYUSHEE\workspace\Thesis\paper template\IEEEtran.cls"
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\IEEEtran.cls"
 Document Class: IEEEtran 2014/09/17 V1.8a by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -336,7 +336,7 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
-("C:\Users\AAYUSHEE\workspace\Thesis\paper template\bare_adv.aux")
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 458.
 LaTeX Font Info:    ... okay on input line 458.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 458.
@@ -365,28 +365,28 @@ LaTeX Font Info:    ... okay on input line 458.
 \makeMPintoPDFobject=\count131
 \everyMPtoPDFconversion=\toks24
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 596.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 598.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 596.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 598.
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 59
-6.
-LaTeX Font Info:    Try loading font information for U+pzd on input line 596.
+8.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 598.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\upzd.fd"
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 623.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 625.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
 
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 623.
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 657
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 625.
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 659
 .
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 658.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 660.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
@@ -399,7 +399,7 @@ Overfull \vbox (4.90425pt too high) has occurred while \output is active []
 
 
 ]
-Underfull \hbox (badness 1472) in paragraph at lines 684--685
+Underfull \hbox (badness 1472) in paragraph at lines 688--689
 []\OT1/ppl/m/n/9.53561 DOUBT: SHOULD THE PROB-LEM DE-SCRIP-
  []
 
@@ -407,61 +407,64 @@ Underfull \hbox (badness 1472) in paragraph at lines 684--685
 File: images/framework4.jpg Graphic file (type jpg)
 
 <use images/framework4.jpg>
-Package pdftex.def Info: images/framework4.jpg used on input line 703.
+Package pdftex.def Info: images/framework4.jpg used on input line 707.
 (pdftex.def)             Requested size: 305.33714pt x 378.76016pt.
- [2]
-Underfull \hbox (badness 1394) in paragraph at lines 731--734
+
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\RelatedWork.tex"
+[2]
+Underfull \hbox (badness 1394) in paragraph at lines 10--13
 []\OT1/ppl/m/n/9.53561 Historical news-pa-per archives-from Chron-i-cling
  []
 
-[3 <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/framework4.jpg>]
+[3 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/framework4.jpg
+>]) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Dataset.tex"
 <images/originalimage.png, id=20, 313.17pt x 189.70876pt>
 File: images/originalimage.png Graphic file (type png)
 
 <use images/originalimage.png>
-Package pdftex.def Info: images/originalimage.png used on input line 768.
+Package pdftex.def Info: images/originalimage.png used on input line 22.
 (pdftex.def)             Requested size: 234.8769pt x 142.2812pt.
 
 <images/ocr.png, id=22, 306.39468pt x 175.40532pt>
 File: images/ocr.png Graphic file (type png)
  <use images/ocr.png>
-Package pdftex.def Info: images/ocr.png used on input line 769.
+Package pdftex.def Info: images/ocr.png used on input line 23.
 (pdftex.def)             Requested size: 245.11607pt x 140.32443pt.
 
-Overfull \hbox (12.2405pt too wide) in paragraph at lines 768--770
+Overfull \hbox (12.2405pt too wide) in paragraph at lines 22--24
 [][] [] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 774.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 28.
 
-Underfull \hbox (badness 1365) in paragraph at lines 780--781
+Underfull \hbox (badness 1365) in paragraph at lines 34--35
 []\OT1/ppl/b/n/9.53561 Real word er-rors \OT1/ppl/m/n/9.53561 in-clude words th
 at are
  []
 
 [4]
-Overfull \hbox (74.16125pt too wide) in paragraph at lines 788--788
+Overfull \hbox (74.16125pt too wide) in paragraph at lines 42--42
 [][][]\OT1/ppl/m/n/8.03 https://power.ldeo.columbia.edu/twiki/pub/Incubator/Bod
 hiDBDesign/Final
  []
 
+) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\PeopleGazetteer.tex"
 
-LaTeX Warning: Reference `gaz:discussion' on page 5 undefined on input line 806
-.
+LaTeX Warning: Reference `gaz:discussion' on page 5 undefined on input line 4.
 
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 812.
-[5 <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/originalimage.png>
- <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/ocr.png>]
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 10.
+[5 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/originalimage.
+png> <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/ocr.png>]
 <images/IPChart.jpg, id=32, 363.60844pt x 219.06844pt>
 File: images/IPChart.jpg Graphic file (type jpg)
 
 <use images/IPChart.jpg>
-Package pdftex.def Info: images/IPChart.jpg used on input line 891.
+Package pdftex.def Info: images/IPChart.jpg used on input line 89.
 (pdftex.def)             Requested size: 363.60754pt x 219.06789pt.
  [6]
-Overfull \hbox (24.57587pt too wide) detected at line 948
+Overfull \hbox (24.57587pt too wide) detected at line 146
 \OML/cmm/m/it/10 Perplexity \OT1/cmr/m/n/10 = [](\OMS/cmsy/m/n/10  []\OT1/cmr/m
 /n/10 )
  []
@@ -470,34 +473,36 @@ Overfull \hbox (24.57587pt too wide) detected at line 948
 File: images/topicperplex2.png Graphic file (type png)
 
 <use images/topicperplex2.png>
-Package pdftex.def Info: images/topicperplex2.png used on input line 966.
+Package pdftex.def Info: images/topicperplex2.png used on input line 164.
 (pdftex.def)             Requested size: 452.43921pt x 219.06789pt.
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 967.
- [7 <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/IPChart.jpg>] [8 
-<C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/topicperplex2.png>]
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 165.
+ [7 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/IPChart.jpg>]
+ [8 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/topicperplex2
+.png>]
 <images/gazetteer.png, id=50, 435.12563pt x 318.43968pt>
 File: images/gazetteer.png Graphic file (type png)
 
 <use images/gazetteer.png>
-Package pdftex.def Info: images/gazetteer.png used on input line 1002.
+Package pdftex.def Info: images/gazetteer.png used on input line 200.
 (pdftex.def)             Requested size: 435.12456pt x 318.4389pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1116--1117
+)
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\IPDetection.tex"
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
 []\OT1/ppl/m/n/9.53561 Following sub-sec-tions de-scribe the fea-
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 1116--1117
+Underfull \hbox (badness 5726) in paragraph at lines 4--5
 \OT1/ppl/m/n/9.53561 tures/parameters cho-sen for cal-cu-la-tion of DI
  []
 
 
-Overfull \hbox (28.33672pt too wide) detected at line 1126
+Overfull \hbox (28.33672pt too wide) detected at line 14
 \OML/cmm/m/it/10 NDL \OT1/cmr/m/n/10 = []
  []
 
 
-Overfull \hbox (33.6349pt too wide) in paragraph at lines 1150--1151
+Overfull \hbox (33.6349pt too wide) in paragraph at lines 38--39
  $[]$ 
  []
 
@@ -505,31 +510,32 @@ Overfull \hbox (33.6349pt too wide) in paragraph at lines 1150--1151
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (59.75208pt too wide) in paragraph at lines 1178--1178
+Overfull \hbox (59.75208pt too wide) in paragraph at lines 66--66
  $[]$ 
  []
 
-[10 <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/gazetteer.png>]
-Overfull \hbox (13.57281pt too wide) in paragraph at lines 1224--1224
+[10 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/gazetteer.png
+>]
+Overfull \hbox (13.57281pt too wide) in paragraph at lines 112--112
 $\OML/cmm/m/it/10 GetDocLength\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 doc\OT1/cmr/m/n
 /10 )\OML/cmm/m/it/10 =GetMaxDocLength\OT1/cmr/m/n/10 ()$\OT1/ppl/m/n/9.53561 ;
   
  []
 
 
-Overfull \hbox (0.9195pt too wide) in paragraph at lines 1224--1224
+Overfull \hbox (0.9195pt too wide) in paragraph at lines 112--112
 $\OML/cmm/m/it/10 GetTopicSimilarArticles\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 doc;
  DocList\OT1/cmr/m/n/10 )$\OT1/ppl/m/n/9.53561 ;  
  []
 
 
-Overfull \hbox (0.85193pt too wide) in paragraph at lines 1227--1228
+Overfull \hbox (0.85193pt too wide) in paragraph at lines 115--116
 []$\OML/cmm/m/it/10 PrintPersonNameandMaxIPI\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 I
 PIScores\OT1/cmr/m/n/10 )$\OT1/ppl/m/n/9.53561 ;  
  []
 
 
-Overfull \hbox (14.30342pt too wide) detected at line 1231
+Overfull \hbox (14.30342pt too wide) detected at line 119
 [][] 
  []
 
@@ -537,94 +543,96 @@ Overfull \hbox (14.30342pt too wide) detected at line 1231
 File: images/IPIChart.jpg Graphic file (type jpg)
 
 <use images/IPIChart.jpg>
-Package pdftex.def Info: images/IPIChart.jpg used on input line 1259.
+Package pdftex.def Info: images/IPIChart.jpg used on input line 147.
 (pdftex.def)             Requested size: 272.51744pt x 164.11272pt.
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1286--1286
+) [11]
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Results.tex"
+Underfull \hbox (badness 10000) in paragraph at lines 10--10
 []\OT1/ppl/b/n/8.03 Person
  []
 
 
-Underfull \hbox (badness 2478) in paragraph at lines 1286--1286
+Underfull \hbox (badness 2478) in paragraph at lines 10--10
 \OT1/ppl/b/n/8.03 ber of Doc-u-
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 1286--1286
+Underfull \hbox (badness 4048) in paragraph at lines 10--10
 []\OT1/ppl/b/n/8.03 Average Term
  []
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 1303--1303
+Underfull \hbox (badness 2512) in paragraph at lines 27--27
 \OT1/ppl/m/n/8.03 jus-tice case yes-ter-day
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1306--1306
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 []\OT1/ppl/m/n/8.03 john mac-don-
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 1306--1306
+Underfull \hbox (badness 2012) in paragraph at lines 30--30
 \OT1/ppl/m/n/8.03 women good coun-try
  []
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 1307--1307
+Underfull \hbox (badness 2512) in paragraph at lines 31--31
 \OT1/ppl/m/n/8.03 jus-tice case yes-ter-day
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1310--1310
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
 []\OT1/ppl/m/n/8.03 white wa-ter in-dian
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 1311--1311
+Underfull \hbox (badness 2012) in paragraph at lines 35--35
 \OT1/ppl/m/n/8.03 women good coun-try
  []
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 1312--1312
+Underfull \hbox (badness 2512) in paragraph at lines 36--36
 \OT1/ppl/m/n/8.03 jus-tice case yes-ter-day
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 1334--1334
+Underfull \hbox (badness 3439) in paragraph at lines 58--58
 \OT1/ppl/m/n/8.03 tain money in-spec-tor
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 1334--1334
+Underfull \hbox (badness 2189) in paragraph at lines 58--58
 []\OT1/ppl/m/n/8.03 day place long great
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1334--1334
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 []\OT1/ppl/m/n/8.03 john mac-don-
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 1334--1334
+Underfull \hbox (badness 2012) in paragraph at lines 58--58
 []\OT1/ppl/m/n/8.03 people amer-i-can man
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1334--1334
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 \OT1/ppl/m/n/8.03 great coun-try men
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 1334--1334
+Underfull \hbox (badness 3439) in paragraph at lines 58--58
 \OT1/ppl/m/n/8.03 tain money in-spec-tor
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 1334--1334
+Underfull \hbox (badness 2189) in paragraph at lines 58--58
 []\OT1/ppl/m/n/8.03 day place long great
  []
 
-[12 <C:/Users/AAYUSHEE/workspace/Thesis/paper template/images/IPIChart.jpg>]
+[12 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/IPIChart.jpg>
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -632,8 +640,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13]
 
-LaTeX Warning: Reference `ner:results' on page 14 undefined on input line 1356.
-
+LaTeX Warning: Reference `ner:results' on page 14 undefined on input line 80.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -642,39 +649,41 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/ip.png, id=74, 498.36188pt x 297.36093pt>
 File: images/ip.png Graphic file (type png)
  <use images/ip.png>
-Package pdftex.def Info: images/ip.png used on input line 1379.
+Package pdftex.def Info: images/ip.png used on input line 103.
 (pdftex.def)             Requested size: 393.70157pt x 234.91255pt.
- [15]
-("C:\Users\AAYUSHEE\workspace\Thesis\paper template\bare_adv.bbl" [16 <C:/Users
-/AAYUSHEE/workspace/Thesis/paper template/images/ip.png>])
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1476
+)
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Discussion.tex"
+[15]) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Conclusion.tex")
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.bbl" [16 <C:/U
+sers/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/ip.png>])
+Underfull \hbox (badness 10000) in paragraph at lines 903--903
 []\OT1/ppl/b/n/8.03 Whether found on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1518--1518
+Underfull \hbox (badness 10000) in paragraph at lines 945--945
 []\OT1/ppl/b/n/8.03 Whether found on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1546--1546
+Underfull \hbox (badness 10000) in paragraph at lines 973--973
 []\OT1/ppl/m/n/8.03 part of or-ga-ni-za-tion
  []
 
-[17] [18] [19] ("C:\Users\AAYUSHEE\workspace\Thesis\paper template\bare_adv.aux
-")
+[17] [18] [19]
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4758 strings out of 494045
- 69526 string characters out of 3148378
- 178351 words of memory out of 3000000
- 7984 multiletter control sequences out of 15000+200000
+ 4780 strings out of 494045
+ 70613 string characters out of 3148378
+ 178355 words of memory out of 3000000
+ 7985 multiletter control sequences out of 15000+200000
  49534 words of font info for 108 fonts, out of 3000000 for 9000
  718 hyphenation exceptions out of 8191
- 29i,13n,31p,1170b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,13n,31p,1194b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/font
@@ -692,7 +701,7 @@ rogram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/urw/palatino/uplri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/z
 apfding/uzdr.pfb>
-Output written on bare_adv.pdf (19 pages, 768022 bytes).
+Output written on bare_adv.pdf (19 pages, 768024 bytes).
 PDF statistics:
  148 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

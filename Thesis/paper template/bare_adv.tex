@@ -488,7 +488,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
 
-\author{Aayushee~Gupta, Hamonti~Dutta, Lipika~Dey, Srikanta~Bedathur}
+\author{Aayushee~Gupta, Haimonti~Dutta, Lipika~Dey, Srikanta~Bedathur}
 %\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
 %        John~Doe,~\IEEEmembership{Fellow,~OSA,}
 %        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}
@@ -561,6 +561,8 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
+
+
 \begin{abstract}
 
  Historical newspaper archives provide a wealth of information. They
@@ -658,8 +660,10 @@ An important use of historical newspapers is for People Search\cite{BilenkoMCRF0
 But these resources are not open source or freely available to the public which emphasizes the requirement of an open source/publically available gazetteer for People Search. Chronicling America \footnote{\texttt{http://chroniclingamerica.loc.gov/}} provides an online, searchable database of historically significant newspapers between 1836 and 1922 but with rudimentary word search capabilities. The time consuming manual effort required in People Search from the database can be reduced by developing a People Gazetteer which can provide easy access to historical information of people and events connected to them.
 
 
-% SHOULD I INCLUDE BOTH IMAGES OF ONLINE SEARCH TOOLS HERE?
+ SHOULD I INCLUDE BOTH IMAGES OF ONLINE PEOPLE SEARCH TOOLS HERE?
 % Figure~\ref{figSearch} shows two such tools available online.
+
+
 This paper studies the problem of finding and ranking influential people from a People Gazetteer developed through historical newspaper OCR archives of Chronicling America.
   
  An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
@@ -707,304 +711,43 @@ We divide the the problem of finding influential people into the following subpr
 
 
 
-%\section{ Novel Research Contributions}
-%\label{intro:rc}
-%This paper has the following novel contributions:
-%\begin{enumerate}
-%\item A new algorithm for \emph{evaluation} of the performance of the spelling correction algorithm is presented. 
-%\item Development of the People Gazetteer -- an organized dictionary of people names and a list of articles in which the name %occurs along with the corresponding topic of each article to facilitate identification of influential people.
-%\item Define an Influential Person Index (IPI) and metrics for its calculation in order to identify and rank influential people. Case %studies of the top-K influential people detected are also discussed and verified with Wikipedia data. 
-
-%\end{enumerate}
-
 \section{Related Work}
 \label{influential:rw}
+\input{RelatedWork}
 
-Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organizations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource which is used to find occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurrence and their respective topic.
 
-Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
-\cite{zhang2009novel} discuss automatic generation of gazetteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities. \cite{allen2013toward} describe an exploratory study of developing an interactive directory for the town of Norfolk, Nebraska for the years 1899 and 1900 that focuses on providing structured and richer information about the person entities that occur in the town directory by linking their mention and events associated with them in the historical newspapers. Their entity-based directory is similar to our people gazetteer although we do not restrict our problem to any specific town or significant era nor do we consider any specific town directory to begin with. They do not provide any implementation details or results and do not talk about procedure of finding influential persons from their interactive directory. 
-%There is also no relevant work that builds or uses historical person names gazetteer list for data mining that we know of.
-
-Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work -- the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization\cite{crane2006challenge}. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project \cite{smith2002detectinga, smith2002detectingb, smith2001disambiguating}, a general system to extract dates and names from text was developed in order to detect significant events in document collections. 
-
-Historical newspaper archivesfrom Chronicling America have also been used for topic modeling in order to learn topics of interest during historically significant time periods\cite{yang2011topic}. \cite{newman2006analyzing} use a combination of Statistical Topic Modeling and Named Entity Recognition techniques for analyzing the entities, topics trends and topics that relate entities mentioned in a news articles dataset. They also create networks based on the topic model based relationships among the entities.
-\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and co-reference names for the entity.
- Above mentioned research works stress on person entities in a newspaper environment but do not focus on finding influential entities in which respect our research is different from their work.
-
-Influential people detection has been mostly done in the field of social networks, marketing and diffusion research.
-\cite{kempe2003maximizing} work on choosing the most influential set of nodes  in a social network in order to maximize user influence in the network. They consider spread of influence from an influential node cascading through a network which further influences other neighborhood nodes but we do not consider the case of a network of connected person entities in our research where influence score of a person entity could be influenced by that of its neighboring person entity nodes. We consider each person entity connected with a list of articles of its occurrence instead and measure the person entity's influence score by finding the effect of influence of each article in that list.
- 
-
-\cite{lerman2010using} define popularity of a news story in terms of number of reader votes received by it and predict popularity of a news story over time based on voting history and the probability that a user seeing a story at specific position in a list will vote on it. 
-A more relevant work regarding detection of influential people is presented in \cite{agarwal2008identifying} where influential bloggers are identified on a blog site. Influence of each blogger is quantified by taking maximum of the influence scores of each blog posted by a blogger. The influence score of each blog is calculated using parameters of importance in a blogsite like number of posts that refer to the blog, number of comments on the blog, number of other posts that the blog refers to and length of the blog. Influential blogger categories are also created based on the temporal patterns of blog posting by bloggers. 
-
-\cite{cha2010measuring} describe another set of measures for detection of top influential users on Twitter using number of retweets, mentions and followers for an individual. They perform ranking based on each measure separately and use Spearman's rank correlation coefficient to find correlation among ranks and effect of each measure contributing to a person's influence. The influence ranks of topmost influential users on Twitter are presented across various topics as well as time.
-
-In the above mentioned works, although the problem description matches with our research problem but the parameters defined to measure influence or popularity cannot be directly used in the newspaper environment. 
 
 \section{Dataset Description}
-The dataset has been taken from Chronicling America.
-\footnote{\texttt{http://chroniclingamerica.loc.gov/}} is an
-initiative of the National Endowment for Humanities (NEH) and the
-Library of Congress (LC) whose goal is to develop an online,
-searchable database of historically significant newspapers between
-1836 and 1922. 
-In order to make a newspaper available for searching on the Internet,
-the following processes used in \cite{dutta2011learning} must take place: (1) the microfilm copy or
-paper original is scanned; (2) master and Web image files are
-generated; (3) metadata is assigned for each page to improve the
-search capability of the newspaper; (4) OCR software is run over high
-resolution images to create searchable full text and (5) OCR text,
-images, and metadata are imported into a digital library software
-program. The scanned newspaper holdings of the NYPL offers a wealth of
-data and opinion for researchers and historians.
-The newspapers are scanned on a page-by-page basis and article level
-segmentation is poor or non-existent; the OCR scanning process is far
-from perfect and the documents generated from it contains a large
-amount of garbled text.
-
-\begin{figure*}
-\includegraphics[scale=0.75]{originalimage}
-\includegraphics[scale=0.80]{ocr}
-\caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
-\label{figure:1}
-\end{figure*}
-
-\subsection{Data Characteristics}
-An individual OCR text article has at least one or more of the following types of spelling errors:
-
-
-
-\begin{itemize}
- \item \textbf{Real word errors}	 include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
- \item \textbf{Non-real word} errors include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
- \item \textbf{Non-word errors} include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
-\item \textbf{New Line errors} include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
-\item \textbf{Word Split and Join errors} include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
-\end{itemize} 
-
-\subsection{Data Statistics}
-The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
-is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
-
-
-\subsection{Data Preprocessing}
-The garbled OCR text makes data preprocessing mandatory before application of any text mining algorithms. We,therefore, use edit distance algorithm based on Levenshtein distance to perform spelling correction on the OCR text articles. The algorithm is chosen because of its speed and ability to correct OCR errors compared to the n-gram approach \cite{chattopadhyaya2013fast}. Our edit distance algorithm also uses an enhanced person names dictionary for look up to give significance to personal names spelling correction in the dataset. 
-DO I NEED TO MENTION DETAILS OF THE DICTIONARY USED FOR SPELLING CORRECTION AND ANYTHING ABOUT TESTING ACCURACY OF SPELL CORRECTION?
-SHOULD RESULTS OF SPELLING CORRECTION BE ADDED HERE? PNDR AND ACCURACY?
-
+\input{Dataset}
 
 
 
 \section{Development of People Gazetteer}
 \label{chapter:people gazetteer}
-
-People Gazetteer as defined in Section~\ref{sec:introduction} consists of tuples of person names along with list of documents in which they occur and their corresponding topics. It is developed as an organized structure that can facilitate the process of detection of influential persons from the dataset in an efficient and easy way. This section describes the 2-step process of construction of the People Gazetteer by
-a) Extraction of person names from the news articles dataset using Named Entity Recognition in  Section~\ref{ner} and
-b) Assignment of topics to news articles using LDA topic detection in  Section~\ref{topic detection}.
-Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result} followed by discussion in Section~\ref{gaz:discussion}
-
-\subsection{Person Named Entity Recognition (PNER)}
-\label{ner}
-
-
-\subsubsection{Definition}
-NER (Named Entity Recognition) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc. 
-Person Named Entity Recognition (PNER) can be defined as the process of NER that marks up only person names that occur in the text.
-
-PNER is required in this research so as to extract all person name entities occurring in the complete dataset and identify influential person entities among them through development of the People Gazetteer. 
-PNER aids in the development of People Gazetteer by first extracting all person names occurring in the dataset followed by reverse linking of a person with the articles in which he/she occurs.
-
-\subsubsection{Methodology}
-
-The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is used for PNER in this research. It can perform NER for 3 classes: Person, Organization and Location and is based on linear chain CRF (Conditional Random Field) sequence models. It is trained across several corpora and is fairly robust across multiple domains and even better when compared to some other open source NER systems as illustrated in \cite{rodriquez2012comparison}. According to their results, Stanford NER gave overall the best performance across 2 OCR datasets, and was most effective for PNER when compared with 3 other open source NER systems.
-
-%NO NEED OF THIS FIGURE
-%\subsubsection{PNER Results}
-%\label{ner:results}
-%\begin{figure*}
- % \centering
-%\includegraphics{NER1}
-%\caption{NER on a sample news article}
-%\label{figure:sample}
-%\end{figure*} 
+\input{PeopleGazetteer}
 
 
 
-
-%NER on a sample news article from the dataset can be seen in Figure~\ref{figure:sample}.
- Stanford NER recognizes a person's full name as separate names by default which is rectified by combining these multi-term entities into single person entities. For example, the person name ``John Smith" is recognized as two separate person entities which we combine to form a single multi-term person entity.
-Person names tagged with ``PERSON" category are stored while running NER on the dataset.
-Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document occurrence lists.
-The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 36362 person entities.  
-
-%\begin{table*}
- % \begin{center}
-%\begin{tabular}{|l|l|l|}
-   % \hline
-%\textbf{No. of Person Entities} & \textbf{No. of articles} \\ \hline
-%36615                  & 1               \\ \hline
-%1122                   & 2               \\	\hline
-%329                    & 3               \\	\hline
-%123                    & 4               \\	\hline
-%87                     & 5               \\	\hline
-%48                     & 6               \\	\hline
-%29                     & 7               \\	\hline
-%19                     & 8               \\	\hline
-%16                     & 9               \\	\hline
-%5                      & 10              \\	\hline
-%4                      & 11              \\	\hline
-%6                      & 12              \\	\hline
-%4                      & 14              \\	\hline
-%3                      & 15              \\	\hline
-%2                      & 16              \\	\hline
-%1                      & 17              \\	\hline
-%1                      & 18              \\	\hline
-%3                      & 19              \\	\hline
-%1                      & 20              \\	\hline
-%1                      & 21              \\	\hline
-%1                      & 22              \\	\hline
-%1                      & 23              \\	\hline
-%1                      & 27              \\	\hline
-%1                      & 29              \\	\hline
-%1                      & 31              \\	\hline
-%1                      & 34              \\	\hline
-%1                      & 35              \\ 	\hline
-%\end{tabular}
-%\end{center}
-%\caption{Table showing output of PNER on 14020 articles}
-%\label{table:Table1}
-%\end{table*}
+\section{Influential People Detection}
+\label{influential}
+\input{IPDetection}
 
 
-We divide the people entities extracted into following categories so that separate analysis can be done for each category:
-\begin{itemize}
- \item \textbf{Marginally Influential}: This category includes all person entities with occurrence in less than 4 news articles. (36004 person entities )
-\item \textbf{Medium Influential}: This category includes all person entities with occurrence from 4 to 15 news articles. (344 person entities) 
-\item \textbf{Highly Influential} : This category includes all person entities with occurrence in 16 or more news articles. (14 person entities)
-\end{itemize}
-Figure ~\ref{figure:res} shows the statistics for each of these categories of persons extracted from the dataset. These categories have been created manually simply based on the number of articles of occurrence of a person entity and do not directly lead to the conclusion of a person entity with large number of articles being influential.
 
-\begin{figure*}
-  \centering
-\includegraphics{IPChart}
-\caption{Statistics showing number of persons extracted for each influential person category after PNER from the dataset}
-\label{figure:res}
-\end{figure*} 
+\section{Results}
+\label{influential:results}
+\input{Results}
 
 
-\subsection{Topic Detection}
-\label{topic detection}
 
- Topic models are algorithms for discovering the main topics that occur across a large and otherwise 
-unstructured collection of documents and can organize the collection according to the discovered topics.
-Here, a topic refers to a set of words which describe what any document is about.
- A topic model examines the set of documents and discovers based on the statistics of the words in each, what the topics might be and what each document's balance of topics is.
-Documents are considered as a mixture of topics and each topic a probability distribution over words.
- Topic detection is the process of identifying topics in a document collection using a topic model. 
-%A simple example of topic model illustrated by \cite{blei2012probabilistic} can be seen in Figure~\ref{figure:example}.
-
-Topic detection is essential to this research in order to determine the topics of individual news articles that a person entity occurs in so that the person entity can be linked to the documents in which he/she occurs along with their respective topics.
-
-%\begin{figure*}
-%\begin{center}
-%\includegraphics[scale=0.8]{topicmodel}
-%\caption{Simple topic modelling approach for a single article\cite{blei2012probabilistic}}.
-%\label{figure:example}
-%\end{center}
-%\end{figure*} 
+\section{Discussion}
+\label{influential:discussion}
+\input{Discussion}
 
 
-\subsubsection{Topic Detection Model}
-\label{topic detection:model}
-\paragraph\textbf{Latent Dirichlet Allocation (LDA) Model}
 
-LDA is a generative probabilistic model in which each document is modeled as a finite mixture over an underlying set of topics and each topic, in turn, is modeled as an infinite mixture over an underlying set of topic probabilities\cite{blei2003latent}. In other words, documents exhibit multiple topics and each topic is a distribution over a fixed vocabulary.
-The LDA model can be briefly reviewed as follows:
-
-
-Given an input corpus of $D$ documents with $K$ topics, each topic being a multinomial distribution over a vocabulary of  $W$ words, the documents are modeled by fitting parameters `${\Phi}$' and `${\Theta}$'. `${\Phi}$' is a matrix of size $D \times K$ in which each row is a multinomial distribution of document $d$  indicating the relative importance of words in topics. ${\Theta}$ is the matrix of size $W \times K$ with each column a multinomial distribution of topic $j$ and corresponds to the relative importance of topics in documents.
-
-Given the observed words x = ${x_i}_j$, LDA inference is done by computing the
-posterior distribution over the latent topic assignments z = ${z_i}_j$, the mixing proportions ${\Theta_j}$  and the
-topics ${\Phi_k}$.  The inferencing is either done using variational bayesian methods or Gibbs sampling which involves integration and sampling of latent variables.
-However, the simple LDA approach can take several days to run over a large corpora.
-
-
-\paragraph\textbf{Distributed LDA Model}
- 
-The simple LDA method takes a long time for topic modeling which is why the distributed version suits large datasets such as ours. The data is partitioned across separate processors and inference is done in a parallel, distributed fashion. 
-
-The Approximate Distributed LDA (AD--LDA) model as proposed by \cite{newman2009distributed} uses distributed computation where total dataset $D$ is distributed equally among multiple $P$ processors. Initialization involves data and parameters distribution to each processor and random assignment of topics so that each processor has its own copy of words $x_p$, topics $z_p$, word topic counts ${{{N_w}_k}_p}$ and topic counts ${{{N_k}_j}_p}$. 
-The topic model inferencing then uses simultaneous local Gibbs sampling approach on each processor for a pre-decided number of iterations to reassign topic probabilities $z_p$, word topic ${{N_w}_k}_p$ and topic counts ${{N_k}_j}_p$.
-Global update is performed after each pass by using a reduce-scatter operation on word topic count ${{N_w}_k}_p$ to get a single set of counts and obtain final topic assignments.
-The model requires user set parameters before inferencing such as number of processors/threads for parallel sampling of data, number of iterations of Gibbs sampling, number of topics and Dirichlet parameters. 
-
-\subsubsection{Topic Models Evaluation}
-
- Different topic models can be evaluated using the metric of ``Perplexity" which can be defined as how surprised a trained model is when given a held out test data. It has been used in \cite{newman2009distributed} and \cite{blei2003latent} for evaluating the topic detection models under different parameter settings. Perplexity can be calculated using the following formula:
-
-$$Perplexity= \exp(-\dfrac{\text{Log Likelihood of held-out test set}}{\text{Number of tokens in held-out test set}})$$
-
-
-Here, held-out test set refers to the fact that complete dataset is split into two parts: one for training and the other for testing. The test set is taken as the held-out set for which perplexity is calculated. The document mixture is learned using the training data and log probability of the test data containing unseen documents is computed using the model developed.
-
-Perplexity is a decreasing function of the log likelihood of the unseen documents as can be seen from its formula and lower the perplexity, better is the topic model.
-
-\subsubsection{Results}
-\label{topic detection:result}
-
-The AD-LDA model as described in \cite{newman2009distributed} and implemented in the Mallet\cite{McCallumMALLET} toolkit (known as PLDA model) is used for topic detection over the complete dataset of 14020 news articles. 
-Several topic models are first evaluated with different parameter settings in order to pre-decide the number of iterations, processors and topics for the final topic model to be used.
-
-
-%After training, parameter settings as number of topics varying from 10 to 100, number of iterations from 100 to 500 and number of processors from 1 to 8, the log likelihood of held-out test dataset is calculated along with number of tokens in it to obtain perplexity.
-
-\begin{figure*}
-\begin{center}
-\includegraphics{topicperplex2}
-\caption{Test Set Perplexity versus Number of Topics for a random $90-10$ split of the data. The maximum number of words in each topic is $20$, number of iterations $500$ and the number of processors $4$ for this experiment.}
-\label{figure:perplex}
-\end{center}
-\end{figure*}
-
-Perplexity is calculated by splitting the data into 90\% for training and rest 10\% for testing. 
-Figure~\ref{figure:perplex} shows the variation of the test perplexity versus the number of topics for one random $90-10$ split of the data\footnote{We also vary the number of iterations from 100 to 500 and number of processors from 1 to 8 to study their effect on perplexity. However the number of topics is most influenced by perplexity and hence the other results are not presented here.}. The maximum number of words in each topic is set to $20$, number of iterations $500$ and the number of processors $4$ for this experiment. It exhibits a decreasing perplexity with increase in number of topics. Typically, the number of topics should be chosen as high as possible in order to consider a better model with low perplexity but the model with high number of topics also takes longer to run on a large dataset. The number of topics is set to a value from where further increase in number of topics does not lead to a large decrease in perplexity. We choose the number of topics as $30$ and $100$ and demonstrate their effect on the influential people detection.
-
-From the various topic models and parameter settings, the variability in perplexity with respect to the number of topics has been found to be much greater than the variability due to the number of processors or number of iterations. This is why two values of number of topics are experimented further while number of processors and number of iterations are kept fixed. The number of iterations of Gibbs sampling still need to be above the typical burn-in period of $200$ which is why $500$ is chosen as the parameter value for number of iterations. Number of threads/processors is similarly taken as 4 as least training time is obtained with this parameter value. 
-
-The two models from topic detection are thus used with following parameters:
-\begin{enumerate}
- \item \textbf{30 Topics LDA Model} : Number of topics = 30, Number of iterations = 500, Number of threads=4
- \item \textbf{100 Topics LDA Model} : Number of topics = 100, Number of iterations = 500, Number of threads=4
-\end{enumerate}
-The first model takes 7.5 minutes for training while the second one takes 8.6 minutes.
-%The set of 30 topics obtained through the first model are illustrated in Table~\ref{table:topicwords} and the other model with 100 topics in Appendix Table~\ref{long}. 
-Some of the topics words from the topic models can be easily identified to belong to the following topics: music performance, court events, elections and government and shipping.
-
-Topic modeling gives as output, for each article in the dataset, a set of topics with their probability distribution score for the article. The topic with highest topic probability score is associated with each article in the dataset. 
-
-
-\subsection{People Gazetteer Output }
-\label{gaz:result}
-
-The list of articles obtained for each person entity after application of PNER and highest scoring topic assigned to each article during Topic Detection are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic.
-
-
-The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles. For example, the person ``John Smith" detected in two different articles might or might not be the same person) also occur in the People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER. The coreference resolution has also been done keeping in mind that the number of articles of occurrence of a person entity is an important parameter to determine an influential person which is further explained in Section~\ref{influential:DI}
-
-Coreference resolution is performed using Stanford CoreNLP toolkit and it was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity are found in an article. 
-
-Two people gazetteers are finally developed, each corresponding to the two model settings of 30 Topics LDA Model and 100 Topics LDA Model, respectively. Both gazetteer consist of a list of named entities along with the articles of their occurrence and topic associated with each article. A snapshot of the people gazetteer using 30 Topics LDA Model can be seen in Figure~\ref{figure:gazette} where each person entity is followed by a document list consisting of a Document ID and its corresponding Topic ID. A similar people gazetteer is also obtained using 100 Topics LDA Model. Both People Gazetteers are further used in Section~\ref{influential} for detecting and ranking influential person entities from them.
-\begin{figure*}
-\centering
-\includegraphics{gazetteer}
-\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID}
-\label{figure:gazette}
-\end{figure*} 
-
-
+\section{Conclusion}
+\input{Conclusion}
 
 
 % needed in second column of first page if using \IEEEpubid
@@ -1107,322 +850,6 @@ Two people gazetteers are finally developed, each corresponding to the two model
 % \fnbelowfloat command of the stfloats package.
 
 
-\section{Influential People Detection}
-\label{influential}
-
-To measure influence in the newspaper environment and to compare and rank people as influential, we define an influence score measure called \textit{``Influential Person Index" (IPI)} corresponding to each person entity in the people gazetteer. To calculate IPI for each person entity, we first define the \textit{``Document Index" (DI)} to measure how each document in the person entity's associated list of documents affects his influence score.
-The choice of features for detecting a person entity as influential is motivated by following questions: Are frequently occurring persons in the newspaper influential? Does frequency mean occurrences of a person entity in a single article or across complete dataset? Do longer documents tend to talk about more important persons? Is a person entity occurring over multiple topics more influential or the one who is consistently talked about in similar topic articles? 
-
-Following subsections describe the features/parameters chosen for calculation of DI and IPI of a person entity followed by the complete algorithm for detection of influential persons:
-
-\subsection{Document Index (DI)}
-\label{influential:DI}
-The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. Following parameters are considered for the calculation of this index:
-
-\begin{enumerate}
-\item \textbf{Normalized Document Length} (NDL)\\
-Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the maximum news article length (of 14020 articles in the dataset) to get Normalized Document Length as follows: 
-
-$$NDL=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$$
-
-
-%\item[$\bullet$IDF]
-%IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurrence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
-
-\item\textbf{ Normalized Term Frequency} (NTF)\\
-Term Frequency (TF) accounts for the number of occurrences of a person's name in a news article. The TF of the person name affects a document's influence score as a higher number of occurrences in the document makes it more important. TF is further normalized and calculated as follows:
-
-\begin{center}
-$NTF=	1	+\log	$(TF of person entity in current article)
-\end{center}
-
-\item \textbf{Number of similar articles} (NSIM)\\
-This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
-%The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
-%documents.
-Two documents are considered similar if they belong to the same topics. For a document $d$ whose DI is to be calculated, we consider 
-
-SIM= Number of articles with the same topic as that of $d$ in the document list of person entity.
-
-This measure is normalized by dividing it with the number of total articles in the document list of the person entity as follows:
-
-\begin{center}
-$NSIM= \dfrac{\text{SIM}} {\text{Total number of articles in the person's document list}}$
-\end{center}
-NSIM can be said to be equivalent to the proportion of topic similar articles that any document $d$ has.
-
-This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents of the same topic in the person's list. 
-
-
-\end{enumerate}
-
-DI for each document is a function of the above mentioned parameters and is calculated using the following formula :
-\begin{center}
-
-			$DI = w_a . NDL + w_b . NSIM + w_c . NTF $
-\end{center}
-where, $w_a$,$ w_b$ and $w_c$ are the weights associated with each of the parameters NDL, NSIM and NTF respectively.
-
-
-DI is actually a heuristic measure of these three parameters where each of the parameters can be weighted as per dataset characteristics and user requirements. For example, a higher value to $w_a$ and lower to $w_b$ and $w_c$ indicates documents with longer lengths are considered more important for influencing a person's IPI. On the other hand, a higher value to $w_b$ and lower to $w_a$ and $w_c$ indicates a document with larger proportion of topic similar articles influences the person's IPI more suggesting assignment of high influence score to a person entity occurring repeatedly in a specific news topic.  
-
-\subsection{Influential Person Index (IPI)}
-
-Once DI is calculated for each document in a person's list, an index is calculated for the person entity in order to measure its influence in the news dataset and calculate its influential score. The ``Influential Person Index" defined for this purpose is calculated as follows:
-		
-\begin{center}
-$IPI= max DI(d_1, d_2, ...,d_n)+ UniqT$
-\end{center}
-
-where , $max DI(d_1, d_2, ...,d_n)$ = Maximum Document Index of a document $d_i$ in a person entity's list of  $n$ articles, and
-\begin{center} $UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$\end{center} 
-
-The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
-
-Ranking is done across each person category of the people gazetteer to obtain top most influential persons. For this, IPI for each person entity across the person categories are sorted in decreasing order to obtain the most influential person entities with highest IPI at the top.
-  
-\subsection{Procedure for finding influential persons}
-
-Algorithm ~\ref{algorithm:3} depicts the procedure for measuring influence and ranking of influential people from the gazetteer. It starts with calculation of DI for each news article in a person's document list by calculating the required parameters of NDL, NSIM and NTF which are assigned 0 values initially. The respective weights $w_a$,$w_b$,$w_c$ are taken as inputs and multiplied with each parameter to get final DI score which is added to the list of DI scores $DIScoreList$. The list is sorted to find the maximum DI value among all news articles in the person's document list. The maximum DI score is then added to the UniqT parameter to get the final IPI for each person entity which are again stored and sorted to obtain a ranked list of influential person entities.  
-
-
-
-\begin{algorithm}[!htb]
-\caption{Procedure to calculate IPI and rank person entities based on it}
-\label{algorithm:3}
-\begin{algorithmic}
-\Function {CalculateIPI}{}
-  
-
-%%%%%%DOUBT HERE.....
- \KwIn{$PeopleGazetter(Persons,(DocList,$}
-\KwIn{$TopicList))$, $w_a$,$w_b$,$w_c$}
-\KwResult{Ranked list of Person Name and IPI}  
- $NTF \leftarrow $0,  $NDL \leftarrow $0, $NSIM \leftarrow $0, $DI\leftarrow $0, $UniqT\leftarrow $0, $IPI\leftarrow $0\;  
-  
-    \For{(String PersonName : Persons)}
-     {
-	   \For{(String doc  : DocList)}
-	{	
-		$NTF=1+\log (GetPersonTF(doc))$;
-		
-$NDL=GetDocLength(doc)/GetMaxDocLength()$;
-
-		$ NSIM=GetTopicSimilarArticles(doc,DocList)$;
-
-		$DI=w_a . NDL+w_b . NSIM+ w_c . NTF$;
-		
-		$DIScoreList.add(DI)$;
- 	 }
-		$Sort(DIScoreList)$;
-
-		$UniqT=GetUniqueTopics(Person,TopicList)$;
-
-		$IPI=Max(DIScoreList)+UniqT$;
-
-		$IPIScores.put(PersonName,IPI)$;
-       }
-	$Sort(IPIScores)$;
-
-	$PrintPersonNameandMaxIPI(IPIScores)$;
-
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
-
-\begin{table*}
-\begin{center}
-\begin{tabular}{|c|c|} \hline
-Function Name & Description \\ \hline
-GetPersonTF(doc) & Calculates TF of the person entity \\
- & in document $doc$ \\ \hline
-GetDocLength(doc) & Calculates number of tokens in $doc$. \\ \hline
-GetMaxDocLength() & Calculates maximum number of \\
-& tokens in any document.\\ \hline
-GetTopicSimilarArticles(doc,DocList) &  Calculates normalized number \\
-& of topic similar articles for $doc$ in the $DocList$. \\ \hline
-Sort(DIScoreList) & Sorts the $DIScoreList$ \\ \hline
-Max(DIScoreList) & Finds the maximum score from $DIScoreList$. \\ \hline
-GetUniqueTopics(Person,TopicList) & Calculates normalized unique \\
-& topics for $Person$ in its $TopicList$. \\ \hline
-Sort(IPIScores) & Sorts the $IPIScores$ by IPI values. \\ \hline
-PrintPersonNameandMaxIPI(IPIScores) & Prints $Person$ name with its \\
-& IPI in decreasing order of IPI value. \\ \hline
-\end{tabular}
-\end{center}
-\caption{Description of the functions used in Algorithm~\ref{algorithm:3}}
-\label{default}
-\end{table*}%
-
-\begin{figure*}
-\begin{center}
-\includegraphics[scale=0.75]{IPIChart}
-\end{center}
-%\includegraphics[scale=0.80]{ocr}
-\caption{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.}
-\label{figure:IPI}
-\end{figure*}
-
-\subsection{An alternative approach for detecting influential persons}
-\label{influential:BAMIC}
-A heuristics based approach for finding influential persons has been discussed in the previous section. An alternative approach involving clustering can also be used for detection of influential persons.
- One such multiple instance clustering algorithm is suggested in \cite{zhang2009multi}.  They suggest an algorithm called BAMIC which can be applied to our problem as well. The multiple instance clustering problem considers clustering objects that consist of sets of instances for clustering rather than single instance clustering. According to the BAMIC algorithm, a set of instances is represented by a bag object and k-medoids algorithm is used to cluster those bags. The k-medoids algorithm is adapted to use average Hausdorff distance to measure the similarity between instances of different bags. It averages the distance between each instance in one bag and its nearest instance in the other bag and partitions dataset into k disjoint groups each containing a set of bags. BAMIC is applied to MUSK 1 and MUSK 2 datasets available publically\footnote{https://archive.ics.uci.edu/ml/datasets.html} which consist of 92 bags with 476 instances and 102 bags with 6598 instances, respectively and is used to test whether molecules are qualified to be used in a drug or not.
- This approach can be used to detect influential persons in our problem by clustering person entities into ``influential" or ``non-influential"  considering each person entity of our people gazetteer as a bag with articles of their occurrence as the instances for each bag. 
-The parameters used for calculating DI in the previous section: NDL,NTF and NSIM can be used as features associated with each article instance in a bag.
-Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not. 
-We tried to work with the open source version of the BAMIC algorithm to compare its results with the heuristic based approach suggested in this paper. But the clustering algorithm, due to its high complexity and the amount of data we worked with, the algorithm takes a very long time to give the results. Our dataset consisted of roughly 40000 person named entities on which multiple instance clustering was required and according to the estimation, it will take around 200 days to get the clusters of influential and influential persons.  Due to unavailability of such a long time frame, we do not present the results of comparison between the two approaches for detection of influential persons. Since BAMIC has been used for smaller datasets in earlier studies, we believe if the BAMIC algorithm can be scaled for larger datasets, it can be applied to our scenario easily.
-
-\section{Results}
-\label{influential:results}
-Two ranked influential person lists, namely L1 and L2 are obtained after calculation of IPI from the people gazetteer (developed in Chapter~\ref{chapter:people gazetteer}) using 30 Topics and 100 Topics LDA Model respectively. The weights $w_a$, $w_b$ and $w_c$ are all set to 1 to give equal importance to each of the parameters during calculation of DI and IPI. The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
-It can be clearly observed from the table that Highly Influential Persons occur in most number of news articles on an average and with highest average term frequency followed by Medium Influential and Marginal Influential Persons.
-Document Length need not always be too high for a person to be ranked higher as can be observed from the fact that average document length obtained for Marginally Influential People is high in spite of their Average IPI being low indicating that the varying number of similar articles for each document as well as its Term Frequency share also play an important part in measuring influence. Figure~\ref{figure:IPI} shows the average IPI from the two ranked lists -- it appears that the average IPI for highly influential people is more susceptible to changes in number of topics.
-
-\begin{table*}
-\begin{center}
-
-    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
-    \hline
-    \textbf{Person Category}  &  \textbf{Number of Person Entities}   & \textbf{Average Number of Documents}   &  \textbf{Average Document Length}	&  \textbf{Average Term Frequency}	\\  \hline
-Marginal & 38066 & 1.04 & 2119.6 & 1.07 	\\ \hline
-Medium & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
-High & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
-  \end{tabular}
-  \end{center}
-    \caption {Table illustrating average statistics for each Person Category of People Gazetteer across 2 Topic Models}
-\label{table:stats}
-\end{table*}
-
-
-The following sections present comparison between the ranked influential person lists L1 and L2, some case studies and evaluation results:
- 
-\begin{table*}
-\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
-\hline
-Person Name    & IPI  & Number of Articles & Person Category & NDL  & NTF  & NSIM & TOPIC WORDS                                                          & UniqT & Rank \\ \hline
-capt creeten   & 3.38 & 10                 & Medium          & 0.56 & 1.95 & 0.8  & mr court police judge justice case yesterday street district         & 0.06  & 1    \\ \hline
-capt hankey    & 3.02 & 6                  & Medium          & 0.68 & 1.6  & 0.66 & club game team play football half ball left college back             & 0.06  & 2    \\ \hline
-capt pinckney  & 2.93 & 3                  & Marginal        & 0.38 & 1.84 & 0.67 & man ho men night back wa room left house told bad                    & 0.03  & 3    \\ \hline
-john macdonald & 2.85 & 3                  & Marginal        & 0.55 & 2.2  & 0    & great people life man women good country world american part         & 0.1   & 4    \\ \hline
-john martin    & 2.82 & 12                 & Medium          & 0.56 & 1.6  & 0.5  & mr court police judge justice case yesterday street district witness & 0.17  & 5    \\ \hline
-aaron trow     & 2.81 & 1                  & Marginal        & 0.7  & 2.07 & 0    & man ho men night back wa room left house told                        & 0.03  & 6    \\ \hline
-mrs oakes      & 2.79 & 5                  & Medium          & 0.08 & 2.04 & 0.6  & street mrs mr avenue wife house miss yesterday years home            & 0.06  & 7    \\ \hline
-buenos ayres   & 2.76 & 6                  & Medium          & 0.43 & 1.6  & 0.67 & white water indian black long found thu big dog time                 & 0.06  & 8    \\ \hline
-alexander iii  & 2.74 & 31                 & High            & 0.24 & 2.04 & 0.29 & great people life man women good country world american part         & 0.16  & 9    \\ \hline
-mr got         & 2.73 & 3                  & Marginal        & 0.56 & 1.47 & 0.67 & mr court police judge justice case yesterday street district witness & 0.03  & 10    \\ \hline
-\end{tabular}
-\caption{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
-\label{table:30t}
-\end{table*}
-
-\begin{table*}
-\resizebox{16cm}{!} {
-\begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
-\hline
-Person Name    & IPI  & Number of Articles & Person Category        & NDL  & NTF  & NSIM & Topic Words                                                                 & UniqT & Rank \\ \hline
-capt creeten   & 3.33 & 10                 & Medium     & 0.56 & 1.95 & 0.8  & mr police witness committee capt asked captain money inspector paid         & 0.02  & 1    \\ \hline
-mrs martin     & 3.23 & 8                  & Medium     & 0.20 & 2.38 & 0.5  & mrs mr years wife home house ago woman city died                            & 0.02  & 2    \\ \hline
-alexander iii  & 3.09 & 31                 & High     & 0.49 & 2.04 & 0.48 & emperor prince french alexander czar london nov government imperial russian & 0.07  & 3    \\ \hline
-capt hankey    & 2.97 & 6                  & Medium    & 0.68 & 1.6  & 0.66 & game team football play half line ball back yale eleven                     & 0.02  & 4    \\ \hline
-aaron trow     & 2.79 & 1                  & Marginal & 0.70 & 2.07 & 0    & day place long great water time feet found good men                         & 0.01  & 5    \\ \hline
-john macdonald & 2.77 & 3                  & Marginal & 0.55 & 2.2  & 0    & people american man great country men world life good english               & 0.02  & 6    \\ \hline
-mrs oakes      & 2.74 & 5                  & Medium     & 0.08 & 2.04 & 0.6  & mrs mr years wife home house ago woman city died                            & 0.02  & 7    \\ \hline
-john martin    & 2.71 & 12                 & Medium     & 0.56 & 1.6  & 0.5  & mr police witness committee capt asked captain money inspector paid         & 0.05  & 8    \\ \hline
-ed kearney     & 2.63 & 7                  & Medium     & 0.16 & 1.6  & 0.85 & won time race ran mile furlough half lo track fourth                        & 0.01  & 9    \\ \hline
-caleb morton   & 2.61 & 1                  & Marginal & 0.70 & 1.9  & 0    & day place long great water time feet found good men                         & 0.01  & 10   \\ \hline
-
-\end{tabular}}
-\caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
-\label{table:100t}
-\end{table*}
-\subsection{Comparison Across Ranked Influential Person Lists }
-
-The top 10 influential persons from List L1 and L2 detected from each of the people gazetteers are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively.
-It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by Medium and Marginal category persons having considerably less number of articles of occurrence. This indicates the fact that number of articles of occurrence has not been given priority while measuring influence of a person entity. 
-The statistics for top 10 influential people from both the tables also suggest that none of the measures of NDL, NTF or NSIM can be alone used to say whether a person entity is influential since these value do not decrease or increase consistently although the NTF measure does contribute most to the IPI of any person.
-
-%\newpage
-The ranked influential lists L1 and L2 can be contrasted in terms of NSIM, UniqT and Topic Words since they vary across different number of topics and to see the effect of 30 and 100 Topics LDA Models on influential person detection.
- If NSIM (normalized number of topic similar articles) remains same in L1 and L2 during influential person detection from both the people gazetteers, then the same highest scoring article' DI is selected for calculation of IPI in both of them. This is why the parameters NDL (Normalized Document Length) and NTF (Normalized Term Frequency) remain same across both the lists. This can be seen for person like ``capt creeten", ``capt hankey", ``aaron trow" and "mrs oakes" in Tables ~\ref{table:30t} and ~\ref{table:100t}. But the value of UniqT for these persons decreases leading to decrease in their final IPI in the second table. This is because LDA model with higher number of topics (100) is used in this case due to which the proportion of unique topics becomes lower when NSIM does not change.
-However, when the NSIM (normalized number of topic similar articles) value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 3 in the second table. 
-This indicates the fact that LDA Topic Model used affects the ranking of influential persons when number of topics are varied.
-
-  \subsection{Case Studies}
-
-Some of the topmost 10 influential person entities of lists L1 and L2  (Table ~\ref{table:30t} and ~\ref{table:100t}) identified from each person category of the 2 people gazetteers are discussed below: 
-\begin{enumerate}
-
-\item
-Highly Influential Category- This category as defined in Section~\ref{ner:results} includes person entities influencing number of news articles greater than 16. However, only one person entity (``alexander iii") from this category occurs in the top 10 influential persons. The entry for ``alexander iii" has an IPI of 2.94 and 3.09 respectively in list L1 and L2 . The person entity occurs in 31 news articles with 5 and 7 different topics in each of the lists. The most common topic words associated with this person entity are: ``emperor prince french alexander czar london nov government imperial russian" indicating the importance of this entity in government related news topics. The 100 Topic LDA model increases the IPI value of this entity because the NSIM value increases (more number of similar topic articles talk about this person) and a longer article gets maximum DI score resulting in a high IPI value and improvement in the ranking from rank 9 in the first table to rank 3 in the second.
-
-\item
-Medium Influential Category- The top 10 influential entities from Tables ~\ref{table:30t} and ~\ref{table:100t} contain the most number of person entities from this person category. The person entity``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include `` mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
-Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons but suffer from the problem of named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
- 
-\item
-Marginally Influential Category- Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
-Several person entities with low occurrences in news articles like ``aaron trow", ``caleb morton", ``john macdonald"  belong to this category. These entities in spite of occurring in very few articles (1 to 3) occur a large number of times in those articles with comparatively longer article length indicating the importance of these entities with respect to the articles they occur in. Since each of the features has been given equal weight during the calculation of IPI,  these person entities with high NDL and NTF have been identified among the top 10 influential persons. 
- The person entity ``mr got" ranked as a high influential person belonging to this category has actually been falsely detected as influential as the PNER seems to have misrecognized this entity as a person entity.  
-
-\end{enumerate} 
-
-
-\subsection{Evaluation}
-
-Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
-To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists L1 and L2 detected from the people gazetteer with 30 Topics LDA and 100 Topics LDA Model respectively.
-
-Among the top 30, 16 person entities from List L1 and 14 from List L2 were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential persons from Lists L1 and L2 found in Wikipedia are shown in Figure~\ref{figure:inf}. 
-
-\begin{figure*}
-\begin{center}
-\includegraphics[scale=0.79]{ip}
-\caption{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation}
-\label{figure:inf}
-\end{center}
-\end{figure*}
-
-
- Most of the false positives although influential in other respects but were not  influential `person' entities which can attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
- False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are in fact locations but got recognized as highly influential person entities.
- 
- The ranked list of the top 30 influential persons with their IPI from Lists L1 and L2 can be seen in the Appendix (Table ~\ref{table:app1}.~\ref{table:app2}) where evaluation result for each person entity is also presented.
-
-
-\section{Discussion}
-\label{influential:discussion}
-
-
-\begin{description}
-\item[$\bullet$]\noindent
-We used a linear combination of each of the parameters in calculation of DI and IPI and assigned equal values to the weights associated with each of them by not favoring any specific parameter. This is evident from the results which do not consistently favor any specific parameter. The parameters defined are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined to do so. 
-
-\item[$\bullet$]\noindent
-The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of topmost influential people and obtaining the complete list of ranked influential people based on the learned parameters.
-
-\item[$\bullet$]\noindent
-The NDL(Normalized Document Length) parameter defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person entity's document list or total number of tokens in the complete dataset which can be experimented with according to the dataset.
-
-\item[$\bullet$]\noindent
-The topmost influential people contain several false positives also which occur not due to the influence measures defined but due to other factors like Named Entity Disambiguation which is not addressed in this paper. Several location and organization names have been misrecognized as person entities after performing Spelling correction and PNER resulting in false detection of some highly influential entities like ``van cortlandt", ``ann arbor" , ``sandy hook", etc.  
-%There is also the problem of resolution of person name co-references in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
-
-\item[$\bullet$] \noindent
-The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA Topic model settings used. 
-
-\end{description}
-
-\section{Conclusion}
-
-The problem of finding influential people from historical OCR news repository has been studied in this research. In studying this novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results obtained.
- We made novel contributions to the problem solution by developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the ranked list of influential people.
-Spelling correction algorithms with improved accuracy can certainly improve the influential persons results.
-Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
-We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem presented in this paper requires research into better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
-
- The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
-
-Non-heuristic based estimation for finding influential persons can also be done using optimization approaches such as unsupervised multiple instance clustering\cite{zhang2009m3ic}\cite{zhang2009multi} but they need to be adapted in order to be used in a large scale environment.
 
 % if have a single appendix:
 %\appendix[Proof of the Zonklar Equations]
