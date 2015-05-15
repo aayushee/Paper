@@ -463,7 +463,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Finding Influential People from a Historical People Gazetteer}
+\title{Finding Influential People from Local News} %People Gazetteer}
 %
 %
 % author names and IEEE memberships
@@ -488,7 +488,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
 
-\author{Aayushee~Gupta, Hamonti~Dutta, Lipika~Dey, Srikanta~Bedathur}
+\author{Aayushee~Gupta, Haimonti~Dutta, Lipika~Dey, Srikanta~Bedathur}
 %\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
 %        John~Doe,~\IEEEmembership{Fellow,~OSA,}
 %        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}
@@ -565,25 +565,19 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 
  Historical newspaper archives provide a wealth of information. They
 are of particular interest to genealogists, historians and scholars
-for People Search. In this paper, we design a People Gazetteer from
-the noisy OCR text of historical newspapers and identify ``influential"
-people from it. A People Gazetteer is a dictionary of personal names;
-each entry of the gazetteer is a tuple containing a person name and a
-list of articles in which his name occurs along with the corresponding
-topic associated with each article.
-
-To build the People Gazetteer, we first spell correct the noisy text
-using an edit distance based algorithm. A novel N-gram based
-evaluation algorithm is designed for measuring the performance of the
-spell corrector. Next, a Named Entity Recognizer is run on the text of
-each article to identify person entities and an LDA-based topic
-detector to assign categories to articles. To identify influential
-people across each category of People Gazetteer, we define the notion
-of an Influential Person Index (IPI) and rank based on it. 
-
-Our corpus is a sample of 14020 OCR newspaper articles (roughly two months' data)
-obtained from ``The Sun" newspaper in the Chronicling America project.
-We present results on the top-K influential people obtained from our algorithm by varying its parameters and verify results using Wikipedia.
+for \textit{people search} -- the process of finding information about a person and reconnecting them with others they are likely to know. A key step in this process is to determine who knows whom and how.  In this paper, we present the design of a  \textit{people gazetteer} -- a dictionary of personal names each entry of which is a tuple containing a name and a list of newspaper articles in which it occurs.
+%along with a suggested  topic that best summarizes the content of the article. 
+The gazetteer is learnt from noisy OCR text and is capable of identifying \textit{influential} people from it. 
+%To build the People Gazetteer, the noisy text is spell corrected
+%using an edit distance based algorithm. 
+%A novel N-gram based evaluation algorithm is designed for measuring the performance of the spell corrector. Next, 
+%A Named Entity Recognizer(NER) is run on the text of each article to identify person entities and an LDA-based topic
+%detector assigns categories. Influential
+%people are identified in each category using the Influential Person Index (IPI). 
+These authoritative people paint a picture of their time and offer new insights into historical events by revealing their personal testimony.
+%and information can be used to design chronological timelines of famous people in educational resources.
+We present empirical results on a corpus of 14020 articles
+from ``The Sun" newspaper published from New York in 1896. Some prominent people identified by our algorithm include Captain Donald Hankey (an English soldier), Dame Nellie Melba (an Australian operatic soprano), Hugh Allan (a Canadian shipping magnate) and Sir Hugh John McDonald (the first Prime Minister of Canada). 
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
