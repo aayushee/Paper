@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 
 % IEEEtran V1.7 and later provides for these CLASSINPUT macros to allow the
@@ -38,7 +38,7 @@
 \usepackage{graphics}
 \usepackage[dvips]{graphicx}
 \graphicspath{ {images/}}
-
+\usepackage{hyperref}
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
@@ -464,7 +464,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Finding Influential People from a Historical People Gazetteer}
+\title{A Machine Learning Approach to Quantitative Prosopography}
 %
 %
 % author names and IEEE memberships
@@ -565,28 +565,26 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 
 
 \begin{abstract}
-
- Historical newspaper archives provide a wealth of information. They
+Historical newspaper archives provide a wealth of information. They
 are of particular interest to genealogists, historians and scholars
-for People Search. In this paper, we design a People Gazetteer from
-the noisy OCR text of historical newspapers and identify ``influential"
-people from it. A People Gazetteer is a dictionary of personal names;
-each entry of the gazetteer is a tuple containing a person name and a
-list of articles in which his name occurs along with the corresponding
-topic associated with each article.
+for \textit{People search} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how. An important part of this research is the study of individual or collective biography, often referred to as \textit{prosopography}. This involves the examination of intimate details of the experience and personal testimonies of a group of individuals, some of which may be reported at length in newspaper articles. 
+% or the story of one's life highlighting various aspects and describing intimate details of experience some of which may be reported in newspaper articles.%Prosopographical research has the goal of learning about patterns of relationships and activities among people through the study of collective biography.
+In this paper, we present a framework for automatically designing a \textit{people gazetteer} which forms the basis of prosopographical research.
+% A people gazetteer is a dictionary of personal names each entry of which has an indexed list of newspaper articles in which it occurs.
+%along with a suggested  topic that best summarizes the content of the article. 
+The gazetteer is learnt from noisy OCR text and is capable of identifying influential people from it. 
+%To build the People Gazetteer, the noisy text is spell corrected
+%using an edit distance based algorithm. 
+%A novel N-gram based evaluation algorithm is designed for measuring the performance of the spell corrector. Next, 
+%A Named Entity Recognizer(NER) is run on the text of each article to identify person entities and an LDA-based topic
+%detector assigns categories. Influential
+%people are identified in each category using the Influential Person Index (IPI). 
+%These authoritative people paint a picture of their time and offer new insights into historical events by revealing their personal testimony.
+%and information can be used to design chronological timelines of famous people in educational resources.
+Our corpus comprises of 14020 articles
+from a local newspaper, ``The Sun", published from New York in 1896. Some prominent people identified by our algorithm include Captain Donald Hankey (an English soldier), Dame Nellie Melba (an Australian operatic soprano), Hugh Allan (a Canadian shipping magnate) and Sir Hugh John McDonald (the first Prime Minister of Canada). 
 
-To build the People Gazetteer, we first spell correct the noisy text
-using an edit distance based algorithm. A novel N-gram based
-evaluation algorithm is designed for measuring the performance of the
-spell corrector. Next, a Named Entity Recognizer is run on the text of
-each article to identify person entities and an LDA-based topic
-detector to assign categories to articles. To identify influential
-people across each category of People Gazetteer, we define the notion
-of an Influential Person Index (IPI) and rank based on it. 
-
-Our corpus is a sample of 14020 OCR newspaper articles (roughly two months' data)
-obtained from ``The Sun" newspaper in the Chronicling America project.
-We present results on the top-K influential people obtained from our algorithm by varying its parameters and verify results using Wikipedia.
+ 
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -654,54 +652,18 @@ We present results on the top-K influential people obtained from our algorithm b
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{H}{istorical}
-newspapers provide a trustworthy picture of past events. They form a rich, indispensable source of historical information for the historians\cite{allen2010historians}, family history for genealogists and can be used by scholars for learning past events. Digitization of newspapers promises powerful searching and better accessibility of such information\cite{yang2011topic}.
+\IEEEPARstart{H}{istorical} newspapers provide a trustworthy picture of past events. They form a rich, indispensable source of information for historians\cite{allen2010historians}, genealogists(like Genealogy Bank\footnote{\url{http://www.genealogybank.com/gbnk/}}, Ancestry\footnote{\url{http://www.ancestry.com/}}) and scholars. Digitization of newspapers promises powerful searching and better accessibility of such information\cite{yang2011topic}.
 
-An important use of historical newspapers is for People Search\cite{BilenkoMCRF03,Friedman_92} -- for example, to find important people and track the timelines of news articles related to them. Several websites like Genealogy Bank\footnote{http://www.genealogybank.com/gbnk/}, FamilySearch\footnote{https://familysearch.org/}, Newspaper Archives\footnote{http://newspaperarchive.com/}, Ancestry\footnote{http://www.ancestry.com/} provide people search service that include obituaries, birth and death lists, newspaper articles, military records, Revolutionary and Civil War pension requests, census records, land grants and other forms of petitions. 
-But these resources are not open source or freely available to the public which emphasizes the requirement of an open source/publically available gazetteer for People Search. Chronicling America \footnote{\texttt{http://chroniclingamerica.loc.gov/}} provides an online, searchable database of historically significant newspapers between 1836 and 1922 but with rudimentary word search capabilities. The time consuming manual effort required in People Search from the database can be reduced by developing a People Gazetteer which can provide easy access to historical information of people and events connected to them.
+An important use of historical newspapers is for People Search\cite{BilenkoMCRF03,Friedman_92} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how. This is often achieved by studying biography. In historical groups, however, biographies may be largely untraceable. In such cases, collective biography of a group of individuals is studied by examination of their experience and personal testimonies, some of which may be reported in newspaper articles. Identification of this group of individuals and studying the stories of their life is an important tool in the research historian's arsenal - called \textit{prosopography}. 
+%In such cases, the common characteristics of a historical group may be learnt by analyses of statistically relevant quantities of biographical data about a well-defined group of individuals.  
+It can be used to learn social structure such as analysis of the roles of a certain group of people, holders of titles, members of professional and occupational groups or economic classes.
+Quoting prosopographer Katharine Keats-Rohan, 
+\begin{quote}
+...prosopography is about what the analysis of the sum of data about many individuals can tell us about the different types of connection between them, and hence about how they operated within and upon the institutions?social, political, legal, economic, intellectual?of their time.
+\end{quote}
+The nature of prosopographical research has developed over time. In his 1971 essay, Lawrence Stone discussed an 'older' form of prosopography which was principally concerned with well-known social elites, many of whom were already well-known historical figures. Their genealogies were well-researched, and social webs and kinship linking could be traced, allowing a prosopography of a 'power elite' to emerge. Stone contrasted this older prosopography with what in 1971 was the newer form of \emph{quantitative prosopography}, which concern was with much wider populations including ``ordinary people". This is the focus of our paper.
 
-
- SHOULD I INCLUDE BOTH IMAGES OF ONLINE PEOPLE SEARCH TOOLS HERE?
-% Figure~\ref{figSearch} shows two such tools available online.
-
-
-This paper studies the problem of finding and ranking influential people from a People Gazetteer developed through historical newspaper OCR archives of Chronicling America.
-  
- An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
- A person may also be considered influential if s/he gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking \emph{popular} people in the news domain. 
- ``Popularity" has been defined in other domains by counting number of votes, tweets, citations and followers \cite{cheng2014can} but similar measures are not applicable in a newspaper setting where only the newspaper articles mentioning multiple people names are available.  
- The paper has following novel contributions:
-\begin{enumerate}
-\item Development of the People Gazetteer -- an organized dictionary of people names and a list of articles in which the name occurs along with the corresponding topic of each article to facilitate identification of influential people.
-\item Define an Influential Person Index (IPI) and metrics for its calculation in order to identify and rank influential people. Case studies of the top-K influential people detected are also discussed and verified with Wikipedia data. 
-\end{enumerate}
-
-To the best of our knowledge, the problem of finding \emph{influential} people from historic newspaper archives has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. Such applications can immensely help historians working on prospography\cite{allen2013toward} and scholars in learning events related to historically significant persons interactively.
-
-The remainder of the paper is organised as follows.
-First, we examine the previous work in Section 2. Then we describe our experimental dataset and its preprocessing in Section 3 , the procedure for development of people gazetteer and influential people detection in Sections 4 and 5.  The
-paper ends with some conclusions and discussion in Section 6.
-
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-
-
-DOUBT: SHOULD THE PROBLEM DESCRIPTION SECTION BE REMOVED COMPLETELY??
-\section{Problem Description}
-\label{problem}
-
-The goal of this research is to find and rank influential people in historical newspaper OCR archives.
-  
- An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
- A person may also be considered influential if s/he gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking \emph{popular} people in the news domain. 
- ``Popularity" has been defined in other domains by counting number of votes, tweets, citations and followers \cite{cheng2014can} but similar measures are not applicable in a newspaper setting where only the newspaper articles mentioning multiple people names are available.  
- 
-We divide the the problem of finding influential people into the following subproblems:
-\begin{itemize}
-\item \textbf{Problem 1: } Spell Correction and Cleaning of OCR text
-\item \textbf{Problem 2: } Development of a People Gazetteer -- develop an organized structure in order to ease the process of identification of influential people.
-\item \textbf{Problem 3: } Influential People Identification -- define the criteria for identifying and ranking people as ``influential".
-\end{itemize}
+We present a framework to develop a \textit{People Gazetteer} which forms the basis of prosopographical research. The gazetteer is built from OCR text of historical newspapers and is capable of identifying influential people. Our paper has the following novel contributions: (1) \textbf{Development of the People Gazetteer} -- an organized dictionary of people names and a list of newspaper articles in which the name occurs. (2) \textbf{Identification of Influential People}: we define an Influential Person Index (IPI) which helps identification and ranking of influential people. 
 
 \begin{figure*}
 \centering
@@ -709,6 +671,34 @@ We divide the the problem of finding influential people into the following subpr
 \caption{Research Framework showing components of proposed solution}
 \label{fig:framework}
 \end{figure*} 
+
+To the best of our knowledge, the development of a framework for doing prosopographical research using machine learning has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. Such applications can immensely help historians working on prospography\cite{allen2013toward} and scholars in learning events related to historically significant persons interactively.
+
+\textbf{Paper Organization:} First, we examine the previous work in Section 2. Then we describe our experimental dataset and its preprocessing in Section 3 , the procedure for development of people gazetteer and influential people detection in Sections 4 and 5.  The
+paper ends with some conclusions and discussion in Section 6.
+
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+
+
+%DOUBT: SHOULD THE PROBLEM DESCRIPTION SECTION BE REMOVED COMPLETELY??
+%\section{Problem Description}
+%\label{problem}
+%
+%The goal of this research is to find and rank influential people in historical newspaper OCR archives.
+%  
+% An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
+% A person may also be considered influential if s/he gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking \emph{popular} people in the news domain. 
+% ``Popularity" has been defined in other domains by counting number of votes, tweets, citations and followers \cite{cheng2014can} but similar measures are not applicable in a newspaper setting where only the newspaper articles mentioning multiple people names are available.  
+% 
+%We divide the the problem of finding influential people into the following subproblems:
+%\begin{itemize}
+%\item \textbf{Problem 1: } Cleaning of OCR text
+%\item \textbf{Problem 2: } Development of a People Gazetteer -- develop an organized structure in order to ease the process of identification of influential people.
+%\item \textbf{Problem 3: } Influential People Identification -- define the criteria for identifying and ranking people as ``influential".
+%\end{itemize}
+%
+
 
 
 
