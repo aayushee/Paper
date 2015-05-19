@@ -565,14 +565,13 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 
 
 \begin{abstract}
-Historical newspaper archives provide a wealth of information. They
-are of particular interest to genealogists, historians and scholars
-for \textit{People search} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how. An important part of this research is the study of individual or collective biography, often referred to as \textit{prosopography}. This involves the examination of intimate details of the experience and personal testimonies of a group of individuals, some of which may be reported at length in newspaper articles. 
+%Historical newspaper archives provide a wealth of information. They
+%are of particular interest to genealogists, historians and scholars
+%for \textit{people search} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how. An important part of this research is the study of individual or collective biography, often referred to as \textit{prosopography}. This involves the examination of intimate details of the experience and personal testimonies of a group of individuals, some of which may be reported at length in newspaper articles. 
 % or the story of one's life highlighting various aspects and describing intimate details of experience some of which may be reported in newspaper articles.%Prosopographical research has the goal of learning about patterns of relationships and activities among people through the study of collective biography.
-In this paper, we present a framework for automatically designing a \textit{people gazetteer} which forms the basis of prosopographical research.
+
 % A people gazetteer is a dictionary of personal names each entry of which has an indexed list of newspaper articles in which it occurs.
 %along with a suggested  topic that best summarizes the content of the article. 
-The gazetteer is learnt from noisy OCR text and is capable of identifying influential people from it. 
 %To build the People Gazetteer, the noisy text is spell corrected
 %using an edit distance based algorithm. 
 %A novel N-gram based evaluation algorithm is designed for measuring the performance of the spell corrector. Next, 
@@ -581,10 +580,11 @@ The gazetteer is learnt from noisy OCR text and is capable of identifying influe
 %people are identified in each category using the Influential Person Index (IPI). 
 %These authoritative people paint a picture of their time and offer new insights into historical events by revealing their personal testimony.
 %and information can be used to design chronological timelines of famous people in educational resources.
-Our corpus comprises of 14020 articles
+
+Prosopography is an investigation of the common behavior and characteristics of a group of people in history by a collective study of their lives.  It involves a study of biographies to solve historical problems. If such biographies are unavailable, surviving documents and secondary biographical data (such as historical newspapers, birth and death reports) are put to use. \textit{Quantitative} prosopography involves collation and analysis of information from a wider population, notably ``ordinary people". In this paper, we present a machine learning framework for automatically designing a \textit{people gazetteer} which forms the basis of prosopographical research. The gazetteer is learnt from noisy OCR text and is capable of identifying influential people from it. Our corpus comprises of 14020 articles
 from a local newspaper, ``The Sun", published from New York in 1896. Some prominent people identified by our algorithm include Captain Donald Hankey (an English soldier), Dame Nellie Melba (an Australian operatic soprano), Hugh Allan (a Canadian shipping magnate) and Sir Hugh John McDonald (the first Prime Minister of Canada). 
 
- 
+
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -654,16 +654,16 @@ from a local newspaper, ``The Sun", published from New York in 1896. Some promin
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{H}{istorical} newspapers provide a trustworthy picture of past events. They form a rich, indispensable source of information for historians\cite{allen2010historians}, genealogists(like Genealogy Bank\footnote{\url{http://www.genealogybank.com/gbnk/}}, Ancestry\footnote{\url{http://www.ancestry.com/}}) and scholars. Digitization of newspapers promises powerful searching and better accessibility of such information\cite{yang2011topic}.
 
-An important use of historical newspapers is for People Search\cite{BilenkoMCRF03,Friedman_92} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how. This is often achieved by studying biography. In historical groups, however, biographies may be largely untraceable. In such cases, collective biography of a group of individuals is studied by examination of their experience and personal testimonies, some of which may be reported in newspaper articles. Identification of this group of individuals and studying the stories of their life is an important tool in the research historian's arsenal - called \textit{prosopography}. 
+An important use of historical newspapers is for People Search\cite{BilenkoMCRF03,Friedman_92} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is to determine who knows whom and how. This is often achieved by studying biography. In historical groups, however, biographies may be largely untraceable. In such cases, collective biography of a group of individuals is studied by examination of their experience and personal testimonies, some of which may be reported in newspaper articles. Identification of this group of individuals and studying the stories of their life is an important tool in the research historian's arsenal - called \textit{prosopography}. 
 %In such cases, the common characteristics of a historical group may be learnt by analyses of statistically relevant quantities of biographical data about a well-defined group of individuals.  
 It can be used to learn social structure such as analysis of the roles of a certain group of people, holders of titles, members of professional and occupational groups or economic classes.
 Quoting prosopographer Katharine Keats-Rohan, 
 \begin{quote}
-...prosopography is about what the analysis of the sum of data about many individuals can tell us about the different types of connection between them, and hence about how they operated within and upon the institutions?social, political, legal, economic, intellectual?of their time.
+...prosopography is about what the analysis of the sum of data about many individuals can tell us about the different types of connection between them, and hence about how they operated within and upon the institutions -- social, political, legal, economic, intellectual -- of their time.
 \end{quote}
-The nature of prosopographical research has developed over time. In his 1971 essay, Lawrence Stone discussed an 'older' form of prosopography which was principally concerned with well-known social elites, many of whom were already well-known historical figures. Their genealogies were well-researched, and social webs and kinship linking could be traced, allowing a prosopography of a 'power elite' to emerge. Stone contrasted this older prosopography with what in 1971 was the newer form of \emph{quantitative prosopography}, which concern was with much wider populations including ``ordinary people". This is the focus of our paper.
+The nature of prosopographical research has evolved over time. Lawrence Stone\cite{STONE} discusses an ``older" form of prosopography which was principally concerned with well-known social elites, many of whom were already well-known historical figures. Their genealogies were well-researched, and social webs and kinship linking could be traced, allowing a prosopography of a ``power elite" to emerge. Stone contrasted this older prosopography with a newer form called \emph{quantitative prosopography}, which studied much wider populations including ``ordinary people". The people gazetteer discussed in this paper primarily deals with quantitative prosopography.
 
-We present a framework to develop a \textit{People Gazetteer} which forms the basis of prosopographical research. The gazetteer is built from OCR text of historical newspapers and is capable of identifying influential people. Our paper has the following novel contributions: (1) \textbf{Development of the People Gazetteer} -- an organized dictionary of people names and a list of newspaper articles in which the name occurs. (2) \textbf{Identification of Influential People}: we define an Influential Person Index (IPI) which helps identification and ranking of influential people. 
+In this paper, we present a framework to develop a \textit{people gazetteer} which forms the basis of prosopographical research. The gazetteer is built from OCR text of historical newspapers and is capable of identifying influential people. Our paper has the following novel contributions: (1) \textbf{Development of the People Gazetteer} -- an organized dictionary of people names and a list of newspaper articles in which the name occurs. (2) \textbf{Identification of Influential People}: we define an Influential Person Index (IPI) which helps identification and ranking of influential people. 
 
 \begin{figure*}
 \centering
