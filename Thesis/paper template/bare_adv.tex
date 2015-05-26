@@ -581,7 +581,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 %These authoritative people paint a picture of their time and offer new insights into historical events by revealing their personal testimony.
 %and information can be used to design chronological timelines of famous people in educational resources.
 
-Prosopography is an investigation of the common behavior and characteristics of a group of people in history by a collective study of their lives.  It involves a study of biographies to solve historical problems. If such biographies are unavailable, surviving documents and secondary biographical data (such as historical newspapers, birth and death reports) are put to use. \textit{Quantitative} prosopography involves analysis of information about a wider population, notably ``ordinary people". In this paper, we present a machine learning framework for automatically designing a \textit{people gazetteer} which forms the basis of quantitative prosopographical research. The gazetteer is learnt from noisy text of newspapers and is capable of identifying influential people from it. Our corpus comprises of 14020 articles
+Prosopography is an investigation of the common characteristics of a group of people in history, by a collective study of their lives. It involves a study of biographies to solve historical problems. If such biographies are unavailable, surviving documents and secondary biographical data are used. \textit{Quantitative} prosopography involves analysis of information from a wide variety of sources about ``ordinary people". In this paper, we present a machine learning framework for automatically designing a \textit{people gazetteer} which forms the basis of quantitative prosopographical research. The gazetteer is learnt from noisy text of newspapers and is capable of identifying influential people from it. Our corpus comprises of 14020 articles
 from a local newspaper, ``The Sun", published from New York in 1896. Some prominent people identified by our algorithm include Captain Donald Hankey (an English soldier), Dame Nellie Melba (an Australian operatic soprano), Hugh Allan (a Canadian shipping magnate) and Sir Hugh John McDonald (the first Prime Minister of Canada). 
 
 
@@ -652,7 +652,7 @@ from a local newspaper, ``The Sun", published from New York in 1896. Some promin
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{H}{istorical} newspaper archives provide a wealth of information. They form a rich, indispensable source of information for historians \cite{allen2010historians}, genealogists (e.g. Genealogy Bank\footnote{\url{http://www.genealogybank.com/gbnk/}}, Ancestry\footnote{\url{http://www.ancestry.com/}}) and scholars.
+\IEEEPARstart{H}{istorical} newspaper archives provide a wealth of information. They are of particular interest to  historians \cite{allen2010historians}, genealogists (e.g. Genealogy Bank\footnote{\url{http://www.genealogybank.com/gbnk/}}, Ancestry\footnote{\url{http://www.ancestry.com/}}) and scholars.
 %Digitization of old newspapers helps to develop a searchable database of newspaper articles which greatly enhances accessibility of such information \cite{yang2011topic}.
 %%They
 %are of particular interest to genealogists, historians and scholars for \textit{people search} -- the process of finding information about a person and reconnecting them with others they are likely to know. The goal is often to determine who knows whom and how.
@@ -675,11 +675,9 @@ In this paper, we present a framework to develop a \textit{people gazetteer} whi
 \label{fig:framework}
 \end{figure*} 
 
-To the best of our knowledge, the development of a framework for doing prosopographical research using machine learning has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. Such applications can immensely help historians working on prospography\cite{allen2013toward} and scholars in learning events related to historically significant persons interactively.
+To the best of our knowledge, the development of a framework for doing prosopographical research using machine learning has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. Such applications can immensely help historians working on prosopography\cite{allen2013toward} and scholars in learning events related to historically significant people interactively.
 
-\textbf{Paper Organization:} First, we examine the previous work in Section~\ref{influential:rw}. Then we describe our experimental dataset and its preprocessing in Section 3 , the procedure for development of people gazetteer and influential people detection in Sections 4 and 5.  The
-paper ends with some conclusions and discussion in Section 6.
-
+\textbf{Paper Organization:} This paper is organized as follows: Section~\ref{influential:rw} discusses related work; the machine learning framework is discussed in Section~\ref{chp:framework}; the characteristics of the data used for this research is presented in Section~\ref{data}. Sections~\ref{chapter:people gazetteer} and ~\ref{influential} present the development of the gazetteer and the influential people detection process; empirical results and discussions are presented in Section~\ref{influential:results} and ~\ref{influential:discussion} and Section~\ref{conc} concludes the paper.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
@@ -710,14 +708,16 @@ paper ends with some conclusions and discussion in Section 6.
 \input{RelatedWork}
 
 \section{Machine Learning Framework for Prosopographical Research}
-
+\label{chp:framework}
+\input{Framework}
 
 \section{Dataset Description}
+\label{data}
 \input{Dataset}
 
 
 
-\section{Development of People Gazetteer}
+\section{People Gazetteer}
 \label{chapter:people gazetteer}
 \input{PeopleGazetteer}
 
@@ -742,6 +742,7 @@ paper ends with some conclusions and discussion in Section 6.
 
 
 \section{Conclusion}
+\label{conc}
 \input{Conclusion}
 
 
