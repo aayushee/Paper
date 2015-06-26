@@ -24,6 +24,17 @@ Term Frequency (TF) accounts for the number of occurrences of a person's name in
 $NTF=	1	+\log	$(TF of person entity in current article)
 \end{center}
 
+
+The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles. For example, the person ``John Smith" detected in two different articles might or might not be the same person) occur in our People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER.The following section explains the approach to coreference resolution followed after development of People Gazetteer.
+
+
+\subsubsection{Coreference Resolution}
+ The coreference resolution aims to find out all expressions that refer to the same entity in the text. Due to multiple references to a person in the text,coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
+
+Coreference resolution is performed using the Standford Deterministic Coreference Resolution System of the Stanford CoreNLP toolkit /footnote{http://nlp.stanford.edu/software/dcoref.shtml}. It uses a multi-pass seive coreference resolution\cite{lee2013deterministic} which consists of 3 steps: mention detection which identifies clusters of all noun phrases, pronouns and named entity mentions, coreference resolution step which is a combination of ten independent seives applied from highest to lowest precision one by one sequentially but with global information sharing so that each seive builds on the previously clustered mentions followed by post processing which removes singleton mentions.
+Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity are found in an article. 
+
+
 \item \textbf{Number of similar articles} (NSIM)\\
 This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
 %The set of topics derived from a corpus can be used to answer questions about the similarity of words and 

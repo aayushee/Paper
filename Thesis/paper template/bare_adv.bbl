@@ -26,13 +26,6 @@ R.~B. Allen and R.~Sieczkiewicz, ``How historians use historical newspapers,''
   \emph{Proceedings of the American Society for Information Science and
   Technology}, vol.~47, no.~1, pp. 1--4, 2010.
 
-\bibitem{yang2011topic}
-T.-I. Yang, A.~J. Torget, and R.~Mihalcea, ``Topic modeling on historical
-  newspapers,'' in \emph{Proceedings of the 5th ACL-HLT Workshop on Language
-  Technology for Cultural Heritage, Social Sciences, and Humanities}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Association for Computational Linguistics, 2011,
-  pp. 96--104.
-
 \bibitem{BilenkoMCRF03}
 M.~Bilenko, R.~J. Mooney, W.~W. Cohen, P.~D. Ravikumar, and S.~E. Fienberg,
   ``Adaptive name matching in information integration,'' \emph{IEEE Intelligent
@@ -43,29 +36,145 @@ C.~Friedman and R.~Sideli, ``Tolerating spelling errors during patient
   validation,'' \emph{Comput. Biomed. Res.}, vol.~25, no.~5, pp. 486--509, Oct.
   1992.
 
-\bibitem{cheng2014can}
-J.~Cheng, L.~Adamic, P.~A. Dow, J.~M. Kleinberg, and J.~Leskovec, ``Can
-  cascades be predicted?'' in \emph{Proceedings of the 23rd international
-  conference on World wide web}.\hskip 1em plus 0.5em minus 0.4em\relax
-  International World Wide Web Conferences Steering Committee, 2014, pp.
-  925--936.
+\bibitem{stone_71}
+L.~Stone, ``{Prosopography},'' \emph{Daedalus}, vol. 100, pp. 46--79, 1971.
 
 \bibitem{allen2013toward}
 R.~B. Allen, ``Toward an interactive directory for norfolk, nebraska:
   1899-1900,'' in \emph{IFLA Newspaper and Genealogy Section Meeting,
   Singapore}, 2013.
 
-\bibitem{carlson2009learning}
-A.~Carlson, S.~Gaffney, and F.~Vasile, ``Learning a named entity tagger from
-  gazetteers with the partial perceptron.'' in \emph{AAAI Spring Symposium:
-  Learning by Reading and Learning to Read}, 2009, pp. 7--13.
+\bibitem{Shahaf_11}
+D.~Shahaf and C.~Guestrin, ``Connecting two (or less) dots: Discovering
+  structure in news articles,'' \emph{ACM Transactions on Knowledge Discovery
+  from Data}, 2011.
 
-\bibitem{zhang2009novel}
-Z.~Zhang and J.~Iria, ``A novel approach to automatic gazetteer generation
-  using wikipedia,'' in \emph{Proceedings of the 2009 Workshop on The People's
-  Web Meets NLP: Collaboratively Constructed Semantic Resources}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Association for Computational Linguistics, 2009,
-  pp. 1--9.
+\bibitem{Gabrilovich_04a}
+E.~Gabrilovich, S.~Dumais, and E.~Horvitz, ``Newsjunkie: Providing personalized
+  newsfeeds via analysis of information novelty,'' in \emph{Proceedings of the
+  13th International Conference on World Wide Web}, 2004, pp. 482--490.
+
+\bibitem{Alonso_10}
+O.~Alonso, K.~Berberich, S.~J. Bedathur, and G.~Weikum, ``{NEAT:} news
+  exploration along time,'' in \emph{Advances in Information Retrieval, 32nd
+  European Conference on {IR} Research, {ECIR} 2010, Milton Keynes, UK, March
+  28-31, 2010. Proceedings}, 2010, p. 667.
+
+\bibitem{Khurdiya_11}
+A.~Khurdiya, L.~Dey, N.~Raj, and S.~M. Haque, ``Multi-perspective linking of
+  news articles within a repository,'' in \emph{Proceedings of the
+  Twenty-Second International Joint Conference on Artificial Intelligence -
+  Volume Volume Three}, ser. IJCAI'11, 2011, pp. 2281--2286.
+
+\bibitem{McKeown95}
+K.~R. McKeown and D.~R. Radev, ``Generating summaries of multiple news
+  articles,'' in \emph{Proceedings, ACM Conference on Research and Development
+  in Information Retrieval SIGIR'95}, Seattle, Washington, July 1995, pp.
+  74--82.
+
+\bibitem{Otterbacher06}
+J.~Otterbacher, D.~Radev, and O.~Kareem, ``{News to Go: Hierarchical Text
+  Summarization for Mobile Devices},'' in \emph{{29th Annual ACM SIGIR
+  Conference on Research and Development in Information Retrieval}}, Seattle,
+  Washington, August 2006.
+
+\bibitem{Radev97}
+\BIBentryALTinterwordspacing
+D.~R. Radev and K.~R. McKeown, ``Building a generation knowledge source using
+  internet-accessible newswire,'' in \emph{Proceedings, Fifth ACL Conference on
+  Applied Natural Language Processing ANLP'97}, Washington, DC, April 1997, pp.
+  221--228. [Online]. Available:
+  \url{http://www.cs.columbia.edu/\~radev/publication/anlp97}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Radev01}
+D.~R. Radev, S.~Blair-Goldensohn, Z.~Zhang, and R.~Sundara~Raghavan,
+  ``Newsinessence: A system for domain-independent, real-time news clustering
+  and multi-document summarization,'' in \emph{Demo Presentation, Human
+  Language Technology Conference}, San Diego, CA, March 2001.
+
+\bibitem{Radev05}
+D.~R. Radev, J.~Otterbacher, A.~Winkel, and S.~Blair-Goldensohn,
+  ``Newsinessence: Summarizing online news topics,'' Communications of the ACM,
+  pp. 95--98, 2005.
+
+\bibitem{balahur2009rethinking}
+A.~Balahur and R.~Steinberger, ``Rethinking sentiment analysis in the news:
+  from theory to practice and back,'' \emph{Proceeding of WOMSA}, vol.~9, 2009.
+
+\bibitem{godbole2007large}
+N.~Godbole, M.~Srinivasaiah, and S.~Skiena, ``Large-scale sentiment analysis
+  for news and blogs.'' \emph{ICWSM}, vol.~7, p.~21, 2007.
+
+\bibitem{li2014sentiment}
+J.~Li and E.~Hovy, ``Sentiment analysis on the people’s daily,'' in
+  \emph{Proceedings of EMNLP}, 2014.
+
+\bibitem{Masand_92}
+B.~Masand, G.~Linoff, and D.~Waltz, ``Classifying news stories using memory
+  based reasoning,'' in \emph{Proceedings of the 15th Annual International ACM
+  SIGIR Conference on Research and Development in Information Retrieval}, ser.
+  SIGIR '92, 1992, pp. 59--65.
+
+\bibitem{Nallapati_04a}
+R.~Nallapati, A.~Feng, F.~Peng, and J.~Allan, ``Event threading within news
+  topics,'' in \emph{Proceedings of the Thirteenth ACM International Conference
+  on Information and Knowledge Management}, ser. CIKM '04, 2004, pp. 446--453.
+
+\bibitem{Radev99c}
+D.~R. Radev, ``Topic shift detection - finding new information in threaded
+  news,'' Columbia University, Tech. Rep. CUCS-026-99, 1999.
+
+\bibitem{au2011studying}
+C.-m. Au~Yeung and A.~Jatowt, ``Studying how the past is remembered: towards
+  computational history through large scale text mining,'' in \emph{Proceedings
+  of the 20th ACM international conference on Information and knowledge
+  management}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2011, pp.
+  1231--1240.
+
+\bibitem{lee2010topic}
+A.~Lee, H.~Dutta, R.~Passonneau, D.~Waltz, and B.~Taranto, ``Topic
+  identification from historic newspaper articles of the new york public
+  library: A case study,'' in \emph{5th Annual Machine Learning Symposium at
+  the New York Academy of Sciences}, 2010.
+
+\bibitem{dutta2011learning}
+H.~Dutta, R.~J. Passonneau, A.~Lee, A.~Radeva, B.~Xie, D.~L. Waltz, and
+  B.~Taranto, ``Learning parameters of the k-means algorithm from subjective
+  human annotation.'' in \emph{FLAIRS Conference}, 2011.
+
+\bibitem{dutta2012using}
+H.~Dutta and W.~Chan, ``Using community structure detection to rank annotators
+  when ground truth is subjective,'' in \emph{NIPS Workshop on Human
+  Computation for Science and Computational Sustainability}, 2012, pp. 1--4.
+
+\bibitem{torget2011mapping}
+A.~J. Torget, R.~Mihalcea, J.~Christensen, and G.~McGhee, ``Mapping texts:
+  Combining text-mining and geo-visualization to unlock the research potential
+  of historical newspapers,'' 2011.
+
+\bibitem{southall2014pastplace}
+H.~Southall, P.~Aucott, and J.~Westwood, ``Pastplace--the global gazetteer from
+  the people who brought you'a vision of britain through time','' in \emph{UK
+  Archives Discovery Forum}, 2014.
+
+\bibitem{yang2011topic}
+T.-I. Yang, A.~J. Torget, and R.~Mihalcea, ``Topic modeling on historical
+  newspapers,'' in \emph{Proceedings of the 5th ACL-HLT Workshop on Language
+  Technology for Cultural Heritage, Social Sciences, and Humanities}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Association for Computational Linguistics, 2011,
+  pp. 96--104.
+
+\bibitem{newman2006analyzing}
+D.~Newman, C.~Chemudugunta, P.~Smyth, and M.~Steyvers, ``Analyzing entities and
+  topics in news articles using statistical topic models,'' in
+  \emph{Intelligence and Security Informatics}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer, 2006, pp. 93--104.
+
+\bibitem{lloyd2005lydia}
+L.~Lloyd, D.~Kechagias, and S.~Skiena, ``Lydia: A system for large-scale news
+  analysis,'' in \emph{String Processing and Information Retrieval}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Springer, 2005, pp. 161--166.
 
 \bibitem{crane2006challenge}
 G.~Crane and A.~Jones, ``The challenge of virginia banks: an evaluation of
@@ -91,16 +200,17 @@ D.~A. Smith and G.~Crane, ``Disambiguating geographic names in a historical
   Libraries}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2001, pp.
   127--136.
 
-\bibitem{newman2006analyzing}
-D.~Newman, C.~Chemudugunta, P.~Smyth, and M.~Steyvers, ``Analyzing entities and
-  topics in news articles using statistical topic models,'' in
-  \emph{Intelligence and Security Informatics}.\hskip 1em plus 0.5em minus
-  0.4em\relax Springer, 2006, pp. 93--104.
+\bibitem{carlson2009learning}
+A.~Carlson, S.~Gaffney, and F.~Vasile, ``Learning a named entity tagger from
+  gazetteers with the partial perceptron.'' in \emph{AAAI Spring Symposium:
+  Learning by Reading and Learning to Read}, 2009, pp. 7--13.
 
-\bibitem{lloyd2005lydia}
-L.~Lloyd, D.~Kechagias, and S.~Skiena, ``Lydia: A system for large-scale news
-  analysis,'' in \emph{String Processing and Information Retrieval}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Springer, 2005, pp. 161--166.
+\bibitem{zhang2009novel}
+Z.~Zhang and J.~Iria, ``A novel approach to automatic gazetteer generation
+  using wikipedia,'' in \emph{Proceedings of the 2009 Workshop on The People's
+  Web Meets NLP: Collaboratively Constructed Semantic Resources}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Association for Computational Linguistics, 2009,
+  pp. 1--9.
 
 \bibitem{kempe2003maximizing}
 D.~Kempe, J.~Kleinberg, and {\'E}.~Tardos, ``Maximizing the spread of influence
@@ -124,10 +234,17 @@ M.~Cha, H.~Haddadi, F.~Benevenuto, and P.~K. Gummadi, ``Measuring user
   influence in twitter: The million follower fallacy.'' \emph{ICWSM}, vol.~10,
   pp. 10--17, 2010.
 
-\bibitem{dutta2011learning}
-H.~Dutta, R.~J. Passonneau, A.~Lee, A.~Radeva, B.~Xie, D.~L. Waltz, and
-  B.~Taranto, ``Learning parameters of the k-means algorithm from subjective
-  human annotation.'' in \emph{FLAIRS Conference}, 2011.
+\bibitem{Palfray12}
+\BIBentryALTinterwordspacing
+T.~Palfray, D.~Hebert, S.~Nicolas, P.~Tranouez, and T.~Paquet, ``Logical
+  segmentation for article extraction in digitized old newspapers,''
+  \emph{CoRR}, vol. abs/1210.0999, 2012. [Online]. Available:
+  \url{http://arxiv.org/pdf/1210.0999.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Gupta_14a}
+A.~Gupta, ``Finding influential people from a historical news repository,''
+  Master's thesis, IIIT-Delhi, 2014.
 
 \bibitem{chattopadhyaya2013fast}
 I.~Chattopadhyaya, K.~Sirchabesan, and K.~Seal, ``A fast generative spell
@@ -138,6 +255,24 @@ I.~Chattopadhyaya, K.~Sirchabesan, and K.~Seal, ``A fast generative spell
 \bibitem{gupta2014finding}
 A.~Gupta and H.~Dutta, ``Finding influential people from a historical news
   repository,'' 2014.
+
+\bibitem{mccallum2003early}
+A.~McCallum and W.~Li, ``Early results for named entity recognition with
+  conditional random fields, feature induction and web-enhanced lexicons,'' in
+  \emph{Proceedings of the seventh conference on Natural language learning at
+  HLT-NAACL 2003-Volume 4}.\hskip 1em plus 0.5em minus 0.4em\relax Association
+  for Computational Linguistics, 2003, pp. 188--191.
+
+\bibitem{finkel2005incorporating}
+J.~R. Finkel, T.~Grenager, and C.~Manning, ``Incorporating non-local
+  information into information extraction systems by gibbs sampling,'' in
+  \emph{Proceedings of the 43rd Annual Meeting on Association for Computational
+  Linguistics}.\hskip 1em plus 0.5em minus 0.4em\relax Association for
+  Computational Linguistics, 2005, pp. 363--370.
+
+\bibitem{sutton2011introduction}
+C.~Sutton and A.~McCallum, ``An introduction to conditional random fields,''
+  \emph{Machine Learning}, vol.~4, no.~4, pp. 267--373, 2011.
 
 \bibitem{rodriquez2012comparison}
 K.~J. Rodriquez, M.~Bryant, T.~Blanke, and M.~Luszczynska, ``Comparison of
@@ -156,6 +291,12 @@ D.~Newman, A.~Asuncion, P.~Smyth, and M.~Welling, ``Distributed algorithms for
 \bibitem{McCallumMALLET}
 A.~K. McCallum, ``Mallet: A machine learning for language toolkit,'' 2002,
   http://mallet.cs.umass.edu.
+
+\bibitem{lee2013deterministic}
+H.~Lee, A.~Chang, Y.~Peirsman, N.~Chambers, M.~Surdeanu, and D.~Jurafsky,
+  ``Deterministic coreference resolution based on entity-centric,
+  precision-ranked rules,'' \emph{Computational Linguistics}, vol.~39, no.~4,
+  pp. 885--916, 2013.
 
 \bibitem{zhang2009multi}
 M.-L. Zhang and Z.-H. Zhou, ``Multi-instance clustering with applications to

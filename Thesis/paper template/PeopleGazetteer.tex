@@ -1,22 +1,28 @@
 People Gazetteer as defined in Section~\ref{sec:introduction} consists of tuples of person names along with list of documents in which they occur and their corresponding topics. It is developed as an organized structure that can facilitate the process of detection of influential persons from the dataset in an efficient and easy way. This section describes the 2-step process of construction of the People Gazetteer by
 a) Extraction of person names from the news articles dataset using Named Entity Recognition in  Section~\ref{ner} and
 b) Assignment of topics to news articles using LDA topic detection in  Section~\ref{topic detection}.
-Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result} followed by discussion in Section~\ref{gaz:discussion}
+Output of People gazetteer developed using these steps is presented in Section ~\ref{gaz:result}.
 
 \subsection{Person Named Entity Recognition (PNER)}
 \label{ner}
 
 
 \subsubsection{Definition}
-NER (Named Entity Recognition) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc. 
-Person Named Entity Recognition (PNER) can be defined as the process of NER that marks up only person names that occur in the text.
+NER (Named Entity Recognition) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, percentages, etc. It can also be considered as a sequence labeling problem that predicts label of each element of the text  based on the adjacent element labels.
 
-PNER is required in this research so as to extract all person name entities occurring in the complete dataset and identify influential person entities among them through development of the People Gazetteer. 
-PNER aids in the development of People Gazetteer by first extracting all person names occurring in the dataset followed by reverse linking of a person with the articles in which he/she occurs.
+Person Named Entity Recognition (PNER) can be defined as the process of NER that marks up only person names that occur in the text. It is done in two phases: chunking ,i.e., segmentation of text for name detection followed by classification of the name by the type of entity it belongs to (person,organization,location,etc.).
+
+PNER is required in this research so as to extract all person name entities occurring in the complete dataset and then identify influential person entities among them through development of the People Gazetteer. 
+PNER aids in the development of People Gazetteer by first extracting a list of all person names occurring in the dataset followed by creation of a Person-Article list where each person is linked with the articles in which he/she occurs.
 
 \subsubsection{Methodology}
 
-The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is used for PNER in this research. It can perform NER for 3 classes: Person, Organization and Location and is based on linear chain CRF (Conditional Random Field) sequence models. It is trained across several corpora and is fairly robust across multiple domains and even better when compared to some other open source NER systems as illustrated in \cite{rodriquez2012comparison}. According to their results, Stanford NER gave overall the best performance across 2 OCR datasets, and was most effective for PNER when compared with 3 other open source NER systems.
+
+While earlier NER models were rule-based or dictionary-based that use linguistic grammar based techniques, current studies use statistical sequential models that predict labels for sequential data using probabilistic techniques. They also require labeled training data with all of the entities of interest and their types. Statistical machine learning models like Hidden Markov Models or MaxEnt Markov Models follow a generative or discriminitave approach respectively. In the generative approach, a joint probability distribution over input and output variables is modeled assuming independent features and considering future observations into account while the discriminative approach models conditional distribution directly, without assuming independent features or considering future observations.
+ The linear chain CRF (Conditional Random Field)  sequence model for NER is a combination of generative and discriminative approach and is considered state of the art for performing  NER (\cite{mccallum2003early, finkel2005incorporating, sutton2011introduction}). The model can be viewed as a conditionally trained finite state machine which is used to find the possible label sequence given an input sequence and learning. It combines features of discriminative and generative models by relaxing the assumption that features are independent and considers future observations into account during sequential labeling.
+
+The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is used for PNER in this research. It can perform NER for 3 classes: Person, Organization and Location and is based on linear chain CRF sequence models.
+ It is trained across several newspaper corpora and is fairly robust across multiple domains and performs best when compared to some other open source NER systems which is the reason it has been used for this study. As illustrated by Rodriquez et. al \cite{rodriquez2012comparison}, Stanford NER gave overall the best performance across 2 OCR datasets, and was most effective for PNER when compared with 3 other open source NER systems.
 
 %NO NEED OF THIS FIGURE
 %\subsubsection{PNER Results}
@@ -34,7 +40,7 @@ The Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF-NER.shtml} is
 %NER on a sample news article from the dataset can be seen in Figure~\ref{figure:sample}.
  Stanford NER recognizes a person's full name as separate names by default which is rectified by combining these multi-term entities into single person entities. For example, the person name ``John Smith" is recognized as two separate person entities which we combine to form a single multi-term person entity.
 Person names tagged with ``PERSON" category are stored while running NER on the dataset.
-Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document occurrence lists.
+Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document occurrences in a Person-Article List.
 The Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a total of 36362 person entities.  
 
 %\begin{table*}
@@ -82,12 +88,12 @@ We divide the people entities extracted into following categories so that separa
 \item \textbf{Medium Influential}: This category includes all person entities with occurrence from 4 to 15 news articles. (344 person entities) 
 \item \textbf{Highly Influential} : This category includes all person entities with occurrence in 16 or more news articles. (14 person entities)
 \end{itemize}
-Figure ~\ref{figure:res} shows the statistics for each of these categories of persons extracted from the dataset. These categories have been created manually simply based on the number of articles of occurrence of a person entity and do not directly lead to the conclusion of a person entity with large number of articles being influential.
+Figure ~\ref{figure:res} shows the statistics for each of these categories of persons extracted from the dataset. These categories have been chosen manually simply based on the number of articles of occurrence of a person entity and do not directly lead to the conclusion of a person entity with large number of articles being influential.
 
 \begin{figure*}
   \centering
 \includegraphics{IPChart}
-\caption{Statistics showing number of persons extracted for each influential person category after PNER from the dataset}
+\caption{Log Scale plot showing number of persons extracted for each influential person category after PNER from the dataset}
 \label{figure:res}
 \end{figure*} 
 
@@ -181,18 +187,21 @@ The first model takes 7.5 minutes for training while the second one takes 8.6 mi
 %The set of 30 topics obtained through the first model are illustrated in Table~\ref{table:topicwords} and the other model with 100 topics in Appendix Table~\ref{long}. 
 Some of the topics words from the topic models can be easily identified to belong to the following topics: music performance, court events, elections and government and shipping.
 
-Topic modeling gives as output, for each article in the dataset, a set of topics with their probability distribution score for the article. The topic with highest topic probability score is associated with each article in the dataset. 
+Topic modeling gives as output, for each article in the dataset, a set of topics with their probability distribution score for the article. The topic with highest topic probability score is associated with each article in the dataset to obtain an Article-Topic List.
 
 
 \subsection{People Gazetteer Output }
 \label{gaz:result}
 
-The list of articles obtained for each person entity after application of PNER and highest scoring topic assigned to each article during Topic Detection are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic.
+\begin{figure*}
+\begin{center}
+\includegraphics{gaz}
+\caption{Procedure for development of People Gazetteer}
+\label{figure:gaze}
+\end{center}
+\end{figure*}
 
-
-The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles. For example, the person ``John Smith" detected in two different articles might or might not be the same person) also occur in the People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER. The coreference resolution has also been done keeping in mind that the number of articles of occurrence of a person entity is an important parameter to determine an influential person which is further explained in Section~\ref{influential:DI}
-
-Coreference resolution is performed using Stanford CoreNLP toolkit and it was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity are found in an article. 
+The procedure of development of people gazetteer can be seen in Figure~\ref{figure:gaze}.The list of articles obtained for each person entity after application of PNER (Person-Article List) and highest scoring topic assigned to each article during Topic Detection (Article-Topic List) are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic. 
 
 Two people gazetteers are finally developed, each corresponding to the two model settings of 30 Topics LDA Model and 100 Topics LDA Model, respectively. Both gazetteer consist of a list of named entities along with the articles of their occurrence and topic associated with each article. A snapshot of the people gazetteer using 30 Topics LDA Model can be seen in Figure~\ref{figure:gazette} where each person entity is followed by a document list consisting of a Document ID and its corresponding Topic ID. A similar people gazetteer is also obtained using 100 Topics LDA Model. Both People Gazetteers are further used in Section~\ref{influential} for detecting and ranking influential person entities from them.
 \begin{figure*}
