@@ -1,0 +1,122 @@
+\begin{thebibliography}{10}
+
+\bibitem{agarwal2013utilizing}
+Shivam Agarwal.
+\newblock Utilizing big data in identification and correction of ocr errors.
+\newblock 2013.
+
+\bibitem{bassil2012ocr}
+Youssef Bassil and Mohammad Alwani.
+\newblock Ocr context-sensitive error correction based on google web 1t 5-gram
+  data set.
+\newblock {\em arXiv preprint arXiv:1204.0188}, 2012.
+
+\bibitem{brill2000improved}
+Eric Brill and Robert~C Moore.
+\newblock An improved error model for noisy channel spelling correction.
+\newblock In {\em Proceedings of the 38th Annual Meeting on Association for
+  Computational Linguistics}, pages 286--293. Association for Computational
+  Linguistics, 2000.
+
+\bibitem{chattopadhyaya2013fast}
+Ishan Chattopadhyaya, Kannappan Sirchabesan, and Krishanu Seal.
+\newblock A fast generative spell corrector based on edit distance.
+\newblock In {\em Advances in Information Retrieval}, pages 404--410. Springer,
+  2013.
+
+\bibitem{christen2006comparison}
+Peter Christen.
+\newblock A comparison of personal name matching: Techniques and practical
+  issues.
+\newblock In {\em Data Mining Workshops, 2006. ICDM Workshops 2006. Sixth IEEE
+  International Conference on}, pages 290--294. IEEE, 2006.
+
+\bibitem{dutta2011learning}
+Haimonti Dutta, Rebecca~J Passonneau, Austin Lee, Axinia Radeva, Boyi Xie,
+  David~L Waltz, and Barbara Taranto.
+\newblock Learning parameters of the k-means algorithm from subjective human
+  annotation.
+\newblock In {\em FLAIRS Conference}, 2011.
+
+\bibitem{elmi1998spelling}
+Mohammad~Ali Elmi and Martha Evens.
+\newblock Spelling correction using context.
+\newblock In {\em Proceedings of the 36th Annual Meeting of the Association for
+  Computational Linguistics and 17th International Conference on Computational
+  Linguistics-Volume 1}, pages 360--364. Association for Computational
+  Linguistics, 1998.
+
+\bibitem{kukich1992techniques}
+Karen Kukich.
+\newblock Techniques for automatically correcting words in text.
+\newblock {\em ACM Computing Surveys (CSUR)}, 24(4):377--439, 1992.
+
+\bibitem{levenshtein1966binary}
+Vladimir~I Levenshtein.
+\newblock Binary codes capable of correcting deletions, insertions and
+  reversals.
+\newblock In {\em Soviet Physics Doklady}, volume~10, page 707, 1966.
+
+\bibitem{marzal1993computation}
+Andres Marzal and Enrique Vidal.
+\newblock Computation of normalized edit distance and applications.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 15(9):926--932, 1993.
+
+\bibitem{reynaert2008all}
+Martin Reynaert.
+\newblock All, and only, the errors: more complete and consistent spelling and
+  ocr-error correction evaluation.
+\newblock In {\em LREC}, 2008.
+
+\bibitem{rice1996measuring}
+Stephen~V Rice.
+\newblock {\em Measuring the accuracy of page-reading systems}.
+\newblock PhD thesis, University of Nevada, 1996.
+
+\bibitem{ringlstetter2007text}
+Christoph Ringlstetter, Max Hadersbeck, Klaus~U Schulz, and Stoyan Mihov.
+\newblock Text correction using domain dependent bigram models from web crawls.
+\newblock In {\em Proceedings of the International Joint Conference on
+  Artificial Intelligence (IJCAI-2007) Workshop on Analytics for Noisy
+  Unstructured Text Data}, 2007.
+
+\bibitem{schulz2002fast}
+Klaus~U Schulz and Stoyan Mihov.
+\newblock Fast string correction with levenshtein automata.
+\newblock {\em International Journal on Document Analysis and Recognition},
+  5(1):67--85, 2002.
+
+\bibitem{strohmaier2003lexical}
+Christian~M Strohmaier, Christoph Ringlstetter, Klaus~U Schulz, and Stoyan
+  Mihov.
+\newblock Lexical postcorrection of ocr-results: The web as a dynamic secondary
+  dictionary?
+\newblock In {\em ICDAR}, pages 1133--1137. Citeseer, 2003.
+
+\bibitem{taghva2001ocrspell}
+Kazem Taghva and Eric Stofsky.
+\newblock Ocrspell: an interactive spelling correction system for ocr errors in
+  text.
+\newblock {\em International Journal on Document Analysis and Recognition},
+  3(3):125--137, 2001.
+
+\bibitem{tong1996statistical}
+Xiang Tong and David~A Evans.
+\newblock A statistical approach to automatic ocr error correction in context.
+\newblock In {\em Proceedings of the fourth workshop on very large corpora},
+  pages 88--100, 1996.
+
+\bibitem{udupa2010hashing}
+Raghavendra Udupa and Shaishav Kumar.
+\newblock Hashing-based approaches to spelling correction of personal names.
+\newblock In {\em Proceedings of the 2010 Conference on Empirical Methods in
+  Natural Language Processing}, pages 1256--1265. Association for Computational
+  Linguistics, 2010.
+
+\bibitem{wagner1974string}
+Robert~A Wagner and Michael~J Fischer.
+\newblock The string-to-string correction problem.
+\newblock {\em Journal of the ACM (JACM)}, 21(1):168--173, 1974.
+
+\end{thebibliography}
