@@ -35,14 +35,14 @@ M.~G.~Baydogan, S.~Huang, A.~Oztekin, eds.}}
 \textbf{Aayushee Gupta}
 
 Indraprastha Institute of Information Technology\\
-Delhi, India\footnote{Currently working as Assistant Professor with the CSE Department at Jaypee Institute of Information Technology, Noida, India.}\\
+Delhi, India\footnote{The author is currently affiliated to the Department of Computer Science and Information Technology at Jaypee Institute of Information Technology, Noida, India.}\\
 \texttt{aayushee1230@iiitd.ac.in}\\
 \vspace{0.2in}
 
 \textbf{Haimonti Dutta}
 
-Assistant Professor, Management Science And Systems\\
-School of Management University\\
+Department of Management Science And Systems\\
+University at Buffalo\\
 Buffalo, USA\\
 \texttt{haimonti@buffalo.edu}\\
 \end{center}
@@ -64,87 +64,8 @@ Introduce noisy text--OCR text, its applications. Eg. handwriting recognition, h
 Problems in OCR text. Requirement of spell correction. Limited complete spell correction evaluation strategies. Novelty?
 Paper organization.
 
-\section{Data Description}
-\label{chapter:data description}
 
-This section describes the dataset used for spell correction on OCR data. Following sections provide details of data source, characteristics and some data statistics.
-
-\subsection{Data Source} 
-
-The dataset has been taken from Chronicling America.
-\noindent \emph{Chronicling
-America}\footnote{\texttt{http://chroniclingamerica.loc.gov/}} is an
-initiative of the National Endowment for Humanities (NEH) and the
-Library of Congress (LC) whose goal is to develop an online,
-searchable database of historically significant newspapers between
-1836 and 1922. The New York Public Library (NYPL) is part of this
-initiative and has scanned 200,000 newspaper pages published between
-1890 and 1920 from microfilm.
-
-In order to make a newspaper available for searching on the Internet,
-the following processes used in \cite{dutta2011learning} must take place: (1) the microfilm copy or
-paper original is scanned; (2) master and Web image files are
-generated; (3) metadata is assigned for each page to improve the
-search capability of the newspaper; (4) OCR software is run over high
-resolution images to create searchable full text and (5) OCR text,
-images, and metadata are imported into a digital library software
-program. The scanned newspaper holdings of the NYPL offers a wealth of
-data and opinion for researchers and historians.
-
-The newspaper titles and digitized pages available through the
-Chronicling America website can be searched using the OpenSearch
-protocol\footnote{\texttt{http://www.opensearch.org/Home}}.
-Unfortunately, the current search facilities are rudimentary and
-irrelevant documents are often more highly ranked than relevant ones.
-The newspapers are scanned on a page-by-page basis and article level
-segmentation is poor or non-existent; the OCR scanning process is far
-from perfect and the documents generated from it contains a large
-amount of garbled text. In a bid to serve its patrons better, the New
-York Public Library employed human annotators to clean headlines of
-articles and text, but the process of manually reading all the old
-newspapers article-by-article and cleaning them soon became very
-expensive. 
-
-\subsection{Data Characteristics}
-An individual OCR text article has at least one or more of the following types of spelling errors:
-
-\begin{figure}[hbt]
-\includegraphics[scale=0.75]{originalimage}
-\includegraphics[scale=0.80]{ocr}
-\caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
-\label{figure:1}
-\end{figure}
-
-\begin{description}
- \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
- \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
- \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
-\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
-\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
-\end{description} 
-
-\subsection{Data Statistics}
-The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
-is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
-
-
-%\section{Data Preprocessing}
-%\label{chapter:data preprocessing} 
-
- 
-%This section describes the preprocessing steps applied on the historical news articles.
-%The garbled OCR text makes data preprocessing mandatory before application of any text mining algorithms. 
-
-\section{Spelling Correction}
-
-Several kinds of spelling errors exist in the data as described in the previous section. This section first provides a brief review of spelling correction algorithms that exist in literature (Section~\ref{spell:rw}); Section~\ref{spell:algo} describes the spelling correction algorithm used in this research and evaluation results on the OCR dataset are presented in Section~\ref{spell:eval} followed by discussion in Section~\ref{spell:discussion}.
-
-% DOUBT: Do the following lines need to be removed?
-%The garbled OCR dataset  needs to be refined by correcting the text with the help of a human editor manually or automatic spelling corrector. Due to the huge size of dataset, human editing would be extremely time consuming and expensive making it impossible and indicating requirement of a spelling correction technique. 
-%The spelling correction of person named entities in the dataset also requires special consideration so that the person named entities with correct spellings get detected as a result which is the main aim of this research.
-
-
-\subsection{Related Work}
+\section{Related Work}
 \label{spell:rw}
 
 Kukich\cite{kukich1992techniques} comprehensively discusses various spelling correction techniques based on Non word, Isolated word and Real word spelling errors. N-gram analysis, Dictionary lookup and Probabilistic techniques are used for correcting isolated and nonword errors while Context-Dependent techniques are used mostly for correcting real word errors including the correction of word split and join errors \cite{elmi1998spelling}.
@@ -162,10 +83,62 @@ All these spelling correction techniques have developed over time and have been 
 
 Edit distance approach, suggested initially by Wagner and Fischer\cite{wagner1974string}, is a dictionary lookup approach commonly used for OCR data correction because of the large number of substitution errors in OCR data  \cite{kukich1992techniques}\cite{christen2006comparison} which can be corrected using this technique. String edit distance approaches with faster correction are discussed in \cite{marzal1993computation},\cite{schulz2002fast}  with variants like Levenshtein automata and normalized edit distance.
 
-Personal name spelling correction has also been studied separately including comparison among various techniques indicating that there is no one single technique that outperforms all others though pattern matching techniques result in better matching quality compared to phonetic encoding techniques\cite{christen2006comparison}. Almost all the personal name spelling correction techniques use personal names directory/dictionary for matching against wrongly spelled names in the dataset or queries in case of People Search \cite{udupa2010hashing}. 
+%Personal name spelling correction has also been studied separately including comparison among various techniques indicating that there is no one single technique that outperforms all others though pattern matching techniques result in better matching quality compared to phonetic encoding techniques\cite{christen2006comparison}. Almost all the personal name spelling correction techniques use personal names directory/dictionary for matching against wrongly spelled names in the dataset or queries in case of People Search \cite{udupa2010hashing}. 
+
+There has not been much related work regarding automatic evaluation of word-by-word post spelling correction on OCR dataset consisting of Word Split and Join errors. Semi-automatic spelling correction system is discussed in \cite{taghva2001ocrspell} that corrects these errors but requires user interaction in order to perform complete correction and system evaluation. Rice\cite{rice1996measuring} discusses OCR errors similar to the ones in our dataset. Their algorithm evaluates edit distance spelling correction by estimating word accuracy defined as the percentage of correctly recognized words; the length of LCS between correct and incorrect strings on a page by page level is used as the relevant metric. The evaluation strategy works correctly but the definition of accuracy does not give a complete coverage of the spell correction as it does not provide any information on the errors missed by the spelling corrector.
+
+
+
+\section{Characteristics of OCR data}
+\label{chapter:data description}
+
+%This section describes the dataset used for spell correction on OCR data. Following sections provide details of data source, characteristics and some data statistics.
+
+An individual OCR text article has at least one or more of the following types of spelling errors:
+
+\begin{figure}[hbt]
+\includegraphics[scale=0.75]{originalimage}
+\includegraphics[scale=0.80]{ocr}
+\caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
+\label{figure:1}
+\end{figure}
+
+\begin{description}
+ \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
+ \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
+ \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
+\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
+\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
+\end{description} 
+
+
+
+
+
+%\section{Data Preprocessing}
+%\label{chapter:data preprocessing} 
+
+ 
+%This section describes the preprocessing steps applied on the historical news articles.
+%The garbled OCR text makes data preprocessing mandatory before application of any text mining algorithms. 
+
+\section{Spelling Correction}
+
+Several kinds of spelling errors exist in the data as described in the previous section. 
+%This section first provides a brief review of spelling correction algorithms that exist in literature (Section~\ref{spell:rw});
+ This section describes the spelling correction algorithm used in this research  in Section~\ref{spell:algo} and the evaluation algorithm is presented in Section~\ref{spell:sce}.
+
+
+% DOUBT: Do the following lines need to be removed?
+%The garbled OCR dataset  needs to be refined by correcting the text with the help of a human editor manually or automatic spelling corrector. Due to the huge size of dataset, human editing would be extremely time consuming and expensive making it impossible and indicating requirement of a spelling correction technique. 
+%The spelling correction of person named entities in the dataset also requires special consideration so that the person named entities with correct spellings get detected as a result which is the main aim of this research.
+
+
+
   
 %CHANGES MADE HERE. ADDED A LINE REGARDING PERSONAL NAMES CORRECTION AND MOVED RELATED WORK REGARDING EVALUATION ALGORITHM TO SECTION 4.1.3.
- We use edit distance algorithm for spelling correction because of its speed and ability to correct OCR errors compared to the n-gram approach \cite{chattopadhyaya2013fast}. Context-dependent spelling correction is not used because of unavailability of n-gram words corpus or ground truth dataset containing OCR and true word pairs. Our edit distance algorithm also uses an enhanced dictionary for look up to give significance to personal names spelling correction in the dataset. 
+ We use edit distance algorithm for spelling correction because of its speed and ability to correct OCR errors compared to the n-gram approach \cite{chattopadhyaya2013fast}. Context-dependent spelling correction is not used because of unavailability of n-gram words corpus or ground truth dataset containing OCR and true word pairs.
+% Our edit distance algorithm also uses an enhanced dictionary for look up to give significance to personal names spelling correction in the dataset. 
 
 
 \subsection{Spelling Correction Algorithm}
@@ -175,11 +148,9 @@ The Edit Distance algorithm based on Levenshtein distance\cite{levenshtein1966bi
 The spelling corrector has been designed as suggested by Peter Norvig\footnote{ http://norvig.com/spell-correct.html}. The algorithm requires a dictionary which is used to check if each word of the text exists in it or not. If the word already exists in the dictionary then no change is made to the word and if not, then a candidate list of words is created from the word to be corrected by inserting, substituting or deleting up to 2 letters from it.  This list of words is again checked for in the dictionary and returned as suggestions for the word to be corrected. The correction is made with the word formed from lowest edit distance and occurring with more frequency in the dictionary. This makes the edit distance algorithm dependent on the type of dictionary chosen for correction which means the dictionary must be well chosen for spelling correction of a specific document collection. The algorithm runs faster by reading the dictionary only once and keeping a data structure in memory for its word counts which can be referred to whenever a word comes up for correction.
 
 \subsection{Spelling Correction Algorithm Evaluation}
+\label{spell:sce}
 
-
-There has not been much related work regarding automatic evaluation of word-by-word post spelling correction on OCR dataset consisting of Word Split and Join errors. Semi-automatic spelling correction system is discussed in \cite{taghva2001ocrspell} that corrects these errors but requires user interaction in order to perform complete correction and system evaluation. Rice\cite{rice1996measuring} discusses OCR errors similar to the ones in our dataset. Their algorithm evaluates edit distance spelling correction by estimating word accuracy defined as the percentage of correctly recognized words; the length of LCS between correct and incorrect strings on a page by page level is used as the relevant metric. The evaluation strategy works correctly but the definition of accuracy does not give a complete coverage of the spell correction as it does not provide any information on the errors missed by the spelling corrector.
-
-For evaluation on our dataset, the raw OCR text and OCR text after application of spelling correction algorithm needs to be compared with the original newspaper text. The OCR text is extremely garbled with Word Split and Join errors due to which word-to-word alignment with the original newspaper text is impossible. For this purpose, a novel algorithm called SCE (Spelling Correction Evaluation) based on N-gram approach is proposed for automatic evaluation of the corrected text word-by-word against the manually corrected subset of the news articles dataset. 
+For evaluation on our dataset, the raw OCR text and OCR text after application of spelling correction algorithm needs to be compared with the original newspaper text. The OCR text is extremely garbled with Word Split and Join errors due to which word-to-word alignment with the original newspaper text is impossible. For this purpose, a novel algorithm called SCE (Spelling Correction Evaluation) based on N-gram approach is proposed for automatic evaluation of the corrected text word-by-word against the manually corrected subset of the news articles dataset. The SCE algorithm can be used for evaluation of spelling correction which is performed using any type of spell correction algorithm.
 
 Following sections describe the evaluation parameters for estimating the performance of Spelling Corrector on the OCR dataset used along with the SCE algorithm:
 
@@ -213,12 +184,12 @@ According to our spelling corrector, a ``true positive" is said to occur when a 
 Time is also an essential parameter while measuring the performance of spelling correction. Since the dataset is quite large, it is important that the algorithm does not take too long to correct an article and needs to be parallelized in case it takes more time for correction.
 
 
-\item[$\bullet$Person Names Detection Rate(PNDR)]
+%\item[$\bullet$Person Names Detection Rate(PNDR)]
 
-The spelling correction algorithm is evaluated on the basis of another parameter which is used to consider the special case of person entity names spelling correction, as the main goal of research is to detect these names with correct spellings.
-Person Names Detection Rate can be defined as the ratio of person names recognized through Named Entity Recognition (NER) before spelling correction process and the total number of person names recognized in the original newspaper articles.
+%The spelling correction algorithm is evaluated on the basis of another parameter which is used to consider the special case of person entity names spelling correction, as the main goal of research is to detect these names with correct spellings.
+%Person Names Detection Rate can be defined as the ratio of person names recognized through Named Entity Recognition (NER) before spelling correction process and the total number of person names recognized in the original newspaper articles.
 
-$$Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after spelling correction}} {\text{ Person Names recognized in original newspaper articles}} $$
+%$$Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after spelling correction}} {\text{ Person Names recognized in original newspaper articles}} $$
 
 \end{description}
 
@@ -358,51 +329,93 @@ Here, for each token of CorrectedLine, we find its index and call the MatchWordG
 Another example can be considered from Line 10 in Figure~\ref{figure:3} and Figure~\ref{figure:4} where the number of tokens is different in CorrectedLine and OriginalLine. In such a case, direct alignment between tokens is not possible because of which the words window becomes useful. Here, when the last token `Richmond' of CorrectedLine is considered at index i=3, the corresponding words window becomes ``Jury now sitting at Richmond" (index j=1 to 5) for which there is a match in the words windows and corresponding spelling has also been changed from `tilchmond' to `Richmond' which makes it a $TP$. Had the word window not been considered, the corresponding token at index j=3 in OriginalLine would have been chosen as `sitting' which would have resulted in a $FP$. 
    
 
+\section{Empirical Evaluation and Results}
+%\subsection{Spelling Correction Algorithm Evaluation Results}
+%\label{spell:eval}
 
-\subsection{Spelling Correction Algorithm Evaluation Results}
-\label{spell:eval}
 
-\noindent \textbf{Aims: }The aim of our experiments is to answer the following questions:
-\begin{itemize}
-\item \textbf{Question 1: }How good is the spell corrector? The metrics for evaluation are accuracy and time to correct the text.
+
+\subsection{Data Source} 
+
+The dataset has been taken from Chronicling America.
+\noindent \emph{Chronicling
+America}\footnote{\texttt{http://chroniclingamerica.loc.gov/}} is an
+initiative of the National Endowment for Humanities (NEH) and the
+Library of Congress (LC) whose goal is to develop an online,
+searchable database of historically significant newspapers between
+1836 and 1922. The New York Public Library (NYPL) is part of this
+initiative and has scanned 200,000 newspaper pages published between
+1890 and 1920 from microfilm.
+
+In order to make a newspaper available for searching on the Internet,
+the following processes used in \cite{dutta2011learning} must take place: (1) the microfilm copy or
+paper original is scanned; (2) master and Web image files are
+generated; (3) metadata is assigned for each page to improve the
+search capability of the newspaper; (4) OCR software is run over high
+resolution images to create searchable full text and (5) OCR text,
+images, and metadata are imported into a digital library software
+program. The scanned newspaper holdings of the NYPL offers a wealth of
+data and opinion for researchers and historians.
+
+The newspaper titles and digitized pages available through the
+Chronicling America website can be searched using the OpenSearch
+protocol\footnote{\texttt{http://www.opensearch.org/Home}}.
+Unfortunately, the current search facilities are rudimentary and
+irrelevant documents are often more highly ranked than relevant ones.
+The newspapers are scanned on a page-by-page basis and article level
+segmentation is poor or non-existent; the OCR scanning process is far
+from perfect and the documents generated from it contains a large
+amount of garbled text. In a bid to serve its patrons better, the New
+York Public Library employed human annotators to clean headlines of
+articles and text, but the process of manually reading all the old
+newspapers article-by-article and cleaning them soon became very
+expensive. 
+\subsection{Data Statistics}
+The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
+is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
+
+
+\noindent \textbf{Aims: }The aim of our experiments is to answer the following question:
+How good is the spell corrector? The metrics for evaluation are accuracy and time to correct the text.
  
-\item \textbf{Question 2: }How good is the Person Names Detection Rate? The metric for evaluation is PNDR. 
+%\item \textbf{Question 2: }How good is the Person Names Detection Rate? The metric for evaluation is PNDR. 
 
-\end{itemize}
 
+\subsection{Experimental Procedure and Results}
 \noindent \textbf{Materials: }
 The spelling correction algorithm is used to correct all the 14020 OCR raw text articles in the dataset. The dictionary used for look-up is a concatenation of several public domain books from Project Gutenberg and lists of most frequent words from Wiktionary and the British National Corpus\footnote{http://norvig.com/big.txt}. This is augmented with a large people names list which is obtained  by running Stanford NER-CRF parser on subsets of the ClueWeb12 dataset made available in the TREC 2013 Crowdsourcing Track\footnote{http://boston.lti.cs.cmu.edu/clueweb12/TRECcrowdsourcing2013/}. This enhanced dictionary has been used to give special consideration to correction of person names in the dataset.
 
 \noindent \textbf{Methods: }
-In order to answer \textbf{Question 1} we do the following: 
+In order to answer our research question fo checking the performance of spell corrector, we do the following: 
 
 3 versions of each newspaper article are required: OCR raw text, spelling corrector corrected text and the original scanned newspaper article text. Since the dataset is quite large (14020) and it is not possible to get original text of each of these newspaper images, a smaller number of articles are chosen to study the results of spelling correction. 50 scanned newspaper images are taken and an online OCR \footnote{www.onlineocr.net} is run on them followed by some manual correction to get the original articles text. Accuracy can then be calculated for all 3 versions of 50 newspaper articles using the SCE algorithm by marking each word in the OCR text article as a $TP$, $FP$, $TN$ or $FN$. 
 
-In order to answer \textbf{Question 2} we do the following: 
+%In order to answer \textbf{Question 2} we do the following: 
 %% AAYUSHEE CHECK--DONE
-\begin{enumerate}
-\item Person Name Detection from raw OCR (\textbf{Baseline: }) The NER is run on the raw garbled OCR text.
-\item Person Name Detection from spell corrected text (\textbf{PND+Spell Correction+Simple Dictionary: })The NER is run on the spell corrected (using the edit distance algorithm) OCR text without the people names list in the dictionary.
-\item Person Name Detection from spell corrected text with enhanced dictionary (\textbf{PND+Spell Correction+Enhanced Dictionary: }) The NER is run on the spell corrected (using the edit distance algorithm) OCR text with the enhanced people names list in the dictionary.
+%\begin{enumerate}
+%\item Person Name Detection from raw OCR (\textbf{Baseline: }) The NER is run on the raw garbled OCR text.
+%\item Person Name Detection from spell corrected text (\textbf{PND+Spell Correction+Simple Dictionary: })The NER is run on the spell corrected (using the edit distance algorithm) OCR text without the people names list in the dictionary.
+%\item Person Name Detection from spell corrected text with enhanced dictionary (\textbf{PND+Spell Correction+Enhanced Dictionary: }) The NER is run on the spell corrected (using the edit distance algorithm) OCR text with the enhanced people names list in the dictionary.
 
-\end{enumerate}
+%\end{enumerate}
 
 \noindent \textbf{Results: }
-The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is compared to OCR text and original article text. We believe that the results are less accurate due to the presence of a large number of Non-word, New Line, Word Split and Join errors in the OCR data which can not be corrected by the spelling correction algorithm used for this research.
-
 The spelling corrector takes 9 seconds on an average to correct the newspaper OCR articles. It takes a total of 36 hours to run on 14020 articles.
+The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is compared to OCR text and original article text using our SCE algorithm. We believe that the results are less accurate due to the presence of a large number of Non-word, New Line, Word Split and Join errors in the OCR data which can not be corrected by the spelling correction algorithm used for this research.
 
 
-But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
 
-\textit{PNDR} for \textbf{Baseline: }: 71.5\% 
 
-\textit{PNDR} for \textbf{PND+Spell Correction+Simple Dictionary: }: 63.3\% 
+%But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
 
-\textit{PNDR} for \textbf{PND+Spell Correction+Enhanced Dictionary: }: 85.5\% 
+%\textit{PNDR} for \textbf{Baseline: }: 71.5\% 
 
-These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
- Table~\ref{table:pndr} shows some of the person names recognized while calculation of PNDR for each case. The reason for PNDR going down after spell correction with simple dictionary is demonstrated from the table as unnecessary spelling corrections are made while using this dictionary. On the other hand, since the enhanced dictionary contains several person names and no unnecessary spelling corrections are made, more persons name are recognized in this case when compared to the original text leading to a much higher PNDR. 
+%\textit{PNDR} for \textbf{PND+Spell Correction+Simple Dictionary: }: 63.3\% 
+
+%\textit{PNDR} for \textbf{PND+Spell Correction+Enhanced Dictionary: }: 85.5\% 
+
+%These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
+ %Table~\ref{table:pndr} shows some of the person names recognized while calculation of PNDR for each case. The reason for PNDR going down after spell correction with simple dictionary is demonstrated from the table as unnecessary spelling corrections are made while using this dictionary. On the other hand, since the enhanced dictionary contains several person names and no unnecessary spelling corrections are made, more persons name are recognized in this case when compared to the original text leading to a much higher PNDR. 
 
 \section{Discussion and Future Work}
 \label{spell:discussion}
@@ -415,6 +428,12 @@ We believe a better accuracy of spell correction can be obtained by correcting t
 \item[$\bullet$] \noindent 
 Our spell corrector corrects Non-Real Word errors by focusing on isolated words in the dataset. Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
 \end{description}
+
+
+
+\section{Acknowledgement}
+
+
 %The body of the paper should be divided into sections. Use 12-point Time New Roman font for the text of each section.
 %The body of the paper should be single-spaced, justified, and in one-column format. Leave one-line spacing between paragraphs.
 %The completed paper, including graphics and references, cannot exceed six (6) pages.
