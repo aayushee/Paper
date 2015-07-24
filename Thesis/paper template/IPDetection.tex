@@ -29,11 +29,26 @@ The issues of co-reference resolution of person names (For Example, person entit
 
 
 \subsubsection{Coreference Resolution}
- The coreference resolution aims to find out all expressions that refer to the same entity in the text. Due to multiple references to a person in the text,coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
+ The coreference resolution aims to find out all expressions that refer to the same entity in the text. Due to multiple references to a person in the text, coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
 
 Coreference resolution is performed using the Standford Deterministic Coreference Resolution System of the Stanford CoreNLP toolkit /footnote{http://nlp.stanford.edu/software/dcoref.shtml}. It uses a multi-pass seive coreference resolution\cite{lee2013deterministic} which consists of 3 steps: mention detection which identifies clusters of all noun phrases, pronouns and named entity mentions, coreference resolution step which is a combination of ten independent seives applied from highest to lowest precision one by one sequentially but with global information sharing so that each seive builds on the previously clustered mentions followed by post processing which removes singleton mentions.
-Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity are found in an article. 
+Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity (coreferences) are found in an article. Figure ~\ref{figure:core} or ~\ref{figure:coref}  illustrates an example of coreference resolution when applied to an article text and its effect on term frequency for person entities. Initially, mentions are detected from the text followed by application of coreference resolution step which results in a chain of coference mentions/entities, which includes the mention itself along with other mentions that refer to it. The most representative mention out of each coference chain is found and checked whether it is a valid person entity in the People Gazetteer or not. If it is found to be a person entity, then the count of coreferences for that mention is considered its final term frequency in an article. 
+It is also observed that due to lack of punctuation in the dataset, lots of meaningless coreference mentions are also detected. However, since the persons list is available from the People Gazetteer, frequencies of only those person entities are replaced through Coreference Resolution. 
+\begin{figure*}
+\begin{center}
+\includegraphics{coref}
+\includegraphics{coref1}
+\includegraphics{coref2}
+\end{center}
+\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
+\label{figure:core}
+\end{figure*}
 
+\begin{figure*}
+\fbox{\includegraphics{coref3}}
+\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
+\label{figure:coref}
+\end{figure*}
 
 \item \textbf{Number of similar articles} (NSIM)\\
 This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
