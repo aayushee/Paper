@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  8 JUL 2015 22:00
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  15 AUG 2015 07:01
 entering extended mode
 **C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop*paper/DMA2015.tex
 ("C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/DMA2015.tex"
@@ -228,36 +228,45 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
-("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 23.
+("C:\Program Files\MiKTeX 2.9\tex\latex\slashbox\slashbox.sty"
+slashbox style by K.Yasuoka, May 1993.
+\@slashboxa=\box35
+\@slashboxb=\box36
+\@slashboxc=\box37
+\@slashboxwd=\count114
+\@slashboxht=\count115
+\@slashsepl=\dimen128
+\@slashsepr=\dimen129
+) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 24.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
-\scratchdimen=\dimen128
-\scratchbox=\box35
-\nofMPsegments=\count115
-\nofMParguments=\count116
+\scratchcounter=\count116
+\scratchdimen=\dimen130
+\scratchbox=\box38
+\nofMPsegments=\count117
+\nofMParguments=\count118
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count117
-\MPscratchDim=\dimen129
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen131
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks22
 )
 *geometry* driver: auto-detecting
@@ -295,133 +304,122 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 33.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 39.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 41.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no “ in font ptmr7t!
- [1
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 <images/originalimage.png, id=9, 313.17pt x 189.70876pt>
 File: images/originalimage.png Graphic file (type png)
 
 <use images/originalimage.png>
-Package pdftex.def Info: images/originalimage.png used on input line 100.
+Package pdftex.def Info: images/originalimage.png used on input line 103.
 (pdftex.def)             Requested size: 234.8769pt x 142.2812pt.
 
 <images/ocr.png, id=11, 306.39468pt x 175.40532pt>
 File: images/ocr.png Graphic file (type png)
  <use images/ocr.png>
-Package pdftex.def Info: images/ocr.png used on input line 101.
+Package pdftex.def Info: images/ocr.png used on input line 104.
 (pdftex.def)             Requested size: 245.11607pt x 140.32443pt.
 
-Overfull \hbox (12.51799pt too wide) in paragraph at lines 100--102
+Overfull \hbox (12.51799pt too wide) in paragraph at lines 103--105
 [][] [] 
  []
 
-[2 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/originalimage.
-png> <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ocr.png>]
-[3]
+[2] [3 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/originalim
+age.png> <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ocr.png>
+]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
-
-Overfull \hbox (5.32463pt too wide) in paragraph at lines 184--185
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+ [4]
+Overfull \hbox (5.32463pt too wide) in paragraph at lines 169--170
 []\OT1/ptm/m/n/10 Time is also an es-sen-tial pa-ram-e-ter while mea-sur-ing th
 e per-for-mance of spelling
  []
 
-<images/ngram.png, id=22, 416.30531pt x 221.32687pt>
+<images/ngram.png, id=26, 416.30531pt x 221.32687pt>
 File: images/ngram.png Graphic file (type png)
  <use images/ngram.png>
-Package pdftex.def Info: images/ngram.png used on input line 202.
+Package pdftex.def Info: images/ngram.png used on input line 179.
 (pdftex.def)             Requested size: 333.0447pt x 177.06172pt.
 
-[4]
-Overfull \hbox (11.75218pt too wide) in paragraph at lines 252--252
+[5 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ngram.png>]
+Overfull \hbox (11.75218pt too wide) in paragraph at lines 267--267
 []\OT1/pcr/m/n/12 MatchWordGrams(\OT1/ptm/m/it/12 (OcrLine,CorrectedLine,Origin
 alLine,0,OriginalLine.length,i)\OT1/pcr/m/n/12 )\OT1/ptm/m/n/12 ; 
  []
 
 
-Overfull \hbox (4.30524pt too wide) in paragraph at lines 252--252
+Overfull \hbox (4.30524pt too wide) in paragraph at lines 267--267
 []\OT1/pcr/m/n/12 MatchWordGrams(\OT1/ptm/m/it/12 (OcrLine,CorrectedLine,Origin
 alLine,OriginalLine.length- 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (17.62482pt too wide) detected at line 291
+Overfull \hbox (17.62482pt too wide) detected at line 310
 [][] 
  []
 
-[5 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ngram.png>]
-[6] [7] <images/img3.png, id=40, 528.47438pt x 386.94562pt>
+[6] <images/img3.png, id=36, 528.47438pt x 386.94562pt>
 File: images/img3.png Graphic file (type png)
-
-<use images/img3.png>
-Package pdftex.def Info: images/img3.png used on input line 299.
+ <use images/img3.png>
+Package pdftex.def Info: images/img3.png used on input line 335.
 (pdftex.def)             Requested size: 211.386pt x 154.7755pt.
 
-<images/originalimg3.png, id=41, 310.15875pt x 202.50656pt>
+<images/originalimg3.png, id=37, 310.15875pt x 202.50656pt>
 File: images/originalimg3.png Graphic file (type png)
 
 <use images/originalimg3.png>
-Package pdftex.def Info: images/originalimg3.png used on input line 300.
+Package pdftex.def Info: images/originalimg3.png used on input line 336.
 (pdftex.def)             Requested size: 232.61848pt x 151.87953pt.
 
-<images/ocr3.png, id=42, 312.41719pt x 202.50656pt>
+<images/ocr3.png, id=38, 312.41719pt x 202.50656pt>
 File: images/ocr3.png Graphic file (type png)
  <use images/ocr3.png>
-Package pdftex.def Info: images/ocr3.png used on input line 308.
+Package pdftex.def Info: images/ocr3.png used on input line 344.
 (pdftex.def)             Requested size: 234.3123pt x 151.87953pt.
 
-<images/corrected3.png, id=43, 312.41719pt x 204.01219pt>
+<images/corrected3.png, id=39, 312.41719pt x 204.01219pt>
 File: images/corrected3.png Graphic file (type png)
 
 <use images/corrected3.png>
-Package pdftex.def Info: images/corrected3.png used on input line 309.
+Package pdftex.def Info: images/corrected3.png used on input line 345.
 (pdftex.def)             Requested size: 234.3123pt x 153.00876pt.
 
-Overfull \hbox (1.14961pt too wide) in paragraph at lines 308--310
+Overfull \hbox (1.14961pt too wide) in paragraph at lines 344--346
 [][] [] 
  []
 
-[8
-
- <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/img3.png> <C:/Us
-ers/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/originalimg3.png> <C:/U
-sers/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ocr3.png> <C:/Users/AA
-YUSHEE/git/ThesisGit/Thesis/workshop paper/images/corrected3.png>] [9]
-("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.bbl" [10])
-[11] ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.aux") ) 
+[7] [8 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/img3.png> 
+<C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/originalimg3.png>
+ <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/ocr3.png> <C:/Us
+ers/AAYUSHEE/git/ThesisGit/Thesis/workshop paper/images/corrected3.png>]
+[9] ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.bbl"
+[10]) [11] ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\workshop paper\DMA2015.aux"
+) ) 
 Here is how much of TeX's memory you used:
- 4119 strings out of 494045
- 55393 string characters out of 3148378
- 140177 words of memory out of 3000000
- 7358 multiletter control sequences out of 15000+200000
+ 4148 strings out of 494045
+ 55878 string characters out of 3148378
+ 140606 words of memory out of 3000000
+ 7383 multiletter control sequences out of 15000+200000
  23766 words of font info for 51 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,14n,25p,1472b,442s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:
-/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on DMA2015.pdf (11 pages, 426246 bytes).
+ 27i,14n,25p,1471b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on DMA2015.pdf (11 pages, 432479 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

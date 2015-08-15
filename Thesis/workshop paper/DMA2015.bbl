@@ -51,6 +51,14 @@ Karen Kukich.
 \newblock Techniques for automatically correcting words in text.
 \newblock {\em ACM Computing Surveys (CSUR)}, 24(4):377--439, 1992.
 
+\bibitem{lee2010topic}
+Austin Lee, Haimonti Dutta, Rebecca Passonneau, David Waltz, and Barbara
+  Taranto.
+\newblock Topic identification from historic newspaper articles of the new york
+  public library: A case study.
+\newblock In {\em 5th Annual Machine Learning Symposium at the New York Academy
+  of Sciences}, 2010.
+
 \bibitem{levenshtein1966binary}
 Vladimir~I Levenshtein.
 \newblock Binary codes capable of correcting deletions, insertions and
@@ -62,6 +70,20 @@ Andres Marzal and Enrique Vidal.
 \newblock Computation of normalized edit distance and applications.
 \newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
   on}, 15(9):926--932, 1993.
+
+\bibitem{mcmurdo2013vermont}
+Thomas McMurdo and Birdie MacLennan.
+\newblock The vermont digital newspaper project and the national digital
+  newspaper program.
+\newblock {\em Library Resources \& Technical Services}, 57(3):148--163, 2013.
+
+\bibitem{palfray2012logical}
+Thomas Palfray, David Hebert, St{\'e}phane Nicolas, Pierrick Tranouez, and
+  Thierry Paquet.
+\newblock Logical segmentation for article extraction in digitized old
+  newspapers.
+\newblock In {\em Proceedings of the 2012 ACM symposium on Document
+  engineering}, pages 129--132. ACM, 2012.
 
 \bibitem{reynaert2008all}
 Martin Reynaert.
@@ -87,6 +109,12 @@ Klaus~U Schulz and Stoyan Mihov.
 \newblock {\em International Journal on Document Analysis and Recognition},
   5(1):67--85, 2002.
 
+\bibitem{singh2012survey}
+Amarjot Singh, Ketan Bacchuwar, and Akshay Bhasin.
+\newblock A survey of ocr applications.
+\newblock {\em International Journal of Machine Learning and Computing},
+  2(3):314--318, 2012.
+
 \bibitem{strohmaier2003lexical}
 Christian~M Strohmaier, Christoph Ringlstetter, Klaus~U Schulz, and Stoyan
   Mihov.
@@ -107,16 +135,22 @@ Xiang Tong and David~A Evans.
 \newblock In {\em Proceedings of the fourth workshop on very large corpora},
   pages 88--100, 1996.
 
-\bibitem{udupa2010hashing}
-Raghavendra Udupa and Shaishav Kumar.
-\newblock Hashing-based approaches to spelling correction of personal names.
-\newblock In {\em Proceedings of the 2010 Conference on Empirical Methods in
-  Natural Language Processing}, pages 1256--1265. Association for Computational
-  Linguistics, 2010.
+\bibitem{torget2011mapping}
+Andrew~J Torget, Rada Mihalcea, Jon Christensen, and Geoff McGhee.
+\newblock Mapping texts: Combining text-mining and geo-visualization to unlock
+  the research potential of historical newspapers.
+\newblock 2011.
 
 \bibitem{wagner1974string}
 Robert~A Wagner and Michael~J Fischer.
 \newblock The string-to-string correction problem.
 \newblock {\em Journal of the ACM (JACM)}, 21(1):168--173, 1974.
+
+\bibitem{yang2011topic}
+Tze-I Yang, Andrew~J Torget, and Rada Mihalcea.
+\newblock Topic modeling on historical newspapers.
+\newblock In {\em Proceedings of the 5th ACL-HLT Workshop on Language
+  Technology for Cultural Heritage, Social Sciences, and Humanities}, pages
+  96--104. Association for Computational Linguistics, 2011.
 
 \end{thebibliography}
