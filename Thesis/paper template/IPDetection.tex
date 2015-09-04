@@ -1,15 +1,13 @@
-To measure influence in the newspaper environment and to compare and rank people as influential, we define an influence score measure called \textit{``Influential Person Index" (IPI)} corresponding to each person entity in the people gazetteer. To calculate IPI for each person entity, we first define the \textit{``Document Index" (DI)} to measure how each document in the person entity's associated list of documents affects his influence score.
-The choice of features for detecting a person entity as influential is motivated by following questions: Are frequently occurring persons in the newspaper influential? Does frequency mean occurrences of a person entity in a single article or across complete dataset? Do longer documents tend to talk about more important persons? Is a person entity occurring over multiple topics more influential or the one who is consistently talked about in similar topic articles? 
+To find \emph{influential} people from the text in news articles, we define a score corresponding to each person entity in the gazetteer. This score is called the \emph{Influential Person Index (IPI)}. To calculate IPI, we first define a \emph{Document Index (DI)} to measure how each document in the person's associated list of documents affects his influence score. The choice of features for detecting whether a person is influential is motivated by following questions: (a) Are people mentioned frequently in the newspaper \emph{influential}? (b) How to measure frequency of occurrence(s) of a person - article by article or across the complete dataset? (c) Do longer documents talk more about important persons? (d) Is a person discussed in varied contexts (and over multiple topics in news) more influential than one who is consistently talked about in articles belonging to a single topic?  The following discussion describes the features chosen for calculation of DI and IPI of a person,followed by the complete algorithm for detection of influential persons.
 
-Following subsections describe the features/parameters chosen for calculation of DI and IPI of a person entity followed by the complete algorithm for detection of influential persons:
+\noindent \textbf{Document Index (DI): }
+%\label{influential:DI}
+The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. This is calculated as follows:
 
-\subsection{Document Index (DI)}
-\label{influential:DI}
-The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. Following parameters are considered for the calculation of this index:
-
-\begin{enumerate}
-\item \textbf{Normalized Document Length} (NDL)\\
-Document Length affects the influence score in the sense that a longer news article in which a person entity occurs is deemed to be more important than a shorter one. It is defined as the number of tokens contained in a news article. Document Length is further normalized by dividing it with the maximum news article length (of 14020 articles in the dataset) to get Normalized Document Length as follows: 
+%\begin{enumerate}
+%\item 
+\noindent \textbf{Normalized Document Length (NDL): } 
+Document Length is defined as the number of tokens contained in a news article. It is further normalized by dividing with the maximum length of a news article. Thus,  
 
 $$NDL=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the dataset}}$$
 
@@ -17,32 +15,35 @@ $$NDL=\dfrac{\text{Document Length}} {\text{Maximum Document Length in the datas
 %\item[$\bullet$IDF]
 %IDF is used as a parameter in the calculation of DI of a news article to give weight to the person entity's occurrence in the complete %dataset. It can be calculated as the number of news articles in which a person entity occurs in the complete dataset. It is %equivalent to the length of document list in the people gazetteer for each person entity.
 
-\item\textbf{ Normalized Term Frequency} (NTF)\\
-Term Frequency (TF) accounts for the number of occurrences of a person's name in a news article. The TF of the person name affects a document's influence score as a higher number of occurrences in the document makes it more important. TF is further normalized and calculated as follows:
+%\item
+\noindent \textbf{ Normalized Person Name Frequency (NPNF): }
+Person Name Frequency (PNF) accounts for the number of occurrences of a person's name in the news article. A high value of PNF makes the document more important. It is normalized as follows:
 
 \begin{center}
-$NTF=	1	+\log	$(TF of person entity in current article)
+$NPNF=	1+\log$(PNF)
 \end{center}
 
+The important questions that arise when dealing with Person Name Frequency are: (a) \textbf{Coreference resolution} of person names: (for e.g., names ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and (b) \textbf{Named Entity Disambiguation:} This refers to the occurrence of different persons with similar name in news articles. For e.g., the person ``John Smith" detected in two different articles may or may not refer to the same person. These issues are not dealt with by the PNER and need to be addressed separately. 
+%While the issue of coreference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER.
+The following section explains the approach to coreference resolution.
 
-The issues of co-reference resolution of person names (For Example, person entities such as ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and named entity disambiguation ( Occurrence of different persons with similar name in news articles. For example, the person ``John Smith" detected in two different articles might or might not be the same person) occur in our People Gazetteer which are not taken care of by PNER and need to be addressed separately. While the issue of co-reference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER.The following section explains the approach to coreference resolution followed after development of People Gazetteer.
 
+\noindent \textbf{Coreference Resolution: } The coreference resolution aims to find all expressions that refer to the same person in the text. 
+%Due to multiple references to a person in the text, coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
+The algorithm used in this work uses a multi-pass sieve for coreference resolution\cite{lee2013deterministic} and consists of three steps: (a) Mention Detection: The goal is to  detect nouns, pronouns and occurrences of named entities from the text (b) Coreference Resolution: This is performed by using a combination of ten independent sieves applied from highest to lowest precision with global information sharing so that each sieve builds on the previously clustered mentions followed by post processing which removes singleton mentions. An implementation of this is available from the Deterministic Coreference Resolution System of the CoreNLP toolkit\footnote{http://nlp.stanford.edu/software/dcoref.shtml}. (c) Identification of the most representative mention: The most representative mention from each coreference chain is found and checked to ensure it is a valid person entity in the People Gazetteer. If it is found, then the count from coreference resolution is considered in the person name frequency determination. 
 
-\subsubsection{Coreference Resolution}
- The coreference resolution aims to find out all expressions that refer to the same entity in the text. Due to multiple references to a person in the text, coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
-
-Coreference resolution is performed using the Standford Deterministic Coreference Resolution System of the Stanford CoreNLP toolkit /footnote{http://nlp.stanford.edu/software/dcoref.shtml}. It uses a multi-pass seive coreference resolution\cite{lee2013deterministic} which consists of 3 steps: mention detection which identifies clusters of all noun phrases, pronouns and named entity mentions, coreference resolution step which is a combination of ten independent seives applied from highest to lowest precision one by one sequentially but with global information sharing so that each seive builds on the previously clustered mentions followed by post processing which removes singleton mentions.
-Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity (coreferences) are found in an article. Figure ~\ref{figure:core} or ~\ref{figure:coref}  illustrates an example of coreference resolution when applied to an article text and its effect on term frequency for person entities. Initially, mentions are detected from the text followed by application of coreference resolution step which results in a chain of coference mentions/entities, which includes the mention itself along with other mentions that refer to it. The most representative mention out of each coference chain is found and checked whether it is a valid person entity in the People Gazetteer or not. If it is found to be a person entity, then the count of coreferences for that mention is considered its final term frequency in an article. 
-It is also observed that due to lack of punctuation in the dataset, lots of meaningless coreference mentions are also detected. However, since the persons list is available from the People Gazetteer, frequencies of only those person entities are replaced through Coreference Resolution. 
-\begin{figure*}
-\begin{center}
-\includegraphics{coref}
-\includegraphics{coref1}
-\includegraphics{coref2}
-\end{center}
-\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
-\label{figure:core}
-\end{figure*}
+%% AAYUSHEE PLEASE MODIFY THIS PARAGRAPH
+Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity (coreferences) are found in an article. Figure~\ref{figure:coref}  illustrates an example of coreference resolution when applied to an article text and its effect on term frequency for person entities. Initially, mentions are detected from the text followed by application of coreference resolution step which results in a chain of coference mentions/entities, which includes the mention itself along with other mentions that refer to it. It is also observed that due to lack of punctuation in the dataset, lots of meaningless coreference mentions are also detected. However, since the persons list is available from the People Gazetteer, frequencies of only those person entities are replaced through Coreference Resolution. 
+ % ~\ref{figure:core} or
+%\begin{figure*}
+%\begin{center}
+%\includegraphics{coref}
+%\includegraphics{coref1}
+%\includegraphics{coref2}
+%\end{center}
+%\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
+%\label{figure:core}
+%\end{figure*}
 
 \begin{figure*}
 \fbox{\includegraphics{coref3}}
@@ -50,69 +51,62 @@ It is also observed that due to lack of punctuation in the dataset, lots of mean
 \label{figure:coref}
 \end{figure*}
 
-\item \textbf{Number of similar articles} (NSIM)\\
-This parameter is used in calculation of the DI by finding articles of similar topic in the document list. 
+%\item 
+\noindent \textbf{Number of similar articles (NSIM): }
+This parameter is used in the calculation of the DI by finding articles belonging the same topic. 
 %The set of topics derived from a corpus can be used to answer questions about the similarity of words and 
 %documents.
-Two documents are considered similar if they belong to the same topics. For a document $d$ whose DI is to be calculated, we consider 
+For a document $d$ whose DI is to be calculated, let  SIM= Number of articles with the same topic as $d$ in the document list of a person.
+This measure is normalized by the total number of articles in the document list of the person. Formally,
 
-SIM= Number of articles with the same topic as that of $d$ in the document list of person entity.
-
-This measure is normalized by dividing it with the number of total articles in the document list of the person entity as follows:
-
-\begin{center}
-$NSIM= \dfrac{\text{SIM}} {\text{Total number of articles in the person's document list}}$
-\end{center}
-NSIM can be said to be equivalent to the proportion of topic similar articles that any document $d$ has.
-
-This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents of the same topic in the person's list. 
-
-
-\end{enumerate}
-
-DI for each document is a function of the above mentioned parameters and is calculated using the following formula :
+%\begin{center}
+$NSIM= \frac{\text{SIM}} {\text{Total number of articles in the person's document list}}$
+%\end{center}
+NSIM is equivalent to the proportion of topic similar articles that document $d$ has.
+%This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents of the same topic in the person's list. 
+%\end{enumerate}
+The Document Index is a function of the above mentioned parameters and is calculated by using the following formula:
 \begin{center}
 
 			$DI = w_a . NDL + w_b . NSIM + w_c . NTF $
 \end{center}
-where, $w_a$,$ w_b$ and $w_c$ are the weights associated with each of the parameters NDL, NSIM and NTF respectively.
-
-
-DI is actually a heuristic measure of these three parameters where each of the parameters can be weighted as per dataset characteristics and user requirements. For example, a higher value to $w_a$ and lower to $w_b$ and $w_c$ indicates documents with longer lengths are considered more important for influencing a person's IPI. On the other hand, a higher value to $w_b$ and lower to $w_a$ and $w_c$ indicates a document with larger proportion of topic similar articles influences the person's IPI more suggesting assignment of high influence score to a person entity occurring repeatedly in a specific news topic.  
+where, $w_a$, $ w_b$ and $w_c$ are the weights for NDL, NSIM and NTF respectively.
+DI is a heuristic measure -- each of the parameters can be weighted as per dataset characteristics and user requirements. For example, a higher value to $w_a$ and lower to $w_b$ and $w_c$ indicates documents with longer lengths are considered more important for influencing a person's IPI. On the other hand, a higher value to $w_b$ and lower to $w_a$ and $w_c$ indicates a document with larger proportion of topic similar articles influences the person's IPI more suggesting assignment of high influence score to a person entity occurring repeatedly in a specific news topic.  
 
 \subsection{Influential Person Index (IPI)}
 
-Once DI is calculated for each document in a person's list, an index is calculated for the person entity in order to measure its influence in the news dataset and calculate its influential score. The ``Influential Person Index" defined for this purpose is calculated as follows:
+Once DI is calculated, the IPI is estimated as follows:
 		
 \begin{center}
-$IPI= max DI(d_1, d_2, ...,d_n)+ UniqT$
+$IPI= \text{max } DI(d_1, d_2, ...,d_n)+ UniqT$
 \end{center}
 
-where , $max DI(d_1, d_2, ...,d_n)$ = Maximum Document Index of a document $d_i$ in a person entity's list of  $n$ articles, and
-\begin{center} $UniqT = \dfrac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$\end{center} 
-
-The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
-
-Ranking is done across each person category of the people gazetteer to obtain top most influential persons. For this, IPI for each person entity across the person categories are sorted in decreasing order to obtain the most influential person entities with highest IPI at the top.
+where, $UniqT = \frac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$. The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. %It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
+To rank people, the IPI are sorted in decreasing order. %in each category (Not Influential, Popular, Elite)
   
-\subsection{Procedure for finding influential persons}
+\subsection{Algorithm for Detection of Influential People (ADIP)}
 
-Algorithm ~\ref{algorithm:3} depicts the procedure for measuring influence and ranking of influential people from the gazetteer. It starts with calculation of DI for each news article in a person's document list by calculating the required parameters of NDL, NSIM and NTF which are assigned 0 values initially. The respective weights $w_a$,$w_b$,$w_c$ are taken as inputs and multiplied with each parameter to get final DI score which is added to the list of DI scores $DIScoreList$. The list is sorted to find the maximum DI value among all news articles in the person's document list. The maximum DI score is then added to the UniqT parameter to get the final IPI for each person entity which are again stored and sorted to obtain a ranked list of influential person entities.  
+Algorithm~\ref{algorithm:3} depicts the steps for measuring influence and ranking of influential people from the gazetteer. It starts with calculation of the Document Index for each news article in a person's document list. The weights $w_a$,$w_b$,$w_c$ are taken as inputs and multiplied with parameters $\text{NDL, NPNF and NSIM}$  to get the final estimate for DI. The list of DI scores is then sorted to find the maximum value amongst all news articles in the person's document list. The maximum DI score is then added to the UniqT parameter to get the final IPI for each person entity. Sorting the IPIs results in a ranked list of influential person entities.  
 
 
-
-\begin{algorithm}[!htb]
-\caption{Procedure to calculate IPI and rank person entities based on it}
+%% AAYUSHEE: Please redo this with pseudo code for the algorithm.
+\begin{algorithm*}[!th]
+\caption{Algorithm for Detection of Influential People (ADIP)}
 \label{algorithm:3}
 \begin{algorithmic}
 \Function {CalculateIPI}{}
   
 
 %%%%%%DOUBT HERE.....
- \KwIn{$PeopleGazetter(Persons,(DocList,$}
-\KwIn{$TopicList))$, $w_a$,$w_b$,$w_c$}
-\KwResult{Ranked list of Person Name and IPI}  
- $NTF \leftarrow $0,  $NDL \leftarrow $0, $NSIM \leftarrow $0, $DI\leftarrow $0, $UniqT\leftarrow $0, $IPI\leftarrow $0\;  
+ \KwIn{$PeopleGazetter(Person Name,(DocList,TopicList))$, $w_a$,$w_b$,$w_c$}
+%\KwIn{$$, }
+\KwResult{Ranked List of Person Names}  
+ $NTF \leftarrow $0
+ $NDL \leftarrow $0
+ $NSIM \leftarrow $0
+ $DI\leftarrow $0
+ $UniqT\leftarrow $0
+ $IPI\leftarrow $0\;  
   
     \For{(String PersonName : Persons)}
      {
@@ -142,7 +136,7 @@ $NDL=GetDocLength(doc)/GetMaxDocLength()$;
 
 \EndFunction
 \end{algorithmic}
-\end{algorithm}
+\end{algorithm*}
 
 \begin{table*}
 \begin{center}
@@ -177,11 +171,3 @@ PrintPersonNameandMaxIPI(IPIScores) & Prints $Person$ name with its \\
 \label{figure:IPI}
 \end{figure*}
 
-\subsection{An alternative approach for detecting influential persons}
-\label{influential:BAMIC}
-A heuristics based approach for finding influential persons has been discussed in the previous section. An alternative approach involving clustering can also be used for detection of influential persons.
- One such multiple instance clustering algorithm is suggested in \cite{zhang2009multi}.  They suggest an algorithm called BAMIC which can be applied to our problem as well. The multiple instance clustering problem considers clustering objects that consist of sets of instances for clustering rather than single instance clustering. According to the BAMIC algorithm, a set of instances is represented by a bag object and k-medoids algorithm is used to cluster those bags. The k-medoids algorithm is adapted to use average Hausdorff distance to measure the similarity between instances of different bags. It averages the distance between each instance in one bag and its nearest instance in the other bag and partitions dataset into k disjoint groups each containing a set of bags. BAMIC is applied to MUSK 1 and MUSK 2 datasets available publically\footnote{https://archive.ics.uci.edu/ml/datasets.html} which consist of 92 bags with 476 instances and 102 bags with 6598 instances, respectively and is used to test whether molecules are qualified to be used in a drug or not.
- This approach can be used to detect influential persons in our problem by clustering person entities into ``influential" or ``non-influential"  considering each person entity of our people gazetteer as a bag with articles of their occurrence as the instances for each bag. 
-The parameters used for calculating DI in the previous section: NDL,NTF and NSIM can be used as features associated with each article instance in a bag.
-Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not. 
-We tried to work with the open source version of the BAMIC algorithm to compare its results with the heuristic based approach suggested in this paper. But the clustering algorithm, due to its high complexity and the amount of data we worked with, the algorithm takes a very long time to give the results. Our dataset consisted of roughly 40000 person named entities on which multiple instance clustering was required and according to the estimation, it will take around 200 days to get the clusters of influential and influential persons.  Due to unavailability of such a long time frame, we do not present the results of comparison between the two approaches for detection of influential persons. Since BAMIC has been used for smaller datasets in earlier studies, we believe if the BAMIC algorithm can be scaled for larger datasets, it can be applied to our scenario easily.
