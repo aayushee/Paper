@@ -1,32 +1,35 @@
+The following issues encountered during algorithm design and empirical verification are worth discussion:
+\begin{itemize}
 
-\begin{enumerate}
 
+\item  A linear combination of Document Index and Influential Person Index was used in experiments. Furthermore, they are weighted equally in experiments performed with our data. The heuristics can be re-weighted according to user requirements. 
 
-\item[$\bullet$]\noindent
-We used a linear combination of each of the parameters in calculation of DI and IPI and assigned equal values to the weights associated with each of them by not favoring any specific parameter. This is evident from the results which do not consistently favor any specific parameter. The parameters defined are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined to do so. 
+\item
+The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of influential people and obtaining the complete list of ranked influential people based on the learned parameters.
 
-\item[$\bullet$]\noindent
-The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of topmost influential people and obtaining the complete list of ranked influential people based on the learned parameters.
+\item
+The Normalized Document Length (NDL) defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person's document list or total number of tokens in the complete dataset which can be tuned based on the requirements of the application.
 
-\item[$\bullet$]\noindent
-The NDL(Normalized Document Length) parameter defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person entity's document list or total number of tokens in the complete dataset which can be experimented with according to the dataset.
-
-\item[$\bullet$]\noindent
-The topmost influential people contain several false positives also which occur not due to the influence measures defined but due to other factors like Named Entity Disambiguation which is not addressed in this paper. Several location and organization names have been misrecognized as person entities after performing Spelling correction and PNER resulting in false detection of some highly influential entities like ``van cortlandt", ``ann arbor" , ``sandy hook", etc.  
+\item
+Lists of influential people contain several false positives. This is due to noise in the OCR data -- several location and organization names have not been recognized as person entities even after performing spelling correction and PNER resulting in false detection of some influential entities like ``van cortlandt", ``ann arbor" ,  and ``sandy hook".  
 %There is also the problem of resolution of person name co-references in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
 
-\item[$\bullet$] \noindent
-The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA Topic model settings used. 
+\item The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA topic model settings used. 
 
 
 
-\end{enumerate}
 
-\subsection{An alternative approach for detecting influential persons}
-\label{influential:BAMIC}
-A heuristics based approach for finding influential persons has been discussed in the previous section. An alternative approach involving clustering can also be used for detection of influential persons.
- One such multiple instance clustering algorithm is suggested in \cite{zhang2009multi}.  They suggest an algorithm called BAMIC which can be applied to our problem as well. The multiple instance clustering problem considers clustering objects that consist of sets of instances for clustering rather than single instance clustering. According to the BAMIC algorithm, a set of instances is represented by a bag object and k-medoids algorithm is used to cluster those bags. The k-medoids algorithm is adapted to use average Hausdorff distance to measure the similarity between instances of different bags. It averages the distance between each instance in one bag and its nearest instance in the other bag and partitions dataset into k disjoint groups each containing a set of bags. BAMIC is applied to MUSK 1 and MUSK 2 datasets available publically\footnote{https://archive.ics.uci.edu/ml/datasets.html} which consist of 92 bags with 476 instances and 102 bags with 6598 instances, respectively and is used to test whether molecules are qualified to be used in a drug or not.
- This approach can be used to detect influential persons in our problem by clustering person entities into ``influential" or ``non-influential"  considering each person entity of our people gazetteer as a bag with articles of their occurrence as the instances for each bag. 
-The parameters used for calculating DI in the previous section: NDL,NTF and NSIM can be used as features associated with each article instance in a bag.
-Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not. 
-We tried to work with the open source version of the BAMIC algorithm to compare its results with the heuristic based approach suggested in this paper. But the clustering algorithm, due to its high complexity and the amount of data we worked with, the algorithm takes a very long time to give the results. Our dataset consisted of roughly 40000 person named entities on which multiple instance clustering was required and according to the estimation, it will take around 200 days to get the clusters of influential and influential persons.  Due to unavailability of such a long time frame, we do not present the results of comparison between the two approaches for detection of influential persons. Since BAMIC has been used for smaller datasets in earlier studies, we believe if the BAMIC algorithm can be scaled for larger datasets, it can be applied to our scenario easily.
+
+\item \textbf {An alternative approach for detecting influential persons: }
+A heuristics based approach for finding influential people has been discussed in the previous section. An alternative approach involves multiple instance clustering 
+ using, BAMIC \cite{zhang2009multi}. 
+ %It considers clustering objects that consist of sets of instances for clustering rather than single instance clustering. 
+ %Instances of the same object are represented by a bag and the k-medoids algorithm is used to cluster those bags. 
+ %The k-medoids algorithm is adapted to use average Hausdorff distance to measure similarity between instances. It averages the distance between each instance in one bag and its nearest instance in the other bag and partitions dataset into k disjoint groups each containing a set of bags. 
+ %BAMIC is applied to MUSK 1 and MUSK 2 datasets available publically\footnote{https://archive.ics.uci.edu/ml/datasets.html} which consist of 92 bags with 476 instances and 102 bags with 6598 instances, respectively and is used to test whether molecules are qualified to be used in a drug or not.
+ This approach can be used to detect influential people as follows: Cluster person entities into \emph{influential} or \emph{non-influential} categories by considering each person entity as having a bag of news articles in which their names occur. 
+The parameters used for calculating DI in the previous section i.e. NDL,NTF and NSIM can be used as features associated with each article instance in the bag.
+%Such a method can avoid choice of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not. 
+The open source version of the BAMIC algorithm was used to compare results with the heuristic based approach proposed in this paper. However, the clustering algorithm does not scale very well. Our dataset consisted of roughly 40000 person named entities -- it was estimated that it will take around 200 days to get the clusters of influential and non-influential people.  Hence these results of comparison are not presented. 
+%Since BAMIC has been used for smaller datasets in earlier studies, we believe if the BAMIC algorithm can be scaled for larger datasets, it can be applied to our scenario easily.
+\end{itemize}
