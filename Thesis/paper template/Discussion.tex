@@ -21,15 +21,15 @@ Lists of influential people contain several false positives. This is due to nois
 
 
 \item \textbf {An alternative approach for detecting influential persons: }
-A heuristics based approach for finding influential people has been discussed in the previous section. An alternative approach involves multiple instance clustering 
- using, BAMIC \cite{zhang2009multi}. 
+A heuristics based approach for finding influential people has been discussed in the previous section. It can be easily seen that the gazetteer comprises of a list of person names and a \emph{bag} of articles for each person from which his/her influence score can be learnt. This motivates discussion of whether an alternative approach involving multiple instance clustering (such as the \textbf{BA}g Level \textbf{M}ulti-\textbf{I}nstance \textbf{C}lustering (BAMIC \cite{zhang2009multi}) can be used for the problem. The procedure works as follows: 
+ Cluster person entities into \emph{influential} or \emph{non-influential} categories by considering each person entity as having a bag of news articles in which their names occur.
  %It considers clustering objects that consist of sets of instances for clustering rather than single instance clustering. 
  %Instances of the same object are represented by a bag and the k-medoids algorithm is used to cluster those bags. 
  %The k-medoids algorithm is adapted to use average Hausdorff distance to measure similarity between instances. It averages the distance between each instance in one bag and its nearest instance in the other bag and partitions dataset into k disjoint groups each containing a set of bags. 
  %BAMIC is applied to MUSK 1 and MUSK 2 datasets available publically\footnote{https://archive.ics.uci.edu/ml/datasets.html} which consist of 92 bags with 476 instances and 102 bags with 6598 instances, respectively and is used to test whether molecules are qualified to be used in a drug or not.
- This approach can be used to detect influential people as follows: Cluster person entities into \emph{influential} or \emph{non-influential} categories by considering each person entity as having a bag of news articles in which their names occur. 
-The parameters used for calculating DI in the previous section i.e. NDL,NTF and NSIM can be used as features associated with each article instance in the bag.
+ %This approach can be used to detect influential people as follows:  
+The parameters used for calculating DI in the previous section i.e. NDL,NTF and NSIM can be used as features associated with each article instance in the bag. The group of \emph{influential} people identified can then be ranked using an appropriate ranking score.
 %Such a method can avoid choice of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not. 
-The open source version of the BAMIC algorithm was used to compare results with the heuristic based approach proposed in this paper. However, the clustering algorithm does not scale very well. Our dataset consisted of roughly 40000 person named entities -- it was estimated that it will take around 200 days to get the clusters of influential and non-influential people.  Hence these results of comparison are not presented. 
+The open source version of the BAMIC algorithm was used to compare results with the heuristic based approach proposed in this paper. However, the clustering algorithm does not scale very well. Our dataset consisted of roughly 40000 person named entities -- it was estimated that it would take around 200 days to get the clusters of influential and non-influential people.  Hence these results of comparison are not presented. 
 %Since BAMIC has been used for smaller datasets in earlier studies, we believe if the BAMIC algorithm can be scaled for larger datasets, it can be applied to our scenario easily.
 \end{itemize}
