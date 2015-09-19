@@ -274,10 +274,9 @@ J.~R. Finkel, T.~Grenager, and C.~Manning, ``Incorporating non-local
 C.~Sutton and A.~McCallum, ``An introduction to conditional random fields,''
   \emph{Machine Learning}, vol.~4, no.~4, pp. 267--373, 2011.
 
-\bibitem{rodriquez2012comparison}
-K.~J. Rodriquez, M.~Bryant, T.~Blanke, and M.~Luszczynska, ``Comparison of
-  named entity recognition tools for raw ocr text,'' in \emph{Proceedings of
-  KONVENS}, 2012, pp. 410--414.
+\bibitem{blei2012probabilistic}
+D.~M. Blei, ``Probabilistic topic models,'' \emph{Communications of the ACM},
+  vol.~55, no.~4, pp. 77--84, 2012.
 
 \bibitem{blei2003latent}
 D.~M. Blei, A.~Y. Ng, and M.~I. Jordan, ``Latent dirichlet allocation,''
@@ -287,10 +286,6 @@ D.~M. Blei, A.~Y. Ng, and M.~I. Jordan, ``Latent dirichlet allocation,''
 D.~Newman, A.~Asuncion, P.~Smyth, and M.~Welling, ``Distributed algorithms for
   topic models,'' \emph{The Journal of Machine Learning Research}, vol.~10, pp.
   1801--1828, 2009.
-
-\bibitem{McCallumMALLET}
-A.~K. McCallum, ``Mallet: A machine learning for language toolkit,'' 2002,
-  http://mallet.cs.umass.edu.
 
 \bibitem{lee2013deterministic}
 H.~Lee, A.~Chang, Y.~Peirsman, N.~Chambers, M.~Surdeanu, and D.~Jurafsky,
@@ -302,9 +297,5 @@ H.~Lee, A.~Chang, Y.~Peirsman, N.~Chambers, M.~Surdeanu, and D.~Jurafsky,
 M.-L. Zhang and Z.-H. Zhou, ``Multi-instance clustering with applications to
   multi-instance prediction,'' \emph{Applied Intelligence}, vol.~31, no.~1, pp.
   47--68, 2009.
-
-\bibitem{zhang2009m3ic}
-D.~Zhang, F.~Wang, L.~Si, and T.~Li, ``M3ic: Maximum margin multiple instance
-  clustering.'' in \emph{IJCAI}, vol.~9, 2009, pp. 1339--1344.
 
 \end{thebibliography}

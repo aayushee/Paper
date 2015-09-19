@@ -1,25 +1,26 @@
-\begin{table}
-\begin{center}
+
+\begin{table*}
+\caption {Table illustrating average statistics for each Person Category of the People Gazetteer.}
+\label{table:stats}
+\resizebox{8cm}{!} {
+\centering
 
     \begin{tabular}{|lllll|}
     \hline
     \textbf{Category}  &  \textbf{No. of }   & \textbf{Avg. No. of }   &  \textbf{Avg. Doc. }	&  \textbf{Avg. Person }	\\  
     & \textbf{People} & \textbf{Documents} & \textbf{Length} &  \textbf{Name } \\
     & & & & \textbf{Frequency} \\  \hline
-Not Influ. & 38066 & 1.04 & 2119.6 & 1.07 	\\ \hline
+Not Influ. & 36004 & 1.04 & 2119.6 & 1.07 	\\ \hline
  Popular & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
 Elite & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
-  \end{tabular}
-  \end{center}
-    \caption {Table illustrating average statistics for each Person Category of the People Gazetteer.}
-\label{table:stats}
-\end{table}
+  \end{tabular}}
+\end{table*}
 
 We present statistics pertaining to each category (Not influential, popular and elite) of the people gazetteer in Table~\ref{table:stats}. 
 It is observed that, on average the \emph{elite} are discussed very often in the news articles.
 Document Length need not be high for a person to be more influential -- average document length obtained for the popular group is high in spite of their average IPI being low. This indicates that the number of similar articles for each document as well as the person name frequency play an important part in measuring influence.
 
-\noindent \textbf{Effect of varying the number of topics in the topic model: } Our objective is to study the sensitivity of the ranked lists to parameters of the ADIP algorithm.We study the effect of the number of topics used in the LDA Model.  
+\noindent \textbf{Effect of varying the number of topics in the topic model: } Our objective is to study the sensitivity of the ranked lists to parameters of the ADIP algorithm. We study the effect of the number of topics used in the LDA Model.  
 Two ranked lists of influential people, $L_1$ and $L_2$ are compared using 30 and 100 topics\footnote{Several topic models are built by varying parameters of AD-LDA algorithm including number of iterations, topics and processors and their \emph{perplexity} is measured. Models with less perplexity are used for the study.} respectively. The weights $w_a$, $w_b$ and $w_c$ are set to 1 to ensure that all parameters have equal importance during calculation of DI and IPI. 
 %The statistics obtained from both lists with respect to each person category of the people gazetteer are shown in Table~\ref{table:stats}. 
 
@@ -31,6 +32,8 @@ Two ranked lists of influential people, $L_1$ and $L_2$ are compared using 30 an
 %The following sections present comparison between the ranked influential person lists L1 and L2, some case studies and evaluation results:
  
 \begin{table*}
+\caption{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NTF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
+\label{table:30t}
 \begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
 \hline
 Person Name    & IPI  & Number of Articles & Person Category & NDL  & NTF  & NSIM & TOPIC WORDS                                                          & UniqT & Rank \\ \hline
@@ -38,8 +41,7 @@ capt creeten   & 3.32 & 10                 & Popular          & 0.55 & 1.9 & 0.8
 capt hankey    & 3.05 & 5                  & Popular          & 0.68 & 1.69  & 0.6 & club game team play football half ball left college back             & 0.06  & 2    \\ \hline
 capt pinckney  & 2.93 & 3                  & Not Inf.        & 0.38 & 1.84 & 0.67 & man ho men night back wa room left house told bad                    & 0.03  & 3    \\ \hline
 john martin    & 2.89 & 14                 & Popular          & 0.55 & 1.6  & 0.57  & mr court police judge justice case yesterday street district witness & 0.16  & 4    \\ \hline
-ann arbor   & 2.87 & 44		    & Elite		& 0.19   & 1.77     & 0.63    & 
-  & 0.26 & 5	\\  \hline
+ann arbor   & 2.87 & 44		    & Elite		& 0.19   & 1.77     & 0.63    &  dr book st story books cloth author cure free work york blood   illustrated remedy goods medical library health price & 0.26 & 5	\\  \hline
 john macdonald & 2.85 & 3                  & Not Inf.        & 0.55 & 2.2  & 0    & great people life man women good country world american part         & 0.1   & 6    \\ \hline
 aaron trow     & 2.81 & 1                  & Not Inf.        & 0.7  & 2.07 & 0    & man ho men night back wa room left house told                        & 0.03  & 6    \\ \hline
 mrs oakes      & 2.79 & 5                  & Popular          & 0.08 & 2.04 & 0.6  & street mrs mr avenue wife house miss yesterday years home            & 0.06  & 7    \\ \hline
@@ -47,11 +49,12 @@ alexander iii  & 2.71 & 31                 & Elite            & 0.24 & 2.04 & 0.
 buenos ayres   & 2.7 & 6                  & Popular          & 0.49 & 1.47  & 0.67 & white water indian black long found thu big dog time                 & 0.06  & 10    \\ \hline
 
 \end{tabular}
-\caption{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
-\label{table:30t}
+
 \end{table*}
 
 \begin{table*}
+\caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
+\label{table:100t}
 \resizebox{16cm}{!} {
 \begin{tabular}{|p{2cm}|l|p{1.5cm}|p{1.5cm}|l|l|l|p{3cm}|l|l|}
 \hline
@@ -68,8 +71,7 @@ ed kearney     & 2.63 & 7                  & Popular     & 0.16 & 1.6  & 0.85 & 
 caleb morton   & 2.61 & 1                  & Not Inf. & 0.70 & 1.9  & 0    & day place long great water time feet found good men                         & 0.01  & 10   \\ \hline
 
 \end{tabular}}
-\caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF,NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
-\label{table:100t}
+
 \end{table*}
 
 %\subsection{Comparison Across Ranked Influential Person Lists }
@@ -111,7 +113,7 @@ Several person entities occurring in low number of news articles like ``aaron tr
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
 To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists $L_1$ and $L_2$ detected from the people gazetteer with 30 topics LDA and 100 topics LDA Model respectively.
 
-Among the top 30, 16 people from List $L_1$ and 14 from List $L_2$ were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential people have been found in Wikipedia and are shown in Figure~\ref{figure:inf}. 
+Among the top 30, 17 people from List $L_1$ and 12 from List $L_2$ were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential people have been found in Wikipedia and are shown in Figure~\ref{figure:inf}. 
 
 \begin{figure*}
 \begin{center}
@@ -122,7 +124,7 @@ Among the top 30, 16 people from List $L_1$ and 14 from List $L_2$ were found to
 \end{figure*}
 
 
- Most of the false positives, although influential in other respects, were not  influential \emph{person} entities. This can be attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
+ Most of the false positives, although influential in other respects, were not  influential \emph{person} entities. This can be attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data, less information about these entities on Wikipedia as well as named entity disambiguation problem leading to high IPI score for several different persons having same names across the corpus.
  False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are  locations but were marked incorrectly as highly influential person entities.
  
  The ranked list of the top 30 influential persons with their IPI from Lists $L_1$ and $L_2$ can be seen in the Appendix (Tables ~\ref{table:app1} and ~\ref{table:app2}) where evaluation result for each person entity is also presented.

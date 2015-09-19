@@ -41,7 +41,10 @@ In this work, the Stanford CRF-NER\footnote{http://nlp.stanford.edu/software/CRF
 
 
 %NER on a sample news article from the dataset can be seen in Figure~\ref{figure:sample}.
- The following modifications are made on the output of the Stanford CRF-NER -- if the software recognizes a person's full name as separate names it is rectified by combining multi- term entities into a single person entity. For example, if the person name ``John Smith" is recognized as two separate person entities, it is combined to form a single multi-term person entity. A total of 36362 person entities are extracted from the corpus of 14020 news articles.  
+%The following modifications are made on the output of the Stanford CRF-NER -- if the software recognizes a person's full name as separate names it is rectified by combining multi- term entities into a single person entity. For example, if the person name ``John Smith" is recognized as two separate person entities, it is combined to form a single multi-term person entity.
+
+The following modifications are made on the output of the Stanford CRF-NER -- if the software recognizes single term person entities, we ignore those and consider only multi-term person entities and if a person entity's name is repeated multiple times, then we consider it only once. For example, if the person names ``John", ``John Smith", ``Smith" are recognized during PNER process, then we only consider ``John Smith" as as a potential person entity for our People Gazetteer.  
+A total of 36364 person entities are extracted from our corpus of 14020 news articles.  
  %he Stanford NER takes 25 minutes to run on the complete news dataset of 14020 articles extracting a 
  %The person names tagged with ``PERSON" category are stored while running NER on the dataset.
 %Whenever a multi-term person name (number of terms in the person name must be greater than 1) occurs in a document, the person entity's name along with the document name is stored to obtain tuples of person names with their document occurrences in a Person-Article List.
@@ -86,10 +89,10 @@ The person name entities are binned into the following categories based on the n
 \begin{itemize}
  \item \textbf{Not Influential}: Person entities with occurrence in less than 4 news articles. (36004 person entities )
 \item \textbf{Popular}: Person entities with occurrence from 4 to 15 news articles. (344 person entities) 
-\item \textbf{Elite} : Person entities with occurrence in 16 or more news articles. (14 person entities)
+\item \textbf{Elite} : Person entities with occurrence in 16 or more news articles. (16 person entities)
 \end{itemize}
 %Figure ~\ref{figure:res} shows the statistics for each of these categories of persons extracted from the dataset. 
-The categories defined above have been chosen manually and simply provide a mechanism for grouping people. It does not lead directly to the conclusion that a person entity with large number of articles is influential.
+The categories defined above have been chosen manually and simply provide a mechanism for grouping people. It does not lead directly to the conclusion that a person entity with large number of articles is influential. Also, slight perturbations to these values (4 and 15) does not change the final results of ranked influential people.
 
 %\begin{figure*}
 %  \centering
@@ -169,7 +172,7 @@ Perplexity is a decreasing function of the log likelihood of the unseen document
 \end{figure}
 
 
-The procedure of development of people gazetteer can be seen in Figure~\ref{figure:gaze}.The list of articles obtained for each person entity after application of PNER (Person-Article List) and highest scoring topic assigned to each article during Topic Detection (Article-Topic List) are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic. 
+The procedure of development of people gazetteer can be seen in Figure~\ref{figure:gaze}.The list of articles obtained for each person entity after application of PNER (Person-Article List) and highest scoring topic assigned to each article during Topic Detection (Article-Topic List) are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic. A snapshot of the People Gazetteer is depicted in Table~\ref{table:gaz}
 
 %%%%%%%%%% REVISIT THIS PART
 %\noindent \textbf{Results}
@@ -207,9 +210,34 @@ The procedure of development of people gazetteer can be seen in Figure~\ref{figu
 %
 %
 %Two people gazetteers are finally developed, each corresponding to the two model settings of 30 Topics LDA Model and 100 Topics LDA Model, respectively. Both gazetteer consist of a list of named entities along with the articles of their occurrence and topic associated with each article. A snapshot of the people gazetteer using 30 Topics LDA Model can be seen in Figure~\ref{figure:gazette} where each person entity is followed by a document list consisting of a Document ID and its corresponding Topic ID. A similar people gazetteer is also obtained using 100 Topics LDA Model. Both People Gazetteers are further used in Section~\ref{influential} for detecting and ranking influential person entities from them.
-\begin{figure*}
-\centering
-\includegraphics{gazetteer}
-\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID}
-\label{figure:gazette}
-\end{figure*} 
+%\begin{figure*}
+%\centering
+%\includegraphics{gazetteer}
+%\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which he/she occurs on the right with the topic labels %obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61101.txt to 74150.txt while the 30 topic id are indexed from 0 to 29. The list of these 30 topics can be viewed in Appendix table ~\ref{table:topicwords}}
+%\label{figure:gazette}
+%\end{figure*} 
+
+
+\begin{table*}
+\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which he/she occurs on the right with the topic labels obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61102.txt to 74150.txt while the 30 topic id are indexed from 0 to 29. The list of these 30 topics can be viewed in Appendix table ~\ref{table:topicwords}}
+\label{table:gaz}
+\resizebox{16cm}{!} {
+ 
+   \begin{tabular}{|p{2cm}|p{15cm}|}
+
+    \hline
+    PERSON ENTITY NAME & DOCUMENT LIST (Document ID $\rightarrow$  Document Topic ID)\\ \hline
+    Thomas Murphy        & (61720.txt$\rightarrow$16, 62002.txt$\rightarrow$11, 65905.txt$\rightarrow$19, 71341.txt$\rightarrow$28, 68024.txt$\rightarrow$16)                        \\ \hline
+    George Eliot       & (74151.txt$\rightarrow$5, 61627$\rightarrow$15)                                                                                      \\ \hline
+    Charles L Thompson        & (68836.txt$\rightarrow$9)                                                                         \\ \hline
+    Thomas Jefferson       & (67874.txt$\rightarrow$19, 67209.txt$\rightarrow$28, 63996.txt$\rightarrow$6, 73835.txt$\rightarrow$6, 71155.txt$\rightarrow$6, 65440.txt$\rightarrow$5, 66997.txt$\rightarrow$20)                   \\ \hline
+    Jacob Schaefer        & (70205.txt$\rightarrow$21, 63936.txt$\rightarrow$22, 68554.txt$\rightarrow$21, 73420.txt$\rightarrow$21, 74550.txt$\rightarrow$21, 74922.txt$\rightarrow$21, 64577.txt$\rightarrow$21, 74759.txt$\rightarrow$21, 67340.txt$\rightarrow$0, 67924.txt$\rightarrow$2)                   \\ \hline
+    Queen Victoria       & (68231.txt$\rightarrow$5, 74775.txt$\rightarrow$5, 75097.txt$\rightarrow$5, 72221.txt$\rightarrow$2, 62731.txt$\rightarrow$5, 62616.txt$\rightarrow$17, 68368.txt$\rightarrow$17)                                      \\ \hline
+    Thomas Gallagher        & (64397.txt$\rightarrow$28, 65793.txt$\rightarrow$21, 72591.txt$\rightarrow$0, 73420.txt$\rightarrow$21) \\ \hline
+    Samuel S Seely     & (70365.txt$\rightarrow$2, 64670.txt$\rightarrow$23, 65615.txt$\rightarrow$23, 67198.txt$\rightarrow$19, 73545.txt$\rightarrow$23, 74816.txt$\rightarrow$16)                                                                 \\ \hline
+    Matthew Parker      & (64363.txt$\rightarrow$11)                                                   \\ \hline
+    Daniel Frohman       & (63704.txt$\rightarrow$5, 66992.txt$\rightarrow$25, 69668.txt$\rightarrow$4, 68743.txt$\rightarrow$5, 67554.txt$\rightarrow$25, 67450.txt$\rightarrow$5, 72274.txt$\rightarrow$24, 69444.txt$\rightarrow$4)                                \\ \hline
+    \end{tabular}}
+
+\end{table*}
+

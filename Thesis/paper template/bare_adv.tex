@@ -695,7 +695,8 @@ To the best of our knowledge, the development of a framework for doing prosopogr
 %\end{itemize}
 %
 
-
+\renewcommand{\thetable}{\Roman{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
 
 
 \section{Related Work}
@@ -887,86 +888,134 @@ To the best of our knowledge, the development of a framework for doing prosopogr
 %\section{}
 %Appendix two text goes here.
 
+
 \begin{table*}
+\caption{Table showing Topic ID and words obtained from the 30 Topics LDA model.}
+\label{table:topicwords}
+\resizebox{16cm}{!} {
+ 
+   \begin{tabular}{|p{1cm}|p{16cm}|}
+
+    \hline
+    TOPIC ID & TOPIC WORDS                                                                                                                                           \\ \hline
+    1        & total ii won club score night ran furlough alleys tournament time   mile fourth rolled curling scores race national game                              \\ \hline
+    2        & la lu ot lo tu au tb ta ha tea day al aa ut ar uu wa tt te                                                                                            \\ \hline
+    3        & iii lie tin nail tn lit hut ill ii nn thu tu anti thin inn hit lu lo   nut                                                                            \\ \hline
+    4        & line street feet point western easterly northerly feel southerly   distance place distant lo fret hue beginning laid early felt                       \\ \hline
+    5        & opera theatre music company week play stage evening night performance   concert mme audience manager season de orchestra house miss                   \\ \hline
+    6        & great people life man women good country world american part ot ha   made la years make long place bad                                                \\ \hline
+    7        & election mr party republican state district vote democratic county senator   elected city committee mayor political candidate majority york democrats \\ \hline
+    8        & time ho work tn men city bo lie anti day thin long thu made part ago   lot york make                                                                  \\ \hline
+    9        & st room av sun wife board front lo december rent lot november sunday   ht west ar house private si                                                    \\ \hline
+    10       & dr book st story books cloth author cure free work york blood   illustrated remedy goods medical library health price                                 \\ \hline
+    11       & church dr father funeral school st college sunday year rev catholic pastor services late service held society holy clock                              \\ \hline
+    12       & horse race class horses won racing years prize record year show ring track mile money jockey trotting trotter ran                                     \\ \hline
+    13       & cent year week pf market total net stock today central st ft lit sales short cotton ohio lot month                                                    \\ \hline
+    14       & white water indian black long found thu big dog time ground wild tree killed birds bird day great lake                                                \\ \hline
+    15       & price black silk goods prices ladies worth dress fine white full tea quality style wool made fancy cloth fur                                          \\ \hline
+    16       & street mrs mr avenue wife house miss yesterday years home woman night ago husband found died daughter children mother                                 \\ \hline
+    17       & war american government army chinese japanese china japan foreign united nov emperor states prince minister military french port navy                 \\ \hline
+    18       & feet north minutes avenue boundary seconds degrees west york minute degree point east south feel city angle county laid                               \\ \hline
+    19       & man ho men night back wa room left house told bad door found turned place ran lie front morning                                                       \\ \hline
+    20       & water feet building boat company car train road fire miles railroad island work line city great river built bridge                                    \\ \hline
+    21       & club game team play football half ball left college back yale played harvard line eleven men match yacht field                                        \\ \hline
+    22       & ii iii ill lit ll si ti il im vi st iv ft mi li till lull lui oil                                                                                     \\ \hline
+    23       & bank money national gold amount notes banks hank business treasury account cent paid bonds note currency company stock estate                         \\ \hline
+    24       & mr john william york henry charles james club city ii george dec dr thomas smith jr brooklyn van held                                                 \\ \hline
+    25       & piano st rooms car york daily chicago city sunday upright parlor furnished broadway hotel av west train brooklyn monthly                              \\ \hline
+    26       & york daily steamship nov directed letter dec fur orleans al steamer walls letters close australia china japan city london                             \\ \hline
+    27       & mr court police judge justice case yesterday street district witness jury charge asked attorney trial arrested lawyer told office                     \\ \hline
+    28       & mr law present made public year state committee president secretary bill report states con tin united number meeting york                             \\ \hline
+    29       & air ran ur fur ui full tt al tl late mr ant liar art lay told met ti tr                                                                               \\ \hline
+    30       & company york trust bonds city cent railroad mortgage interest wall bond stock street st central january coupon committee jan                          \\ \hline
+    \end{tabular}}
+
+\end{table*}
+
+
+
+\begin{table*}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 30 Topics LDA Model along with evaluation results and comments.}
+\label{table:app1}
 \centering
 \begin{tabular}{|l|l|p{3cm}|p{3cm}|}
 \hline
 \textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
-capt creeten     & 3.380151 & no                 & spelled incorrectly;capt creedon \\ \hline
-capt hankey      & 3.022371 & yes                &                                      \\ \hline
-capt pinckney    & 2.933288 & yes                &                                      \\ \hline
-john macdonald   & 2.854389 & yes                &                                      \\ \hline
-john martin      & 2.827969 & yes                &                                      \\ \hline
-aaron trow       & 2.814171 & yes                & fictional character                  \\ \hline
-mrs oakes        & 2.791536 & no                 & false positive                       \\ \hline
-buenos ayres     & 2.767399 & no                 & location name                            \\ \hline
-alexander iii    & 2.742552 & yes                &                                      \\ \hline
-mr got           & 2.736363 & no                 & false positive                       \\ \hline
-mrs martin       & 2.719383 & no                 & false positive                       \\ \hline
-ann arbor        & 2.681657 & no                 & location name                            \\ \hline
-caleb morton     & 2.63808  & no                 & fictional character                  \\ \hline
-anthony comstock & 2.633381 & yes                &                                      \\ \hline
-toledo ann arbor & 2.610495 & no                 & location name                            \\ \hline
-john thompson    & 2.609841 & yes                &                                      \\ \hline
-nat lead         & 2.594452 & no                 & false positive                       \\ \hline
-ed kearney       & 2.543152 & yes                & name of horse                        \\ \hline
-van cortlandt    & 2.533131 & no                 & location                             \\ \hline
-louis philippe   & 2.523525 & yes                &                                      \\ \hline
-mrs talboys      & 2.522888 & yes                & fictional character                  \\ \hline
-jim hooker       & 2.500915 & yes                & false positive                       \\ \hline
-marie clavero    & 2.497384 & no                 & false positive                       \\ \hline
-father watson    & 2.450817 & no                 & false positive                       \\ \hline
-james mccutcheon & 2.431448 & no                 & part of an organization name                      \\ \hline
-hugh allan       & 2.4287   & yes                &                                      \\ \hline
-william i        & 2.4222   & yes                &                                      \\ \hline
-marie antoinette & 2.40731  & yes                &                                      \\ \hline
-schmitt berger   & 2.396639 & no                 & spelled incorrectly;max f schmittberger                       \\ \hline
-jacob schaefer   & 2.392976 & yes                &                                      \\ \hline
+capt creeten	 & 3.33 & no                 & spelled incorrectly;capt creedon \\ \hline
+capt hankey      & 3.05 & yes                &                                      \\ \hline
+capt pinckney    & 2.93 & yes                &                                      \\ \hline
+john martin   & 2.89 & yes                &                                      \\ \hline
+ann arbor	& 2.87	& no & location name		\\ \hline
+john macdonald      & 2.85 & yes                &                                      \\ \hline
+aaron trow       & 2.81 & yes                & fictional character                  \\ \hline
+mrs oakes        & 2.79 & no                 & false positive                       \\ \hline
+alexander iii    & 2.71 & yes                &                                      \\ \hline
+buenos ayres     & 2.70 & no                 & location name                            \\ \hline
+mrs martin       & 2.70 & no                 & false positive                       \\ \hline
+caleb morton     & 2.63  & no                 & fictional character                  \\ \hline
+anthony comstock & 2.63 & yes                &                                      \\ \hline
+john thompson    & 2.61 & yes                &                                      \\ \hline
+nat lead         & 2.61 & no                 & false positive                       \\ \hline
+van cortlandt    & 2.54 & no                 & location                             \\ \hline
+ed kearney       & 2.54 & yes                & name of horse                        \\ \hline
+louis philippe   & 2.52 & yes                &                                      \\ \hline
+mrs talboys      & 2.52 & yes                & fictional character                  \\ \hline
+jim hooker       & 2.50 & yes                & false positive                       \\ \hline
+marie clavero    & 2.49 & no                 & false positive                       \\ \hline
+charley grant    & 2.45 & no                 &                     \\ \hline
+james mccutcheon & 2.43 & no                 & part of an organization name                      \\ \hline
+hugh allan       & 2.43   & yes                &                                      \\ \hline
+william i        & 2.42   & yes                &                                      \\ \hline
+marie antoinette & 2.41  & yes                &                                      \\ \hline
+mr john      & 2.39 & no              & false positive                       \\ \hline
+schmitt berger   & 2.39 & no                 & spelled incorrectly;max f schmittberger                       \\ \hline
+jacob schaefer   & 2.39 & yes                &                                      \\ \hline
+phil king	&	2.38	& yes	& 				\\ \hline
              
 \end{tabular}
-\caption{Table representing top 30 influential person entities detected from people gazetteer with 30 Topics LDA Model along with evaluation results and comments.}
-\label{table:app1}
+
 \end{table*}
 
 
 \begin{table*}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 100 Topics LDA Model along with evaluation results and comments.}
+\label{table:app2}
 \centering
 \begin{tabular}{|l|l|p{3cm}|p{3cm}|}
 \hline
 \textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
-capt creeten & 3.333485 & no & spelled incorrectly; capt creedon \\ \hline
-mrs martin & 3.23105 & no & false positive \\ \hline
-alexander iii & 3.090361 & yes &  \\ \hline
-capt hankey & 2.975704 & yes &  \\ \hline
-aaron trow & 2.790838 & yes &  \\ \hline
-john macdonald & 2.774389 & no &  \\ \hline
-mrs oakes & 2.744869 & no & false positive \\ \hline
-john martin & 2.711302 & yes &  \\ \hline
-ed kearney & 2.629342 & yes & name of horse \\ \hline
-caleb morton & 2.614746 & no & fictional character \\ \hline
-john ward & 2.57499 & yes &  \\ \hline
-nat lead & 2.571118 & no & false positive \\ \hline
-mrs talboys & 2.499555 & yes & fictional character \\ \hline
-buenos ayres & 2.490502 & no & location \\ \hline
-van cortlandt & 2.490169 & no & location \\ \hline
-john thompson & 2.482063 & yes &  \\ \hline
-louis philippe & 2.476858 & yes &  \\ \hline
-marie clavero & 2.474051 & no & false positive \\ \hline
-hardy fox & 2.449248 & no &  \\ \hline
-mme melba & 2.415785 & yes &  \\ \hline
-charles weisman & 2.405938 & no & false positive \\ \hline
-hugh allan & 2.405367 & yes &  \\ \hline
-mr got & 2.389697 & no & false positive \\ \hline
-schmitt berger & 2.373305 & no & spelled incorrectly \\ \hline
-phil king & 2.363644 & yes &  \\ \hline
-henry a meyer & 2.350396 & yes &  \\ \hline
-north orlich & 2.348236 & no & false positive \\ \hline
-james mccutcheon & 2.338115 & no & part of organization name \\ \hline
-gen porter & 2.330658 & yes &  \\ \hline
-miller hageman & 2.327831 & no &  \\ \hline
+capt creeten & 3.28 & no & spelled incorrectly; capt creedon \\ \hline
+mrs martin & 3.21 & no & false positive \\ \hline
+capt hankey & 3.19 & yes &  \\ \hline
+alexander iii & 3.05 & yes &  \\ \hline
+aaron trow & 2.79 & yes &  \\ \hline
+john martin & 2.78 & yes &  \\ \hline
+john macdonald & 2.77 & no &  \\ \hline
+mrs oakes & 2.74 & no & false positive \\ \hline
+ed kearney & 2.63 & yes & name of horse \\ \hline
+caleb morton & 2.61 & no & fictional character \\ \hline
+nat lead & 2.58 & no & false positive \\ \hline
+john ward & 2.57 & yes &  \\ \hline
+van cortlandt & 2.50 & no & location \\ \hline
+mrs talboys & 2.49 & yes & fictional character \\ \hline
+ann arbor & 2.49 & no & location \\ \hline
+buenos ayres & 2.49 & no & location \\ \hline
+john thompson & 2.48 & yes &  \\ \hline
+louis philippe & 2.47 & yes &  \\ \hline
+marie clavero & 2.47 & no & false positive \\ \hline
+hardy fox & 2.45 & no &  \\ \hline
+charley grant & 2.42 & no & \\ \hline
+mme melba & 2.41 & yes &  \\ \hline
+charles weisman & 2.40 & no & false positive \\ \hline
+hugh allan & 2.40 & yes &  \\ \hline
+henry w dreyer & 2.39 & no &  \\ \hline
+schmitt berger & 2.37 & no & spelled incorrectly \\ \hline
+phil king & 2.36 & yes &  \\ \hline
+henry a meyer & 2.35 & no &  \\ \hline
+north orlich & 2.35 & no & false positive \\ \hline
+james mccutcheon & 2.34 & no & part of organization name \\ \hline
 \end{tabular}
-\caption{Table representing top 30 influential person entities detected from people gazetteer with 100 Topics LDA Model along with evaluation results and comments.}
-\label{table:app2}
+
 \end{table*}
 
 
@@ -2504,6 +2553,49 @@ Non-heuristic based estimation for finding influential persons can also be done 
 % if you want by leaving the argument blank
 %\section{}
 %Appendix two text goes here.
+
+\begin{table}
+\resizebox{15cm}{!} {
+ 
+   \begin{tabular}{|p{1cm}|p{16cm}|}
+
+    \hline
+    TOPIC ID & TOPIC WORDS                                                                                                                                           \\ \hline
+    1        & total ii won club score night ran furlough alleys tournament time   mile fourth rolled curling scores race national game                              \\ \hline
+    2        & la lu ot lo tu au tb ta ha tea day al aa ut ar uu wa tt te                                                                                            \\ \hline
+    3        & iii lie tin nail tn lit hut ill ii nn thu tu anti thin inn hit lu lo   nut                                                                            \\ \hline
+    4        & line street feet point western easterly northerly feel southerly   distance place distant lo fret hue beginning laid early felt                       \\ \hline
+    5        & opera theatre music company week play stage evening night performance   concert mme audience manager season de orchestra house miss                   \\ \hline
+    6        & great people life man women good country world american part ot ha   made la years make long place bad                                                \\ \hline
+    7        & election mr party republican state district vote democratic county senator   elected city committee mayor political candidate majority york democrats \\ \hline
+    8        & time ho work tn men city bo lie anti day thin long thu made part ago   lot york make                                                                  \\ \hline
+    9        & st room av sun wife board front lo december rent lot november sunday   ht west ar house private si                                                    \\ \hline
+    10       & dr book st story books cloth author cure free work york blood   illustrated remedy goods medical library health price                                 \\ \hline
+    11       & church dr father funeral school st college sunday year rev catholic pastor services late service held society holy clock                              \\ \hline
+    12       & horse race class horses won racing years prize record year show ring track mile money jockey trotting trotter ran                                     \\ \hline
+    13       & cent year week pf market total net stock today central st ft lit sales short cotton ohio lot month                                                    \\ \hline
+    14       & white water indian black long found thu big dog time ground wild tree killed birds bird day great lake                                                \\ \hline
+    15       & price black silk goods prices ladies worth dress fine white full tea quality style wool made fancy cloth fur                                          \\ \hline
+    16       & street mrs mr avenue wife house miss yesterday years home woman night ago husband found died daughter children mother                                 \\ \hline
+    17       & war american government army chinese japanese china japan foreign united nov emperor states prince minister military french port navy                 \\ \hline
+    18       & feet north minutes avenue boundary seconds degrees west york minute degree point east south feel city angle county laid                               \\ \hline
+    19       & man ho men night back wa room left house told bad door found turned place ran lie front morning                                                       \\ \hline
+    20       & water feet building boat company car train road fire miles railroad island work line city great river built bridge                                    \\ \hline
+    21       & club game team play football half ball left college back yale played harvard line eleven men match yacht field                                        \\ \hline
+    22       & ii iii ill lit ll si ti il im vi st iv ft mi li till lull lui oil                                                                                     \\ \hline
+    23       & bank money national gold amount notes banks hank business treasury account cent paid bonds note currency company stock estate                         \\ \hline
+    24       & mr john william york henry charles james club city ii george dec dr thomas smith jr brooklyn van held                                                 \\ \hline
+    25       & piano st rooms car york daily chicago city sunday upright parlor furnished broadway hotel av west train brooklyn monthly                              \\ \hline
+    26       & york daily steamship nov directed letter dec fur orleans al steamer walls letters close australia china japan city london                             \\ \hline
+    27       & mr court police judge justice case yesterday street district witness jury charge asked attorney trial arrested lawyer told office                     \\ \hline
+    28       & mr law present made public year state committee president secretary bill report states con tin united number meeting york                             \\ \hline
+    29       & air ran ur fur ui full tt al tl late mr ant liar art lay told met ti tr                                                                               \\ \hline
+    30       & company york trust bonds city cent railroad mortgage interest wall bond stock street st central january coupon committee jan                          \\ \hline
+    \end{tabular}}
+\caption{Table showing Topic ID and words obtained from the 30 Topics LDA model.}
+\label{table:topicwords}
+\end{table}
+
 
 \begin{table*}
 \centering

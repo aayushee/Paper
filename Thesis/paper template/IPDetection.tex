@@ -23,17 +23,20 @@ Person Name Frequency (PNF) accounts for the number of occurrences of a person's
 $NPNF=	1+\log$(PNF)
 \end{center}
 
-The important questions that arise when dealing with Person Name Frequency are: (a) \textbf{Coreference resolution} of person names: (for e.g., names ``William Schmittberger",``Captain Williams" are same but recognized as separate persons) and (b) \textbf{Named Entity Disambiguation:} This refers to the occurrence of different persons with similar name in news articles. For e.g., the person ``John Smith" detected in two different articles may or may not refer to the same person. These issues are not dealt with by the PNER and need to be addressed separately. 
+The important questions that arise when dealing with Person Name Frequency are: (a) \textbf{Coreference resolution} of person names: (for e.g., names ``William Schmittberger",``Captain Williams" in a text article are same but recognized as separate persons) and (b) \textbf{Named Entity Disambiguation:} This refers to the occurrence of different persons with similar name in news articles. For e.g., the person ``John Smith" detected in two different articles may or may not refer to the same person. These issues are not dealt with by the PNER and need to be addressed separately. 
 %While the issue of coreference can be still addressed by analyzing each news article, it is extremely hard to disambiguate among persons with similar names that can occur in multiple news articles with different topics. This is the reason coreference resolution is performed for the person entities obtained using PNER.
 The following section explains the approach to coreference resolution.
 
 
 \noindent \textbf{Coreference Resolution: } The coreference resolution aims to find all expressions that refer to the same person in the text. 
 %Due to multiple references to a person in the text, coreference resolution been done keeping in mind that the number of articles of occurrence of a person entity, i.e.,TF is an important parameter in our study for determining an influential person.
-The algorithm used in this work uses a multi-pass sieve for coreference resolution\cite{lee2013deterministic} and consists of three steps: (a) Mention Detection: The goal is to  detect nouns, pronouns and occurrences of named entities from the text (b) Coreference Resolution: This is performed by using a combination of ten independent sieves applied from highest to lowest precision with global information sharing so that each sieve builds on the previously clustered mentions followed by post processing which removes singleton mentions. An implementation of this is available from the Deterministic Coreference Resolution System of the CoreNLP toolkit\footnote{http://nlp.stanford.edu/software/dcoref.shtml}. (c) Identification of the most representative mention: The most representative mention from each coreference chain is found and checked to ensure it is a valid person entity in the People Gazetteer. If it is found, then the count from coreference resolution is considered in the person name frequency determination. 
+The algorithm used in this work uses a multi-pass sieve for coreference resolution\cite{lee2013deterministic} and consists of three steps: (a) Mention Detection: The goal is to  detect nouns, pronouns and occurrences of named entities from the text (b) Coreference Resolution: This is performed by using a combination of ten independent sieves applied from highest to lowest precision with global information sharing so that each sieve builds on the previously clustered mentions followed by post processing which removes singleton mentions. An implementation of this is available from the Deterministic Coreference Resolution System of the CoreNLP toolkit\footnote{http://nlp.stanford.edu/software/dcoref.shtml}. During resolution, all mentions that refer to the same entity are clustered together to form a coreference chain (c) Identification of the most representative mention: The most representative mention from each coreference chain is found and checked to ensure it is a valid person entity in the People Gazetteer. If it is found, then the count of mentions in its coreference chain is considered in the person name frequency determination. 
 
 %% AAYUSHEE PLEASE MODIFY THIS PARAGRAPH
-Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper article changes when multiple references to the same person entity (coreferences) are found in an article. Figure~\ref{figure:coref}  illustrates an example of coreference resolution when applied to an article text and its effect on term frequency for person entities. Initially, mentions are detected from the text followed by application of coreference resolution step which results in a chain of coference mentions/entities, which includes the mention itself along with other mentions that refer to it. It is also observed that due to lack of punctuation in the dataset, lots of meaningless coreference mentions are also detected. However, since the persons list is available from the People Gazetteer, frequencies of only those person entities are replaced through Coreference Resolution. 
+%Coreference Resolution was observed to be useful during this case study since the frequency of a person entity in a newspaper %article changes when multiple references to the same person entity (coreferences) are found in an article. 
+Table~\ref{table:coref}  illustrates an example of coreference resolution when applied to an article text from our corpus and its effect on PNF for a person entity from the People Gazetteer. 
+%Initially, mentions are detected from the text followed by application of coreference resolution step which results in a chain of coference mentions/entities, which includes the mention itself along with other mentions that refer to it.
+ It is also observed that due to lack of punctuation in the dataset, several meaningless coreference mentions are also detected which are not person named entities. However, since the persons entities list is available from the People Gazetteer, frequencies of only those person names are replaced through Coreference Resolution. 
  % ~\ref{figure:core} or
 %\begin{figure*}
 %\begin{center}
@@ -45,11 +48,53 @@ Coreference Resolution was observed to be useful during this case study since th
 %\label{figure:core}
 %\end{figure*}
 
-\begin{figure*}
-\fbox{\includegraphics{coref3}}
-\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
-\label{figure:coref}
-\end{figure*}
+%\begin{figure*}
+%\fbox{\includegraphics{coref3}}
+%\caption{Figure illustrating change in term frequency for person named entities on using coreference resolution on an article text}
+%\label{figure:coref}
+%\end{figure*}
+
+
+\begin{table*}
+\caption{Table illustrating change in PNF for person named entities on using coreference resolution on an article text. The text has a person named entity ``Eugene Kelly'' with term frequency=2. During coreference resolution, all mentions are extracted from the text first and coreference chains are obtained. Most representative entity from each coreference chain is then identified (which may or may not be a person named entity) and if it matches any person named entity from the People Gazetteer, then the PNF for this entity is replaced by the count of mentions found in its coreference chain. Here, out of 9 coreference chains, ``Eugene Kelly'' is the most representative mention in one of the chains with 5 coreferences and since ``Eugene Kelly'' is also a person entity as verified from the People Gazetteer, we replace its PNF from 2 to 5.}
+\label{table:coref}
+\centering
+\begin{tabular} {|p{16cm}|}
+\hline
+\textbf{Text}: Mr Eugene Kelly bead of the banking house of Eugene Kelly A Co Is dying at his home
+33 West Fiftyfirst street He became ill on Dee 4 and was forced to lake to his bed
+\\ \hline
+
+\textbf{Mentions Extracted}:
+[``Mr Eugene Kelly bead of the banking house of Eugene Kelly A Co''], [``Eugene Kelly''],[``the banking house of Eugene Kelly A Co''], [``Eugene Kelly A Co''], [``Eugene Kelly''],[``his home 33 West Fiftyfirst street He became ill on Dee 4 and was forced to lake to his bed''], [``his''], [``33''], [``He''], [``Dee 4''], [``4''], [``his bed''], [``his'']
+\\ \hline
+
+\textbf{Coreferred Entity Chains with most representative entity in bold}:
+
+\textbf{[``Mr Eugene Kelly bead of the banking house of Eugene Kelly A Co"]},
+
+[\textbf{``Eugene Kelly"}, ``Eugene Kelly”, ``his", ``He", ``his"],
+
+\textbf{[``the banking house of Eugene Kelly A Co"]},
+
+\textbf{[``Eugene Kelly A Co"]},
+
+\textbf{[``his home 33 West Fiftyfirst street He became ill on Dee 4 and was forced to lake to his bed"]},
+
+\textbf{[``33"]},
+
+\textbf{[``Dee 4"]},
+
+\textbf{[``4"]},
+
+\textbf{[``his bed"]}
+\\ \hline
+\textbf{Count of coreference mentions for most representative entity which is also a Person Named Entity}:
+
+Eugene Kelly: 5 		\\ \hline
+\end{tabular}
+\end{table*}
+
 
 %\item 
 \noindent \textbf{Number of similar articles (NSIM): }
@@ -139,6 +184,8 @@ $NDL=GetDocLength(doc)/GetMaxDocLength()$;
 \end{algorithm*}
 
 \begin{table*}
+\caption{Description of the functions used in Algorithm~\ref{algorithm:3}}
+\label{default}
 \begin{center}
 \begin{tabular}{|c|c|} \hline
 Function Name & Description \\ \hline
@@ -158,8 +205,6 @@ PrintPersonNameandMaxIPI(IPIScores) & Prints $Person$ name with its \\
 & IPI in decreasing order of IPI value. \\ \hline
 \end{tabular}
 \end{center}
-\caption{Description of the functions used in Algorithm~\ref{algorithm:3}}
-\label{default}
 \end{table*}%
 
 \begin{figure*}
