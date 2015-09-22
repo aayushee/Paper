@@ -9,7 +9,7 @@ b) Assignment of topics to news articles using a Latent Dirichlet Allocation (LD
 \label{ner}
 
 %\subsubsection{Definition}
-\noindent Named Entity Recognition(NER) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, and percentages. 
+\noindent Named Entity Recognition (NER) refers to classification of elements in text into pre-defined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, and percentages. 
 %It can also be considered as a sequence labeling problem that predicts label of each element of the text  based on the adjacent element labels.
 Person Named Entity Recognition (PNER) is Named Entity Recognition that marks up only person names occurring in the text. It involves \emph{chunking} or segmentation of  the text for name detection followed by \emph{classification} of the name by entity type ( for e.g. person, organization, and location).
 
@@ -172,7 +172,9 @@ Perplexity is a decreasing function of the log likelihood of the unseen document
 \end{figure}
 
 
-The procedure of development of people gazetteer can be seen in Figure~\ref{figure:gaze}.The list of articles obtained for each person entity after application of PNER (Person-Article List) and highest scoring topic assigned to each article during Topic Detection (Article-Topic List) are combined to obtain People Gazetteer. In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and where each article is further associated with its corresponding highest scoring topic. A snapshot of the People Gazetteer is depicted in Table~\ref{table:gaz}
+The procedure of development of the people gazetteer can be seen in Figure~\ref{figure:gaze}. The list of articles obtained for each person entity after application of PNER (Person-Article List) and the highest scoring topic assigned to it during topic detection (Article-Topic List) are combined to obtain an entry in the People Gazetteer. 
+%In each tuple of the gazetteer, a person entity gets associated with its list of articles in which it occurs and each article is further associated with its corresponding highest scoring topic. 
+A snapshot is illustrated in Table~\ref{table:gaz}.
 
 %%%%%%%%%% REVISIT THIS PART
 %\noindent \textbf{Results}
@@ -213,19 +215,20 @@ The procedure of development of people gazetteer can be seen in Figure~\ref{figu
 %\begin{figure*}
 %\centering
 %\includegraphics{gazetteer}
-%\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which he/she occurs on the right with the topic labels %obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61101.txt to 74150.txt while the 30 topic id are indexed from 0 to 29. The list of these 30 topics can be viewed in Appendix table ~\ref{table:topicwords}}
+%\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which he/she occurs on the right with the topic labels %obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61101.txt to 74150.txt while the 30 topic id are indexed from 0 to 29. The list of these 30 topics can be v/Users/Haimonti/Research/IIITD/Aayushee/Reports/TKDE/Thesis/paper template/PeopleGazetteer.texiewed in Appendix table ~\ref{table:topicwords}}
 %\label{figure:gazette}
 %\end{figure*} 
 
 
 \begin{table*}
-\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which he/she occurs on the right with the topic labels obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61102.txt to 74150.txt while the 30 topic id are indexed from 0 to 29. The list of these 30 topics can be viewed in Appendix table ~\ref{table:topicwords}}
-\label{table:gaz}
-\resizebox{16cm}{!} {
- 
-   \begin{tabular}{|p{2cm}|p{15cm}|}
 
-    \hline
+%\resizebox{16cm}{!} {
+%  \begin{tabular}{|p{2.5cm}|p{15cm}|}
+%{|p{2.5cm}|p{13cm}|}
+  \begin{minipage}[b]{\linewidth}
+  \begin{center}
+ \begin{tabular}{|p{2.5cm}|p{13cm}|}
+  \hline
     PERSON ENTITY NAME & DOCUMENT LIST (Document ID $\rightarrow$  Document Topic ID)\\ \hline
     Thomas Murphy        & (61720.txt$\rightarrow$16, 62002.txt$\rightarrow$11, 65905.txt$\rightarrow$19, 71341.txt$\rightarrow$28, 68024.txt$\rightarrow$16)                        \\ \hline
     George Eliot       & (74151.txt$\rightarrow$5, 61627$\rightarrow$15)                                                                                      \\ \hline
@@ -237,7 +240,10 @@ The procedure of development of people gazetteer can be seen in Figure~\ref{figu
     Samuel S Seely     & (70365.txt$\rightarrow$2, 64670.txt$\rightarrow$23, 65615.txt$\rightarrow$23, 67198.txt$\rightarrow$19, 73545.txt$\rightarrow$23, 74816.txt$\rightarrow$16)                                                                 \\ \hline
     Matthew Parker      & (64363.txt$\rightarrow$11)                                                   \\ \hline
     Daniel Frohman       & (63704.txt$\rightarrow$5, 66992.txt$\rightarrow$25, 69668.txt$\rightarrow$4, 68743.txt$\rightarrow$5, 67554.txt$\rightarrow$25, 67450.txt$\rightarrow$5, 72274.txt$\rightarrow$24, 69444.txt$\rightarrow$4)                                \\ \hline
-    \end{tabular}}
-
+   \end{tabular}  
+\caption{Snapshot of People Gazetteer with Person names, Document list of occurrence and their corresponding Topic ID. The table shows Person entity recognized by PNER on the left along with a list of text articles in which s/he occurs on the right with the topic labels obtained for each of the text article during Topic Detection. The text articles in our corpus are indexed from 61102.txt to 74150.txt while the 30 topics are indexed from 0 to 29. The list of these topics can be viewed in Appendix Table ~\ref{table:topicwords}.}
+\label{table:gaz}
+\end{center}
+  \end{minipage}
 \end{table*}
 

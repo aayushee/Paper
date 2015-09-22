@@ -1,4 +1,4 @@
-To find \emph{influential} people from the text in news articles, we define a score corresponding to each person entity in the gazetteer. This score is called the \emph{Influential Person Index (IPI)}. To calculate IPI, we first define a \emph{Document Index (DI)} to measure how each document in the person's associated list of documents affects his influence score. The choice of features for detecting whether a person is influential is motivated by following questions: (a) Are people mentioned frequently in the newspaper \emph{influential}? (b) How to measure frequency of occurrence(s) of a person - article by article or across the complete dataset? (c) Do longer documents talk more about important persons? (d) Is a person discussed in varied contexts (and over multiple topics in news) more influential than one who is consistently talked about in articles belonging to a single topic?  The following discussion describes the features chosen for calculation of DI and IPI of a person,followed by the complete algorithm for detection of influential persons.
+To find \emph{influential} people from the text in news articles, we define a score corresponding to each person entity in the gazetteer. This score is called the \emph{Influential Person Index (IPI)}. To calculate IPI, we first define a \emph{Document Index (DI)} to measure how each document in the person's associated list of documents affects his influence score. The choice of features for detecting whether a person is influential is motivated by following questions: (a) Are people mentioned frequently in the newspaper \emph{influential}? (b) How to measure frequency of occurrence(s) of a person - article by article or across the complete dataset? (c) Do longer documents talk more about important persons? (d) Is a person discussed in varied contexts (and over multiple topics in news) more influential than one who is consistently talked about in articles belonging to a single topic?  The following discussion describes the features chosen for calculation of DI and IPI of a person, followed by the complete algorithm for detection of influential persons.
 
 \noindent \textbf{Document Index (DI): }
 %\label{influential:DI}
@@ -56,8 +56,7 @@ Table~\ref{table:coref}  illustrates an example of coreference resolution when a
 
 
 \begin{table*}
-\caption{Table illustrating change in PNF for person named entities on using coreference resolution on an article text. The text has a person named entity ``Eugene Kelly'' with term frequency=2. During coreference resolution, all mentions are extracted from the text first and coreference chains are obtained. Most representative entity from each coreference chain is then identified (which may or may not be a person named entity) and if it matches any person named entity from the People Gazetteer, then the PNF for this entity is replaced by the count of mentions found in its coreference chain. Here, out of 9 coreference chains, ``Eugene Kelly'' is the most representative mention in one of the chains with 5 coreferences and since ``Eugene Kelly'' is also a person entity as verified from the People Gazetteer, we replace its PNF from 2 to 5.}
-\label{table:coref}
+
 \centering
 \begin{tabular} {|p{16cm}|}
 \hline
@@ -93,6 +92,9 @@ Table~\ref{table:coref}  illustrates an example of coreference resolution when a
 
 Eugene Kelly: 5 		\\ \hline
 \end{tabular}
+\caption{Table illustrating change in PNF for person named entities on using coreference resolution on an article text. The text has a person named entity ``Eugene Kelly'' with term frequency=2. During coreference resolution, all mentions are extracted from the text first and coreference chains are obtained. Most representative entity from each coreference chain is then identified (which may or may not be a person named entity) and if it matches any person named entity from the People Gazetteer, then the PNF for this entity is replaced by the count of mentions found in its coreference chain. Here, out of 9 coreference chains, ``Eugene Kelly'' is the most representative mention in one of the chains with 5 coreferences and since ``Eugene Kelly'' is also a person entity as verified from the People Gazetteer, we replace its PNF from 2 to 5.}
+\label{table:coref}
+
 \end{table*}
 
 
@@ -110,6 +112,7 @@ $NSIM= \frac{\text{SIM}} {\text{Total number of articles in the person's documen
 NSIM is equivalent to the proportion of topic similar articles that document $d$ has.
 %This parameter takes into account the effect of a document's score on a person's IPI when there exist several other documents of the same topic in the person's list. 
 %\end{enumerate}
+
 The Document Index is a function of the above mentioned parameters and is calculated by using the following formula:
 \begin{center}
 

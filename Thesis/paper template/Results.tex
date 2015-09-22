@@ -1,5 +1,5 @@
 
-\begin{table*}
+\begin{table}[t!]
 \caption {Table illustrating average statistics for each Person Category of the People Gazetteer.}
 \label{table:stats}
 \resizebox{8cm}{!} {
@@ -14,9 +14,9 @@ Not Influ. & 36004 & 1.04 & 2119.6 & 1.07 	\\ \hline
  Popular & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
 Elite & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
   \end{tabular}}
-\end{table*}
+\end{table}
 
-We present statistics pertaining to each category (Not influential, popular and elite) of the people gazetteer in Table~\ref{table:stats}. 
+We present statistics pertaining to each category (not influential, popular and elite) of the people gazetteer in Table~\ref{table:stats}. 
 It is observed that, on average the \emph{elite} are discussed very often in the news articles.
 Document Length need not be high for a person to be more influential -- average document length obtained for the popular group is high in spite of their average IPI being low. This indicates that the number of similar articles for each document as well as the person name frequency play an important part in measuring influence.
 
@@ -76,12 +76,13 @@ caleb morton   & 2.61 & 1                  & Not Inf. & 0.70 & 1.9  & 0    & day
 
 %\subsection{Comparison Across Ranked Influential Person Lists }
 
-The top 10 influential people from lists $L_1$ and $L_2$ are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively. It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by the not influential and popular category having considerably less number of articles of occurrence. This indicates that the number of articles  has not been given priority while measuring influence. 
-Our results also suggest that none of the measures of NDL, NTF or NSIM can be used alone to say whether a person is influential since these value do not decrease or increase consistently although the NPNF measure does contribute most to the IPI of any person.
+The top 10 influential people from lists $L_1$ and $L_2$ are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively. 
+%It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by the not influential and popular category having considerably less number of articles of occurrence. This indicates that the number of articles  has not been given priority while measuring influence. 
+Our results suggest that none of the measures of NDL, NTF or NSIM can be used alone to say whether a person is influential since these value do not decrease or increase consistently although the NPNF measure does contribute most to the IPI of any person.
 
 %\newpage
-The ranked influential lists $L_1$ and $L_2$ can be contrasted in terms of NSIM, UniqT and Topic Words since they vary across different number of topics and to see the effect of 30 and 100 Topics LDA Models on influential person detection.
- If NSIM (normalized number of topic similar articles) remains same in $L_1$ and $L_2$ during influential person detection, then the same highest scoring article' DI is selected for calculation of IPI in both of them. This is why the parameters NDL and NPNF remain same across both the lists. This can be seen for ``capt creeten", ``capt hankey", ``aaron trow" and ``mrs oakes" in Tables ~\ref{table:30t} and ~\ref{table:100t}. However, the value of UniqT for these persons decreases leading to decrease in their final IPI. This is because LDA model with higher number of topics (100) is used in this case due to which the proportion of unique topics becomes lower when NSIM does not change. When the NSIM value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 4 in the second table. 
+The ranked lists $L_1$ and $L_2$ can be compared in terms of NSIM, UniqT and topic words to see the effect of 30 and 100 topics LDA models on influential person detection.
+ If NSIM remains same in $L_1$ and $L_2$ during influential person detection, then the same highest scoring article' DI is selected for calculation of IPI in both of them. This is why the parameters NDL and NPNF remain same across both the lists. This can be seen for ``capt creeten", ``capt hankey", ``aaron trow" and ``mrs oakes" in Tables ~\ref{table:30t} and ~\ref{table:100t}. However, the value of UniqT for these persons decreases leading to decrease in their final IPI. This is because if the LDA model with higher number of topics (100) is used, the proportion of unique topics becomes lower when NSIM does not change. When the NSIM value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 4 in the second table. 
 This helps to illustrate how a change in number of topics affects the ranking of influential people.
 
 Wilcoxon signed rank paired test is also performed on the ranks of influential people across the two lists $L_1$ and $L_2$. This is done to test the hypothesis whether the differences in the ranking of person entities obtained using the 30 topic and 100 topic LDA models are due to chance or not. The null hypothesis for the test is: 
@@ -111,7 +112,7 @@ Several person entities occurring in low number of news articles like ``aaron tr
 \subsection{Evaluation}
 
 Due to the unavailability of ground truth consisting of influential people in the newspaper archives from November-December 1894, there is no way to validate our results. 
-To broadly evaluate our results, a simple web search query with the person entity's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists $L_1$ and $L_2$ detected from the people gazetteer with 30 topics LDA and 100 topics LDA Model respectively.
+To broadly evaluate our results, a simple web search query with the person's name in the context of 19th century was done on the Wikipedia website for the top 30 influential persons of Lists $L_1$ and $L_2$ detected from the people gazetteer with 30 topics LDA and 100 topics LDA Model respectively.
 
 Among the top 30, 17 people from List $L_1$ and 12 from List $L_2$ were found to be influential and popular in the 19th century across topic categories like theatre, politics, government, shipping, etc. Some of these influential people have been found in Wikipedia and are shown in Figure~\ref{figure:inf}. 
 
