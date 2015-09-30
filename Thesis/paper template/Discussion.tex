@@ -2,7 +2,7 @@ The following issues encountered during algorithm design and empirical verificat
 \begin{itemize}
 
 
-\item  A linear combination of Document Index and Influential Person Index was used in experiments. Furthermore, they are weighted equally in experiments performed with our data. The heuristics can be re-weighted according to user requirements. 
+\item  A linear combination of parameters was used in our experiments for calculation of Document Index and Influential Person Index. Furthermore, they are weighted equally in experiments performed with our data. The heuristics can be re-weighted according to user requirements. 
 
 \item
 The parameters for calculation of DI and IPI can also be learned by performing regression analysis using a manually developed sample of influential people and obtaining the complete list of ranked influential people based on the learned parameters.
@@ -12,7 +12,7 @@ The Normalized Document Length (NDL) defined for calculation of DI is normalized
 
 \item
 Lists of influential people contain several false positives. This is due to noise in the OCR data -- several location and organization names have not been recognized as person entities even after performing spelling correction and PNER resulting in false detection of some influential entities like ``van cortlandt", ``ann arbor" ,  and ``sandy hook".  
-%There is also the problem of resolution of person name co-references in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
+%There is also the problem of resolution of person name disambiguation in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
 
 \item The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA topic model settings used. 
 

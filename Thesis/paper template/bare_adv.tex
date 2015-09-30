@@ -667,33 +667,17 @@ Quoting prosopographer Katharine Keats-Rohan,
 
 The nature of prosopographical research has evolved over time. Lawrence Stone\cite{stone_71} discusses an ``older" form of prosopography which was principally concerned with well-known social elites, many of whom were influential people. Their genealogies were well-researched, and social webs and kinship linking could be traced, allowing a prosopography of a ``power elite" to emerge. This older prosopography can be contrasted with a newer form called \emph{quantitative prosopography}, which studied much wider populations including ``ordinary people". %The people gazetteer discussed in this paper primarily deals with quantitative prosopography.
 
-In this paper, we present a framework to develop a \textit{people gazetteer} which forms the basis of prosopographical research. The gazetteer is built from the text of historical newspapers subjected to Optical Character Recognition (OCR) and is capable of identifying influential people. Our paper has the following novel contributions: (1) \textbf{Development of the People Gazetteer} -- an organized dictionary of people names and a list of newspaper articles in which the name occurs. (2) \textbf{Identification of Influential People}: we define an Influential Person Index (IPI) which helps identification and ranking of influential people. 
+In this paper, we present a framework to develop a \textit{people gazetteer} which forms the basis of prosopographical research. The gazetteer is built from the text of historical newspapers subjected to Optical Character Recognition (OCR) and is capable of identifying influential people. Our paper has the following novel contributions: (1) \textbf{Development of the People Gazetteer} -- an organized dictionary of people names and a list of newspaper articles in which the name occurs. (2) \textbf{Identification of Influential People}: we define an Influential Person Index (IPI) which helps in identification and ranking of influential people. 
 
 
 
 To the best of our knowledge, the development of a framework for doing prosopographical research using machine learning has not been studied before. This exercise, however, opens up a wide range of possibilities -- for example, news articles related to the influential person can also be linked to a Wikipedia page entry to find out relevant details or build influential people networks that can learn about entities involved in historical events. Such applications can immensely help historians working on prosopography\cite{allen2013toward} and scholars in learning events related to historically significant people interactively.
 
-\noindent \textbf{Paper Organization:} This paper is organized as follows: Section~\ref{influential:rw} discusses related work; the machine learning framework is discussed in Section~\ref{chp:framework}; the characteristics of the data used for this research is presented in Section~\ref{data}. Sections~\ref{chapter:people gazetteer} and ~\ref{influential} present the development of the gazetteer and the influential people detection process; empirical results and discussions are presented in Section~\ref{influential:results} and ~\ref{influential:discussion} and Section~\ref{conc} concludes the paper.
+\noindent \textbf{Paper Organization:} This paper is organized as follows: Section~\ref{influential:rw} discusses related work; the machine learning framework is discussed in Section~\ref{chp:framework}; the characteristics of the data used for this research are presented in Section~\ref{data}. Sections~\ref{chapter:people gazetteer} and ~\ref{influential} present the development of the gazetteer and the influential people detection process; empirical results and discussions are presented in Section~\ref{influential:results} and ~\ref{influential:discussion} and Section~\ref{conc} concludes the paper.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
 
-%DOUBT: SHOULD THE PROBLEM DESCRIPTION SECTION BE REMOVED COMPLETELY??
-%\section{Problem Description}
-%\label{problem}
-%
-%The goal of this research is to find and rank influential people in historical newspaper OCR archives.
-%  
-% An influential person can be defined as ``a person whose actions and opinions strongly influence a course of events". This allows us to link an influential person with a list of articles that s/he occurs in.
-% A person may also be considered influential if s/he gets talked about frequently in news articles. The problem can be also be phrased as identifying and ranking \emph{popular} people in the news domain. 
-% ``Popularity" has been defined in other domains by counting number of votes, tweets, citations and followers \cite{cheng2014can} but similar measures are not applicable in a newspaper setting where only the newspaper articles mentioning multiple people names are available.  
-% 
-%We divide the the problem of finding influential people into the following subproblems:
-%\begin{itemize}
-%\item \textbf{Problem 1: } Cleaning of OCR text
-%\item \textbf{Problem 2: } Development of a People Gazetteer -- develop an organized structure in order to ease the process of identification of influential people.
-%\item \textbf{Problem 3: } Influential People Identification -- define the criteria for identifying and ranking people as ``influential".
-%\end{itemize}
 %
 
 \renewcommand{\thetable}{\Roman{table}}

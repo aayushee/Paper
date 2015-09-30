@@ -14,6 +14,7 @@ Not Influ. & 36004 & 1.04 & 2119.6 & 1.07 	\\ \hline
  Popular & 344 & 5.75 & 1976.3 & 6.68  \\ \hline
 Elite & 16 & 22.8 & 2971.5 & 29.870	 \\	\hline 
   \end{tabular}}
+\vspace*{-10pt}
 \end{table}
 
 We present statistics pertaining to each category (not influential, popular and elite) of the people gazetteer in Table~\ref{table:stats}. 
@@ -47,10 +48,11 @@ aaron trow     & 2.81 & 1                  & Not Inf.        & 0.7  & 2.07 & 0  
 mrs oakes      & 2.79 & 5                  & Popular          & 0.08 & 2.04 & 0.6  & street mrs mr avenue wife house miss yesterday years home            & 0.06  & 7    \\ \hline
 alexander iii  & 2.71 & 31                 & Elite            & 0.24 & 2.04 & 0.25 & great people life man women good country world american part         & 0.16  & 9    \\ \hline
 buenos ayres   & 2.7 & 6                  & Popular          & 0.49 & 1.47  & 0.67 & white water indian black long found thu big dog time                 & 0.06  & 10    \\ \hline
-
 \end{tabular}
+\vspace*{-10pt}
 
 \end{table*}
+
 
 \begin{table*}
 \caption{Table showing top 10 influential persons of  List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NTF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.}
@@ -71,18 +73,18 @@ ed kearney     & 2.63 & 7                  & Popular     & 0.16 & 1.6  & 0.85 & 
 caleb morton   & 2.61 & 1                  & Not Inf. & 0.70 & 1.9  & 0    & day place long great water time feet found good men                         & 0.01  & 10   \\ \hline
 
 \end{tabular}}
-
+\vspace*{-10pt}
 \end{table*}
 
 %\subsection{Comparison Across Ranked Influential Person Lists }
 
-The top 10 influential people from lists $L_1$ and $L_2$ are presented in Table ~\ref{table:30t} and ~\ref{table:100t} respectively. 
+The top 10 influential people from lists $L_1$ and $L_2$ are presented in Tables~\ref{table:30t} and ~\ref{table:100t} respectively. 
 %It can be clearly seen from both the tables that the person category labels assigned during development of people gazetteer do not hold true after detection of influential persons. This suggests that the highly influential category people which were defined as person entities with more than 16 articles in the dataset might not necessarily be the most influential. The top 10 influential persons in both tables are dominated by the not influential and popular category having considerably less number of articles of occurrence. This indicates that the number of articles  has not been given priority while measuring influence. 
 Our results suggest that none of the measures of NDL, NTF or NSIM can be used alone to say whether a person is influential since these value do not decrease or increase consistently although the NPNF measure does contribute most to the IPI of any person.
 
 %\newpage
 The ranked lists $L_1$ and $L_2$ can be compared in terms of NSIM, UniqT and topic words to see the effect of 30 and 100 topics LDA models on influential person detection.
- If NSIM remains same in $L_1$ and $L_2$ during influential person detection, then the same highest scoring article' DI is selected for calculation of IPI in both of them. This is why the parameters NDL and NPNF remain same across both the lists. This can be seen for ``capt creeten", ``capt hankey", ``aaron trow" and ``mrs oakes" in Tables ~\ref{table:30t} and ~\ref{table:100t}. However, the value of UniqT for these persons decreases leading to decrease in their final IPI. This is because if the LDA model with higher number of topics (100) is used, the proportion of unique topics becomes lower when NSIM does not change. When the NSIM value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 4 in the second table. 
+ If NSIM remains same in $L_1$ and $L_2$ during influential person detection, then the same highest scoring article DI is selected for calculation of IPI in both of them. This is why the parameters NDL and NPNF remain same across both the lists. This can be seen for ``capt creeten", ``capt hankey", ``aaron trow" and ``mrs oakes" in Tables~\ref{table:30t} and ~\ref{table:100t}. However, the value of UniqT for these persons decreases leading to decrease in their final IPI. This is because if the LDA model with higher number of topics (100) is used, the proportion of unique topics becomes lower when NSIM does not change. When the NSIM value changes because of change in number of topics, a different article with maximum DI score can get selected leading to change in the values of NDL, NTF, UniqT and the final IPI. This causes a shift in the ranking of influential persons across the two lists and can be seen when the rank of ``alexander iii" in the first table moves from 9 to 4 in the second table. 
 This helps to illustrate how a change in number of topics affects the ranking of influential people.
 
 Wilcoxon signed rank paired test is also performed on the ranks of influential people across the two lists $L_1$ and $L_2$. This is done to test the hypothesis whether the differences in the ranking of person entities obtained using the 30 topic and 100 topic LDA models are due to chance or not. The null hypothesis for the test is: 
@@ -98,8 +100,8 @@ $H_0$: the distribution of difference of ranks of the persons across $L_1$ and $
 %The 100 Topic LDA model increases the IPI value of this entity because the NSIM value increases (more number of similar topic articles talk about this person) and a longer article gets maximum DI score resulting in a high IPI value and improvement in the ranking from rank 9 in the first table to rank 4 in the second.
 It is also observed that ``ann arbor" occurring in 44 articles is ranked 5 in list $L_1$ is a false positive as it is actually a location and has been wrongly ecognized in the PNER process as a person entity. 
 
-\item Popular - The top 10 influential entities from Tables ~\ref{table:30t} and ~\ref{table:100t} contain the most number of people from this person category. The person entity``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include ``mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
-Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons but suffer from the problem of named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
+\item Popular - The top 10 influential entities from Tables~\ref{table:30t} and ~\ref{table:100t} contain the most number of people from this person category. The person entity ``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include ``mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
+Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons suffer from the problem of named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
  
 \item
 Not Influential - Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
@@ -121,12 +123,14 @@ Among the top 30, 17 people from List $L_1$ and 12 from List $L_2$ were found to
 \includegraphics[scale=0.79]{ip}
 \caption{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation}
 \label{figure:inf}
+\vspace*{-10pt}
+
 \end{center}
 \end{figure*}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%DOUBT HERE : This has been mentioned again in the discussion section.
  Most of the false positives, although influential in other respects, were not  influential \emph{person} entities. This can be attributed to the incorrect PNER (Person Named Entity Recognition) on noisy OCR data.
 %Other reasons for obtaining false positives include: less information about these entities on Wikipedia as well as named entity disambiguation problem leading to high IPI score for several different persons having same names across the corpus.
- False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are  locations but were marked incorrectly as highly influential person entities.
+ False positives are obtained for person entities  such as ``mr got" which is not a person entity at all and for entities such as ``ann arbor" and ``van cortlandt" which are  locations but were recognized incorrectly as person entities.
  
  The ranked list of the top 30 influential persons with their IPI from Lists $L_1$ and $L_2$ can be seen in the Appendix (Tables ~\ref{table:app1} and ~\ref{table:app2}) where evaluation result for each person entity is also presented.
