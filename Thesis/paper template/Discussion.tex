@@ -11,7 +11,7 @@ The parameters for calculation of DI and IPI can also be learned by performing r
 The Normalized Document Length (NDL) defined for calculation of DI is normalized using the maximum length of any document in the dataset. However, there might exist other ways of normalization of Document Length like using total number of tokens in a person's document list or total number of tokens in the complete dataset which can be tuned based on the requirements of the application.
 
 \item
-Lists of influential people contain several false positives. This is due to noise in the OCR data -- several location and organization names have not been recognized as person entities even after performing spelling correction and PNER resulting in false detection of some influential entities like ``van cortlandt", ``ann arbor" ,  and ``sandy hook".  
+Lists of influential people contain several false positives. This is due to noise in the OCR data -- several location and organization names have been recognized as person entities even after performing spelling correction resulting in false detection during PNER for some influential entities like ``van cortlandt", ``ann arbor" ,  and ``sandy hook".  
 %There is also the problem of resolution of person name disambiguation in cases where persons like ``mrs martins" , ``mrs oakes", etc. have been recognized as influential.  
 
 \item The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA topic model settings used. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  30 SEP 2015 18:00
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.26)  2 OCT 2015 23:24
 entering extended mode
 **C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper*template/bare_adv.tex
 ("C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/bare_adv.tex"
@@ -577,30 +577,32 @@ Underfull \hbox (badness 3386) in paragraph at lines 691--691
  []
 
 ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Framework.tex"
-<images/framework4.jpg, id=200, 419.31656pt x 654.94687pt>
+<images/framework4.jpg, id=204, 419.31656pt x 654.94687pt>
 File: images/framework4.jpg Graphic file (type jpg)
 
 <use images/framework4.jpg>
 Package pdftex.def Info: images/framework4.jpg used on input line 3.
-(pdftex.def)             Requested size: 305.33714pt x 441.88019pt.
+(pdftex.def)             Requested size: 234.87325pt x 378.76016pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (6.01823pt too wide) in paragraph at lines 3--4
+ [][] 
+ []
 
- [3])
-("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Dataset.tex"
+[3 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/framework4.jpg
+>]) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Dataset.tex"
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<images/originalimage.png, id=217, 313.17pt x 189.70876pt>
+<images/originalimage.png, id=220, 313.17pt x 189.70876pt>
 File: images/originalimage.png Graphic file (type png)
 
 <use images/originalimage.png>
 Package pdftex.def Info: images/originalimage.png used on input line 9.
 (pdftex.def)             Requested size: 234.8769pt x 142.2812pt.
 
-<images/ocr.png, id=219, 306.39468pt x 175.40532pt>
+<images/ocr.png, id=222, 306.39468pt x 175.40532pt>
 File: images/ocr.png Graphic file (type png)
  <use images/ocr.png>
 Package pdftex.def Info: images/ocr.png used on input line 10.
@@ -610,17 +612,10 @@ Overfull \hbox (12.2405pt too wide) in paragraph at lines 9--11
 [][] [] 
  []
 
-
-Underfull \hbox (badness 1365) in paragraph at lines 25--26
-[]\OT1/ppl/b/n/9.53561 Real word er-rors \OT1/ppl/m/n/9.53561 in-clude words th
-at are
- []
-
-[4 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/framework4.jpg
->]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 )
+Underfull \vbox (badness 1028) has occurred while \output is active []
+
+ [4]
 ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\PeopleGazetteer.tex"
 [5 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/originalimage.
 png> <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/ocr.png>]
@@ -629,37 +624,44 @@ Overfull \hbox (13.06693pt too wide) detected at line 152
 /n/10 )
  []
 
-<images/gaz.jpg, id=253, 429.85594pt x 185.94469pt>
+<images/gaz.jpg, id=261, 429.85594pt x 185.94469pt>
 File: images/gaz.jpg Graphic file (type jpg)
  <use images/gaz.jpg>
 Package pdftex.def Info: images/gaz.jpg used on input line 169.
 (pdftex.def)             Requested size: 234.8775pt x 101.60312pt.
 
-[6]
 Underfull \hbox (badness 10000) in paragraph at lines 232--232
 []\OT1/ppl/m/n/8.03 PERSON EN-TITY
  []
 
 ) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\IPDetection.tex"
+Underfull \hbox (badness 2229) in paragraph at lines 9--12
+\OT1/ppl/m/n/9.53561 tained in a news ar-ti-cle. It is fur-ther nor-mal-
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 9--12
+\OT1/ppl/m/n/9.53561 news ar-ti-cle across the cor-pus. Thus, $\OML/cmm/m/it/10
+ NDL \OT1/cmr/m/n/10 =$
+ []
+
+[6 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/gaz.jpg>]
 Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ù in font pplr7t!
 
-[7 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/gaz.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
 []\OT1/ppl/m/n/9.53561 where, $\OML/cmm/m/it/10 UniqT \OT1/cmr/m/n/10 =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
 $[]$\OT1/ppl/m/n/9.53561 .
  []
 
 
-Overfull \hbox (14.30342pt too wide) detected at line 186
+Overfull \hbox (14.30342pt too wide) detected at line 184
 [][] 
  []
 
@@ -667,7 +669,7 @@ Overfull \hbox (14.30342pt too wide) detected at line 186
 File: images/IPIChart2.jpg Graphic file (type jpg)
 
 <use images/IPIChart2.jpg>
-Package pdftex.def Info: images/IPIChart2.jpg used on input line 216.
+Package pdftex.def Info: images/IPIChart2.jpg used on input line 214.
 (pdftex.def)             Requested size: 229.23083pt x 143.41042pt.
 )
 ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Results.tex"
@@ -675,28 +677,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--18
 [][]
  []
 
+[8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \hbox (badness 2512) in paragraph at lines 41--41
+ [9 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/IPIChart2.jpg
+>]
+Underfull \hbox (badness 2512) in paragraph at lines 49--49
 \OT1/ppl/m/n/8.03 jus-tice case yes-ter-day
  []
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 44--44
+Underfull \hbox (badness 2512) in paragraph at lines 49--49
 \OT1/ppl/m/n/8.03 jus-tice case yes-ter-day
  []
 
 
-Underfull \hbox (badness 3954) in paragraph at lines 45--45
+Underfull \hbox (badness 3954) in paragraph at lines 49--49
 \OT1/ppl/m/n/8.03 work york blood il-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--46
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
 []\OT1/ppl/m/n/8.03 john mac-don-
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 46--46
+Underfull \hbox (badness 2012) in paragraph at lines 49--49
 \OT1/ppl/m/n/8.03 women good coun-try
  []
 
@@ -706,72 +712,58 @@ Underfull \hbox (badness 2012) in paragraph at lines 49--49
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--50
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
 []\OT1/ppl/m/n/8.03 white wa-ter in-dian
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 75--75
+Underfull \hbox (badness 3439) in paragraph at lines 74--74
 \OT1/ppl/m/n/8.03 tain money in-spec-tor
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 75--75
+Underfull \hbox (badness 2189) in paragraph at lines 74--74
 []\OT1/ppl/m/n/8.03 day place long great
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 75--75
+Underfull \hbox (badness 3439) in paragraph at lines 74--74
 \OT1/ppl/m/n/8.03 tain money in-spec-tor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
 []\OT1/ppl/m/n/8.03 john mac-don-
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 75--75
+Underfull \hbox (badness 2012) in paragraph at lines 74--74
 []\OT1/ppl/m/n/8.03 people amer-i-can man
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
 \OT1/ppl/m/n/8.03 great coun-try men
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 75--75
+Underfull \hbox (badness 2189) in paragraph at lines 74--74
 []\OT1/ppl/m/n/8.03 day place long great
  []
 
-[9 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/IPIChart2.jpg>
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-<images/ip.png, id=333, 498.36188pt x 297.36093pt>
+[10] <images/ip.png, id=336, 498.36188pt x 297.36093pt>
 File: images/ip.png Graphic file (type png)
  <use images/ip.png>
-Package pdftex.def Info: images/ip.png used on input line 123.
+Package pdftex.def Info: images/ip.png used on input line 121.
 (pdftex.def)             Requested size: 393.70157pt x 234.91255pt.
 )
 ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Discussion.tex"
-[12]
+[11] [12 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/ip.png>]
+) ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Conclusion.tex"
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\Conclusion.tex"
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13 <C:/Users/AAYUSHEE/git/ThesisGit/Thesis/paper template/images/ip.png>])
-("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.bbl"
+("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.bbl" [13]
 Underfull \hbox (badness 4673) in paragraph at lines 91--95
 []\OT1/ppl/m/n/8.03 D. R. Radev, S. Blair-Goldensohn, Z. Zhang, and
  []
@@ -785,41 +777,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--155
  []
 
 [14])
-Underfull \hbox (badness 10000) in paragraph at lines 916--916
+Underfull \hbox (badness 10000) in paragraph at lines 905--905
 []\OT1/ppl/m/n/8.03 TOPIC
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 928--928
+Underfull \hbox (badness 10000) in paragraph at lines 917--917
 []\OT1/ppl/b/n/8.03 Whether found on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 971--971
+Underfull \hbox (badness 10000) in paragraph at lines 960--960
 []\OT1/ppl/b/n/8.03 Whether found on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1001--1001
+Underfull \hbox (badness 10000) in paragraph at lines 990--990
 []\OT1/ppl/m/n/8.03 part of or-ga-ni-za-tion
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1073.
-[15] [16] [17] [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1073.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1062.
+[15
+
+] [16] [17] [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1062.
 
 ("C:\Users\AAYUSHEE\git\ThesisGit\Thesis\paper template\bare_adv.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1073.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1073.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1062.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1062.
 
 Package rerunfilecheck Info: File `bare_adv.out' has not changed.
-(rerunfilecheck)             Checksum: FA80CA88EF605345D2BF35AF262AF272;1387.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1073.
+(rerunfilecheck)             Checksum: 858A0014CFB4C8DEE4158A72486E4867;1440.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1062.
  ) 
 Here is how much of TeX's memory you used:
  9560 strings out of 494045
- 146643 string characters out of 3148378
- 300427 words of memory out of 3000000
+ 146626 string characters out of 3148378
+ 294388 words of memory out of 3000000
  12596 multiletter control sequences out of 15000+200000
  49534 words of font info for 108 fonts, out of 3000000 for 9000
  718 hyphenation exceptions out of 8191
@@ -840,9 +834,9 @@ a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/urw/palatino/uplri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/urw/zapfding/uzdr.pfb>
-Output written on bare_adv.pdf (18 pages, 777641 bytes).
+Output written on bare_adv.pdf (18 pages, 778502 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
+ 459 PDF objects out of 1000 (max. 8388607)
  120 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
