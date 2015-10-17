@@ -44,33 +44,33 @@
 \citation{lerman2010using}
 \citation{agarwal2008identifying}
 \citation{cha2010measuring}
+\citation{dutta2011learning}
+\citation{Gupta_14a}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Machine Learning Framework for Prosopographical Research}{3}{section.3}}
 \newlabel{chp:framework}{{3}{3}{Machine Learning Framework for Prosopographical Research\relax }{section.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Research Framework showing components of proposed solution\relax }}{3}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:framework}{{1}{3}{Research Framework showing components of proposed solution\relax \relax }{figure.caption.1}{}}
-\citation{dutta2011learning}
-\citation{Gupta_14a}
 \citation{chattopadhyaya2013fast}
 \citation{Gupta_14a}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Dataset Description}{4}{section.4}}
 \newlabel{data}{{4}{4}{Dataset Description\relax }{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Characteristics}{4}{subsection.4.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Statistics}{4}{subsection.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Preprocessing}{4}{subsection.4.3}}
 \citation{mccallum2003early,finkel2005incorporating,sutton2011introduction}
+\citation{blei2012probabilistic}
+\citation{blei2003latent}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scanned Image of a Newspaper article (left) and its OCR raw text (right)\relax }}{5}{figure.caption.2}}
 \newlabel{figure:1}{{2}{5}{Scanned Image of a Newspaper article (left) and its OCR raw text (right)\relax \relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Preprocessing}{5}{subsection.4.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}People Gazetteer}{5}{section.5}}
 \newlabel{chapter:people gazetteer}{{5}{5}{People Gazetteer\relax }{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Person Named Entity Recognition (PNER)}{5}{subsection.5.1}}
 \newlabel{ner}{{5.1}{5}{Person Named Entity Recognition (PNER)\relax }{subsection.5.1}{}}
-\citation{blei2012probabilistic}
-\citation{blei2003latent}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Topic Detection}{5}{subsection.5.2}}
+\newlabel{topic detection}{{5.2}{5}{Topic Detection\relax }{subsection.5.2}{}}
 \citation{newman2009distributed}
 \citation{newman2009distributed,blei2003latent}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Topic Detection}{6}{subsection.5.2}}
-\newlabel{topic detection}{{5.2}{6}{Topic Detection\relax }{subsection.5.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}People Gazetteer Output }{6}{subsection.5.3}}
 \newlabel{gaz:result}{{5.3}{6}{People Gazetteer Output\relax }{subsection.5.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Procedure for development of People Gazetteer\relax }}{6}{figure.caption.3}}
@@ -83,27 +83,25 @@
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Table illustrating change in PNF for person named entities on using coreference resolution on an article text. The text has a person named entity ``Eugene Kelly'' with name frequency=2. During coreference resolution, all mentions are extracted from the text first and coreference chains are obtained. Most representative entity from each coreference chain is then identified (which may or may not be a person named entity) and if it matches any person named entity from the People Gazetteer, then the PNF for this entity is replaced by the count of mentions found in its coreference chain. Here, out of 9 coreference chains, ``Eugene Kelly'' is the most representative mention in one of the chains with 5 coreferences and since ``Eugene Kelly'' is also a person entity as verified from the People Gazetteer, we replace its PNF from 2 to 5.\relax }}{8}{table.caption.5}}
 \newlabel{table:coref}{{II}{8}{Table illustrating change in PNF for person named entities on using coreference resolution on an article text. The text has a person named entity ``Eugene Kelly'' with name frequency=2. During coreference resolution, all mentions are extracted from the text first and coreference chains are obtained. Most representative entity from each coreference chain is then identified (which may or may not be a person named entity) and if it matches any person named entity from the People Gazetteer, then the PNF for this entity is replaced by the count of mentions found in its coreference chain. Here, out of 9 coreference chains, ``Eugene Kelly'' is the most representative mention in one of the chains with 5 coreferences and since ``Eugene Kelly'' is also a person entity as verified from the People Gazetteer, we replace its PNF from 2 to 5.\relax \relax }{table.caption.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Influential Person Index (IPI)}{8}{subsection.6.1}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Table illustrating average statistics for each Person Category of the People Gazetteer.\relax }}{8}{table.caption.9}}
-\newlabel{table:stats}{{IV}{8}{Table illustrating average statistics for each Person Category of the People Gazetteer.\relax \relax }{table.caption.9}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Algorithm for Detection of Influential People (ADIP)}{8}{subsection.6.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.\relax }}{8}{figure.caption.8}}
+\newlabel{figure:IPI}{{4}{8}{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.\relax \relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Results}{8}{section.7}}
 \newlabel{influential:results}{{7}{8}{Results\relax }{section.7}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Algorithm for Detection of Influential People (ADIP)\relax }}{9}{algocf.1}}
 \newlabel{algorithm:3}{{1}{9}{Algorithm for Detection of Influential People (ADIP)\relax }{algocf.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Description of the functions used in Algorithm\nobreakspace  {}\ref  {algorithm:3}\relax }}{9}{table.caption.7}}
 \newlabel{default}{{III}{9}{Description of the functions used in Algorithm~\ref {algorithm:3}\relax \relax }{table.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.\relax }}{9}{figure.caption.8}}
-\newlabel{figure:IPI}{{4}{9}{Comparison of the Average IPI for two ranked lists $L_1$ and $L_2$ using $30$ and $100$ topics respectively.\relax \relax }{figure.caption.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax }}{11}{table.caption.10}}
-\newlabel{table:30t}{{V}{11}{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax \relax }{table.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Evaluation}{11}{subsection.7.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{11}{section.8}}
-\newlabel{influential:discussion}{{8}{11}{Discussion\relax }{section.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Table showing top 10 influential persons of List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax }}{12}{table.caption.11}}
-\newlabel{table:100t}{{VI}{12}{Table showing top 10 influential persons of List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax \relax }{table.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation\relax }}{12}{figure.caption.12}}
-\newlabel{figure:inf}{{5}{12}{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation\relax \relax }{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Table illustrating average statistics for each Person Category of the People Gazetteer.\relax }}{9}{table.caption.9}}
+\newlabel{table:stats}{{IV}{9}{Table illustrating average statistics for each Person Category of the People Gazetteer.\relax \relax }{table.caption.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax }}{10}{table.caption.10}}
+\newlabel{table:30t}{{V}{10}{Table showing top 10 influential persons of List L1 detected from People Gazetteer with 30 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax \relax }{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Table showing top 10 influential persons of List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax }}{11}{table.caption.11}}
+\newlabel{table:100t}{{VI}{11}{Table showing top 10 influential persons of List L2 detected from People Gazetteer with 100 Topics LDA model. Parameters NDL, NPNF, NSIM and Topic Words belong to the maximum scoring DI in the person's document list.\relax \relax }{table.caption.11}{}}
 \citation{zhang2009multi}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Evaluation}{12}{subsection.7.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{12}{section.8}}
+\newlabel{influential:discussion}{{8}{12}{Discussion\relax }{section.8}{}}
 \bibstyle{IEEEtran}
 \bibdata{aayushee}
 \bibcite{allen2010historians}{1}
@@ -114,11 +112,13 @@
 \bibcite{Shahaf_11}{6}
 \bibcite{Gabrilovich_04a}{7}
 \bibcite{Alonso_10}{8}
-\bibcite{Khurdiya_11}{9}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation\relax }}{13}{figure.caption.12}}
+\newlabel{figure:inf}{{5}{13}{Some of the top 30 influential persons obtained from the dataset and also found on Wikipedia during evaluation\relax \relax }{figure.caption.12}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{13}{section.9}}
 \newlabel{conc}{{9}{13}{Conclusion\relax }{section.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {10}Acknowledgement}{13}{section.10}}
 \@writefile{toc}{\contentsline {section}{References}{13}{section*.13}}
+\bibcite{Khurdiya_11}{9}
 \bibcite{McKeown95}{10}
 \bibcite{Otterbacher06}{11}
 \bibcite{Radev97}{12}

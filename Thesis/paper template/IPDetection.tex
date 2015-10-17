@@ -2,7 +2,7 @@ To find \emph{influential} people from the text in news articles, we define a sc
 
 \noindent \textbf{Document Index (DI): }
 %\label{influential:DI}
-The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. This is calculated as follows:
+The Document Index (DI) of an article in the people gazetteer helps to measure a person's influence score. This is calculated for all the articles that a person entity is associated with in the People Gazetteer as follows:
 
 %\begin{enumerate}
 %\item 
@@ -126,7 +126,7 @@ Once DI is calculated, the IPI is estimated as follows:
 $IPI= \text{max } DI(d_1, d_2, ...,d_n)+ UniqT$
 \end{center}
 
-where, $UniqT = \frac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$. The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. %It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
+where, max DI $(d_1,d_2...d_n)$ is the maximum DI found from a person's list of n articles, $UniqT = \frac{\text{Number of Unique Article Topics in a person entity's document list}}{\text{Total Number of Topics in the corpus}}$. The parameter $UniqT$  is used to account for the fact that a single person entity can be talked about multiple news topics in the news articles and to include its effect on the person entity's influence score. %It is normalized by dividing it with the total number of topics as obtained during topic detection on all 14020 articles.
 To rank people, the IPI are sorted in decreasing order. %in each category (Not Influential, Popular, Elite)
   
 \subsection{Algorithm for Detection of Influential People (ADIP)}
