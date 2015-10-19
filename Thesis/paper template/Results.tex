@@ -94,20 +94,16 @@ $H_0$: the distribution of difference of ranks of the persons across $L_1$ and $
 
 
 \noindent \textbf{Case Studies: } To evaluate whether the ranking algorithm indeed finds people of \emph{influence}, manual evaluation of results is necessary. A description of the influential people from lists $L_1$ and $L_2$  (Table ~\ref{table:30t} and ~\ref{table:100t}) are discussed below: 
-\begin{enumerate}
-
-\item Elite - This category as defined earlier includes people with greater than 16 news articles. However, only one person  (``alexander iii") from this category occurs in the top 10 influential persons. The entry for ``alexander iii" has an IPI of 2.71 and 3.05 respectively in lists $L_1$ and $L_2$ . The person occurs in 31 news articles with 5 and 7 different topics in each of the lists. The most common topic words associated with this person entity are: ``emperor prince french alexander czar london nov government imperial russian" indicating the importance of this entity in government related news topics. 
+%\begin{enumerate}
+(1) \textbf{Elite} - This category as defined earlier includes people with greater than 16 news articles. However, only one person  (``alexander iii") from this category occurs in the top 10 influential persons. The entry for ``alexander iii" has an IPI of 2.71 and 3.05 respectively in lists $L_1$ and $L_2$ . The person occurs in 31 news articles with 5 and 7 different topics in each of the lists. The most common topic words associated with this person entity are: ``emperor prince french alexander czar london nov government imperial russian" indicating the importance of this entity in government related news topics. 
 %The 100 Topic LDA model increases the IPI value of this entity because the NSIM value increases (more number of similar topic articles talk about this person) and a longer article gets maximum DI score resulting in a high IPI value and improvement in the ranking from rank 9 in the first table to rank 4 in the second.
 It is also observed that ``ann arbor" occurring in 44 articles is ranked 5 in list $L_1$ is a false positive as it is actually a location and has been wrongly ecognized in the PNER process as a person entity. 
-
-\item Popular - The top 10 influential entities from Tables~\ref{table:30t} and ~\ref{table:100t} contain the most number of people from this person category. The person entity ``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include ``mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
+(2)\textbf{Popular} - The top 10 influential entities from Tables~\ref{table:30t} and ~\ref{table:100t} contain the most number of people from this person category. The person entity ``capt creeten" has been ranked as highest influential (Rank 1) across both the tables. It occurs in 10 news articles with 9 of them belonging to the same topic indicating the person influencing news articles of high topic similarity. Some of the most common topic words for this entity include ``mr police witness committee capt asked captain money inspector paid" indicating the importance of this entity in a judicial or police related news topic.
 Several persons from this category like ``mrs martin" , ``mrs oakes"  although identified among the top 10 influential persons suffer from the problem of named entity disambiguation as it is hard to identify which exact person they refer to due to lack of first names.
-It is also observed that ``buenos ayres" occurring in 6 articles is ranked 10 in list $L_1$ is a false positive as it is actually a location and has been wrongly ecognized in the PNER process as a person entity. 
- 
-\item
-Not Influential - Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
+It is also observed that ``buenos ayres" occurring in 6 articles is ranked 10 in list $L_1$ is a false positive as it is actually a location and has been wrongly recognized in the PNER process as a person entity. 
+ (3)\textbf{Not Influential} - Person entities belonging to this category have extremely low occurrence in news articles although the IPI of topmost influential entities belonging to this category are comparable to those in the other 2 categories.
 Several person entities occurring in low number of news articles like ``aaron trow", ``caleb morton", ``john macdonald"  belong to this category. These entities in spite of occurring in very few articles (1 to 3) have high term frequency in those articles with comparatively longer article length indicating the importance of these entities with respect to the articles they occur in. Since each of the features has been given equal weight during the calculation of IPI,  these person entities with high NDL and NPNF have been identified among the top 10 influential persons. 
-\end{enumerate} 
+%\end{enumerate} 
 
 
 \subsection{Evaluation}
