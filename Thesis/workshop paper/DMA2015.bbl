@@ -18,12 +18,6 @@ Eric Brill and Robert~C Moore.
   Computational Linguistics}, pages 286--293. Association for Computational
   Linguistics, 2000.
 
-\bibitem{chattopadhyaya2013fast}
-Ishan Chattopadhyaya, Kannappan Sirchabesan, and Krishanu Seal.
-\newblock A fast generative spell corrector based on edit distance.
-\newblock In {\em Advances in Information Retrieval}, pages 404--410. Springer,
-  2013.
-
 \bibitem{christen2006comparison}
 Peter Christen.
 \newblock A comparison of personal name matching: Techniques and practical
@@ -50,14 +44,6 @@ Mohammad~Ali Elmi and Martha Evens.
 Karen Kukich.
 \newblock Techniques for automatically correcting words in text.
 \newblock {\em ACM Computing Surveys (CSUR)}, 24(4):377--439, 1992.
-
-\bibitem{lee2010topic}
-Austin Lee, Haimonti Dutta, Rebecca Passonneau, David Waltz, and Barbara
-  Taranto.
-\newblock Topic identification from historic newspaper articles of the new york
-  public library: A case study.
-\newblock In {\em 5th Annual Machine Learning Symposium at the New York Academy
-  of Sciences}, 2010.
 
 \bibitem{levenshtein1966binary}
 Vladimir~I Levenshtein.
@@ -91,11 +77,6 @@ Martin Reynaert.
   ocr-error correction evaluation.
 \newblock In {\em LREC}, 2008.
 
-\bibitem{rice1996measuring}
-Stephen~V Rice.
-\newblock {\em Measuring the accuracy of page-reading systems}.
-\newblock PhD thesis, University of Nevada, 1996.
-
 \bibitem{ringlstetter2007text}
 Christoph Ringlstetter, Max Hadersbeck, Klaus~U Schulz, and Stoyan Mihov.
 \newblock Text correction using domain dependent bigram models from web crawls.
@@ -121,13 +102,6 @@ Christian~M Strohmaier, Christoph Ringlstetter, Klaus~U Schulz, and Stoyan
 \newblock Lexical postcorrection of ocr-results: The web as a dynamic secondary
   dictionary?
 \newblock In {\em ICDAR}, pages 1133--1137. Citeseer, 2003.
-
-\bibitem{taghva2001ocrspell}
-Kazem Taghva and Eric Stofsky.
-\newblock Ocrspell: an interactive spelling correction system for ocr errors in
-  text.
-\newblock {\em International Journal on Document Analysis and Recognition},
-  3(3):125--137, 2001.
 
 \bibitem{tong1996statistical}
 Xiang Tong and David~A Evans.

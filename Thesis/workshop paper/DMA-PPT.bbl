@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}
+
+\bibitem{agarwal2013utilizing}
+{\sc Agarwal, S.}
+\newblock Utilizing big data in identification and correction of ocr errors.
+
+\bibitem{bassil2012ocr}
+{\sc Bassil, Y., and Alwani, M.}
+\newblock Ocr context-sensitive error correction based on google web 1t 5-gram
+  data set.
+\newblock {\em arXiv preprint arXiv:1204.0188\/} (2012).
+
+\bibitem{chattopadhyaya2013fast}
+{\sc Chattopadhyaya, I., Sirchabesan, K., and Seal, K.}
+\newblock A fast generative spell corrector based on edit distance.
+\newblock In {\em Advances in Information Retrieval}. Springer, 2013,
+  pp.~404--410.
+
+\bibitem{elmi1998spelling}
+{\sc Elmi, M.~A., and Evens, M.}
+\newblock Spelling correction using context.
+\newblock In {\em Proceedings of the 36th Annual Meeting of the Association for
+  Computational Linguistics and 17th International Conference on Computational
+  Linguistics-Volume 1\/} (1998), Association for Computational Linguistics,
+  pp.~360--364.
+
+\bibitem{kukich1992techniques}
+{\sc Kukich, K.}
+\newblock Techniques for automatically correcting words in text.
+\newblock {\em ACM Computing Surveys (CSUR) 24}, 4 (1992), 377--439.
+
+\bibitem{rice1996measuring}
+{\sc Rice, S.~V.}
+\newblock {\em Measuring the accuracy of page-reading systems}.
+\newblock PhD thesis, University of Nevada, 1996.
+
+\bibitem{singh2012survey}
+{\sc Singh, A., Bacchuwar, K., and Bhasin, A.}
+\newblock A survey of ocr applications.
+\newblock {\em International Journal of Machine Learning and Computing 2}, 3
+  (2012), 314--318.
+
+\end{thebibliography}

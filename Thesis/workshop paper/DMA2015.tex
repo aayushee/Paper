@@ -73,7 +73,7 @@ A major problem that surfaces when evaluating a spell corrector is that the text
 In this paper, we describe the development of an N-word grams Spell Correction Evaluation (SCE) algorithm that can automatically evaluate a spell correction algorithm by using an N-word window to align three parallel corpora - the noisy OCR, corrected and original/ manually cleaned text. 
 %We present the performance evaluation results of applying our SCE algorithm on a  commonly used spell correction technique - Edit distance algorithm on 50 OCR historical newspaper articles of ``The Sun" newspaper published in Nov-Dec 1894. 
 
-\noindent \textbf{Organization: } This paper is organized as follows: related work is described in Section~\ref{spell:rw}; characteristics of the OCR data in Section~\ref{spell:errors}; Spelling Correction and Evaluation algorithms in Section~\ref{spell:algo}; empirical evaluation in Section~{spell:results} followed by discussion and future work in Section~\ref{spell:fw}. 
+\noindent \textbf{Organization: } This paper is organized as follows: related work is described in Section~\ref{spell:rw}; characteristics of the OCR data in Section~\ref{spell:errors}; Spelling Correction and Evaluation algorithms in Section~\ref{spell:algo}; empirical evaluation in Section~\ref{spell:results} followed by discussion and future work in Section~\ref{spell:fw}. 
 
 \section{Related Work}
 \label{spell:rw}
@@ -192,12 +192,12 @@ Spell correction was done?  & Yes & No  & Yes & No \\ \hline
 Length{[}CorrectedLine{]} \textless4 or Length{[}OriginalLine{]}\textless4                                 & 0                          & Length{[}OriginalLine{]} \\ \hline
 i=0                                                                                                        & 0                          & 3                        \\ \hline
 i=1                                                                                                        & 0                          & 4                        \\ \hline
-Length{[}CorrectedLine]-2
-Length{[}CorrectedLine{]}-1	 & i-2                        & Length{[}OriginalLine{]} \\ \hline
-Length{[}CorrectedLine	 & i-2                        & Length{[}OriginalLine{]} \\ \hline
-Length{[}CorrectedLine+1{]} & i-2                        & Length{[}OriginalLine{]} \\ \hline
+i=Length{[}CorrectedLine]-2 	&i-2			&Length{[}OriginalLine{]} \\ \hline
+i=Length{[}CorrectedLine{]}-1	 & i-2                        & Length{[}OriginalLine{]} \\ \hline
+i=Length{[}CorrectedLine{]}	 & i-2                        & Length{[}OriginalLine{]} \\ \hline
+i=Length{[}CorrectedLine+1{]} & i-2                        & Length{[}OriginalLine{]} \\ \hline
 i\textgreater=Length{[}CorrectedLine{]}+2                                                                  & Length{[}OriginalLine{]}-3 & Length{[}OriginalLine{]} \\ \hline
-Remaining cases                                                                                            & i-2                        & i+3                      \\ \hline
+Any other value of i                                                                                            & i-2                        & i+3                      \\ \hline
 \end{tabular}}
 \end{table}
 
