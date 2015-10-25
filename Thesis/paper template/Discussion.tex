@@ -11,7 +11,7 @@ The following issues encountered during algorithm design and empirical verificat
 %\item 
 (5) We have used the topic with highest probability for topic detection in the People Gazetteer. However, there could be other topics of interest. The algorithm can be modified to assign top N (N can be chosen depending on the topic distribution probabilities in the corpus) topics to a document by updating NSIM as follows: 
  $NSIM=  \frac{\sum_{i=1}^{N}\text{SIM}_i} { N\times n}$
-Here, $N$=set of topics assigned to a document during topic detection,  $t_i$ =frequency of $i^{th}$ topic in all documents in a person's list and $n$= total number of documents in a person's list.
+Here, $N$=set of topics assigned to a document during topic detection,  $SIM_i$ =Number of articles with topic $i$ in the person's document list  and $n$= total number of documents in which person entity occurs in the People Gazetteer.
 %\item
 (6) The choice of parameters for topic detection also affects the detection of influential people which is evident from the fact that we get different ranking of influential people for the two different LDA topic model settings used. 
 
