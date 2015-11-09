@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: DMA-PPT.aux
+The style file: acm.bst
+Database file #1: pptbib.bib
+Warning--empty journal in agarwal2013utilizing
+You've used 7 entries,
+            2253 wiz_defined-function locations,
+            568 strings with 5039 characters,
+and the built_in function-call counts, 2232 in all, are:
+= -- 228
+> -- 79
+< -- 0
++ -- 35
+- -- 26
+* -- 153
+:= -- 360
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 33
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 93
+empty$ -- 186
+format.name$ -- 26
+if$ -- 473
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 37
+num.names$ -- 14
+pop$ -- 34
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 65
+stack$ -- 0
+substring$ -- 151
+swap$ -- 29
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 1
+while$ -- 24
+width$ -- 8
+write$ -- 72
+(There was 1 warning)

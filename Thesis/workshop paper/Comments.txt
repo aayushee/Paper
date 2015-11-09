@@ -1,0 +1,5 @@
+Questions
+- How does the choice of the dictionary in the edit distance algorithm affect the performance of the SCE algorithm? [Take a few different dictionaries and report results]
+- Use a context dependent spell corrector and report results of performance of SCE algorithm
+- Play around with the choice of window size. Aim for obtaining theoretical bounds for this (look at Dynamic Time Warping). If not, at least present results by heuristically choosing window size = 1, 2, ... , maximum difference in lengths in each line
+- In the write-up of the paper, present more details of the LCS algorithm

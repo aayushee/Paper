@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
+\beamer@sectionintoc {2}{Related Work}{8}{0}{2}
+\beamer@sectionintoc {3}{Problem Description}{10}{0}{3}
+\beamer@sectionintoc {4}{Components of the Algorithm}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{Data Gathering}{14}{0}{4}
+\beamer@subsectionintoc {4}{2}{Data Preprocessing}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{Spelling Correction Evaluation}{19}{0}{4}
+\beamer@sectionintoc {5}{Discussion}{24}{0}{5}
+\beamer@sectionintoc {6}{Conclusion and Future Work}{27}{0}{6}
+\beamer@sectionintoc {7}{Acknowledgements}{29}{0}{7}
