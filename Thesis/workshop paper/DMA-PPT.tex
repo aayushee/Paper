@@ -16,9 +16,9 @@
 
 \title{Evaluation of Spell Correction on Noisy OCR Data }
 
-\author[shortname]{Aayushee Gupta \\{\tiny aayushee1230@iiitd.ac.in} \inst{1} \and \\Haimonti Dutta \\{\tiny haimonti@buffalo.edu} \inst{2}}
-\institute[shortinst]{\inst{1} Indraprastha Institute of Information Technology, Delhi \and %
-                     \inst{2} School of Management University, Buffalo}
+\author[shortname]{Aayushee Gupta \inst{1} \\{\tiny aayushee1230@iiitd.ac.in} \and \\Haimonti Dutta \inst{2} \\{\tiny haimonti@buffalo.edu}}
+\institute[shortinst]{\inst{1} Department of Computer Science, Indraprastha Institute of Information Technology, Delhi \and %
+                     \inst{2} Department of Management Science and Systems, School of Management, University at Buffalo, New York}
 
 
 %\author[shortname]{Aayushee Gupta \\{\tiny aayushee1230@iiitd.ac.in}  \\Indraprastha Institute of Information Technology, Delhi  %\and  \\Haimonti Dutta \\{\tiny haimonti@buffalo.edu} \\School of Management University, Buffalo}
@@ -40,23 +40,27 @@
 %hideothersubsections
 %MOTIVATION
 \section{Motivation}
+
 \begin{frame}
 \frametitle{Motivation}
 \begin{itemize}
- \justifying
-
 \item 
-OCR is the electronic translation of handwritten, typewritten or printed text into machine translated images
+Optical Character Recognition (OCR) is the electronic translation of handwritten, typewritten or printed text into machine translated images
 \item
 It has wide applications in the fields of banking, healthcare, digital libraries, handwriting recognition,etc.\cite{singh2012survey}
-\item
-Spell correction becomes necessary while using OCR for digital libraries when dealing with historic newspapers as the OCR process generates a lot of noisy text
-\item A major problem that surfaces when evaluating the spell correction process is that the text has to be verified against the original text (ground truth) to estimate its performance. 
-\item This one-to-one verification may lead to word alignment problems, since the corrected and original text can be of different lengths.
 \end{itemize}
+\begin{figure}[ht]
+%\begin{center}
+\includegraphics[scale=0.35]{images/handwriting.jpg}
+\hspace{0.2in}
+\includegraphics[scale=0.15]{images/printedOCR.jpg}
+%\end{center}
+\end{figure}
+
 \end{frame}
 
 \begin{frame}
+\frametitle{An example from digital humanities}
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.5]{images/originalimage}
@@ -66,24 +70,50 @@ Spell correction becomes necessary while using OCR for digital libraries when de
 \end{figure}
 \end{frame}
 
-%PROBLEM DESCRIPTION
-\section{Problem Description}
 \begin{frame}
-\frametitle{Problem Description}
+\frametitle{Motivation}
+\begin{itemize}
  \justifying
-
-\textbf{Aim}: To develop an algorithm that can
-automatically evaluate a spell correction algorithm so as to align three parallel corpora - the
-noisy OCR, corrected and original/ manually cleaned text.
-
-
-
+\item
+Spell correction becomes essential as the OCR process generates a lot of noisy text
+\item Many algorithms exist in literature for automatic spell correction.
+\item \textcolor{red}{\textbf{But how good are they?}}
+\item A major problem that surfaces when evaluating the spell correction process is that the text has to be verified against the original text (ground truth) to estimate its performance. 
+ \begin{itemize}
+ \item Requires alignment of three parallel corpora - noisy OCR text, text corrected by software, ground truth (often manually verified)
+ \end{itemize}
+%\item This one-to-one verification may lead to word alignment problems, since the corrected and original text can be of different lengths.
+\end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Three Parallel Corpora }
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.35]{images/ocrScan-v1a.jpg}
+\includegraphics[scale=0.35]{images/ocrScan-v1b.jpg}
+\includegraphics[scale=0.35]{images/ocrScan-v1c.jpg}
+\caption{Parallel Corpora: (a) Image of Article (b) OCR (c) After Correction}
+\end{center}
+\end{figure}
+\end{frame}
 
+\begin{frame}
+\frametitle{Types of Errors encountered }
+\begin{itemize}
+\item Real words errors: Words that are spelled correctly in the OCR text but still incorrect
+when compared to the original newspaper article image.
+\item Non-real word errors: Words that have been misspelled due to some insertion, deletion,
+substitution or transposition of characters from a word.
+\item Non-word errors: Words that have been spelled incorrectly and are a combination of
+alphabets and numerical characters.
+\item New Line errors: Words that are separated by hyphens where part of a word is written
+on one text line and remaining part in the next line. 
+\item Word Split and Join errors: Words that either get split into one of more parts or
+some words in a sentence get joined to a make a single word.
+\end{itemize}
+\end{frame}
 
-
-%RELATED WORK
 \section{Related Work}
 \begin{frame}
 \frametitle{Related Work}
@@ -104,12 +134,31 @@ alignment problem arising due to word split and join errors in the OCR text
 \end{itemize}
 \end{frame}
 
+%PROBLEM DESCRIPTION
+\section{Problem Description}
+\begin{frame}
+\frametitle{Problem Description}
+ \justifying
+
+\textbf{Aim}: To develop an algorithm that can
+automatically evaluate a spell correction algorithm so as to align three parallel corpora - the
+noisy OCR, corrected and original/ manually cleaned text.
+
+
+
+\end{frame}
+
+
+
+
+%RELATED WORK
+
  
 %SOLUTION FRAMEWORK
-\section{Solution Framework}
+\section{Components of the Algorithm}
 \begin{frame}
 
-\frametitle{Solution Framework}
+\frametitle{Components of the Algorithm}
 \begin{itemize}
 \item
 Apply spell correction on the OCR text dataset
@@ -134,6 +183,12 @@ Design an algorithm for spell correction evaluation
 \item \textbf{Data Statistics} : 50 news articles of ``The Sun" newspaper published between November-December 1894 consisting of  tokens
 \item \textbf{Data Characteristics} : News articles consist of one or more OCR errors of the types- Real word, Non-real word, Non-word, Word Split and Join and New line errors, They also do not have any punctuation
 \end{itemize}
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.09]{images/chrAmerica.jpg}
+\caption{Chronicling America: A joint effort by the National Endowment of Humanities and Library of Congress to digitize newspapers}
+\end{center}
+\end{figure}
 
 
 \end{frame} 
@@ -269,7 +324,7 @@ OriginalLine= \textit{Grand jury now sitting at Richmond}
 \textbf{Word in Corrected Line} & \textbf{Corresponding Word Window in Original Line}& \textbf{Result} \\ \hline
 Irnniluttry & Grand jury now & FN \\ \hline
 iiownllllnu & Grand jury now sitting & FN \\ \hline
-at & Grand jury now sitting at & TN \\ \hline
+at & now sitting at Richmond & TN \\ \hline
 Richmond  &  sitting at Richmond & TP \\ \hline
 \end{tabular}
 \end{table}
@@ -351,14 +406,27 @@ measure the accuracy using our SCE algorithm
 \end{itemize}
 \end{frame}
 
+\section{Acknowledgements}
+\begin{frame}
+\begin{block}{Acknowledgements}
+This work was initially supported by the National Endowment of Humanities grant no. NEH HD-51153- 10. \\
+The authors would like to thank Barbara Taranto and Ben Vershbow from the NYPL Labs for providing the article level newspaper data and Manoj Pooleery, Deepak Sankargouda and Megha Gupta for setting up the database used in this research.
+\end{block}
+\end{frame}
 
 \begin{frame}
 
 \begin{center}
 \usebeamerfont*{frametitle} \usebeamercolor[fg]{frametitle}
-\Huge Thank You!\\ \vspace{0.2in}
-Questions??
+\Huge Thank You.\\ \vspace{0.2in}
+%Questions?
 \end{center}
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{images/question.jpg}
+
+\end{center}
+\end{figure}
 
 \end{frame}
 

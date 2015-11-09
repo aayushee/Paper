@@ -1,6 +1,10 @@
+<<<<<<< HEAD
  
 //Edit distance Spelling correction on the articles repository
 import java.io.*;
+=======
+ import java.io.*;
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 import java.util.*;
 import java.util.regex.*;
 import java.io.File;
@@ -39,24 +43,42 @@ class Spelling1 {
 		 for(String s : list) 
 		 {if(nWords.containsKey(s))
 				candidates.put(nWords.get(s),s);
+<<<<<<< HEAD
 		 else if(nWords.containsKey(s.toLowerCase()))
 				candidates.put(nWords.get(s.toLowerCase()),s.toLowerCase());
 		 else if(nWords.containsKey(s.toUpperCase())) 
 				candidates.put(nWords.get(s.toUpperCase()),s.toUpperCase());
 		// else if(nWords.containsKey(Character.toUpperCase(s.charAt(0))))
 			//	candidates.put(nWords.get(Character.toUpperCase(s.charAt(0))),Character.toUpperCase(s.charAt(0)));
+=======
+			if(nWords.containsKey(s.toLowerCase()))
+				candidates.put(nWords.get(s.toLowerCase()),s.toLowerCase());
+			if(nWords.containsKey(s.toUpperCase())) 
+				candidates.put(nWords.get(s.toUpperCase()),s.toUpperCase());
+			if(nWords.containsKey(Character.toUpperCase(s.charAt(0))+s.substring(1)))
+				candidates.put(nWords.get(Character.toUpperCase(s.charAt(0))+s.substring(1)),Character.toUpperCase(s.charAt(0))+s.substring(1));
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		 }
 	//System.out.println("Candidate list initially:"+ candidates);
 			if(candidates.size() > 0) return candidates.get(Collections.max(candidates.keySet()));
 			for(String s : list) for(String w : edits(s)) 
 			 {if(nWords.containsKey(w))
 					candidates.put(nWords.get(w),w);
+<<<<<<< HEAD
 			 else if(nWords.containsKey(w.toLowerCase()))
 					candidates.put(nWords.get(w.toLowerCase()),w.toLowerCase());
 			 else if(nWords.containsKey(w.toUpperCase())) 
 					candidates.put(nWords.get(w.toUpperCase()),w.toUpperCase());
 			 //else if(nWords.containsKey(Character.toUpperCase(w.charAt(0))))
 				//	candidates.put(nWords.get(Character.toUpperCase(w.charAt(0))),Character.toUpperCase(w.charAt(0))));
+=======
+				if(nWords.containsKey(w.toLowerCase()))
+					candidates.put(nWords.get(w.toLowerCase()),w.toLowerCase());
+				if(nWords.containsKey(w.toUpperCase())) 
+					candidates.put(nWords.get(w.toUpperCase()),w.toUpperCase());
+				if(nWords.containsKey(Character.toUpperCase(w.charAt(0))+w.substring(1)))
+					candidates.put(nWords.get(Character.toUpperCase(w.charAt(0))+w.substring(1)),Character.toUpperCase(w.charAt(0))+w.substring(1));
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 			 }
 		return candidates.size() > 0 ? candidates.get(Collections.max(candidates.keySet())) : word;
 	}
@@ -65,7 +87,11 @@ class Spelling1 {
 			        
 		System.out.println("Start time:" +System.currentTimeMillis());
 
+<<<<<<< HEAD
 			File folder=new File ("C:\\Users\\AAYUSHEE\\Documents\\OCR ARTICLES");	//INPUT THE DIRECTORY CONTAINING ALL ARTICLES
+=======
+			File folder=new File ("Ocr");	//INPUT THE DIRECTORY CONTAINING ALL ARTICLES
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	   File[] listOfFiles=folder.listFiles();   //LIST AND COMPARE THE FILES ACCORDING TO LAST DATE MODIFIED SO THAT NUMBERING OF FILES IS PRESERVED
 	  Spelling1 obj=new Spelling1("Finaldict.txt");
 	   
@@ -76,7 +102,11 @@ class Spelling1 {
 			System.out.println("Correcting "+listOfFiles[i].getName());
 			
 			BufferedReader reader1 = new BufferedReader(new FileReader(listOfFiles[i]));
+<<<<<<< HEAD
 			File file2=new File ("C:\\Users\\AAYUSHEE\\Documents\\final\\"+listOfFiles[i].getName());		//NEW FILE WITH CORRECT SPELLINGS
+=======
+			File file2=new File ("Corrected/"+listOfFiles[i].getName());		//NEW FILE WITH CORRECT SPELLINGS
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 			BufferedWriter writer1 = new BufferedWriter(new FileWriter(file2));
 			String line1;
 				while((line1=reader1.readLine())!=null)
@@ -92,7 +122,11 @@ class Spelling1 {
 					corrected=obj.correct(split[j]);
 					if(!(corrected.equals(split[j])))
 						{WordsCorrected=WordsCorrected+1;
+<<<<<<< HEAD
 	//					System.out.println(split[j]+" corrected to "+corrected);
+=======
+						//System.out.println(split[j]+" corrected to "+corrected);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 						}
 				writer1.write(corrected + " ");  //INPUT THE DICTIONARY BIG.TXT HERE				
 				}

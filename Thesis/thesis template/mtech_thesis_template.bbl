@@ -1,0 +1,252 @@
+\begin{thebibliography}{10}
+
+\bibitem{agarwal2008identifying}
+{\sc Agarwal, N., Liu, H., Tang, L., and Yu, P.~S.}
+\newblock Identifying the influential bloggers in a community.
+\newblock In {\em Proceedings of the 2008 international conference on web
+  search and data mining\/} (2008), ACM, pp.~207--218.
+
+\bibitem{agarwal2013utilizing}
+{\sc Agarwal, S.}
+\newblock Utilizing big data in identification and correction of ocr errors.
+
+\bibitem{bassil2012ocr}
+{\sc Bassil, Y., and Alwani, M.}
+\newblock Ocr context-sensitive error correction based on google web 1t 5-gram
+  data set.
+\newblock {\em arXiv preprint arXiv:1204.0188\/} (2012).
+
+\bibitem{blei2012probabilistic}
+{\sc Blei, D.~M.}
+\newblock Probabilistic topic models.
+\newblock {\em Communications of the ACM 55}, 4 (2012), 77--84.
+
+\bibitem{blei2003latent}
+{\sc Blei, D.~M., Ng, A.~Y., and Jordan, M.~I.}
+\newblock Latent dirichlet allocation.
+\newblock {\em the Journal of machine Learning research 3\/} (2003), 993--1022.
+
+\bibitem{brill2000improved}
+{\sc Brill, E., and Moore, R.~C.}
+\newblock An improved error model for noisy channel spelling correction.
+\newblock In {\em Proceedings of the 38th Annual Meeting on Association for
+  Computational Linguistics\/} (2000), Association for Computational
+  Linguistics, pp.~286--293.
+
+\bibitem{carlson2009learning}
+{\sc Carlson, A., Gaffney, S., and Vasile, F.}
+\newblock Learning a named entity tagger from gazetteers with the partial
+  perceptron.
+\newblock In {\em AAAI Spring Symposium: Learning by Reading and Learning to
+  Read\/} (2009), pp.~7--13.
+
+\bibitem{chattopadhyaya2013fast}
+{\sc Chattopadhyaya, I., Sirchabesan, K., and Seal, K.}
+\newblock A fast generative spell corrector based on edit distance.
+\newblock In {\em Advances in Information Retrieval}. Springer, 2013,
+  pp.~404--410.
+
+\bibitem{cheng2014can}
+{\sc Cheng, J., Adamic, L., Dow, P.~A., Kleinberg, J.~M., and Leskovec, J.}
+\newblock Can cascades be predicted?
+\newblock In {\em Proceedings of the 23rd international conference on World
+  wide web\/} (2014), International World Wide Web Conferences Steering
+  Committee, pp.~925--936.
+
+\bibitem{christen2006comparison}
+{\sc Christen, P.}
+\newblock A comparison of personal name matching: Techniques and practical
+  issues.
+\newblock In {\em Data Mining Workshops, 2006. ICDM Workshops 2006. Sixth IEEE
+  International Conference on\/} (2006), IEEE, pp.~290--294.
+
+\bibitem{crane2006challenge}
+{\sc Crane, G., and Jones, A.}
+\newblock The challenge of virginia banks: an evaluation of named entity
+  analysis in a 19th-century newspaper collection.
+\newblock In {\em Proceedings of the 6th ACM/IEEE-CS joint conference on
+  Digital libraries\/} (2006), ACM, pp.~31--40.
+
+\bibitem{dutta2011learning}
+{\sc Dutta, H., Passonneau, R.~J., Lee, A., Radeva, A., Xie, B., Waltz, D.~L.,
+  and Taranto, B.}
+\newblock Learning parameters of the k-means algorithm from subjective human
+  annotation.
+\newblock In {\em FLAIRS Conference\/} (2011).
+
+\bibitem{elmi1998spelling}
+{\sc Elmi, M.~A., and Evens, M.}
+\newblock Spelling correction using context.
+\newblock In {\em Proceedings of the 36th Annual Meeting of the Association for
+  Computational Linguistics and 17th International Conference on Computational
+  Linguistics-Volume 1\/} (1998), Association for Computational Linguistics,
+  pp.~360--364.
+
+\bibitem{kempe2003maximizing}
+{\sc Kempe, D., Kleinberg, J., and Tardos, {\'E}.}
+\newblock Maximizing the spread of influence through a social network.
+\newblock In {\em Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining\/} (2003), ACM, pp.~137--146.
+
+\bibitem{khurdiya2011multi}
+{\sc Khurdiya, A., Dey, L., Raj, N., and Haque, S.~M.}
+\newblock Multi-perspective linking of news articles within a repository.
+\newblock In {\em Proceedings of the Twenty-Second international joint
+  conference on Artificial Intelligence-Volume Volume Three\/} (2011), AAAI
+  Press, pp.~2281--2286.
+
+\bibitem{kukich1992techniques}
+{\sc Kukich, K.}
+\newblock Techniques for automatically correcting words in text.
+\newblock {\em ACM Computing Surveys (CSUR) 24}, 4 (1992), 377--439.
+
+\bibitem{lerman2010using}
+{\sc Lerman, K., and Hogg, T.}
+\newblock Using a model of social dynamics to predict popularity of news.
+\newblock In {\em Proceedings of the 19th international conference on World
+  wide web\/} (2010), ACM, pp.~621--630.
+
+\bibitem{levenshtein1966binary}
+{\sc Levenshtein, V.~I.}
+\newblock Binary codes capable of correcting deletions, insertions and
+  reversals.
+\newblock In {\em Soviet Physics Doklady\/} (1966), vol.~10, p.~707.
+
+\bibitem{lloyd2005lydia}
+{\sc Lloyd, L., Kechagias, D., and Skiena, S.}
+\newblock Lydia: A system for large-scale news analysis.
+\newblock In {\em String Processing and Information Retrieval\/} (2005),
+  Springer, pp.~161--166.
+
+\bibitem{marzal1993computation}
+{\sc Marzal, A., and Vidal, E.}
+\newblock Computation of normalized edit distance and applications.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions on
+  15}, 9 (1993), 926--932.
+
+\bibitem{McCallumMALLET}
+{\sc McCallum, A.~K.}
+\newblock Mallet: A machine learning for language toolkit.
+\newblock http://mallet.cs.umass.edu, 2002.
+
+\bibitem{mckeown2002tracking}
+{\sc McKeown, K.~R., Barzilay, R., Evans, D., Hatzivassiloglou, V., Klavans,
+  J.~L., Nenkova, A., Sable, C., Schiffman, B., and Sigelman, S.}
+\newblock Tracking and summarizing news on a daily basis with columbia's
+  newsblaster.
+\newblock In {\em Proceedings of the second international conference on Human
+  Language Technology Research\/} (2002), Morgan Kaufmann Publishers Inc.,
+  pp.~280--285.
+
+\bibitem{newman2009distributed}
+{\sc Newman, D., Asuncion, A., Smyth, P., and Welling, M.}
+\newblock Distributed algorithms for topic models.
+\newblock {\em The Journal of Machine Learning Research 10\/} (2009),
+  1801--1828.
+
+\bibitem{newman2006analyzing}
+{\sc Newman, D., Chemudugunta, C., Smyth, P., and Steyvers, M.}
+\newblock Analyzing entities and topics in news articles using statistical
+  topic models.
+\newblock In {\em Intelligence and Security Informatics}. Springer, 2006,
+  pp.~93--104.
+
+\bibitem{reynaert2008all}
+{\sc Reynaert, M.}
+\newblock All, and only, the errors: more complete and consistent spelling and
+  ocr-error correction evaluation.
+\newblock In {\em LREC\/} (2008).
+
+\bibitem{rice1996measuring}
+{\sc Rice, S.~V.}
+\newblock {\em Measuring the accuracy of page-reading systems}.
+\newblock PhD thesis, University of Nevada, 1996.
+
+\bibitem{ringlstetter2007text}
+{\sc Ringlstetter, C., Hadersbeck, M., Schulz, K.~U., and Mihov, S.}
+\newblock Text correction using domain dependent bigram models from web crawls.
+\newblock In {\em Proceedings of the International Joint Conference on
+  Artificial Intelligence (IJCAI-2007) Workshop on Analytics for Noisy
+  Unstructured Text Data\/} (2007).
+
+\bibitem{rodriquez2012comparison}
+{\sc Rodriquez, K.~J., Bryant, M., Blanke, T., and Luszczynska, M.}
+\newblock Comparison of named entity recognition tools for raw ocr text.
+\newblock In {\em Proceedings of KONVENS\/} (2012), pp.~410--414.
+
+\bibitem{schulz2002fast}
+{\sc Schulz, K.~U., and Mihov, S.}
+\newblock Fast string correction with levenshtein automata.
+\newblock {\em International Journal on Document Analysis and Recognition 5}, 1
+  (2002), 67--85.
+
+\bibitem{shahaf2010connecting}
+{\sc Shahaf, D., and Guestrin, C.}
+\newblock Connecting the dots between news articles.
+\newblock In {\em Proceedings of the 16th ACM SIGKDD international conference
+  on Knowledge discovery and data mining\/} (2010), ACM, pp.~623--632.
+
+\bibitem{smith2002detectinga}
+{\sc Smith, D.~A.}
+\newblock Detecting and browsing events in unstructured text.
+\newblock In {\em Proceedings of the 25th annual international ACM SIGIR
+  conference on Research and development in information retrieval\/} (2002),
+  ACM, pp.~73--80.
+
+\bibitem{smith2002detectingb}
+{\sc Smith, D.~A.}
+\newblock Detecting events with date and place information in unstructured
+  text.
+\newblock In {\em Proceedings of the 2nd ACM/IEEE-CS joint conference on
+  Digital libraries\/} (2002), ACM, pp.~191--196.
+
+\bibitem{smith2001disambiguating}
+{\sc Smith, D.~A., and Crane, G.}
+\newblock Disambiguating geographic names in a historical digital library.
+\newblock In {\em Research and Advanced Technology for Digital Libraries}.
+  Springer, 2001, pp.~127--136.
+
+\bibitem{strohmaier2003lexical}
+{\sc Strohmaier, C.~M., Ringlstetter, C., Schulz, K.~U., and Mihov, S.}
+\newblock Lexical postcorrection of ocr-results: The web as a dynamic secondary
+  dictionary?
+\newblock In {\em ICDAR\/} (2003), Citeseer, pp.~1133--1137.
+
+\bibitem{taghva2001ocrspell}
+{\sc Taghva, K., and Stofsky, E.}
+\newblock Ocrspell: an interactive spelling correction system for ocr errors in
+  text.
+\newblock {\em International Journal on Document Analysis and Recognition 3}, 3
+  (2001), 125--137.
+
+\bibitem{tong1996statistical}
+{\sc Tong, X., and Evans, D.~A.}
+\newblock A statistical approach to automatic ocr error correction in context.
+\newblock In {\em Proceedings of the fourth workshop on very large corpora\/}
+  (1996), pp.~88--100.
+
+\bibitem{udupa2010hashing}
+{\sc Udupa, R., and Kumar, S.}
+\newblock Hashing-based approaches to spelling correction of personal names.
+\newblock In {\em Proceedings of the 2010 Conference on Empirical Methods in
+  Natural Language Processing\/} (2010), Association for Computational
+  Linguistics, pp.~1256--1265.
+
+\bibitem{wagner1974string}
+{\sc Wagner, R.~A., and Fischer, M.~J.}
+\newblock The string-to-string correction problem.
+\newblock {\em Journal of the ACM (JACM) 21}, 1 (1974), 168--173.
+
+\bibitem{watts2007influentials}
+{\sc Watts, D.~J., and Dodds, P.~S.}
+\newblock Influentials, networks, and public opinion formation.
+\newblock {\em Journal of consumer research 34}, 4 (2007), 441--458.
+
+\bibitem{zhang2009novel}
+{\sc Zhang, Z., and Iria, J.}
+\newblock A novel approach to automatic gazetteer generation using wikipedia.
+\newblock In {\em Proceedings of the 2009 Workshop on The People's Web Meets
+  NLP: Collaboratively Constructed Semantic Resources\/} (2009), Association
+  for Computational Linguistics, pp.~1--9.
+
+\end{thebibliography}

@@ -1,0 +1,838 @@
+\documentclass[letterpaper,11pt]{report}
+\usepackage[boxed]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{fullpage}
+\usepackage{verbatim}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+ \usepackage{booktabs}
+\usepackage{subfigure}
+\usepackage{colortbl}
+\usepackage{hhline}
+
+
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{multirow}
+\usepackage{pdflscape}
+
+
+
+%\usepackage{noReferences}
+\usepackage[small]{caption}
+\usepackage[leftcaption]{sidecap}
+\usepackage{graphics}
+\usepackage{color}
+
+\usepackage{hyperref}
+
+%\usepackage{natbib}
+
+\usepackage[dvips]{graphicx}
+ % define the title
+\graphicspath{ {images/}}
+
+% Paper conservation layout. Long live the trees!!
+\setlength{\oddsidemargin}{-0.4mm} % 25 mm left margin
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{160mm}      % 25 mm right margin
+\setlength{\topmargin}{-5.4mm}     % 20 mm top margin
+\setlength{\headheight}{5mm}
+\setlength{\headsep}{5mm}
+\setlength{\footskip}{10mm}
+\setlength{\textheight}{237mm}     % 20 mm bottom margin
+
+
+\setlength{\parskip}{1ex}
+\parindent 0in
+\def\SAONE{Specific Aim 1}
+\def\SATWO{Specific Aim 2}
+\def\SATHREE{Specific Aim 3}
+\def\SAFOUR{Specific Aim 4}
+
+\def\title{Mytitle}
+%\def\titletwo{Thesis Proposal Title Line 2}
+
+\begin{document}
+
+
+
+\include{mtech_thesis_cover}
+
+\newpage
+
+\pagestyle{empty}
+\vspace*{7.1in} 
+Keywords: Gazetteer, Text Mining, Information Retrieval, OCR, Spelling Correction, Historical data, Influential people detection
+
+\newpage
+
+\begin{center}
+\section*{Certificate}\label{section:certificate}
+\end{center}
+%\vspace{3in}
+This is to certify that the thesis titled \textbf{``Finding Influential People from a Historical News Repository"} submitted by \textbf{Aayushee Gupta} for the partial fulfillment of the requirements for the degree of \emph{Master of Technology} in \emph{Computer Science \& Engineering} is a record of the bonafide work carried out by her under our guidance and supervision in the Data Engineering group at Indraprastha Institute of Information Technology, Delhi. This work has not been submitted anywhere else for the reward of any other degree. \\ \vspace{0.5in}
+
+\textbf{Dr. Haimonti Dutta}\\
+%\textbf{Dr. Srikanta Bedathur}\\
+%\textbf{Dr. Lipika Dey}\\
+\textbf{Indraprastha Institute of Information Technology, New Delhi}
+%\doublespacing
+
+\begin{abstract}
+
+%  Historical newspaper archives provide a wealth of information. They
+%are of particular interest to genealogists, historians and scholars
+%for People Search.
+%In this thesis, we design a People Gazetteer from
+%the noisy OCR text of historical newspapers and identify “influential”
+%people from it. A People Gazetteer is a dictionary of personal names;
+%each entry of the gazetteer is a tuple containing a person name and a
+%list of articles in which his name occurs along with the corresponding
+%topic associated each article.
+%To build the People Gazetteer, we first spell correct the noisy text
+%using an edit distance based algorithm. A novel N-gram based
+%evaluation algorithm is designed for measuring the performance of the
+%spell corrector. Next, a Named Entity Recognizer is run on the text of
+%each article to identify person entities and an LDA-based topic
+%detector to assign categories to articles. To identify influential
+%people across each category of People Gazetteer, we define the notion
+%of an Influential Person Index (IPI) and rank based on it. We study the
+%topmost influential people and present many important insights from the 
+%corpus based on the parameters defined and verification done from Wikipedia.
+%Our corpus is a sample of 14020 OCR newspaper articles (roughly two months’ data)
+%obtained from “The Sun” newspaper in the Chronicling America project.
+
+ Historical newspaper archives provide a wealth of information. They
+are of particular interest to genealogists, historians and scholars
+for People Search.
+
+In this thesis, we design a People Gazetteer from
+the noisy OCR text of historical newspapers and identify ``influential"
+people from it. A People Gazetteer is a dictionary of personal names;
+each entry of the gazetteer is a tuple containing a person name and a
+list of articles in which his name occurs along with the corresponding
+topic associated with each article.
+
+To build the People Gazetteer, we first spell correct the noisy text
+using an edit distance based algorithm. A novel N-gram based
+evaluation algorithm is designed for measuring the performance of the
+spell corrector. Next, a Named Entity Recognizer is run on the text of
+each article to identify person entities and an LDA-based topic
+detector to assign categories to articles. To identify influential
+people across each category of People Gazetteer, we define the notion
+of an Influential Person Index (IPI) and rank based on it. 
+
+Our corpus is a sample of 14020 OCR newspaper articles (roughly two months' data)
+obtained from ``The Sun" newspaper in the Chronicling America project.
+We present results on the top-K influential people obtained from our algorithm by varying its parameters and verify results using Wikipedia.
+
+\end{abstract}
+
+\newpage
+\pagestyle{empty}
+
+
+\newpage
+
+
+
+\section*{Acknowledgments}\label{section:acknowledgments}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+Any accomplishment requires the effort of many people and this thesis is no different. It gives me immense pleasure in recording my appreciation and a deep sense of gratitude to all the individuals who extended their unstrained cooperation in completing my thesis.
+
+I express my sincere thanks and gratitude towards my advisor Dr. Haimonti Dutta for her continuous support and guidance extended to me in making this thesis possible and providing me an opportunity to work on an interesting research problem. I am highly obliged for the patience, motivation, enthusiasm and knowledge provided by her throughout the research and writing of this thesis.
+
+Besides my advisor, I would like to thank the rest of my thesis committee: Dr. Srikanta Bedathur and Dr. Lipika Dey, for their encouragement and insightful comments.
+
+Last but not the least, I thank my fellow colleagues who were always there to discuss my problems and provide me moral boost- up in developing this thesis.\\ \vspace{0.2in}
+
+Aayushee Gupta
+
+\newpage
+
+\tableofcontents
+\listoffigures 
+\listoftables
+
+\newpage
+
+\newpage
+
+\newpage
+\mbox{}
+
+
+%\doublespacing
+
+\chapter{Introduction}\label{chapter:introduction}
+%\pagestyle{fancy}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\onehalfspacing
+\input{introduction} 
+
+\chapter{Related Work}
+
+
+\section{Learning from newspapers}
+
+Crowdsourcing has been used extensively in historical newspaper archives in recent years to 
+digitize, create, clean and process content and provide editorial or processing interventions. For example, the Australian Newspapers Digitization Program \cite{ADNP} allows communities to explore their rich newspaper heritage by enabling free online public access to over 830,000 newspaper pages containing 8.4 million articles. The public enhanced the data by correcting over 7 million lines of text and adding 200,000 tags and 4600 comments \cite{holley_09,holley_09a,Holley_10,Holley10a}. The California Digital Newspaper Collection (CDNC)\footnote{http://cdnc.ucr.edu/cgi-bin/cdnc}, which contains 61,412 issues comprising 545,955 pages and 6,364,529 articles from newspapers published in California between 1846-1922 has also crowdsourced text correction. The National Library of Finland embraced the idea of making crowdsourced text correction a game -- users corrected their digitized newspapers by playing the game ``Hunt the Mole!" \cite{chrons_11}. The program consists of two games featuring adventures of a mole. In Mole Hunt the players are shown two different words and they must determine as quickly as possible if the words are the same. In Mole Bridge players try to write the word that appears in the screen correctly. 
+
+Several digital humanities projects that have used machine learning and natural language processing techniques to learn from historic newspaper archives are relevant to this work -- the libraries of Richmond and Tufts have examined the Richmond Times Dispatch during the civil war years for more than two decades and their work focuses on automatic identification and analysis of full OCR text in newspapers to provide advanced searching, browsing and visualization\cite{crane2006challenge}. The focus of this work was on named entity extraction and ten categories prominent in these newspapers were studied including ship names, railroads, streets and organizations. In an earlier project at the universities, the Perseus project \cite{smith2002detectinga, smith2002detectingb, smith2001disambiguating}, a general system to extract dates and names from text was developed in order to detect significant events in document collections. 
+
+\cite{newman2006analyzing} use a combination of Statistical Topic Modeling and Named Entity Recognition techniques for analyzing the entities, topics trends and topics that relate entities mentioned in a news articles dataset. They also create networks based on the topic model based relationships among the entities.
+\cite{lloyd2005lydia} discuss their approach for designing a news analysis system \footnote{http://www.textmap.com} where information about several types of entities can be searched. They allow searching over all entities found in the news sources, present juxtaposition for each entity, i.e., other entities mentioned in context, temporal and spatial analysis, popularity time series graph in terms of number of number of references and co-reference names for the entity.
+Both these research works stress on person entities in a newspaper environment but do not focus on finding influential entities in which respect our research is different from their work.
+
+
+\section{Developing Gazetteers}
+Different types of gazetteers are discussed in \footnote{http://gate.ac.uk/sale/tao/splitch13.html}. They define gazetteers as set of lists containing names of entities such as cities, organizations, days of the week, etc. along with their types. They use gazetteer either as set of entity list or as a processing resource which is used to find occurrences of the entity names in text, e.g. for the task of named entity recognition. We use this definition to develop our People Gazetteer as a processing resource that finds person name entities from the news articles repository, associates each unique person entity from news articles with a list of articles of its occurrence and their respective topic.
+
+Gazetteer lists are also discussed in \cite{carlson2009learning} where they are used for learning name entity tagger using partial perceptron and aid in performing better NER compared to CRF based entity taggers.
+\cite{zhang2009novel} discuss automatic generation of gazetteer list by finding entities with similar type labels from Wikipedia articles which can further be used for the purpose of NER. The evaluation is done over scientific domain of Archeology considering subject, temporal terms and location as named entities but no evaluation is presented for person entities.
+There is also no relevant work that builds or uses historical person names gazetteer list for data mining that we know of.
+
+
+
+We discuss more related work regarding data preprocessing using Spelling correction algorithms in Section ~\ref{spell:rw} and finding influential people in Section ~\ref{influential:rw}.
+
+
+
+
+
+
+\chapter{Data Description}
+\label{chapter:data description}
+
+This chapter describes the dataset used for developing the People Gazetteer. Following sections provide details of data source, characteristics and some data statistics.
+
+\section{Data Source} 
+
+The dataset has been taken from Chronicling America.
+\noindent \emph{Chronicling
+America}\footnote{\texttt{http://chroniclingamerica.loc.gov/}} is an
+initiative of the National Endowment for Humanities (NEH) and the
+Library of Congress (LC) whose goal is to develop an online,
+searchable database of historically significant newspapers between
+1836 and 1922. The New York Public Library (NYPL) is part of this
+initiative and has scanned 200,000 newspaper pages published between
+1890 and 1920 from microfilm.
+
+In order to make a newspaper available for searching on the Internet,
+the following processes used in \cite{dutta2011learning} must take place: (1) the microfilm copy or
+paper original is scanned; (2) master and Web image files are
+generated; (3) metadata is assigned for each page to improve the
+search capability of the newspaper; (4) OCR software is run over high
+resolution images to create searchable full text and (5) OCR text,
+images, and metadata are imported into a digital library software
+program. The scanned newspaper holdings of the NYPL offers a wealth of
+data and opinion for researchers and historians.
+
+The newspaper titles and digitized pages available through the
+Chronicling America website can be searched using the OpenSearch
+protocol\footnote{\texttt{http://www.opensearch.org/Home}}.
+Unfortunately, the current search facilities are rudimentary and
+irrelevant documents are often more highly ranked than relevant ones.
+The newspapers are scanned on a page-by-page basis and article level
+segmentation is poor or non-existent; the OCR scanning process is far
+from perfect and the documents generated from it contains a large
+amount of garbled text. In a bid to serve its patrons better, the New
+York Public Library employed human annotators to clean headlines of
+articles and text, but the process of manually reading all the old
+newspapers article-by-article and cleaning them soon became very
+expensive. 
+
+\section{Data Characteristics}
+An individual OCR text article has at least one or more of the following types of spelling errors:
+
+\begin{figure}[hbt]
+\includegraphics[scale=0.75]{originalimage}
+\includegraphics[scale=0.80]{ocr}
+\caption{Scanned Image of a Newspaper article (left) and its OCR raw text (right)}
+\label{figure:1}
+\end{figure}
+
+\begin{description}
+ \item[$\bullet$Real word errors] include words that are spelled correctly in the OCR text but still incorrect when compared to the original newspaper article image. For example: In Figure~\ref{figure:1}, the word ``coil"  has been correctly spelled in the OCR text  but should have been ``and" according to the original newspaper article. 
+ \item[$\bullet$Non-real word errors] include words that have been misspelled due to some insertion, deletion, substitution or transposition of characters from a word. For eg. In Figure~\ref{figure:1}, the word ``tnenty" in the OCR text has a substitution error (`n' should have been `w') which is actually ``twenty" according to the original newspaper article.
+ \item[$\bullet$Non-word errors] include words that have been spelled incorrectly and are a combination of alphabets and numerical characters. For example: In Figure~\ref{figure:1}, the word ``4anrliteii" which is a combination of alphabets and number and should have been ``confident" as per the original newspaper article.
+\item[$\bullet$New Line errors] include words that are separated by hyphens where part of a word is written on one text line and remaining part in the next line. For example: In Figure~\ref{figure:1}, the word ``ex-ceptionally" where ``ex" occurs on one line while ``ceptionally" in the next and due to no punctuation in the text, they are treated as separate words in OCR text.
+\item[$\bullet$Word Split and Join errors] include words that either get split into one of more parts or some words in a sentence get joined to a make a single word. For example: In Figure~\ref{figure:1}, the word ``Thernndldntesnra" in the OCR text is actually a combination of three words ``The candidates are" while the words ``v Icrory" are actually equivalent to a single word ``victory" when compared with the original news article.
+\end{description} 
+
+\section{Data Statistics}
+The OCR text available from Chronicling America website is on a page by page level and no article level segmentation is provided. OCR text dataset is therefore, taken from a PostgreSQL database where article level segmentation of page-level OCR text from Chronicling America is available for two months of articles of ``The Sun" newspaper from November-December 1894 consisting of 14020 news articles with a total of 8,403,844 tokens. The newspaper database ER diagram \footnote{https://power.ldeo.columbia.edu/twiki/pub/Incubator/BodhiDBDesign/Final ERD.pdf }
+is used to extract the required articles text from the database by dumping complete dataset and extracting individual articles linetext based on their unique ID. The individual text articles generated from the database do not have any punctuation and contain a large amount of garbled text containing above mentioned OCR errors.
+
+
+\chapter{Data Preprocessing}
+\label{chapter:data preprocessing} 
+
+ 
+This chapter describes the preprocessing steps applied on the historical news articles.
+The garbled OCR text makes data preprocessing mandatory before application of any text mining algorithms. 
+
+\section{Spelling Correction}
+
+Several kinds of spelling errors exist in the data as described in chapter~\ref{chapter:data description}. This chapter first provides a brief review of spelling correction algorithms that exist in literature (Section~\ref{spell:rw}); Section~\ref{spell:algo} describes the spelling correction algorithm used in this research and evaluation results on the OCR dataset are presented in Section~\ref{spell:eval} followed by discussion in Section~\ref{spell:discussion}.
+
+% DOUBT: Do the following lines need to be removed?
+%The garbled OCR dataset  needs to be refined by correcting the text with the help of a human editor manually or automatic spelling corrector. Due to the huge size of dataset, human editing would be extremely time consuming and expensive making it impossible and indicating requirement of a spelling correction technique. 
+%The spelling correction of person named entities in the dataset also requires special consideration so that the person named entities with correct spellings get detected as a result which is the main aim of this research.
+
+
+\subsection{Related Work}
+\label{spell:rw}
+
+Kukich\cite{kukich1992techniques} comprehensively discusses various spelling correction techniques based on Non word, Isolated word and Real word spelling errors. N-gram analysis, Dictionary lookup and Probabilistic techniques are used for correcting isolated and nonword errors while Context-Dependent techniques are used mostly for correcting real word errors including the correction of word split and join errors \cite{elmi1998spelling}.
+
+ N-gram techniques work by examining each n-gram in the text string and comparing against a pre-compiled table of n-gram statistics to retrieve the correct word while Dictionary look up techniques directly check whether the text string appears in the dictionary using string matching algorithms. Both techniques require a dictionary or a large text corpus and take frequency of n-grams or word occurrence into account in order to find the correct spelling \cite{strohmaier2003lexical}, \cite{ringlstetter2007text}.
+ Probabilistic techniques use transition and word confusion probabilities to estimate likelihood of the correction in order to rank and retrieve correct word spelling.
+
+On the other hand, Context-dependent techniques require contextual information and use either extensive NLP techniques or Statistical Language Modeling (SLM) for spelling correction.
+Bassil and Alwani\cite{bassil2012ocr} use Google 1-5 gram word dataset to gain context information in order to determine the correct words sequence in the text for correction.
+Tong and Evans\cite{tong1996statistical} use SLM approach involving information from letter n-grams,character confusion and word bi-gram probabilities to perform context sensitive spelling correction obtaining a 60 percent error reduction rate. 
+ %In Collection OCR, Sankar et. al. [Sankar K. et al. 2010] use an approximate fast nearest neighbor algorithm based on hierarchical K-Means (HKM) to clean OCR text.
+
+All these spelling correction techniques have developed over time and have been used in combination to achieve improved accuracy \cite{brill2000improved}. \cite{agarwal2013utilizing} use a combination of Google suggestions, LCS and character confusion probabilities for choosing the correct spelling on a small set of historical newspaper data and achieve recall and precision of $51\%$ and $100\%$ respectively.
+
+
+Edit distance approach, suggested initially by Wagner and Fischer\cite{wagner1974string}, is a dictionary lookup approach commonly used for OCR data correction because of the large number of substitution errors in OCR data  \cite{kukich1992techniques}\cite{christen2006comparison} which can be corrected using this technique. String edit distance approaches with faster correction are discussed in \cite{marzal1993computation},\cite{schulz2002fast}  with variants like Levenshtein automata and normalized edit distance.
+
+Personal name spelling correction has also been studied separately including comparison among various techniques indicating that there is no one single technique that outperforms all others though pattern matching techniques result in better matching quality compared to phonetic encoding techniques\cite{christen2006comparison}. Almost all the personal name spelling correction techniques use personal names directory/dictionary for matching against wrongly spelled names in the dataset or queries in case of People Search \cite{udupa2010hashing}. 
+  
+%CHANGES MADE HERE. ADDED A LINE REGARDING PERSONAL NAMES CORRECTION AND MOVED RELATED WORK REGARDING EVALUATION ALGORITHM TO SECTION 4.1.3.
+ We use edit distance algorithm for spelling correction because of its speed and ability to correct OCR errors compared to the n-gram approach \cite{chattopadhyaya2013fast}. Context-dependent spelling correction is not used because of unavailability of n-gram words corpus or ground truth dataset containing OCR and true word pairs. Our edit distance algorithm also uses an enhanced dictionary for look up to give significance to personal names spelling correction in the dataset. 
+
+
+\subsection{Spelling Correction Algorithm}
+\label{spell:algo}
+
+The Edit Distance algorithm based on Levenshtein distance\cite{levenshtein1966binary} has been used for spelling correction. It is an isolated word correction technique that uses dictionary based-look up method and distance between strings for matching the text and correcting it. An ``edit distance" corresponds to the minimum number of insertions, deletions, and substitutions required to transform one string into another. The algorithm corrects Non-Real Word spelling errors up to an edit distance of 2 , i.e. , it corrects words which have spelling errors that can be corrected by making at most 2 operations of insertion, deletion and substitution of letters in the word. The choice of 2 is governed by the trade off between algorithm runtime and quality of spelling correction. A bigger value improves the spelling correction accuracy but increases the runtime also while a smaller value decreases accuracy and the algorithm runtime.
+The spelling corrector has been designed as suggested by Peter Norvig\footnote{ http://norvig.com/spell-correct.html}. The algorithm requires a dictionary which is used to check if each word of the text exists in it or not. If the word already exists in the dictionary then no change is made to the word and if not, then a candidate list of words is created from the word to be corrected by inserting, substituting or deleting up to 2 letters from it.  This list of words is again checked for in the dictionary and returned as suggestions for the word to be corrected. The correction is made with the word formed from lowest edit distance and occurring with more frequency in the dictionary. This makes the edit distance algorithm dependent on the type of dictionary chosen for correction which means the dictionary must be well chosen for spelling correction of a specific document collection. The algorithm runs faster by reading the dictionary only once and keeping a data structure in memory for its word counts which can be referred to whenever a word comes up for correction.
+
+\subsection{Spelling Correction Algorithm Evaluation}
+
+
+There has not been much related work regarding automatic evaluation of word-by-word post spelling correction on OCR dataset consisting of Word Split and Join errors. Semi-automatic spelling correction system is discussed in \cite{taghva2001ocrspell} that corrects these errors but requires user interaction in order to perform complete correction and system evaluation. Rice\cite{rice1996measuring} discusses OCR errors similar to the ones in our dataset. Their algorithm evaluates edit distance spelling correction by estimating word accuracy defined as the percentage of correctly recognized words; the length of LCS between correct and incorrect strings on a page by page level is used as the relevant metric. The evaluation strategy works correctly but the definition of accuracy does not give a complete coverage of the spell correction as it does not provide any information on the errors missed by the spelling corrector.
+
+For evaluation on our dataset, the raw OCR text and OCR text after application of spelling correction algorithm needs to be compared with the original newspaper text. The OCR text is extremely garbled with Word Split and Join errors due to which word-to-word alignment with the original newspaper text is impossible. For this purpose, a novel algorithm called SCE (Spelling Correction Evaluation) based on N-gram approach is proposed for automatic evaluation of the corrected text word-by-word against the manually corrected subset of the news articles dataset. 
+
+Following sections describe the evaluation parameters for estimating the performance of Spelling Corrector on the OCR dataset used along with the SCE algorithm:
+
+\subsubsection{Evaluation Parameters}
+
+\begin{description}
+
+ \item[$\bullet$Accuracy]
+ The evaluation metric used for measuring the performance of Spelling correction algorithm is Accuracy which requires calculation of number of OCR errors that got corrected when compared to the original scanned newspaper text. The measure has been chosen so as to include the complete text coverage and not just check for words that got corrected after spell correction as in the latter case, the  number of FP and TN get missed which won't give the correct measure of how well the spell corrector works. The formula used for calculating Accuracy is defined by Manning and Schutze,1999 (p.268-269) as follows:
+
+$$Accuracy=  \dfrac{TP+TN} {TP+ FP + TN + FN}$$
+
+
+where, 
+
+$TP$=Number of True Positives,
+
+$TN$=Number of True Negatives,
+
+ $FP$=Number of False Positives,
+
+ $FN$=Number of False Negatives. 
+
+The aim of the SCE algorithm is to make a word-to-word correspondence between the OCR corrected text and the original OCR text and to mark each token in the OCR text as a $TP$, $FP$, $TN$ or $FN$. Reynaert and Martin\cite{reynaert2008all} suggest a way to define these terms by distinguishing between correct words and incorrect words in the text through the set of non-target, target and selected words and use Precision and Recall evaluation measures for measuring performance of spelling correction. 
+
+According to our spelling corrector, a ``true positive" is said to occur when a word from the OCR text gets corrected and the corrected spelling matches the one in original article text while a ``false positive" occurs if the corrected spelling does not match the corresponding word in the original article text. A ``true negative" occurs when a word does not get corrected by the algorithm as it is already correct and matches the correct word in the original text also. On the other hand, a ``false negative" occurs when the algorithm is unable to correct the word (there is no change in spelling of the word) and it does not match the corresponding word in the original text but should have been corrected.
+
+
+
+\item[$\bullet$Time taken for Spelling Correction]
+Time is also an essential parameter while measuring the performance of spelling correction. Since the dataset is quite large, it is important that the algorithm does not take too long to correct an article and needs to be parallelized in case it takes more time for correction.
+
+
+\item[$\bullet$Person Names Detection Rate(PNDR)]
+
+The spelling correction algorithm is evaluated on the basis of another parameter which is used to consider the special case of person entity names spelling correction, as the main goal of research is to detect these names with correct spellings.
+Person Names Detection Rate can be defined as the ratio of person names recognized through Named Entity Recognition (NER) before spelling correction process and the total number of person names recognized in the original newspaper articles.
+
+$$Person Names Detection Rate=\dfrac{ \text{Person Names recognized before/after spelling correction}} {\text{ Person Names recognized in original newspaper articles}} $$
+
+\end{description}
+
+\subsubsection{SCE (Spelling Correction Evaluation) Algorithm}
+
+The SCE algorithm is based on an N-word grams approach. To make the correspondence between corrected and original OCR text, a window of n-word grams in the scanned image text article is considered (Original.txt) which can be seen in a diagrammatic representation in Figure~\ref{figure:2}.
+
+\begin{figure} [!htb]
+\centering
+\includegraphics[scale=0.8]{ngram}
+\caption{Schematic diagram for alignment of spell corrected article text with original article text for a word $W_{k}$}
+\label{figure:2}
+\end{figure}
+For each token in the spell corrected text (Corrected.txt), the corresponding token  in the scanned text article along with 2 tokens before and 2 tokens after it are considered for alignment\footnote{ The choice of 2 is based on the Word Split and Join errors in the dataset. Choosing n=2 allows a window of words to be considered to make up for the alignment lost because of Word Split and Join errors.}.
+If the token being considered matches with any of these words in the scanned text article words window and its spelling has been corrected when compared to the corresponding token in raw OCR text (OCR.txt), then it is marked as a ``True Positive" which is actually rewarding the Spell corrector for making the correct spelling change. A ``False Positive" is marked if it does not match any of the words despite its spelling being corrected. If the token being considered matches any of the words in the words window but no spelling correction has been made for it, then it is marked as a ``True Negative" and if it does not match any word in the window and the spelling corrector also did not correct it, then it is marked as a ``False Negative" as the word got missed by the corrector. 
+
+Several cases could occur like difference in the lengths of linetext between OCR and Original text or while considering the first, second or the last tokens from the Corrected text for which the corresponding word window in Original text needs to be smaller. All such cases have been covered in SCE Algorithm 1 which calls function `MatchWordGrams' (Algorithm2) for these different cases. 
+
+A limitation of the SCE algorithm is that it requires all 3 versions of a newspaper article (Original, Corrected and OCR) to have the same number of lines. In case of difference in the number of lines of text due to some Word Split and Join errors, the words window needs to be extended so as to cover previous and next line texts also for alignment.
+
+
+\begin{algorithm}[!h]
+\caption{SCE Algorithm for Spell Correction}
+  \KwIn{Ocr.txt,Corrected.txt,Original.txt}
+  \KwOut{Spell Corrector Accuracy }
+\SetKwFunction{MatchWordGrams}{MatchWordGrams}%
+ $OcrLine$:=a line of text from Ocr.txt\;
+ $CorrectedLine$:=a line of text from Corrected.txt\;
+ $OriginalLine$:=a line of text from Original.txt\;
+ $tp \leftarrow $0  $fp \leftarrow $0 $tn \leftarrow $0 $fn\leftarrow $0\;  
+	\For{(int i=0; i $<$ CorrectedLine.length ; i++) }
+	{
+
+    \If{(CorrectedLine.length$<$4 $||$ OriginalLine.length$<$4)}
+	{		
+    	\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,0,OriginalLine.length,i)}\; 
+	}
+    \Else{
+   \If {(i==0)}
+   {
+\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,0,3,0)}\;
+   }
+   \ElseIf{ (i==1)}
+   {
+\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,0,4,1)}\;
+   }
+	\ElseIf{(i==(CorrectedLine.length-2) $||$ (CorrectedLine.length-1) $||$ (CorrectedLine.length) $||$ (CorrectedLine.length+1))}
+	{
+\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,i-2,OriginalLine.length,i)}\;
+	}  
+	\ElseIf{(i $>$= CorrectedLine.length+2)}
+	{	
+\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,OriginalLine.length-3,OriginalLine.length,i)}\;	
+	}
+	\Else
+	 {
+\MatchWordGrams{(OcrLine,CorrectedLine,OriginalLine,i-2,i+2,i)}\;	
+	}	
+   }
+ }
+ 	 $Accuracy=(tp+tn)/(tp+tn+fp+fn);$\
+\end{algorithm}
+
+
+\begin{algorithm}[!htb]
+\caption{MatchWordGrams Function called by Algorithm 1}
+\begin{algorithmic}
+\Function {MatchWordGrams}{OcrLine, CorrectedLine, OriginalLine, jstart, jend, i}
+  
+ \For{(int j=jstart; j$<$jend; j++)}
+  {
+    \If{ ((CorrectedLine[i].equals(OriginalLine[j]))\&\&(!(OcrLine[i].equals(CorrectedLine[i]))))}
+     {
+	  $tp=tp+1$\;
+	  flag0=false\;
+	 \Return $tp$\;
+	  }
+	\ElseIf{((CorrectedLine[i].equals(OriginalLine[j]))\&\&(OcrLine[i].equals(CorrectedLine[i])))}
+	      {
+		 $tn=tn+1$\;
+		  flag1=false\;
+		\Return $tn$\;
+	      }
+}
+
+	 \If{(!(OcrLine[i].equals(CorrectedLine[i]))\&\&flag0==true)}
+	 {
+		    $fp=fp+1$\;
+		   \Return $fp$\;
+            }
+	 
+	 \ElseIf{((OcrLine[i].equals(CorrectedLine[i])) \&\& flag1==true)}
+	 {
+		    $fn=fn+1$\;
+		   \Return $fn$\;
+	 }
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\clearpage
+
+
+\begin{figure} [!htb]
+\begin{center}
+\includegraphics[scale=0.4]{img3}
+\includegraphics[scale=0.75]{originalimg3}
+\caption{Scanned image of a newspaper article (left) along with its original text (right)}
+\label{figure:3}
+\end{center}
+\end{figure}
+
+
+\begin{figure} [!htb]
+\includegraphics[scale=0.75]{ocr3}
+\includegraphics[scale=0.75]{corrected3}
+\caption{OCR raw text (left) and Spell corrected text (right) of the article}
+\label{figure:4}
+\end{figure} 
+
+
+\textbf{An Example}
+
+
+Working of the SCE algorithm can be demonstrated with the help of the following example:
+Consider 3 versions of a scanned image of a newspaper article,  the original text of the scanned image in Figure~\ref{figure:3} and the raw OCR text and the corrected text (after spell correction) in Figure~\ref{figure:4}. As highlighted in the figures, for line 6 the line texts are:
+
+ OcrLine= \textit{by tltn rejmrt of th cepert aocountauts who}
+
+CorrectedLine= \textit{by than report of the expert accountants who}
+
+OriginalLine= \textit{by the report of the expert accountants who} 
+
+Here, for each token of CorrectedLine, we find its index and call the MatchWordGrams function accordingly. For the first token `by' at index i=0 in CorrectedLine, we consider the word window to be ``by the report" (index j=0 to 2) in OriginalLine by matching iteratively with each token to see if there is a match and also if there has been a spelling correction by comparing with the corresponding token in OcrLine. Here, no change was made to the spelling of `by' and it matches with a word in words window, so it is marked as a FN. For the second token `than' at index i=1, we consider the word window to be ``by the report of" (index j=0 to 3) for which there is no match in the window but there has been a spelling correction from `tltn' to `than', which implies the correction was wrong and the token is marked as a $FP$. For the third token `report' at index i=2, we consider the window as ``by the report of the" (index j=0 to 4) in Original Line and find that there is a match in the word window and there has been a spelling correction too from `rejmrt' to `report' which makes this token a $TP$. Similarly, rest of the tokens get marked for each line in the Corrected.txt. 
+
+Another example can be considered from Line 10 in Figure~\ref{figure:3} and Figure~\ref{figure:4} where the number of tokens is different in CorrectedLine and OriginalLine. In such a case, direct alignment between tokens is not possible because of which the words window becomes useful. Here, when the last token `Richmond' of CorrectedLine is considered at index i=3, the corresponding words window becomes ``Jury now sitting at Richmond" (index j=1 to 5) for which there is a match in the words windows and corresponding spelling has also been changed from `tilchmond' to `Richmond' which makes it a $TP$. Had the word window not been considered, the corresponding token at index j=3 in OriginalLine would have been chosen as `sitting' which would have resulted in a $FP$. 
+   
+
+
+\subsection{Spelling Correction Algorithm Evaluation Results}
+\label{spell:eval}
+
+\noindent \textbf{Aims: }The aim of our experiments is to answer the following questions:
+\begin{itemize}
+\item \textbf{Question 1: }How good is the spell corrector? The metrics for evaluation are accuracy and time to correct the text.
+ 
+\item \textbf{Question 2: }How good is the Person Names Detection Rate? The metric for evaluation is PNDR. 
+
+\end{itemize}
+
+\noindent \textbf{Materials: }
+The spelling correction algorithm is used to correct all the 14020 OCR raw text articles in the dataset. The dictionary used for look-up is a concatenation of several public domain books from Project Gutenberg and lists of most frequent words from Wiktionary and the British National Corpus\footnote{http://norvig.com/big.txt}. This is augmented with a large people names list which is obtained  by running Stanford NER-CRF parser on subsets of the ClueWeb12 dataset made available in the TREC 2013 Crowdsourcing Track\footnote{http://boston.lti.cs.cmu.edu/clueweb12/TRECcrowdsourcing2013/}. This enhanced dictionary has been used to give special consideration to correction of person names in the dataset.
+
+\noindent \textbf{Methods: }
+In order to answer \textbf{Question 1} we do the following: 
+
+3 versions of each newspaper article are required: OCR raw text, spelling corrector corrected text and the original scanned newspaper article text. Since the dataset is quite large (14020) and it is not possible to get original text of each of these newspaper images, a smaller number of articles are chosen to study the results of spelling correction. 50 scanned newspaper images are taken and an online OCR \footnote{www.onlineocr.net} is run on them followed by some manual correction to get the original articles text. Accuracy can then be calculated for all 3 versions of 50 newspaper articles using the SCE algorithm by marking each word in the OCR text article as a $TP$, $FP$, $TN$ or $FN$. 
+
+In order to answer \textbf{Question 2} we do the following: 
+%% AAYUSHEE CHECK--DONE
+\begin{enumerate}
+\item Person Name Detection from raw OCR (\textbf{Baseline: }) The NER is run on the raw garbled OCR text.
+\item Person Name Detection from spell corrected text (\textbf{PND+Spell Correction+Simple Dictionary: })The NER is run on the spell corrected (using the edit distance algorithm) OCR text without the people names list in the dictionary.
+\item Person Name Detection from spell corrected text with enhanced dictionary (\textbf{PND+Spell Correction+Enhanced Dictionary: }) The NER is run on the spell corrected (using the edit distance algorithm) OCR text with the enhanced people names list in the dictionary.
+
+\end{enumerate}
+
+\noindent \textbf{Results: }
+The spelling corrector shows an Accuracy of $72.7 \%$  when corrected text is compared to OCR text and original article text. We believe that the results are less accurate due to the presence of a large number of Non-word, New Line, Word Split and Join errors in the OCR data which can not be corrected by the spelling correction algorithm used for this research.
+
+The spelling corrector takes 9 seconds on an average to correct the newspaper OCR articles. It takes a total of 36 hours to run on 14020 articles.
+
+
+But the spelling correction is useful in terms of Person Names Detection Rate \textit{(PNDR)}. Following are the statistics obtained for \textit{PNDR}:
+
+\textit{PNDR} for \textbf{Baseline: }: 71.5\% 
+
+\textit{PNDR} for \textbf{PND+Spell Correction+Simple Dictionary: }: 63.3\% 
+
+\textit{PNDR} for \textbf{PND+Spell Correction+Enhanced Dictionary: }: 85.5\% 
+
+These statistics indicate that spelling correction using an extended dictionary for personal names is useful for detecting person names from the garbled newspaper articles and the results are dependent on the type of dictionary being used for spell correction.
+ Table~\ref{table:pndr} shows some of the person names recognized while calculation of PNDR for each case. The reason for PNDR going down after spell correction with simple dictionary is demonstrated from the table as unnecessary spelling corrections are made while using this dictionary. On the other hand, since the enhanced dictionary contains several person names and no unnecessary spelling corrections are made, more persons name are recognized in this case when compared to the original text leading to a much higher PNDR. 
+
+\subsection{Discussion}
+\label{spell:discussion}
+
+\begin{description}
+\item[$\bullet$]\noindent
+We believe a better accuracy of spell correction can be obtained by correcting the New Line errors in the articles. This can be done by checking for if the word at last index of a text line or the word at first index of the next text line is a word not present in the dictionary and combining the two and checking again in the dictionary for a valid word. The new word, if present in the dictionary can be replaced by the two words from which it is formed thereby removing the New Line error. 
+\item[$\bullet$]\noindent Similar approach can be applied for Word Split and Join errors but would require each word of an article not present in the dictionary to be analyzed along with some window of words before and after it to make a correction. 
+\item[$\bullet$]\noindent Choice of a dictionary for the edit distance algorithm affects the results as indicated by improvement in PNDR while using an enhanced person names dictionary. We believe using a dictionary with historical terms, places and people names can certainly perform spelling correction better and improve the accuracy also.
+\item[$\bullet$] \noindent 
+Our spell corrector corrects Non-Real Word errors by focusing on isolated words in the dataset. Other spelling correction algorithms like context dependent spelling correction can also used to correct the dataset and measure accuracy using our SCE algorithm along with other evaluation parameters to compare among multiple algorithms and decide which one suits the dataset better and gives best accuracy. 
+\end{description}
+
+
+
+ 
+
+\input{pplGazette} 
+
+\input{influential}
+
+
+\chapter{Conclusion}
+\label{chapter:conclusion}
+
+The problem of finding influential people from historical OCR news repository has been studied in this research. In studying this novel problem, our main aim was to develop a complete solution framework for this problem and present insights from the results obtained.
+ We made novel contributions to the problem solution by implementing an evaluation algorithm for measuring accuracy of spell correction on dataset, developing a people gazetteer for facilitating the process of influential people detection and finally defining parameters and measures in the newspaper community to obtain the ranked list of influential people.
+  
+
+Most of the problems faced during this research surfaced due to the noise in OCR dataset used. The problem of finding influential persons from newspaper archives opens up a wide range of research problems as illustrated from the discussion sections~\ref{gaz:discussion} and ~\ref{influential:discussion}. 
+We believe each of the components of our research framework, namely Spelling correction on OCR news articles, Person Named Entity Recognition, Topic Detection and parameters definition to measure and rank influence scores of persons can be researched further in order to obtain more beneficial results from influential people detection.
+
+Spelling correction algorithms with improved accuracy can certainly improve the influential persons results as well as use of a Named Entity Recognizer that can resolve co-referred person name issues in noisy OCR text.
+Topic detection algorithms also need to be designed to enable them to deal with noisy OCR text in a better manner as some of the topics we obtained using LDA came out to be garbled and were difficult to understand in order to perform human-assigned manual labeling on them and use them further for finding similarity across articles.
+
+We didn't consider Named Entity Disambiguation into account while developing the people gazetteer for detection of influential people which is a difficult problem in itself since it is hard to disambiguate among persons with similar names that can occur in multiple topic related articles in newspapers. The problem still requires research with probably better spelling correction, named entity recognition, topic detection algorithms and stricter measures of calculation of influence score and ranking of influential persons.
+
+ The parameters we defined for measuring influence scores of persons in news articles are based on heuristics and can be re-weighted according to user requirements or new parameters can be defined based on the characteristics of an OCR newspaper dataset making it an open research problem.
+
+Non-heuristic based estimation for finding influential persons can also be done using optimization approaches such as unsupervised multiple instance clustering\cite{zhang2009m3ic}. This approach can be used to cluster person entities into ``influential" or ``non-influential" by considering each person entity as a bag with articles of their occurrence as the instances for each bag. It is a combination of Constrained Concave-Convex Procedure and  Cutting Plane method with faster convergence. Such a method can avoid choosing of parameter weights, biasing of results with respect to any specific parameter and decide which article plays a role in determining whether a person is influential or not.
+  
+
+
+
+%\newpage
+%\bibliographystyle{these}
+\bibliographystyle{acm}
+%\bibliographystyle{elsart-harv}
+%\newpage
+%\section{References}
+%\bibliography{Library}
+
+\bibliography{aayushee}
+\chapter*{Appendix}\label{chapter:appendix} 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{3cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+\textbf{Original}        & \textbf{OCR}                   & \textbf{Spell Corrected (Simple Dictionary)}         & \textbf{Spell Corrected (Enhanced Dictionary)} \\ \hline
+James H Grady            & James H Grady  \cellcolor[gray]{.8}                & Gilman James H Grady      & Gilman James H Grady         \\ \hline
+Eugene Kelly             & Eugene Kelly  \cellcolor[gray]{.8}                 & Kelly $-$$>$ belly   & Eugene Kelly    \cellcolor[gray]{.8}             \\ \hline
+Stephen S Blake          & Stephen S Blake \cellcolor[gray]{.8}               & Blake $-$$>$ blame   & Stephen S Blake   \cellcolor[gray]{.8}           \\ \hline
+Abraham Gruber           & Abraham Gruber \cellcolor[gray]{.8}                & Gruber $-$$>$ rubber & Abraham Gruber  \cellcolor[gray]{.8}             \\ \hline
+John Mcbride             & John Mcbride  \cellcolor[gray]{.8}                 & Mcbride $-$$>$ bride & John Mcbryde                 \\ \hline
+John A Cairns            & John                           & John                      & John A Cairns   \cellcolor[gray]{.8}             \\ \hline
+Wilmot Smith             & - (recognized as organization) & Wilmot Smith \cellcolor[gray]{.8}              & Wilmot Smith    \cellcolor[gray]{.8}             \\ \hline
+Samuel Goldfarb          & bamucl Ooldfarb                & Samuel Ooldfarb           & Samuel Goldfarb \cellcolor[gray]{.8}             \\ \hline
+Lieut Southerland        & Lieut Boutherland              & Sutherland                & Lieut Southerland  \cellcolor[gray]{.8}          \\ \hline
+Mr Justice Brewer Potter & Potter                         & Potter                    & Mr Justice Brewer Potter \cellcolor[gray]{.8}     \\ \hline
+Samuel Rich              & Bamuel Rich                    & Samuel Rich    \cellcolor[gray]{.8}           & Samuel Rich       \cellcolor[gray]{.8}           \\   \hline
+Frederick Betts          & Frederick lletts               & lletts $-$$>$ lets            & Frederick Betts\cellcolor[gray]{.8}              \\ \hline
+\end{tabular}
+\caption{Table showing some of the person names recognized while calculation of PNDR before spell correction (OCR text) and after spell correction (Spell Corrected text) using both Simple and Enhanced Person Names Dictionary. Correctly recognized names are shown in the colored cells. }
+\label{table:pndr}
+\end{table}
+
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+\hline
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten     & 3.380151 & no                 & spelled incorrectly;capt creedon \\ \hline
+capt hankey      & 3.022371 & yes                &                                      \\ \hline
+capt pinckney    & 2.933288 & yes                &                                      \\ \hline
+john macdonald   & 2.854389 & yes                &                                      \\ \hline
+john martin      & 2.827969 & yes                &                                      \\ \hline
+aaron trow       & 2.814171 & yes                & fictional character                  \\ \hline
+mrs oakes        & 2.791536 & no                 & false positive                       \\ \hline
+buenos ayres     & 2.767399 & no                 & location name                            \\ \hline
+alexander iii    & 2.742552 & yes                &                                      \\ \hline
+mr got           & 2.736363 & no                 & false positive                       \\ \hline
+mrs martin       & 2.719383 & no                 & false positive                       \\ \hline
+ann arbor        & 2.681657 & no                 & location name                            \\ \hline
+caleb morton     & 2.63808  & no                 & fictional character                  \\ \hline
+anthony comstock & 2.633381 & yes                &                                      \\ \hline
+toledo ann arbor & 2.610495 & no                 & location name                            \\ \hline
+john thompson    & 2.609841 & yes                &                                      \\ \hline
+nat lead         & 2.594452 & no                 & false positive                       \\ \hline
+ed kearney       & 2.543152 & yes                & name of horse                        \\ \hline
+van cortlandt    & 2.533131 & no                 & location                             \\ \hline
+louis philippe   & 2.523525 & yes                &                                      \\ \hline
+mrs talboys      & 2.522888 & yes                & fictional character                  \\ \hline
+jim hooker       & 2.500915 & yes                & false positive                       \\ \hline
+marie clavero    & 2.497384 & no                 & false positive                       \\ \hline
+father watson    & 2.450817 & no                 & false positive                       \\ \hline
+james mccutcheon & 2.431448 & no                 & part of an organization name                      \\ \hline
+hugh allan       & 2.4287   & yes                &                                      \\ \hline
+william i        & 2.4222   & yes                &                                      \\ \hline
+marie antoinette & 2.40731  & yes                &                                      \\ \hline
+schmitt berger   & 2.396639 & no                 & spelled incorrectly;max f schmittberger                       \\ \hline
+jacob schaefer   & 2.392976 & yes                &                                      \\ \hline
+             
+\end{tabular}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 30 Topics LDA Model along with evaluation results and comments.}
+\label{table:app1}
+\end{table}
+
+\clearpage
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|l|p{3cm}|p{3cm}|}
+\hline
+\textbf{Person Name}      & \textbf{IPI}      & \textbf{Whether found on Wikipedia} & \textbf{Comments}                                     \\ \hline
+capt creeten & 3.333485 & no & spelled incorrectly; capt creedon \\ \hline
+mrs martin & 3.23105 & no & false positive \\ \hline
+alexander iii & 3.090361 & yes &  \\ \hline
+capt hankey & 2.975704 & yes &  \\ \hline
+aaron trow & 2.790838 & yes &  \\ \hline
+john macdonald & 2.774389 & no &  \\ \hline
+mrs oakes & 2.744869 & no & false positive \\ \hline
+john martin & 2.711302 & yes &  \\ \hline
+ed kearney & 2.629342 & yes & name of horse \\ \hline
+caleb morton & 2.614746 & no & fictional character \\ \hline
+john ward & 2.57499 & yes &  \\ \hline
+nat lead & 2.571118 & no & false positive \\ \hline
+mrs talboys & 2.499555 & yes & fictional character \\ \hline
+buenos ayres & 2.490502 & no & location \\ \hline
+van cortlandt & 2.490169 & no & location \\ \hline
+john thompson & 2.482063 & yes &  \\ \hline
+louis philippe & 2.476858 & yes &  \\ \hline
+marie clavero & 2.474051 & no & false positive \\ \hline
+hardy fox & 2.449248 & no &  \\ \hline
+mme melba & 2.415785 & yes &  \\ \hline
+charles weisman & 2.405938 & no & false positive \\ \hline
+hugh allan & 2.405367 & yes &  \\ \hline
+mr got & 2.389697 & no & false positive \\ \hline
+schmitt berger & 2.373305 & no & spelled incorrectly \\ \hline
+phil king & 2.363644 & yes &  \\ \hline
+henry a meyer & 2.350396 & yes &  \\ \hline
+north orlich & 2.348236 & no & false positive \\ \hline
+james mccutcheon & 2.338115 & no & part of organization name \\ \hline
+gen porter & 2.330658 & yes &  \\ \hline
+miller hageman & 2.327831 & no &  \\ \hline
+\end{tabular}
+\caption{Table representing top 30 influential person entities detected from people gazetteer with 100 Topics LDA Model along with evaluation results and comments.}
+\label{table:app2}
+\end{table}
+
+
+  \newpage
+ \begin{longtable}[c]{| p{1cm} | p{16cm} |}
+ \caption{Topics ID and words obtained from the 100 Topics LDA model.\label{long}}\\
+\hline
+ Topic ID & Topic Words\\
+ \hline
+ \endfirsthead
+ 
+ \hline
+ \multicolumn{2}{|c|}{Continuation of Table \ref{long}}\\
+ \hline
+ Topic ID & Topic Words\\
+ \hline
+ \endhead
+ 
+ \hline
+ \endfoot
+ 
+ %\hline
+ %\multicolumn{2}{| c |}{End of Table}\\
+ %\hline\hline
+ %\endlastfoot
+
+0  & chinese japanese china japan war government american port united foreign states minister treaty arthur british country despatch admiral army                     \\ \hline
+1  & theatre box taught sat tonight mat open academy north marine grand extra matinee bank terms today manager time proprietor                                        \\ \hline
+2  & boat ship water crew vessel steamer island vessels capt port sea deck captain ships boats nov board american schooner                                            \\ \hline
+3  & mr committee mayor city meeting york strong col hall dr members night seventy held member yesterday tammany club office                                          \\ \hline
+4  & day place long great water time feet found good men town make people work days big miles side la                                                                 \\ \hline
+5  & round jack match fight pounds champion night rounds contest weight left club bout jackson light pound referee ring hilly                                         \\ \hline
+6  & white women color black dress picture made blue front woman silk skirt pretty green velvet pink beautiful satin fashion                                          \\ \hline
+7  & sun sunday december november york saturday monday tuesday wednesday friday daily thursday tile association printing cents publishing ann country                 \\ \hline
+8  & time law make made letter public matter state question action ha con opinion bo tin ho put order fact                                                            \\ \hline
+9  & bank money business amount hank estate company account made national check firm paid insurance yesterday property stock real banks                               \\ \hline
+10 & dr school college university prof schools students education harvard student medical armenian turkish president teacher sultan study professor columbia          \\ \hline
+11 & emperor prince french alexander czar london nov government imperial russian german lord france foreign today court russia minister von                           \\ \hline
+12 & tif fff strict iliff hip mrt hackett fat acting usmc agree minimum trtd incur client fairly found hf minuit                                                      \\ \hline
+13 & court judge justice case jury attorney trial district supreme lawyer charge counsel yesterday law mr cases prison charges defendant                              \\ \hline
+14 & kt ii mate chess game ik kit ki kk kill york play match ktr move played pk won white                                                                             \\ \hline
+15 & hut girl woman heart girls love eyes wife moment lady child mother miss clarence life voice hand word husband                                                    \\ \hline
+16 & liquor saloon goods law dry beer license wine salons drink stores excise keepers men grocer dealers sell society bottle                                          \\ \hline
+17 & yacht cup club challenge race york lord committee deed americas squadron america royal racing unravel letter english boat secretary                              \\ \hline
+18 & time great made number years fact ot part large year la form work ago bo con point interest present                                                              \\ \hline
+19 & train car railroad road company city bridge street line track station cable trolley avenue engineer passenger cars elevated men                                  \\ \hline
+20 & man ho good time told thing day dont hut young make lie bad back asked ha put men give                                                                           \\ \hline
+21 & cent week year pf total market ft net stock today central month sales short january exchange national receipts earnings                                          \\ \hline
+22 & birds bird bear deer wild gun shot killed hunter woods county shooting game hunting yards hunt hawk thee hunters                                                 \\ \hline
+23 & murphy vi marie heat vv de ih martin adolphe oconnell wheeler mcdonald franklin day fuller june casey minute blanche                                             \\ \hline
+24 & st west broadway christmas furniture york prices holiday carpets av cor goods world presents stores tub ave free machine                                         \\ \hline
+25 & clark damage clarke lee cab lark darby nitrate town damp pigs clarks holland steed stanley trifling isoa marks beadles                                           \\ \hline
+26 & price black silk ladies prices goods fine quality tea worth wool full regular special fancy extra yard men long                                                  \\ \hline
+27 & osborn allen failing harder jenkins erases lids oppenheim swain waterbury alms hester klos curtly acid ecb lind younker mia                                      \\ \hline
+28 & clay city bv head kentucky goodwin kitty driver lay br wilkes halo chief welter prices maud class triple jesse                                                   \\ \hline
+29 & president united today nov cleveland secretary dec washington states press chicago southern morning state service news received house collector                  \\ \hline
+30 & piano upright av monthly wanted st private brooklyn price open york broadway bargain free good rent school factory prices                                        \\ \hline
+31 & bill tax income gold states treasury united mr law government congress national currency tariff house notes bank senate direct                                   \\ \hline
+32 & canal minnie mackinnon talboys canals mcginley obrien freda condo ollrlen imre elbow ida toxic mingle pt tilde vos champlin                                      \\ \hline
+33 & company york bonds trust cent mortgage interest city bond stock wall committee railroad st coupon central street bondholders agreement                           \\ \hline
+34 & trade country american cotton cent business price state cents market coal states sugar labor population united prices free supply                                \\ \hline
+35 & hotel dinner hotels cook restaurant waiter allison money kitchen proprietor guests majestic guest table wine luncheon soup dinners lodging                       \\ \hline
+36 & church father catholic archbishop priest st holy bishop altar priests parish dr mass corrigan rector cathedral present rev service                               \\ \hline
+37 & army war men navy military company regiment officers service admiral col naval officer department gen command guard battle capt                                  \\ \hline
+38 & room rooms st furnished board rent av house west front private bath large city heated ht east small light                                                        \\ \hline
+39 & tn thu thin lie time ho nn anti tin nail hut und bo ns hu tu nut tint tim                                                                                        \\ \hline
+40 & ii ll la li ti uu al tl ui il tt air rt iv ra iii ft rl tut                                                                                                      \\ \hline
+41 & election party republican vote state democratic district senator elected majority candidate democrats republicans county ticket democrat congress york political \\ \hline
+42 & iii ii ill lit ll st si vi il iv ti im till ft mi li lull oil ml                                                                                                 \\ \hline
+43 & iii ii lit ill lie tin tu nail ll lu hit mi lo ti fur hut ut im nl                                                                                               \\ \hline
+44 & lu lui uu ur ilium lulu city fruit au izu ilii ul fur fluid isle loud lou lupus tu                                                                               \\ \hline
+45 & sir john canadian thompson canada macdonald montreal whist dominion toronto quebec partner ottawa charles premier halifax lead ontario donald                    \\ \hline
+46 & people american man great country men world life good english england war public power history political women spirit wo                                         \\ \hline
+47 & game team football play half line ball back yale eleven left played harvard end college field men tackle princeton                                               \\ \hline
+48 & feet line street north point minutes feel boundary easterly western avenue seconds northerly distance degrees southerly west degree fret                         \\ \hline
+49 & north fair south weather york western west wind texas states southern carolina rain city average virginia jersey northern yesterday                              \\ \hline
+50 & book author story books work cloth published volume illustrated library paper american life history york edition written read art                                \\ \hline
+51 & jan january dec annual union payable transfer declared savings bo dee tile ou thereto draw ending point monday semiannual                                        \\ \hline
+52 & lu la tu tb lo fur wa bad ut ha ou uu les tea late au lb ot ibe                                                                                                  \\ \hline
+53 & daily car york chicago sunday st train pullman parlor point dining west city foot week night company buffalo anti                                                \\ \hline
+54 & martin taylor wolf lena wallet pp consul andrew hollman jacobus brayman softly schlosser martins towel pile llrauman forgot trauma                               \\ \hline
+55 & inches white coral jump ice state black pitch skates vault bar poly heel blade tentacles foot tooth inch stating                                                 \\ \hline
+56 & st york city corner day ave ac court ward park ht rt january water inth terms con tub fewer                                                                      \\ \hline
+57 & opera theatre play stage music week performance company night audience evening concert season mme house manager york orchestra musical                           \\ \hline
+58 & daily steamship directed letter walls close al fur letters australia direct japan china steamer la supplementary mall ship hawaii                                \\ \hline
+59 & funeral dec clock late year residence st church kelly nov services interest york saturday friday attend cemetery west thursday                                   \\ \hline
+60 & york nov dec orleans london liverpool city oct antwerp si hamburg sew havana passed dee bs hull st charleston                                                    \\ \hline
+61 & dr health cure remedy physician goods blood cold medical disease liver medicine sick weak syrupy cured nervous pure cures                                        \\ \hline
+62 & street avenue yesterday police policeman station arrested night west man east court john morning found held justice detective clock                              \\ \hline
+63 & won time race ran mile furlough half lo track fourth jockey curling today favorite selling handicap lot run tim                                                  \\ \hline
+64 & time limo lime limit amid tim semi whim miami lmm mitt jv sum html tiers coon strait ime anal                                                                    \\ \hline
+65 & building feet schaefer built build run work brick bulliard buildings wall cost ives play shot walls wizard structure corner                                      \\ \hline
+66 & men killed death body man shot found murder dead dec ho night blood head revolver kill negro wound bullet                                                        \\ \hline
+67 & fish baker seely linked lake trout angel bank leather water fishing frederick frog pond creek belly shoe licked crane                                            \\ \hline
+68 & jerry ave disbursements bem natel watts mock illegal neuron checked noo elliot reserve britain loop hugo stallion llullltt ila                                   \\ \hline
+69 & money found office stolen burglar store worth post burglars diamond thieves thief robbery robbed nov open watch robbers robber                                   \\ \hline
+70 & gun inch guns armor powder feet steel plate topped pounds navy battle shell ships works mortar charge explosion carriage                                         \\ \hline
+71 & club meeting held association york league clubs men members brooklyn record national annual ii athletic season amateur bicycle race                              \\ \hline
+72 & arbor ann toledo holder north lion comptrollers tick depositary wall fractions entire entitle hundred brooklyn expense rr title appearing                        \\ \hline
+73 & mrs mr miss john william henry charles daughter george evening james sir dr society van street large present jr                                                  \\ \hline
+74 & av wife st lo john ar yrs tn si mary al prop wm west henry ano lot win jr                                                                                        \\ \hline
+75 & henry scott miller wright ogden murray finn jones june donaldson walker illicit klan whisper king jasper david bulletin bentley                                  \\ \hline
+76 & mr police witness committee capt asked captain money inspector paid told called testimony commissioner superintendent charges martin sir force                   \\ \hline
+77 & nov hats election prepare oct fain turner casino flank wyman hopper coming carrie hutton columbus contact flay jansen pastor                                     \\ \hline
+78 & horse horses class years prize show ring trotting trotter year mare shown york turf owner hands hone record br                                                   \\ \hline
+79 & john county city william james thomas smith charles brooklyn ward johnson george hoard clerk district york yesterday jersey alderman                             \\ \hline
+80 & park landscape architect driveway city harlem van work branch central kearney hoard clausen kinds attention carriage dark carriages hell                         \\ \hline
+81 & money work bet field morton lady fred trial point strong run ran dwyer good owned domino made kennel dixie                                                       \\ \hline
+82 & time night room wa house clock door morning men back left man front began ran turned started ing floor                                                           \\ \hline
+83 & mr sir smith hale hell week air gentleman russell jar ingram wrote letter aid wilson daniel webster browne friends                                               \\ \hline
+84 & dam lally attila wick older uer rival denton lofty hold weimar kramer alae hampton jintur iullnian wallklll judith tetanic                                       \\ \hline
+85 & water feet air inches iron power gas steel machine surface light weight pounds wood tube paper eye inch metal                                                    \\ \hline
+86 & year report present city made time work york department public make number system hoard plan years commission bo money                                           \\ \hline
+87 & tramp card cards hand poker pot cowboy dealer deal labia pony opened takes flush count deals busy draw xml                                                       \\ \hline
+88 & indian indians territory dog desert sheep white tribes cattle life mexico animals snake tribe dogs animal patagones live panthers                                \\ \hline
+89 & part term clear day adjourned calendar court march cases motion november iv called die count trial earl parts case                                               \\ \hline
+90 & special cigar woolsey iota earls clint cecil lax uku trees linear weal otto status mihir ossium recite rau fiona                                                 \\ \hline
+91 & ran ill tn lo ant ton ll ten al end tl fur nail tie met part nl work er                                                                                          \\ \hline
+92 & mrs mr years wife home house ago woman city died children ho husband mother time father family left year                                                         \\ \hline
+93 & xx thu guns filth xxlll kvas xvi vill xxi karp izu knox xxhlch xi xvhlch clanton iite tax lax                                                                    \\ \hline
+94 & la ot ta aa te day tea wa aad tb bat br ia au ar sad tt today ran                                                                                                \\ \hline
+95 & total ii club score night alleys tournament rolled scores game empire iso columbia national brooklyn team jersey games alley                                     \\ \hline
+96 & olcott mh iiiiii madman kkhti lilly sots lah warm kai murri billet ieiri mutual jlyn sis orin concu mell                                                         \\ \hline
+97 & work women men labor strike union strikers trade wages employees day denver factory cloak hall shop sums unions workers                                          \\ \hline
+98 & walters mount tarbell addicus orbit chips pri cartwright dillon coxe walden trudell kov lssp pencil chip villain adduct allude                                   \\ \hline
+99 & church dr pastor rev sunday churches minister congregation methods choir baptist presbyterians pulpit episcopal sermon meeting christian services service        \\ \hline
+ 
+ \end{longtable}
+
+\end{document}

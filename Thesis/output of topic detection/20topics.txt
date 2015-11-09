@@ -1,0 +1,137 @@
+Coded LDA: 20 topics, 5 topic bits, 11111 topic mask
+max tokens: 7840
+total tokens: 3599328
+<10> LL/token: -12.25495
+<20> LL/token: -11.40304
+<30> LL/token: -11.16265
+<40> LL/token: -11.0493
+
+0	0.05	man time men night found house 
+1	0.05	war american time chinese japanese china 
+2	0.05	court committee district election city judge 
+3	0.05	church time women great man people 
+4	0.05	lie lit ill iii nail tin 
+5	0.05	state men government states people united 
+6	0.05	time year men work made company 
+7	0.05	room rooms york rent furnished city 
+8	0.05	street mrs yesterday avenue john wife 
+9	0.05	club york time city water meeting 
+10	0.05	company iii cent ill bonds york 
+11	0.05	york daily fur steamship dec city 
+12	0.05	game team play line club back 
+13	0.05	piano sunday chicago iii train upright 
+14	0.05	time ran won john race mile 
+15	0.05	ill iii total lit lie lull 
+16	0.05	feet line street north point feel 
+17	0.05	club york horse race john won 
+18	0.05	time thin lie anti nail hut 
+19	0.05	price black goods prices silk full 
+
+<50> LL/token: -10.98532
+
+Total time: 1 minutes 38 seconds
+business-7 people-7 weather-7 prediction-7 brought-7 york-7 lit-7 vicinity-7 fain-7 cooled-7 winds-7 ililftlnz-7 north-1 tucwtnr-7 medium-7 published-7 iiliitiisw-7 ixiixo-7 york-7 monday-7 november-7 copyiught-7 iiy-7 iuntino-7 publishing-7 association-7 rick-19 
+0	0.002	man (5262) time (4066) men (3366) night (2117) found (2084) 
+1	0.037	war (1019) american (1001) time (771) japanese (723) china (721) 
+2	0.002	court (2482) committee (2125) district (1982) election (1632) judge (1591) 
+3	0.002	church (1885) time (1642) women (1446) great (1327) people (1164) 
+4	0.002	lie (4035) lit (3645) ill (3305) iii (2987) nail (2775) 
+5	0.002	state (1454) government (1232) men (1224) states (1172) people (1172) 
+6	0.002	time (2242) year (1637) men (1587) made (1509) work (1463) 
+7	0.895	room (1799) rooms (1205) york (1051) rent (758) city (727) 
+8	0.002	street (5282) mrs (3721) yesterday (2157) avenue (1771) john (1624) 
+9	0.002	club (1433) york (1357) time (1149) city (845) water (831) 
+10	0.002	company (1719) iii (1419) cent (1279) ill (958) bonds (955) 
+11	0.002	york (1919) daily (982) fur (497) steamship (422) city (409) 
+12	0.002	game (1872) team (1303) play (1271) line (1116) club (1031) 
+13	0.002	piano (1132) sunday (902) chicago (866) iii (716) train (708) 
+14	0.002	time (1616) ran (1130) won (854) john (750) race (516) 
+15	0.002	ill (2789) iii (2294) total (1958) lit (1491) lie (945) 
+16	0.002	feet (2790) line (2672) street (2203) north (1434) point (1276) 
+17	0.002	club (1230) york (776) horse (764) race (702) john (694) 
+18	0.002	time (2918) thin (1757) lie (1681) anti (1466) nail (1331) 
+19	0.037	price (1288) black (1060) goods (905) silk (860) prices (859) 
+church-3 repair-0 tier-4 roll-18 lil-10 rntttk-3 tutti-4 mohxjxu-3 fact-0 rice-18 tar-4 ihrttllon-4 pallor-9 imeia-3 live-0 lure-0 child-0 chi-0 lluthmlek-0 ifcefnrmed-3 church-3 iii-10 plain-0 troyka-9 kent-0 vhrti-9 miller-2 llngemnn-3 mounted-18 tbepidlltof-9 muthwlck-18 tlefurmciiriiuti-9 ici-0 clxcnand-1 humboldt-0 streets-9 wllllnnif-1 burning-0 pastor-3 begin-2 ruirnliig-9 serics-0 yesterday-2 crew-9 folltmlng-1 notice-0 war-1 italian-0 informed-3 tint-4 hell-0 thurtlsy-4 etenlnz-9 eerie-4 med-4 rthntrmln-18 ball-12 conducted-2 future-2 herbert-1 ice-0 church-3 rgtiit-9 ind-0 hall-0 place-0 hurt-18 hunts-10 evenings-9 joint-18 wraxin-9 prutlilf-4 conililory-0 firemr-9 lliigcmnn-4 received-2 notice-2 itlrr-3 building-9 inspector-2 warallrd-2 juldlnt-18 haul-4 church-3 examine-2 noisy-0 xrhoxvas-9 ehlreh-9 choir-3 gallery-0 pulpit-3 ills-0 tilt-4 cutlery-9 brought-0 trouble-0 bet-0 tour-3 members-9 onllory-1 llngemnn-3 charge-2 church-3 months-0 ago-3 llagcmnn-3 began-9 organ-3 lie-18 choir-3 chorus-3 consistory-9 pnlnlnl-3 musical-3 director-9 slip-9 monttit-9 trained-9 choir-3 horns-18 numbering-18 fifty-18 person-18 singing-3 gallery-0 rear-0 church-3 hageman-0 feuilclrcular-0 gallery-0 chief-0 colonists-9 constructed-9 pulpit-3 pulpit-3 lengthened-18 width-9 church-3 chorus-3 weeks-2 ago-0 left-12 tide-18 gallery-9 gate-0 inches-0 safe-0 sololiu-9 hageman-9 requested-2 consistory-9 repaired-0 promised-0 consolatory-9 finally-0 refuted-9 leave-2 work-9 ground-0 ilagan-1 cot-0 permission-0 put-9 time-4 choir-3 expressed-2 awllllngness-3 hare-9 repair-0 made-9 expense-9 member-3 consistory-9 board-9 constituted-2 majority-2 refused-0 consent-1 laid-0 gallery-9 age-3 mal-18 claimed-9 permission-0 john-2 resldunt-9 consistory-9 solfa-9 member-0 choir-3 erect-18 remain-9 gallery-9 insisted-0 gallery-9 thursday-9 night-9 member-9 military-1 opposed-2 hageuian-3 locked-0 choir-9 member-3 church-3 rehearsal-3 singers-3 church-3 open-0 hiding-9 trees-3 choir-3 released-0 house-2 nololsts-9 held-2 meeting-2 passed-0 resolution-2 pro-9 testing-9 stab-0 outrage-1 termed-1 part-3 members-9 coat-0 declared-2 intention-1 protecting-2 thinselns-9 repetition-3 saturday-0 hageman-3 build-0 ing-1 department-2 asked-0 inspector-2 lalrmnt-9 church-3 inspect-0 gallery-0 inspector-2 hhaughnessy-9 church-3 jeslertlav-2 morning-0 congregation-3 asset-10 bled-2 choir-3 chorus-3 plan-10 form-18 chaughnessy-1 pronounced-3 pulpit-3 note-3 directed-0 lloaeman-18 repaired-9 dark-0 haired-4 issued-2 permit-18 haitian-9 carpenter-9 bare-3 work-3 morning-9 terrace-9 high-9 iihumntpector-3 genu-9 mounted-0 pulpit-3 weavers-9 notice-9 isoixcdaftse-9 reidiuk-1 mrjlaiaatst-18 mud-18 wrote-3 tie-2 vntlc-9 irrttd-10 jlirbert-1 don-0 organism-9 john-2 ilritdtnl-0 emxiutory-3 lltitiwllc-2 church-3 laterrerloirln-9 mutlcat-3 mrrtoesoc-9 endure-0 beth-0 mlnltter-18 slits-3 cher-2 bare-18 absolute-1 ehsrffo-9 vninomheeoimuory-9 year-3 inwhleh-1 hrraiimur-9 contract-9 utah-4 tie-2 responsible-2 pay-0 month-10 aortic-9 oral-4 contract-9 battle-9 lot-18 damage-0 sustained-10 choir-9 hageman-0 read-2 notices-9 put-0 pit-9 proceeded-0 serf-18 ice-18 carpenters-0 irene-2 tools-18 timber-0 men-0 ice-4 granted-9 vestibule-0 seton-2 asked-0 worn-0 replied-0 bad-0 bone-0 reoalrthe-18 gallery-9 weaver-9 told-0 presence-0 warned-0 attempt-0 downy-3 work-0 church-3 consent-1 consistory-9 service-1 wag-0 carpenters-9 walked-0 ultra-4 told-0 hageman-0 ready-2 work-9 lull-4 men-0 siege-18 manthere-2 work-9 church-3 fiahbath-9 shouted-0 weaver-9 warn-0 ahead-0 consent-0 consistory-9 gallery-0 dangerous-18 life-3 permit-18 repaired-0 pastor-3 repaired-9 nay-18 weaver-9 itahall-0 repaired-9 choir-9 sing-3 tonight-9 choir-9 sing-3 tonight-2 therholr-9 sing-3 cleared-0 haeeman-0 emphasis-1 weaver-9 continued-0 protest-1 finally-0 hageman-0 declared-2 intention-0 evoking-18 assistance-3 police-2 leaving-0 hush-18 asked-2 friends-0 stay-3 turned-9 herbert-9 street-0 police-2 station-0 told-2 part-3 campbell-2 building-9 inspector-2 ordered-9 gallery-0 church-1 repaired-9 ollcetuan-0 hunt-18 church-3 preserve-18 order-0 carpenters-9 vestibule-0 hageman-0 lot-0 back-0 ordered-9 begin-3 work-3 church-3 aisle-9 tunic-0 hour-9 timber-9 hageman-0 called-3 policeman-0 shouted-0 loud-0 eighty-9 odd-3 members-2 congregation-3 choir-3 hail-1 remained-0 arrest-0 officer-0 dares-2 inter-9 fera-0 men-3 lie-1 carpenters-9 gallery-9 relied-18 war-1 repairs-9 hsgeman-9 fro-0 aisle-0 times-9 shouted-0 rate-0 nail-4 blessings-0 flow-2 women-0 wanted-0 sing-3 pastor-3 requested-2 defer-4 night-9 tip-0 gallery-0 sing-3 choir-3 bile-9 carpenters-0 driving-0 alma-9 nail-9 gallery-9 make-2 secure-0 llagemans-0 opponents-12 peeped-18 side-0 door-3 llhgeman-1 directed-0 tint-4 uolikman-0 current-3 attempted-0 interfere-0 carpenters-9 work-3 haxeman-0 amen-9 congratulated-9 victory-2 lowers-3 hands-0 left-0 church-3 seton-2 locked-0 anticipation-9 pastor-3 hagemann-3 open-3 men-0 consutory-9 cattle-18 nap-18 rautui-9 gallery-9 hail-0 wen-2 repaired-9 police-2 men-9 church-3 night-9 preserve-18 order-9 choir-3 mind-18 horns-9 timid-18 enwrlnl-9 church-3 taking-0 places-3 plan-0 form-18 hey-0 xrallcd-9 hsgeman-9 arrived-9 aisle-9 bud-0 serf-18 began-0 hageman-0 reading-10 tens-0 spoke-3 persons-3 choir-3 locked-0 short-3 hunutay-10 night-0 hid-18 trees-18 ale-9 poor-0 thing-0 rule-18 trip-0 death-0 trap-0 coming-3 bad-3 man-0 oil-10 lie-0 hide-18 mints-3 moran-9 colonists-9 mounted-0 newpillery-3 alter-3 sung-0 mont-1 rolled-9 calm-18 nnuiurd-0 notices-18 read-3 bald-9 time-0 wire-0 forced-9 reading-3 xrhlih-18 related-18 rehtaruils-9 lit-3 hid-0 ill-10 notice-3 dear-10 means-18 choir-9 gas-0 existence-9 direction-18 mrtnurs-9 list-4 lonslstor-18 men-0 runslsu-3 men-0 recoil-18 slumliiitf-4 stand-9 gentle-3 cent-2 title-3 tiitice-9 panel-0 place-0 courteously-18 reply-2 drilled-3 young-0 people-18 grate-3 loudly-0 amid-18 rereltcd-1 asked-2 luke-3 penny-2 nay-2 ten-0 limit-9 members-9 con-9 history-3 lure-17 diet-18 tool-9 charge-2 certify-2 firm-18 wire-9 unit-4 handful-0 neitpla-1 line-4 lame-0 wid-17 lledrll-17 bent-0 thviiiiilitiir-4 time-3 smite-18 loiidltlon-9 barge-0 time-9 chloral-3 music-3 time-9 collections-2 mere-0 hindu-18 wcmljn-9 ice-0 ali-2 conduct-1 time-0 music-3 church-3 give-3 duties-0 honorable-2 jwoph-10 uphold-1 urine-3 certhlng-4 mid-9 imicklu-9 time-9 laws-2 law-0 mill-4 tlwlikeihai-9 omfirfoiiul-9 meeting-9 xvheu-3 talk-3 ntrollllelnj-4 inieanlng-10 couitttory-9 land-0 marked-3 cii-1 lori-17 thursday-9 llhto-9 looked-0 lime-0 biitaudni-3 wife-3 yti-9 omked-9 young-3 ladies-0 paid-0 car-0 didst-0 tied-0 iii-18 xrluxxcr-18 maim-0 erwilii-2 mwidii-3 tlatact-2 servant-0 hayes-0 iiestae-2 person-2 lower-18 scullions-3 touch-0 lint-9 viper-9 laughed-0 face-0 young-3 ladies-0 night-0 trees-0 scullions-3 boots-0 pie-3 notice-0 lords-1 day-2 interferes-9 regularly-0 col-2 treated-3 ninslcnl-9 men-0 ice-18 time-0 time-18 tired-0 disturber-3 treated-1 mark-3 fires-9 clapping-9 hands-0 hnrfmnnsald-9 tinted-3 miss-3 minister-1 soprnno-18 gallery-9 told-0 mitrnrt-0 told-0 mott-4 klsltr-4 vottiil-1 lit-4 lotitrrut-9 touch-0 slur-9 peril-1 continued-3 inn-0 foul-4 tint-18 shun-18 tomorrow-9 morning-9 sac-4 begin-3 mimellilng-2 bodies-3 noel-3 hill-2 neo-0 hut-9 gentlemen-18 mind-18 lie-4 nltalrt-9 church-3 plnlti-14 wont-4 cut-18 uioxv-17 time-0 mavionie-10 nail-9 gut-18 stout-18 nail-4 outrages-1 oil-4 hoar-2 isle-3 full-4 sliiklng-0 hymn-9 hagcmau-0 bed-0 adam-18 hiding-18 rioting-0 eyes-18 made-0 reverent-3 trouble-0 mine-9 hid-0 high-18 llngemnn-3 set-0 ruled-9 sntibath-2 nlloxvltir-0 cornell-12 work-9 smlnv-2 lotitlsiory-10 unite-3 ill-4 serve-0 friend-2 iintoti-9 pastor-3 hagemnn-3 gallery-0 rcpnlred-12 ettcrihi-0 brcauto-17 chin-0 mine-4 lock-9 nail-4 tilt-4 week-3 osnndn-2 time-18 work-9 llefoie-2 hngemnii-9 lint-4 ted-18 hit-0 friends-0 injunction-2 supreme-2 court-2 till-4 rcrtrnlnlng-9 time-0 etimisistory-3 interfering-0 gallery-9 choir-9 rehearsal-3 church-3 nuclei-18 war-10 
+0	0.268	man (5262) time (4066) men (3366) night (2117) found (2084) 
+1	0.044	war (1019) american (1001) time (771) japanese (723) china (721) 
+2	0.099	court (2482) committee (2125) district (1982) election (1632) judge (1591) 
+3	0.180	church (1885) time (1642) women (1446) great (1327) people (1164) 
+4	0.052	lie (4035) lit (3645) ill (3305) iii (2987) nail (2775) 
+5	0.000	state (1454) government (1232) men (1224) states (1172) people (1172) 
+6	0.000	time (2242) year (1637) men (1587) made (1509) work (1463) 
+7	0.000	room (1799) rooms (1205) york (1051) rent (758) city (727) 
+8	0.000	street (5282) mrs (3721) yesterday (2157) avenue (1771) john (1624) 
+9	0.225	club (1433) york (1357) time (1149) city (845) water (831) 
+10	0.020	company (1719) iii (1419) cent (1279) ill (958) bonds (955) 
+11	0.000	york (1919) daily (982) fur (497) steamship (422) city (409) 
+12	0.006	game (1872) team (1303) play (1271) line (1116) club (1031) 
+13	0.000	piano (1132) sunday (902) chicago (866) iii (716) train (708) 
+14	0.001	time (1616) ran (1130) won (854) john (750) race (516) 
+15	0.000	ill (2789) iii (2294) total (1958) lit (1491) lie (945) 
+16	0.000	feet (2790) line (2672) street (2203) north (1434) point (1276) 
+17	0.007	club (1230) york (776) horse (764) race (702) john (694) 
+18	0.096	time (2918) thin (1757) lie (1681) anti (1466) nail (1331) 
+19	0.000	price (1288) black (1060) goods (905) silk (860) prices (859) 
+rut-0 itritiiz-6 side-6 orators-2 rlonkmiiktrt-0 remnrknhle-4 meeting-6 cloak-8 makers-6 strike-6 held-6 night-0 grand-8 street-0 wee-0 wives-2 coil-4 daughters-3 striker-6 attended-8 response-6 circular-6 men-6 early-3 day-6 strikers-6 early-3 forenoon-8 number-6 manufacturers-6 superintendent-2 sweeter-8 dutrliu-2 cairisget-6 anti-4 persuade-0 women-3 hut-4 bands-0 strike-6 return-6 work-6 offset-6 meeting-6 guns-4 called-0 began-0 clock-8 women-0 young-8 anti-0 began-0 pour-3 limb-6 piece-3 half-4 hour-3 earlier-3 packed-0 hall-8 staircase-3 filled-8 nail-4 anteroom-0 miss-8 sarah-8 flnkelsteln-8 presided-6 speak-2 ears-8 meyer-8 schocnfdd-4 joseph-8 baron-3 des-6 scbocnfeld-8 spoke-0 con-3 edition-3 cloakmnkers-6 tenements-6 women-3 began-0 sob-6 min-0 chorus-3 sobbing-0 room-0 tears-8 screamed-0 schon-2 ends-6 face-0 talked-0 vote-2 wit-0 put-6 wives-8 mothers-0 vere-3 husbands-0 give-3 strike-6 lark-8 work-6 great-6 shout-0 arose-0 mingled-0 cries-0 scars-4 nag-3 found-8 number-6 womneim-6 husbands-8 ten-6 present-6 elderly-0 omen-2 scowled-3 began-6 talk-2 audibly-3 hushed-4 younger-0 women-0 ilaroudett-6 spoke-0 anti-0 pre-6 iii-4 worked-0 feelings-0 audience-0 told-4 tint-0 manufacturers-8 met-6 factories-6 workshops-3 guarded-6 len-2 crying-0 remnreil-8 ant-3 husbands-8 working-0 triisrd-0 plnkertonsr-6 cried-0 hum-4 reply-8 tremendous-3 close-0 inciting-6 thin-6 door-0 shouted-0 scab-6 nttnrk-8 made-6 xxmunn-0 hut-8 thenthert-2 closely-3 missed-0 real-6 easily-0 fared-0 badly-0 ronde-6 forced-6 hit-0 buy-0 rescued-6 striking-6 ilakidakr-2 bell-8 mild-4 meeting-6 isstavrnuig-3 apkvrretl-2 hall-3 fourth-8 street-8 train-4 ran-0 festive-8 regard-3 con-6 thinking-0 thestrlke-4 women-3 nivlulrlprrowdpl-0 tiuiinucodlmriuufjuw-3 anembittf-0 tut-4 body-0 ball-8 henjamjnihosfuthnl-6 presided-3 anti-0 speak-3 ears-6 strikers-6 itanmdc-8 wan-0 present-3 decided-6 acclamation-2 strikers-8 hold-0 strike-0 laatiil-4 enter-4 parade-17 strikers-6 place-0 forenoon-8 starting-3 rogers-2 square-0 clock-8 mats-3 meeting-6 cooper-8 union-6 meeting-6 central-6 labor-6 union-4 committee-6 appointed-2 italy-17 collect-6 find-3 strikers-6 reported-6 amount-6 collected-6 small-0 union-6 gave-0 anti-6 delegate-6 amalgamated-8 clotune-3 cutters-6 saul-8 small-0 amounts-6 collected-6 mere-3 discouraging-6 organization-6 con-3 tribute-3 liberally-6 lie-8 continued-0 brotherhood-6 sailors-3 xvhlch-6 astesxd-6 felt-3 ssoo-0 delegaln-17 smith-8 treasurer-6 frtcutixe-6 board-6 strikers-6 wlrtti-4 asserted-6 slooo-0 paul-6 strikers-6 man-0 hrothri-3 hood-6 sailors-0 asteitxttl-8 fifty-6 cell-0 
+0	0.252	man (5262) time (4066) men (3366) night (2117) found (2084) 
+1	0.000	war (1019) american (1001) time (771) japanese (723) china (721) 
+2	0.056	court (2482) committee (2125) district (1982) election (1632) judge (1591) 
+3	0.144	church (1885) time (1642) women (1446) great (1327) people (1164) 
+4	0.074	lie (4035) lit (3645) ill (3305) iii (2987) nail (2775) 
+5	0.000	state (1454) government (1232) men (1224) states (1172) people (1172) 
+6	0.315	time (2242) year (1637) men (1587) made (1509) work (1463) 
+7	0.000	room (1799) rooms (1205) york (1051) rent (758) city (727) 
+8	0.147	street (5282) mrs (3721) yesterday (2157) avenue (1771) john (1624) 
+9	0.000	club (1433) york (1357) time (1149) city (845) water (831) 
+10	0.000	company (1719) iii (1419) cent (1279) ill (958) bonds (955) 
+11	0.000	york (1919) daily (982) fur (497) steamship (422) city (409) 
+12	0.000	game (1872) team (1303) play (1271) line (1116) club (1031) 
+13	0.000	piano (1132) sunday (902) chicago (866) iii (716) train (708) 
+14	0.000	time (1616) ran (1130) won (854) john (750) race (516) 
+15	0.000	ill (2789) iii (2294) total (1958) lit (1491) lie (945) 
+16	0.000	feet (2790) line (2672) street (2203) north (1434) point (1276) 
+17	0.011	club (1230) york (776) horse (764) race (702) john (694) 
+18	0.000	time (2918) thin (1757) lie (1681) anti (1466) nail (1331) 
+19	0.000	price (1288) black (1060) goods (905) silk (860) prices (859) 
+fought-0 tltitki-0 nrwtfns-8 scot-17 vaiquukr-8 robbery-8 artery-4 land-18 hlralnle-4 dfnvml-4 masked-8 burglars-8 tired-0 home-0 met-0 scott-17 scott-0 camp-0 son-0 stout-18 street-8 clock-8 night-0 straight-0 mrs-8 scott-0 room-0 forced-0 beat-12 ten-0 min-0 hut-0 woman-0 fought-0 deeper-8 forced-0 make-0 house-0 tape-0 touching-0 thing-0 clock-0 mrs-8 scott-0 house-8 room-0 head-0 flair-2 land-0 floor-0 partly-0 dressed-0 score-12 diamond-8 earrings-8 diamond-8 breastpin-0 jewel-0 loose-0 dresser-8 foot-0 bed-0 sitting-4 bid-4 reading-2 heard-0 person-0 stumble-0 stairs-0 railed-0 lull-4 door-0 wat-0 forced-0 breaking-0 holt-4 masked-0 men-0 entered-0 mrs-8 dujoiixxuntt-0 nnsxxer-4 man-0 struck-0 moon-0 head-0 wlthntinall-4 pistol-0 called-0 oil-4 part-0 news-0 held-8 ran-0 side-0 bed-0 man-0 holding-0 struck-0 drill-0 billy-8 founding-0 thin-18 head-18 arm-4 blood-0 ran-0 ilium-4 sum-18 fair-18 neck-0 streams-0 catch-0 ole-0 managed-0 kirk-8 elm-4 times-0 mal-0 filth-18 tim-8 revolver-0 hand-17 nut-4 lied-0 iris-4 fact-0 null-4 removing-0 hit-4 kill-0 check-8 tore-0 mask-0 saidill-0 ymimi-0 ngela-0 relit-4 tete-4 index-4 julttakc-0 fur-4 lie-4 began-0 tinlub-2 main-18 rexnlxit-4 riesperamon-0 fought-0 nom-4 open-0 window-0 yelled-0 mon-0 told-0 men-0 throw-0 sit-4 kill-0 wan-0 wriggling-18 men-18 irllllll-17 main-4 mind-4 tug-0 murder-0 lie-0 looked-0 partner-0 fothmcd-4 neighbors-0 heard-0 line-8 lie-0 ami-4 found-0 hill-4 foot-4 hhedlnt-4 grunt-4 time-18 toes-4 main-4 head-0 scott-0 isaikixxrrfiillx-0 built-4 woman-0 xxelgh-0 leg-4 vol-18 wounds-0 itixbontllft-8 tears-8 
+0	0.577	man (5262) time (4066) men (3366) night (2117) found (2084) 
+1	0.000	war (1019) american (1001) time (771) japanese (723) china (721) 
+2	0.016	court (2482) committee (2125) district (1982) election (1632) judge (1591) 
+3	0.000	church (1885) time (1642) women (1446) great (1327) people (1164) 
+4	0.189	lie (4035) lit (3645) ill (3305) iii (2987) nail (2775) 
+5	0.000	state (1454) government (1232) men (1224) states (1172) people (1172) 
+6	0.000	time (2242) year (1637) men (1587) made (1509) work (1463) 
+7	0.000	room (1799) rooms (1205) york (1051) rent (758) city (727) 
+8	0.123	street (5282) mrs (3721) yesterday (2157) avenue (1771) john (1624) 
+9	0.000	club (1433) york (1357) time (1149) city (845) water (831) 
+10	0.000	company (1719) iii (1419) cent (1279) ill (958) bonds (955) 
+11	0.000	york (1919) daily (982) fur (497) steamship (422) city (409) 
+12	0.010	game (1872) team (1303) play (1271) line (1116) club (1031) 
+13	0.000	piano (1132) sunday (902) chicago (866) iii (716) train (708) 
+14	0.000	time (1616) ran (1130) won (854) john (750) race (516) 
+15	0.000	ill (2789) iii (2294) total (1958) lit (1491) lie (945) 
+16	0.000	feet (2790) line (2672) street (2203) north (1434) point (1276) 
+17	0.021	club (1230) york (776) horse (764) race (702) john (694) 
+18	0.061	time (2918) thin (1757) lie (1681) anti (1466) nail (1331) 
+19	0.000	price (1288) black (1060) goods (905) silk (860) prices (859) 
+stout-18 nviirr-4 recall-0 iveirut-4 lose-0 seeds-18 paris-11 advertisement-0 prlntetl-8 terdajs-0 ears-4 linlrldayrxenlnii-0 led-4 guilt-12 health-8 ami-4 late-4 ellen-0 liullel-11 tmtsli-0 crowd-0 tat-4 bitter-4 whit-4 rvxvarilru-6 iklral-4 ihuo-4 slung-18 rcmurkahlu-11 lime-4 wnuii-4 chair-0 cross-0 medal-4 time-4 bullet-0 xrhlih-18 lower-0 rickets-11 told-0 grs-0 reporter-0 yesterday-8 began-18 buck-4 francnlru-4 run-0 thetlmeof-4 war-0 time-4 txrrsou-4 thou-4 wits-8 log-4 art-18 curls-0 words-0 romantic-8 bullet-0 follow-18 leg-4 curls-18 began-0 sum-4 tier-11 american-11 women-0 uttered-4 vices-6 nur-4 turn-4 proud-4 tut-4 tumalutaln-8 hiwpual-4 october-4 nuxiin-0 tier-0 entjfouriarsagoouranit-8 law-4 unit-4 due-4 day-0 tent-0 haul-18 tiara-4 lifted-0 unndsomu-4 young-0 tima-4 hot-0 time-4 hit-0 surgeons-8 immtxtuttly-4 roll-8 time-4 operating-18 rut-4 began-0 jirohli-4 hit-0 full-4 bathing-4 lung-4 amid-4 lie-4 relics-4 pain-4 linsey-4 cut-6 bullet-0 nut-0 washed-0 piti-4 isrylundul-4 mid-4 wounded-0 tunic-0 rueful-4 guile-4 lie-4 joint-18 maleinolmlla-4 tail-4 gut-4 aiuilhei-4 thanked-0 promised-0 wear-0 silver-0 haul-4 auto-4 silver-8 chains-0 coup-0 vital-18 watch-0 
+0	0.317	man (5262) time (4066) men (3366) night (2117) found (2084) 
+1	0.000	war (1019) american (1001) time (771) japanese (723) china (721) 
+2	0.000	court (2482) committee (2125) district (1982) election (1632) judge (1591) 
+3	0.000	church (1885) time (1642) women (1446) great (1327) people (1164) 
+4	0.446	lie (4035) lit (3645) ill (3305) iii (2987) nail (2775) 
+5	0.000	state (1454) government (1232) men (1224) states (1172) people (1172) 
+6	0.022	time (2242) year (1637) men (1587) made (1509) work (1463) 
+7	0.000	room (1799) rooms (1205) york (1051) rent (758) city (727) 
+8	0.072	street (5282) mrs (3721) yesterday (2157) avenue (1771) john (1624) 
+9	0.000	club (1433) york (1357) time (1149) city (845) water (831) 
+10	0.000	company (1719) iii (1419) cent (1279) ill (958) bonds (955) 
+11	0.044	york (1919) daily (982) fur (497) steamship (422) city (409) 
+12	0.008	game (1872) team (1303) play (1271) line (1116) club (1031) 
+13	0.000	piano (1132) sunday (902) chicago (866) iii (716) train (708) 
+14	0.000	time (1616) ran (1130) won (854) john (750) race (516) 
+15	0.000	ill (2789) iii (2294) total (1958) lit (1491) lie (945) 
+16	0.000	feet (2790) line (2672) street (2203) north (1434) point (1276) 
+17	0.000	club (1230) york (776) horse (764) race (702) john (694) 
+18	0.087	time (2918) thin (1757) lie (1681) anti (1466) nail (1331) 
+19	0.000	price (1288) black (1060) goods (905) silk (860) prices (859) 

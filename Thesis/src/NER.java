@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -9,6 +10,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+=======
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -16,16 +22,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+<<<<<<< HEAD
 import edu.stanford.nlp.util.Maps;
 
 //This file is to be run once NER and Coref process is complete.
 //calculate lengths of all documents
 //create ntf map each person. 
+=======
+
+//remove duplicates etc..
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 
 
 public class NER{
 	
+<<<<<<< HEAD
 @SuppressWarnings("unchecked")
+=======
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 public static void main (String args[]) throws Exception{
 	/*BufferedReader reader1 = new BufferedReader(new FileReader("NER/FinalCorrectedPersonNames3.txt"));
 	Set<String> lines = new LinkedHashSet<String>(); 
@@ -106,13 +120,21 @@ public static void main (String args[]) throws Exception{
 	fr.close();
 	fw.close();
 	*/
+<<<<<<< HEAD
 	/*File folder1=new File ("C:/Users/himanshu/Documents/CorrectedP");
+=======
+	/*File folder1=new File ("C:/Users/himanshu/Documents/final");
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 
 	File[] listOfFiles1=folder1.listFiles();
 	//FileReader fr = new FileReader("C:/Users/himanshu/Documents/final/72265 .txt"); 
 	//FileReader fr = new FileReader("C:/Users/himanshu/workspace/Thesis/Ocr/73786.txt");
 	//BufferedReader br = new BufferedReader(fr); 
+<<<<<<< HEAD
 	FileWriter fw = new FileWriter("AllArtLinedoc2.txt"); 
+=======
+	FileWriter fw = new FileWriter("AllArtLinedoc.txt"); 
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	
 	
 	
@@ -135,9 +157,13 @@ public static void main (String args[]) throws Exception{
 	br.close();
 
 	}
+<<<<<<< HEAD
 	fw.close();
 	
 	/*
+=======
+	fw.close();*/
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	/*FileReader fr = new FileReader("C:/Users/himanshu/Documents/final/72265 .txt"); 
 	BufferedReader br = new BufferedReader(fr); 
 	FileWriter fw = new FileWriter("linedoc72265.txt"); 
@@ -151,10 +177,14 @@ public static void main (String args[]) throws Exception{
 	line = lline.replace("\n", "").replace("\r", "");
 
 */
+<<<<<<< HEAD
 	
 	
 	//No of topics and people map
 	/*Map<String,List<String>> RevertMap=new HashMap<String,List<String>>();
+=======
+	Map<String,List<String>> RevertMap=new HashMap<String,List<String>>();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	FileReader fr = new FileReader("PersonTopic.csv"); 
 	BufferedReader br = new BufferedReader(fr); 
 	String line;
@@ -188,6 +218,7 @@ public static void main (String args[]) throws Exception{
     	  List <String> persons=entry.getValue();
 	  System.out.println("No. of topics: "+entry.getKey()+"  Number of people: " +persons.size());
 	  
+<<<<<<< HEAD
 	  }*/
 	
 	/*FileReader fr = new FileReader("NER/OutputofNEROriginal.txt"); 
@@ -391,4 +422,8 @@ FileOutputStream fos1=new FileOutputStream(file1);
     oos1.flush();
     oos1.close();
     fos1.close();
+=======
+	  }
+
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 }}

@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 
 //Perform NER and create all maps for having a Final Map which will be read later for finding influential persons
 
+=======
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 import edu.stanford.nlp.ie.AbstractSequenceClassifier;
 import edu.stanford.nlp.ie.crf.*;
 import edu.stanford.nlp.io.IOUtils;
@@ -27,7 +30,11 @@ import cc.mallet.types.IDSorter;
 import cc.mallet.types.InstanceList;
 import cc.mallet.types.LabelSequence;
 
+<<<<<<< HEAD
 //Perform NER: find all person names in documents
+=======
+//find all person names in documents
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 /** This is a demo of calling CRFClassifier programmatically.
  *  <p>
  *  Usage: <code> java -mx400m -cp "stanford-ner.jar:." NERDemo [serializedClassifier [fileName]]</code>
@@ -82,8 +89,12 @@ public class NERDemo {
 	   // System.out.println(Documents.size());
 	}
 
+<<<<<<< HEAD
     @SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException {
+=======
+    public static void main(String[] args) throws IOException {
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 
       String serializedClassifier = "classifiers/english.all.3class.distsim.crf.ser.gz";
 
@@ -95,6 +106,7 @@ public class NERDemo {
    
 	  try {
 	 
+<<<<<<< HEAD
 	File folder=new File ("C:/Users/AAYUSHEE/Documents/final");
 	//	  File folder=new File ("C:\\Users\\AAYUSHEE\\workspace\\Thesis\\Corrected");
 		  HashMap<String, List<String>> hm = new HashMap<String, List<String>>();   //HASHMAP WITH PERSON NAME AND CORRESPONDING DOCUMENTS LIST
@@ -102,11 +114,23 @@ public class NERDemo {
 		  HashMap<Integer, List<String>> hm2 = new HashMap<Integer, List<String>>();  //HASHMAP WITH NUMBER OF DOCUMENTS AND CORRESPONDING PEOPLE LIST 
 		  HashMap< String,Integer> hm3 = new HashMap<String,Integer>();	//HASHMAP WITH DOC IDS AND DOC NAMES
 		   //HASHMAP WITH PERSON NAME AND THEIR CORRESPONDING TF VALUES
+=======
+	File folder=new File ("C:/Users/himanshu/Documents/final");
+	//	  File folder=new File ("C:\\Users\\himanshu\\workspace\\Thesis\\Corrected");
+		  HashMap<String, List<String>> hm = new HashMap<String, List<String>>();   //HASHMAP WITH PERSON NAME AND CORRESPONDING DOCUMENTS LIST
+			//LinkedHashSet<String> uniqueValues = new LinkedHashSet<>();
+		  HashMap<Integer, List<String>> hm2 = new HashMap<Integer, List<String>>();  //HASHMAP WITH NUMBER OF DOCUMENTS AND CORRESPONDING PEOPLE LIST 
+		  HashMap< String,Integer> hm3 = new HashMap<String,Integer>();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	   ArrayList <String> Documents= new ArrayList <String>();
 		NERDemo obj=new NERDemo();
 		Documents=obj.traverseFiles(folder,Documents);
 		 System.out.println(Documents.size());
+<<<<<<< HEAD
 	//	BufferedWriter outp = new BufferedWriter(new FileWriter("NER/OutputofNERFinal.txt"));
+=======
+		BufferedWriter outp = new BufferedWriter(new FileWriter("NER/OutputofNER.txt"));
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		//File[] listOfFiles = null;
 		for(int i=0;i<Documents.size();i++)
 		
@@ -124,7 +148,11 @@ public class NERDemo {
 			{			
 				String ename = fileContents.substring(triple.second,triple.third);
 			
+<<<<<<< HEAD
 				String entity = ename.replaceAll("\\*", "").replaceAll("\\s+", " ").replaceAll("\\!", "");
+=======
+				String entity = ename.replaceAll("\\*", "").replaceAll("\\n", " ").replaceAll("\\!", "");
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 			
 				if (entity.length()>1) 
 				{
@@ -132,6 +160,7 @@ public class NERDemo {
 				   if (triple.first.equalsIgnoreCase("PERSON"))
 				   {
 					 //  outp.write(entity.trim()+" "+f.getName()+"\n");
+<<<<<<< HEAD
 					   String e=entity.trim().toLowerCase();
 				 
 					
@@ -188,6 +217,23 @@ public class NERDemo {
 							
 						}	
 		
+=======
+				 if(hm.containsKey(entity.trim()))
+				 {
+					 List<String> val =hm.get(entity.trim());
+					 if(!val.contains(f.getName()))
+					 val.add(f.getName());
+					 		hm.put(entity.trim(),val);
+				 }
+				 else
+				 {
+					 List<String> val=new ArrayList<String>();
+					 	val.add(f.getName());	
+					 	String split[]=entity.split(" ");
+						if(split.length>1)
+				 hm.put(entity.trim(),val);
+		//System.out.println("new entity:"+ entity.trim());
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				 }				    
 				  // if (triple.first.equalsIgnoreCase("LOCATION"))
 					//   output.write(entity.trim()+"\n")
@@ -200,7 +246,11 @@ public class NERDemo {
 }
 		//PRINTING THE HASHMAP OF PERSONS WITH DOCUMENTS IN WHICH THEY OCCUR
 		
+<<<<<<< HEAD
 		BufferedWriter output= new BufferedWriter(new FileWriter("Topic100FinalOutput/InvertedNEROutput1709.csv"));
+=======
+		BufferedWriter output= new BufferedWriter(new FileWriter("FinalNEROutput.csv"));
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		for (Map.Entry<String, List<String>> entry : hm.entrySet())
 		{
 			String key = entry.getKey();
@@ -214,21 +264,35 @@ public class NERDemo {
 			 {
 			 
 				List<String> val2 =hm2.get(values.size());
+<<<<<<< HEAD
 				 if(!val2.contains(key))
 				 val2.add(key);
+=======
+				 if(!val2.contains(entry.getKey()))
+				 val2.add(entry.getKey());
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				 		hm2.put(values.size(),val2);
 			 }
 			 else
 			 {
 				 List<String> val2=new ArrayList<String>();
+<<<<<<< HEAD
 				 	val2.add(key);	
 				 
 			 hm2.put(values.size(),val2);
 	
+=======
+				 	val2.add(entry.getKey());	
+				 	//String split[]=entity.split(" ");
+					//if(split.length>1)
+			 hm2.put(values.size(),val2);
+			 //System.out.println("Key= "+values.size()+"People list: "+ val2);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 			 }
 			
 		}
 		
+<<<<<<< HEAD
 
 		for (Map.Entry<Integer, List<String>> entry : hm2.entrySet()) {
 			List<String> values2 = entry.getValue();
@@ -242,6 +306,20 @@ public class NERDemo {
 
 		//System.out.println("Number of entities with 1 document only: "+count);
 		//outp.close();
+=======
+		//System.out.println(hm2);
+		for (Map.Entry<Integer, List<String>> entry : hm2.entrySet()) {
+			List<String> values2 = entry.getValue();
+	    //System.out.println(entry.getKey()+ " "+values2);
+			output.write(entry.getKey()+","+values2.size()+"\n");
+		}
+		output.close();
+		System.out.println("Size of hashmap:number of entities and their corresponding number of documents"+hm.size());
+		System.out.println("Size of hashmap3 Documents and their id:"+hm3.size());
+
+		//System.out.println("Number of entities with 1 document only: "+count);
+		outp.close();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		
 		
 		
@@ -251,7 +329,11 @@ public class NERDemo {
 		
     	
     	 
+<<<<<<< HEAD
     	/* Map<Integer,Integer> DocTopicMap=new HashMap<Integer,Integer>();
+=======
+    	 Map<Integer,Integer> DocTopicMap=new HashMap<Integer,Integer>();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
  		Map<Integer,List<String>> hm4= new HashMap<Integer,List<String>>();
 
 
@@ -267,7 +349,11 @@ public class NERDemo {
 
 		InstanceList instances = new InstanceList (new SerialPipes(pipeList));
 
+<<<<<<< HEAD
 		Reader fileReader = new InputStreamReader(new FileInputStream(new File("AllArtLinedoc2.txt")), "UTF-8");
+=======
+		Reader fileReader = new InputStreamReader(new FileInputStream(new File("AllArtLinedoc.txt")), "UTF-8");
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		instances.addThruPipe(new CsvIterator (fileReader, Pattern.compile("^(\\S*)[\\s,]*(\\S*)[\\s,]*(.*)$"),3, 2, 1)); // data, label, name fields
 		//FileIterator iterator=new FileIterator(new File("Corrected"),new TxtFilter(),FileIterator.LAST_DIRECTORY);
 		//instances.addThruPipe(iterator);								   
@@ -357,7 +443,11 @@ public class NERDemo {
 		}
 		
 		// Create a new instance with high probability of topic 0
+<<<<<<< HEAD
 		StringBuilder topicZeroText = new StringBuilder();
+=======
+		/*StringBuilder topicZeroText = new StringBuilder();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		Iterator<IDSorter> iterator1 = topicSortedWords.get(i).iterator();
 
 		int rank = 0;
@@ -374,6 +464,7 @@ public class NERDemo {
 
 		TopicInferencer inferencer = model.getInferencer();
 		double[] testProbabilities = inferencer.getSampledDistribution(testing.get(i), 10, 1, 5);
+<<<<<<< HEAD
 		System.out.println("0\t" + testProbabilities[i]);
 	}*/
 	//System.out.println(DocTopicMap);	
@@ -496,6 +587,37 @@ public class NERDemo {
 	    	  	        oosL.close();
 	    	  	        fosL.close();    
 	    		   
+=======
+		System.out.println("0\t" + testProbabilities[i]);*/
+	}
+	//System.out.println(DocTopicMap);	
+		
+		BufferedWriter writ=new BufferedWriter(new FileWriter("PersonTopic.csv"));
+		int docid=0;
+		int doctopic=0;
+		 
+	    	 
+	    	  for (Map.Entry<String, List<String>> entry : hm.entrySet()) {	  
+	    	  
+	    	  String person=entry.getKey();
+	    	  List <String> persondocuments=entry.getValue();
+	    	  List <Integer> TopicsList=new ArrayList<Integer>();
+	    	  for(String docfile: persondocuments)
+	    	  {
+	    	  docid=hm3.get(docfile);
+	    	  doctopic=DocTopicMap.get(docid);
+	    	 if (!(TopicsList.contains(doctopic)))
+	    	  TopicsList.add(doctopic);
+	    	//  PersonDocTopic.put(docfile,doctopic);
+	    	  //FinalMap.put(person,PersonDocTopic);
+	    	  }
+	    	  writ.write(person+","+TopicsList.size()+"\n");
+	    	  
+	    	  
+	    	 }
+		
+	    	  writ.close();
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 }
 		 catch (Exception e) 
     { 

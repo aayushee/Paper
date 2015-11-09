@@ -7,7 +7,11 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 
+<<<<<<< HEAD
 //N-grams evaluation algorithm for testing accuracy of spelling correction
+=======
+//Evaluation algorithm for spelling correction
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 
 class TestingFinal {
 	static int tp=0;
@@ -19,7 +23,11 @@ class TestingFinal {
 	//int tp=0,fp=0,tn=0,fn=0;
 	boolean flag0=true;
 	boolean flag1=true;
+<<<<<<< HEAD
 	for(int j=jstart;j<=jend;j++)
+=======
+	for(int j=jstart;j<jend;j++)
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 	 {
 		System.out.println(correctline[i]+" "+originalline[j]);
 	 if (correctline[i].equals(originalline[j])&&(!(ocrline[i].equals(correctline[i]))))
@@ -124,7 +132,11 @@ try{
 			{
 		    	//if (!split1[i].equals(split2[i]))
 				
+<<<<<<< HEAD
 		    	obj.calculate(split1,split2,split3,0,split3.length-1,i);		 
+=======
+		    	obj.calculate(split1,split2,split3,0,split3.length,i);		 
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				 
 			}
 		    else{
@@ -132,47 +144,75 @@ try{
 		    
 		    if (i==0)
 		   {
+<<<<<<< HEAD
 		   obj.calculate(split1, split2, split3, 0, 2, 0);
+=======
+		   obj.calculate(split1, split2, split3, 0, 3, 0);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 		    	
 		   }
 		   
 		   else if (i==1)
 		   {
+<<<<<<< HEAD
 			   obj.calculate(split1, split2, split3, 0, 3, 1);
+=======
+			   obj.calculate(split1, split2, split3, 0, 4, 1);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 			   
 		   }
 			else if(i==(split3.length-2))
 			{
 			 
+<<<<<<< HEAD
 				obj.calculate(split1, split2, split3, i-2, split3.length-1, i);
+=======
+				obj.calculate(split1, split2, split3, i-2, split3.length, i);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				
 			 }
 		    
 			else if(i==(split3.length-1))
 			{
 				 
+<<<<<<< HEAD
 				obj.calculate(split1, split2, split3, i-2, split3.length-1, i);
+=======
+				obj.calculate(split1, split2, split3, i-2, split3.length, i);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				
 			 }
 		    
 			else if(i==(split3.length))
 			{
 				 
+<<<<<<< HEAD
 				obj.calculate(split1, split2, split3, i-2, split3.length-1, i);
+=======
+				obj.calculate(split1, split2, split3, i-2, split3.length, i);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				
 			 }
 		    
 			else if(i==(split3.length+1))
 			{
 				 
+<<<<<<< HEAD
 				obj.calculate(split1, split2, split3, i-2, split3.length-1, i);
+=======
+				obj.calculate(split1, split2, split3, i-2, split3.length, i);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				
 			 }
 		    
 			else if((i>=(split3.length+2)))
 			{
 				
+<<<<<<< HEAD
 				obj.calculate(split1, split2, split3, split3.length-3, split3.length-1, i);
+=======
+				obj.calculate(split1, split2, split3, split3.length-3, split3.length, i);
+>>>>>>> 00cfaa4f6d9f464ba9dccbfc741c73ee2b9e8766
 				
 			}
 			 
