@@ -58,6 +58,23 @@ class Spelling1 {
 			 //else if(nWords.containsKey(Character.toUpperCase(w.charAt(0))))
 				//	candidates.put(nWords.get(Character.toUpperCase(w.charAt(0))),Character.toUpperCase(w.charAt(0))));
 			 }
+			
+			if(candidates.size() > 0) return candidates.get(Collections.max(candidates.keySet()));
+
+			//Edit distance =3
+			for(String s : list) 
+				for(String w : edits(s))
+					for(String i : edits(w))
+			 {if(nWords.containsKey(i))
+					candidates.put(nWords.get(i),i);
+			 else if(nWords.containsKey(i.toLowerCase()))
+					candidates.put(nWords.get(i.toLowerCase()),i.toLowerCase());
+			 else if(nWords.containsKey(i.toUpperCase())) 
+					candidates.put(nWords.get(i.toUpperCase()),i.toUpperCase());
+			 //else if(nWords.containsKey(Character.toUpperCase(w.charAt(0))))
+				//	candidates.put(nWords.get(Character.toUpperCase(w.charAt(0))),Character.toUpperCase(w.charAt(0))));
+			 }
+			
 		return candidates.size() > 0 ? candidates.get(Collections.max(candidates.keySet())) : word;
 	}
 	
@@ -65,7 +82,10 @@ class Spelling1 {
 			        
 		System.out.println("Start time:" +System.currentTimeMillis());
 
-			File folder=new File ("C:\\Users\\AAYUSHEE\\Documents\\OCR ARTICLES");	//INPUT THE DIRECTORY CONTAINING ALL ARTICLES
+		
+		
+		File folder=new File("C:\\Users\\AAYUSHEE\\Pictures\\ANNOTATION\\OCR300");
+		//	File folder=new File ("C:\\Users\\AAYUSHEE\\Documents\\OCR ARTICLES");	//INPUT THE DIRECTORY CONTAINING ALL ARTICLES
 	   File[] listOfFiles=folder.listFiles();   //LIST AND COMPARE THE FILES ACCORDING TO LAST DATE MODIFIED SO THAT NUMBERING OF FILES IS PRESERVED
 	  Spelling1 obj=new Spelling1("Finaldict.txt");
 	   
@@ -76,7 +96,8 @@ class Spelling1 {
 			System.out.println("Correcting "+listOfFiles[i].getName());
 			
 			BufferedReader reader1 = new BufferedReader(new FileReader(listOfFiles[i]));
-			File file2=new File ("C:\\Users\\AAYUSHEE\\Documents\\final\\"+listOfFiles[i].getName());		//NEW FILE WITH CORRECT SPELLINGS
+		//	File file2=new File ("C:\\Users\\AAYUSHEE\\Documents\\final\\"+listOfFiles[i].getName());		//NEW FILE WITH CORRECT SPELLINGS
+			File file2=new File("C:\\Users\\AAYUSHEE\\Pictures\\ANNOTATION\\CORRECTEDED3\\"+listOfFiles[i].getName());
 			BufferedWriter writer1 = new BufferedWriter(new FileWriter(file2));
 			String line1;
 				while((line1=reader1.readLine())!=null)
@@ -92,7 +113,7 @@ class Spelling1 {
 					corrected=obj.correct(split[j]);
 					if(!(corrected.equals(split[j])))
 						{WordsCorrected=WordsCorrected+1;
-	//					System.out.println(split[j]+" corrected to "+corrected);
+			//	System.out.println(split[j]+" corrected to "+corrected);
 						}
 				writer1.write(corrected + " ");  //INPUT THE DICTIONARY BIG.TXT HERE				
 				}

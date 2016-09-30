@@ -4,12 +4,10 @@ import java.io.*;
 //import java.util.*;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.Comparator;
 
-//N-grams evaluation algorithm for testing accuracy of spelling correction. Better version of TestingAgain.
+//N-grams evaluation algorithm for testing accuracy of spelling correction. Here N=3
 
-class TestingFinal {
+class TestingFinalN3 {
 	static int tp=0;
 	static int tn=0;
 	static int fp=0;
@@ -19,7 +17,7 @@ class TestingFinal {
 	//int tp=0,fp=0,tn=0,fn=0;
 	int k=0;
 	
-	for(int j=jstart;j<=jend;j++)
+	for(int j=jstart;j<jend;j++)
 	 {
 		boolean flag1=true;
 		boolean flag0=true;
@@ -52,9 +50,9 @@ class TestingFinal {
 	//if(!(ocrline[i].equals(correctline[i])) && flag0==true)
 	 //if(flag0==true&&flag==true)
 	 
-	 else if(!correctline[i].equals(originalline[j]) && j==jend)
+	 else if(!correctline[i].equals(originalline[j]) && j==jend-1)
 	 {
-		 for(k=kstart; k<kend ;k++)
+		 for(k=kstart;k<kend;k++)
 		 {
 			 if(ocrline[k].equals(correctline[i]))
 			 {
@@ -96,7 +94,7 @@ try{
 	 
 	  File  file3 = new File (path);
 	  File [] original = file3.listFiles(); 
-	  String  path2 = "C:\\Users\\AAYUSHEE\\Pictures\\ANNOTATION\\CORRECTEDED3"; 
+	  String  path2 = "C:\\Users\\AAYUSHEE\\Pictures\\ANNOTATION\\CORRECTEDLP"; 
 	  File  file2 = new File (path2);
 	  File [] corrected = file2.listFiles(); 
 	  //Arrays.sort(corrected, new Comparator<File>(){
@@ -139,17 +137,17 @@ try{
     String[] split1=line1.split(" ");
 	String[] split2=line2.split(" ");
 	String[] split3=line3.split(" ");			
-	TestingFinal obj=new TestingFinal();
+	TestingFinalN3 obj=new TestingFinalN3();
 	
 	 
 	for(int i=0;i<split2.length;i++) 
 	{
 		
-		 if(split1.length<4||split2.length<4||split3.length<4)
+		 if(split1.length<=4||split2.length<=4||split3.length<=4)
 			{
 		    	//if (!split1[i].equals(split2[i]))
 				
-		    	obj.calculate(split1,split2,split3,0,split3.length-1,i,0,split1.length);		 
+		    	obj.calculate(split1,split2,split3,0,split3.length,i,0,split1.length);		 
 				 
 			}
 		    else{
@@ -157,34 +155,45 @@ try{
 		    
 		    if (i==0)
 		   {
-		   obj.calculate(split1, split2, split3, 0, 2, 0, 0, 3); //changed 2 to 3
+		   obj.calculate(split1, split2, split3, 0, 4, 0, 0, 4);
 		    	
 		   }
 		   
 		   else if (i==1)
 		   {
-			   obj.calculate(split1, split2, split3, 0, 3, 1, 0, 4); //changed 3 to 4
+			   obj.calculate(split1, split2, split3, 0, 5, 1, 0, 5);
 			   
 		   }
-			else if(i==(split3.length-2)||i==(split3.length-1)||i==(split3.length)||i==(split3.length+1)||i==(split1.length)||i==(split1.length-1)||i==(split1.length+1)||(i==split1.length-2))
+		   
+		   
+		  else if (i==2)
+		  {
+		    int x1,y1;
+		    x1=split3.length>i+4? i+4:split3.length;
+		    y1=split1.length>i+4? i+4: split1.length;
+
+			   obj.calculate(split1,split2,split3,0,x1,i,0,y1);
+		   }
+		    
+			else if(i==(split3.length-3)||i==(split3.length-2)||i==(split3.length-1)||i==(split1.length-3)||i==(split1.length)||i==(split1.length-2)||i==(split1.length-1)||i==(split1.length+1))
 			{
 			 
-				obj.calculate(split1, split2, split3, i-2, split3.length-1, i, i-2, split1.length );
+				obj.calculate(split1, split2, split3, i-3, split3.length, i, i-3, split1.length );
 				
 			 }
 		    
 		    
-			else if(i>=(split3.length+2)||i>=(split1.length+2))
+			else if(i>=(split3.length)||i>=(split1.length+2))
 			{
 				
-				obj.calculate(split1, split2, split3, split3.length-3, split3.length-1, i, i-2, split1.length );
+				obj.calculate(split1, split2, split3, split3.length-3, split3.length, i, i-3, split1.length );
 				
 			}
 			 
 
 			else
 			 {
-				obj.calculate(split1, split2, split3, i-2, i+2, i, i-2, i+3); //changed i+2 to i+3
+				obj.calculate(split1, split2, split3, i-3, i+4, i, i-3, i+4);
 			}	
 	
    }
